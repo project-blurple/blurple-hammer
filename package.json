@@ -1,0 +1,17 @@
+{
+  "name": "blurple-hammer",
+  "description": "The Blurple Hammer bot for extra moderation tools and link scanning.",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/project-blurple/blurple-hammer.git"
+  },
+  "author": "Promise <me@promise.solutions> (https://promise.solutions/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/project-blurple/blurple-hammer/issues"
+  },
+  "homepage": "https://github.com/project-blurple/blurple-hammer#readme",
+  "dependencies": {
+  }
+}
