@@ -13,5 +13,12 @@
   },
   "homepage": "https://github.com/project-blurple/blurple-hammer#readme",
   "dependencies": {
+    "bufferutil": "^4.0.1",
+    "discord.js": "^11.5.1",
+    "erlpack": "github:discordapp/erlpack",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "mongoose": "^5.8.11",
+    "node-fetch": "^2.6.0"
   }
 }

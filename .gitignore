@@ -90,3 +90,6 @@ typings/
 
 # Configuration
 config.json
+
+# Hidden files
+constants/staffgl.json
