@@ -15,59 +15,57 @@ module.exports.run = async (client, message, args, config, constants, permission
   try {
     let user = await client.fetchUser(args[0].replace("<@", "").replace("!", "").replace(">", ""), false);
     if (!user.bot) return message.channel.send(constants.emojis.tickyes + " This ID is definitely a user ID of " + user.username + "#" + user.discriminator + " (" + user.id + ").");
-    if (user.bot) {
-      let botMsg = await message.channel.send(constants.emojis.tickyes + " This ID is definitely a bot ID of " + user.username + "#" + user.discriminator + " (" + user.id + "), fetching more information...")
-        try {
-          let botblock = await fetch("https://botblock.org/api/bots/" + user.id).then(res => res.json())
-          if (botblock.discriminator == "0000") return botMsg.edit(constants.emojis.tickyes + " This ID is definitely a bot ID of " + user.username + "#" + user.discriminator + " (" + user.id + "), unfortunately this bot is not listed on any BotBlock-supported bot lists.")
+    let botMsg = await message.channel.send(constants.emojis.tickyes + " This ID is definitely a bot ID of " + user.username + "#" + user.discriminator + " (" + user.id + "), fetching more information...")
+      try {
+        let botblock = await fetch("https://botblock.org/api/bots/" + user.id).then(res => res.json())
+        if (botblock.discriminator == "0000") return botMsg.edit(constants.emojis.tickyes + " This ID is definitely a bot ID of " + user.username + "#" + user.discriminator + " (" + user.id + "), unfortunately this bot is not listed on any BotBlock-supported bot lists.")
 
-          let fields = []
-          const add = values => { for (var name in values) fields.push({name, value: values[name], inline: true}) }
+        let fields = []
+        const add = values => { for (var name in values) fields.push({name, value: values[name], inline: true}) }
 
-          let lists = Object.keys(botblock.list_data).filter(l => botblock.list_data[l][1] == 200 && !botblock.list_data[l][0].error).map(l => botblock.list_data[l][0])
+        let lists = Object.keys(botblock.list_data).filter(l => botblock.list_data[l][1] == 200 && !botblock.list_data[l][0].error).map(l => botblock.list_data[l][0])
 
-          let descriptions = lists.filter(l => Object.keys(l).find(k => k.toLowerCase().includes("short"))).map(l => l[Object.keys(l).find(k => k.toLowerCase().includes("short"))]).sort((a, b) => b.length - a.length);
-          if (descriptions[0]) add({ "Description": descriptions[0] })
+        let descriptions = lists.filter(l => Object.keys(l).find(k => k.toLowerCase().includes("short"))).map(l => l[Object.keys(l).find(k => k.toLowerCase().includes("short"))]).sort((a, b) => b.length - a.length);
+        if (descriptions[0]) add({ "Description": descriptions[0] })
 
-          let prefixes = lists.filter(l => l.prefix).map(l => l.prefix).sort((a, b) => b.length - a.length);
-          add({ "Prefix": prefixes[0] ? "\`" + prefixes[0] + "\`" : "Unknown" })
+        let prefixes = lists.filter(l => l.prefix).map(l => l.prefix).sort((a, b) => b.length - a.length);
+        add({ "Prefix": prefixes[0] ? "\`" + prefixes[0] + "\`" : "Unknown" })
 
-          if (botblock.server_count) add({ "Server Count": botblock.server_count })
+        if (botblock.server_count) add({ "Server Count": botblock.server_count })
 
-          add({ "Invite": (botblock.invite ? "[Invite with permissions](" + botblock.invite + ")\n" : "") + "[Invite without permissions](https://discordapp.com/oauth2/authorize?client_id=" + botblock.id + "&scope=bot)" })
+        add({ "Invite": (botblock.invite ? "[Invite with permissions](" + botblock.invite + ")\n" : "") + "[Invite without permissions](https://discordapp.com/oauth2/authorize?client_id=" + botblock.id + "&scope=bot)" })
 
-          if (lists.find(l => l.library)) add({ "Library": lists.find(l => l.library).library })
+        if (lists.find(l => l.library)) add({ "Library": lists.find(l => l.library).library })
 
-          let websites = {}
-          for (var website of lists.filter(l => l.website).map(l => l.website)) if (!websites[website]) websites[website] = 1; else websites[website] += 1;
-          let websiteKeys = Object.keys(websites).sort((a, b) => websites[b] - websites[a])
-          if (websiteKeys[0]) add({ "Website": websiteKeys[0] })
-          
-          let allTags = lists.filter(l => l.tags).map(l => l.tags.filter(t => typeof t == "string").join(",")).join(",").split(",")
-          if (allTags.length) {
-              let tags = allTags.filter(t => t.length).filter(onlyUnique)
-              if (tags.length) add({ "Tags": tags.join(", ") })
-          }
+        let websites = {}
+        for (var website of lists.filter(l => l.website).map(l => l.website)) if (!websites[website]) websites[website] = 1; else websites[website] += 1;
+        let websiteKeys = Object.keys(websites).sort((a, b) => websites[b] - websites[a])
+        if (websiteKeys[0]) add({ "Website": websiteKeys[0] })
+        
+        let allTags = lists.filter(l => l.tags).map(l => l.tags.filter(t => typeof t == "string").join(",")).join(",").split(",")
+        if (allTags.length) {
+            let tags = allTags.filter(t => t.length).filter(onlyUnique)
+            if (tags.length) add({ "Tags": tags.join(", ") })
+        }
 
-          let owners = botblock.owners.filter(o => !o.includes("#")).filter(onlyUnique);
-          if (owners.length > 1) {
-              let allOwners = []
-              for (var owner of owners) allOwners.push((await client.fetchUser(owner, false).catch(() => null)))
-              add({ "Owners": allOwners.filter(o => !!o).map(o => o.username + "#" + o.discriminator + " (" + o.id + ")").join("\n") })
-          } else if (owners.length) add({ "Owner": [await client.fetchUser(owners[0])].map(o => o.username + "#" + o.discriminator + " (" + o.id + ")")[0] })
+        let owners = botblock.owners.filter(o => !o.includes("#")).filter(onlyUnique);
+        if (owners.length > 1) {
+            let allOwners = []
+            for (var owner of owners) allOwners.push((await client.fetchUser(owner, false).catch(() => null)))
+            add({ "Owners": allOwners.filter(o => !!o).map(o => o.username + "#" + o.discriminator + " (" + o.id + ")").join("\n") })
+        } else if (owners.length) add({ "Owner": [await client.fetchUser(owners[0])].map(o => o.username + "#" + o.discriminator + " (" + o.id + ")")[0] })
 
-          console.log(fields)
-          
-          return botMsg.edit(constants.emojis.tickyes + " This ID is definitely a bot ID of " + user.username + "#" + user.discriminator + " (" + user.id + "):", {
-              embed: {
-                  fields, thumbnail: user.avatar ? {
-                      url: "https://cdn.discordapp.com/avatars/" + user.id + "/" + user.avatar + ".png?size=4096"
-                  } : null,
-                  color: constants.embedColor
-              }
-          })
+        console.log(fields)
+        
+        return botMsg.edit(constants.emojis.tickyes + " This ID is definitely a bot ID of " + user.username + "#" + user.discriminator + " (" + user.id + "):", {
+            embed: {
+                fields, thumbnail: user.avatar ? {
+                    url: "https://cdn.discordapp.com/avatars/" + user.id + "/" + user.avatar + ".png?size=4096"
+                } : null,
+                color: constants.embedColor
+            }
+        })
       } catch(e) { console.log(e); return botMsg.edit(constants.emojis.tickyes + " This ID is definitely a bot ID of " + user.username + "#" + user.discriminator + " (" + user.id + "), unfortunately we could not get a good connection to BotBlock."); }
-    }
   } catch(e) {}
 
   try {

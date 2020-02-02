@@ -58,7 +58,7 @@ module.exports = config => ({
     thumbsdown: '673265868662112269',
     heart: '673265871094939674' 
   },
-  linkRegex: /[-a-zA-Z0-9@:%._\+~#=]{2,}\.[a-zA-Z0-9()]{2,24}\b([-a-zA-Z0-9()@:%_\+.~#?&\/\/=]*)/gm,
+  linkRegex: /[-a-zA-Z0-9@:%._\+~#=]{2,}\.[a-zA-Z0-9()]{2,24}\b([-a-zA-Z0-9()@:%_\+.~#?&\/=]*)/gm,
   urlBlacklist: fs.readFileSync("./constants/url-blacklist.txt", "utf8").split("\n").map(l => l.replace("\r", "")),
   urlWhitelist: fs.readFileSync("./constants/url-whitelist.txt", "utf8").split("\n").map(l => l.replace("\r", "")),
   linkCategories: {
