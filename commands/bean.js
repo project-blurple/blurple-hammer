@@ -9,8 +9,10 @@ module.exports = {
   checkArgs: (args) => args.length >= 1
 }
 
+const onlyUnique = (value, index, self) => self.indexOf(value) == index;
+
 module.exports.run = async (client, message, args, config, constants, permissionLevel, db) => {
-  const members = [];
+  let members = [];
   for (const arg of args) {
     let search = arg.split("_").join(" "), obj = [
       message.guild.members.find(m => search == m.user.tag),
@@ -24,6 +26,8 @@ module.exports.run = async (client, message, args, config, constants, permission
       else members.push(obj);
     }
   }
+
+  members = members.map(m => m.id).filter(onlyUnique).map(id => members.find(m => m.id == id))
 
   if (!members.length) return message.channel.send(constants.emojis.tickno + " No users were found with your query.")
   else {
