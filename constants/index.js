@@ -102,5 +102,8 @@ module.exports = config => ({
     },
   },
   rules: require("./rules.json"),
-  staffgl: fs.existsSync("./constants/staffgl.json") ? require("./staffgl.json") : {}
+  staffgl: fs.existsSync("./constants/staffgl.json") ? require("./staffgl.json") : {},
+  roles: {
+    blacklist: "573392328912404480"
+  }
 })
