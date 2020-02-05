@@ -23,18 +23,17 @@ module.exports.run = module.exports.run = async (client, message, args, config, 
   const diff = {};
   for (const link of links) {
     if (constants.urlWhitelist.includes(link)) {
-      diff[link] = false;
+      diff[link] = "-";
       constants.urlWhitelist = constants.urlWhitelist.filter(l => l !== link);
     } else {
-      diff[link] = true;
+      diff[link] = "+";
       constants.urlWhitelist.push(link);
     }
   }
 
   fs.writeFile("./constants/url-whitelist.txt", constants.urlWhitelist.join("\n"), "utf8", () => {});
 
-  const changes = [];
-  for (const link in diff) if (diff[link]) changes.push("+ " + link); else changes.push("- " + link);
+  const changes = Object.keys(diff).map(link => diff[link] + " " + link)
 
   message.channel.send(constants.emojis.tickyes + " Whitelist changes has been made: ```diff\n" + changes.join("\n") + "```")
 }

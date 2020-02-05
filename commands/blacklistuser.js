@@ -25,16 +25,15 @@ module.exports.run = async (client, message, args, config, constants, permission
     const diff = {};
     for (const member of members) {
       if (member.roles.get(constants.roles.blacklist)) {
-        diff[member.user.tag] = false;
+        diff[member.user.tag] = "-";
         await member.removeRole(constants.roles.blacklist).catch(() => {})
       } else {
-        diff[member.user.tag] = true;
+        diff[member.user.tag] = "+";
         await member.addRole(constants.roles.blacklist).catch(() => {})
       }
     }
 
-    const changes = [];
-    for (const member in diff) if (diff[member]) changes.push("+ " + member); else changes.push("- " + member);
+    const changes = Object.keys(diff).map(member => diff[member] + " " + member)
 
     message.channel.send(constants.emojis.tickyes + " Bot blacklist changes has been made: ```diff\n" + changes.join("\n") + "```")
   }
