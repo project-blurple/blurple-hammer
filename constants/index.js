@@ -10,8 +10,8 @@ module.exports = config => ({
     if (roles.includes("443013283977494539")) return 6; // admin
     if (roles.includes("413213839866462220")) return 5; // exec
     if (roles.includes("470272155876065280")) return 4; // sr.mod
-    if (roles.includes("442690537691021333")) return 3; // mod
-    if (roles.includes("562886834301042698")) return 2;
+    if (roles.includes("569015549225598976")) return 3; // mod
+    if (roles.includes("562886834301042698")) return 2; // jr.mod
     if (roles.includes("442785212502507551")) return 1; // helper
     return 0; // normal user
   },

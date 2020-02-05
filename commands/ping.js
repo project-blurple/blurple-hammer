@@ -3,7 +3,7 @@ module.exports = {
   usage: {},
   examples: {},
   aliases: [ "pong", "latency", "uptime" ],
-  permissionRequired: 0, // 0 All, 1 Mods, 2 Admins, 3 Server Owner, 4 Bot Admin, 5 Bot Owner
+  permissionRequired: 0, // 0 All, 1 Helper, 2 JR.Mod, 3 Mod, 4 SR.Mod, 5 Exec, 6 Admin, 7 Promise#0001
   checkArgs: (args) => !args.length
 }
 

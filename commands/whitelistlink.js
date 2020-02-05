@@ -8,7 +8,7 @@ module.exports = {
     "developers.twitter.com": "White this link. Will also whitelist sub-subdomains."
   },
   aliases: [ "wllink", "wlurl" ],
-  permissionRequired: 1,
+  permissionRequired: 3, // 0 All, 1 Helper, 2 JR.Mod, 3 Mod, 4 SR.Mod, 5 Exec, 6 Admin, 7 Promise#0001
   checkArgs: (args) => true
 }
 
