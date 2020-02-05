@@ -3,18 +3,7 @@ const fs = require("fs");
 module.exports = config => ({
   embedColor: 0x7289DA,
   hexColor: "7289DA",
-  getPermissionLevel: member => {
-    let roles = member.roles.map(r => r.id)
-    
-    if (config.owner === member.user.id) return 7; // Promise#0001
-    if (roles.includes("443013283977494539")) return 6; // admin
-    if (roles.includes("413213839866462220")) return 5; // exec
-    if (roles.includes("470272155876065280")) return 4; // sr.mod
-    if (roles.includes("569015549225598976")) return 3; // mod
-    if (roles.includes("562886834301042698")) return 2; // jr.mod
-    if (roles.includes("442785212502507551")) return 1; // helper
-    return 0; // normal user
-  },
+  getPermissionLevel: getPermissionLevel(config),
   scanLinks: require("./link-scanner.js"),
   emojis: {
     loading: '<a:loading:572202235342225418>',
@@ -104,6 +93,29 @@ module.exports = config => ({
   rules: require("./rules.json"),
   staffgl: fs.existsSync("./constants/staffgl.json") ? require("./staffgl.json") : {},
   roles: {
+    admin: "443013283977494539",
+    exec: "413213839866462220",
+    srmod: "470272155876065280",
+    mod: "569015549225598976",
+    jrmod: "562886834301042698",
+    helper: "442785212502507551",
+    staff: "569015549225598976",
+    duty: "674704168602042388",
     blacklist: "573392328912404480"
   }
 })
+
+function getPermissionLevel(config) {
+  return member => {
+    let roles = member.roles.map(r => r.id)
+    
+    if (config.owner === member.user.id) return 7; // Promise#0001
+    if (roles.includes(module.exports.roles.admin)) return 6; // admin
+    if (roles.includes(module.exports.roles.exec)) return 5; // exec
+    if (roles.includes(module.exports.roles.srmod)) return 4; // sr.mod
+    if (roles.includes(module.exports.roles.mod)) return 3; // mod
+    if (roles.includes(module.exports.roles.jrmod)) return 2; // jr.mod
+    if (roles.includes(module.exports.roles.helper)) return 1; // helper
+    return 0; // normal user
+  }
+}
