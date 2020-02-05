@@ -42,17 +42,7 @@ client.on("message", async message => {
       
       commandFile.run(client, message, args, config, constants, permissionLevel, db)
     }
-  } else if (message.content.match(`^<@!?${client.user.id}>`)) return message.author.send({
-    embed: {
-      title: client.user.tag,
-      description: [
-        emojis.wave + " I'm a moderation bot designed for Project Blurple.",
-        "📖 My source code can be located here: [https://github.com/...](https://github.com/project-blurple/blurple-hammer)",
-        "📄 My documentation can be found here: [https://docs-for.a-mod-bot.but-it-actually.works](https://docs-for.a-mod-bot.but-it-actually.works)"
-      ].join("\n"),
-      color: 7506394
-    }
-  }).then(() => message.react(emojiSnowflakes.thumbsup)).catch(() => message.react(emojiSnowflakes.thumbsdown))
+  } else if (message.content.match(`^<@!?${client.user.id}>`)) commands["help"].run(client, message, [], config, constants, getPermissionLevel(message.member), db)
 })
 
 client
