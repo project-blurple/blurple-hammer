@@ -1,10 +1,10 @@
 module.exports = {
-  description: "Lookup an unknown ID, and hopefully get the meaning behind it!",
+  description: "Lookup something unknown, like an ID or an invite, and hopefully get the meaning behind it!",
   usage: {
-    "<unknown id>": "The ID you'd like to lookup."
+    "<unknown>": "The unknown you'd like to lookup."
   },
   examples: {},
-  aliases: [ "bot-lookup", "id-lookup", "whatis", "wit", "whatisthis" ],
+  aliases: [ "bot-lookup", "id-lookup", "invite-lookup", "whatis", "wit", "whatisthis" ],
   permissionLevel: 1, // 0 All, 1 Helper, 2 JR.Mod, 3 Mod, 4 SR.Mod, 5 Exec, 6 Admin, 7 Promise#0001
   checkArgs: (args) => args.length == 1
 }

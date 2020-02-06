@@ -1,6 +1,8 @@
 module.exports = {
-  description: "",
-  usage: {},
+  description: "Evaluate some code.",
+  usage: {
+    "<code ...>": "The code you want to run through the bot."
+  },
   examples: {},
   aliases: [],
   permissionRequired: 7, // 0 All, 1 Helper, 2 JR.Mod, 3 Mod, 4 SR.Mod, 5 Exec, 6 Admin, 7 Promise#0001
