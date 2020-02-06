@@ -38,7 +38,7 @@ client.on("message", async message => {
     const commandFile = commands[command], permissionLevel = getPermissionLevel(message.member)
     if (commandFile) {
       if (permissionLevel < commandFile.permissionRequired) return message.channel.send("❌ You don't have permission to do this!");
-      if (commandFile.checkArgs(args, permissionLevel) !== true) return message.channel.send("❌ Invalid arguments! Usage is `" + config.prefix + command + Object.keys(commandFile.usage).map(a => " " + a).join("") + "\`, for additional help type `" + config.prefix + "help " + command + "`.");
+      if (commandFile.checkArgs(args, permissionLevel) !== true) return message.channel.send("❌ Invalid arguments! Usage is `" + config.prefix + command + Object.keys(commandFile.usage).map(a => " " + a).join("") + "\`, for additional help, see `" + config.prefix + "help`.");
       
       commandFile.run(client, message, args, config, constants, permissionLevel, db)
     }
