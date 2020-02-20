@@ -18,7 +18,8 @@
     "erlpack": "github:discordapp/erlpack",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
-    "mongoose": "^5.8.11",
-    "node-fetch": "^2.6.0"
+    "mongoose": "^5.9.1",
+    "node-fetch": "^2.6.0",
+    "request": "^2.88.2"
   }
 }
