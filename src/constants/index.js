@@ -108,7 +108,14 @@ module.exports = {
     duty: "674712941085589524", // "674704168602042388",
     blacklist: "698301467416723558"//"573392328912404480"
   },
-  publicChannels: [ "412754940885467148", "453451178039312395", "476306069581201409", "444135968631685120", "472160259020947476" ]
+  publicChannels: [
+    "412754940885467148", // general
+    "453451178039312395", // international-channel
+    "476306069581201409", // auttaja-playground
+    "444135968631685120", // nonconformity-center
+    "472160259020947476"  // vc-context
+  ]
+
 }
 
 function getPermissionLevel(config) {
