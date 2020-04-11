@@ -1,4 +1,4 @@
-const Discord = require("discord.js"), fs = require("fs"), config = require("../config.json"), constants = require("./constants"), { getPermissionLevel, scanLinks, linkRegex, parseArgs, flat } = constants;
+const Discord = require("discord.js"), fs = require("fs"), config = require("../config.json"), constants = require("./constants"), { getPermissionLevel, linkRegex, parseArgs, flat } = constants, scanLinks = require("./utils/link-scanner.js")
 
 const client = new Discord.Client({
   messageCacheLifetime: 30,

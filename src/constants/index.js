@@ -4,7 +4,6 @@ module.exports = {
   embedColor: 0x7289DA,
   hexColor: "7289DA",
   getPermissionLevel: getPermissionLevel(config),
-  scanLinks: require("../utils/link-scanner.js"),
   emojis: {
     loading: '<a:loading:572202235342225418>',
     blurple: '<:blurple:673265867840290859>',
