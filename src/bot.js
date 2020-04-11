@@ -1,4 +1,4 @@
-const Discord = require("discord.js"), fs = require("fs"), config = require("../config.json"), constants = require("./constants"), { getPermissionLevel, scanLinks, linkRegex, parseArgs } = constants;
+const Discord = require("discord.js"), fs = require("fs"), config = require("../config.json"), constants = require("./constants"), { getPermissionLevel, scanLinks, linkRegex, parseArgs, flat } = constants;
 
 const client = new Discord.Client({
   messageCacheLifetime: 30,
@@ -35,8 +35,8 @@ client.on("message", async message => {
   const links = message.content.match(linkRegex) || []; // https://stackoverflow.com/a/3809435
   if (getPermissionLevel(message.member) < 1 && links.length) {
     await message.react(constants.emojiSnowflakes.loading)
-    const results = await scanLinks(links.filter(constants.onlyUnique), constants);
-    console.log(results)
+    const results = flat(await scanLinks(links.filter(constants.onlyUnique), constants));
+    
     if (results.find(r => r.safe == false)) return message.author.send({
       embed: {
         title: "Bad Link Detected",

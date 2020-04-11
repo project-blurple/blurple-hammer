@@ -32,7 +32,7 @@ module.exports = (rawLinks, constants, redirects = null) => new Promise(async re
 
   console.log(googleData)
 
-  return resolve(flat(links.map(redirects => redirects.map((link, rNum) => {
+  return resolve(links.map(redirects => redirects.map((link, rNum) => {
     const domain = link.match(constants.linkDomainRegex)[0]
     let result = {
       url: link, domain,
@@ -69,11 +69,5 @@ module.exports = (rawLinks, constants, redirects = null) => new Promise(async re
     )) result.safe = false;
 
     return result;
-  }))))
+  })))
 })
-
-// https://stackoverflow.com/a/57714483
-function flat(input, depth = 1, stack = []) {
-    for (let item of input) if (item instanceof Array && depth > 0) flat(item, depth - 1, stack); else stack.push(item);
-    return stack;
-}

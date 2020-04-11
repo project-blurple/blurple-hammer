@@ -48,6 +48,10 @@ module.exports = {
     heart: '673265871094939674' 
   },
   onlyUnique: (value, index, self) => self.indexOf(value) == index,
+  flat: (input, depth = 1, stack = []) => {
+    for (let item of input) if (item instanceof Array && depth > 0) flat(item, depth - 1, stack); else stack.push(item);
+    return stack;
+  },
   linkRegex: /[-a-zA-Z0-9@:%._\+~#=]{2,}\.[a-zA-Z0-9()]{2,24}\b([-a-zA-Z0-9()@:%_\+.~#?&\/=]*)/gm,
   linkDomainRegex: /[-a-zA-Z0-9@:%._\+~#=]{2,}\.[a-zA-Z0-9()]{2,24}\b/m,
   parseArgs: _arguments => (_arguments.match(/\"[^"]+\"|[^ ]+/g) || []).map(argument => argument.startsWith("\"") && argument.endsWith("\"") ? argument.slice(1).slice(0, -1) : argument),
