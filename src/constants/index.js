@@ -135,7 +135,6 @@ module.exports = {
     "444135968631685120", // nonconformity-center
     "472160259020947476"  // vc-context
   ]
-
 }
 
 function getPermissionLevel(config) {
