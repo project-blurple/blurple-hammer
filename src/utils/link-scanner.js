@@ -3,7 +3,7 @@ const fetch = require("node-fetch"), config = require("../../config.json"), getR
 module.exports = (rawLinks, redirects = null) => new Promise(async resolve => {
   if (!redirects) redirects = await Promise.all(rawLinks.map(getRedirects));
   
-  const links = redirects.filter(constants.onlyUnique), allLinks = flat(links).map(link => link.match(constants.linkDomainRegex)[0]).filter(constants.onlyUnique)
+  const links = redirects.filter(constants.onlyUnique), allLinks = constants.flat(links).map(link => link.match(constants.linkDomainRegex)[0]).filter(constants.onlyUnique)
   const wotData = await fetch(`https://api.mywot.com/0.4/public_link_json2?hosts=${allLinks.map(l => l + "/").join("")}&key=${config.wot}`).then(res => res.json()).catch(() => ({}))
   const googleData = await fetch(`https://safebrowsing.googleapis.com/v4/threatMatches:find?key=${config.google}`, {
     method: "POST",

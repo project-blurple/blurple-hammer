@@ -48,7 +48,7 @@ module.exports = {
   },
   onlyUnique: (value, index, self) => self.indexOf(value) == index,
   flat: (input, depth = 1, stack = []) => {
-    for (let item of input) if (item instanceof Array && depth > 0) flat(item, depth - 1, stack); else stack.push(item);
+    for (let item of input) if (item instanceof Array && depth > 0) module.exports.flat(item, depth - 1, stack); else stack.push(item);
     return stack;
   },
   linkRegex: /[-a-zA-Z0-9@:%._\+~#=]{2,}\.[a-zA-Z0-9()]{2,24}\b([-a-zA-Z0-9()@:%_\+.~#?&\/=]*)/gm,
@@ -56,7 +56,7 @@ module.exports = {
   parseArgs: _arguments => (_arguments.match(/\"[^"]+\"|[^ ]+/g) || []).map(argument => argument.startsWith("\"") && argument.endsWith("\"") ? argument.slice(1).slice(0, -1) : argument),
   urlBlacklist: fs.readFileSync("./src/constants/url-blacklist.txt", "utf8").split("\n").map(l => l.replace("\r", "")),
   urlWhitelist: fs.readFileSync("./src/constants/url-whitelist.txt", "utf8").split("\n").map(l => l.replace("\r", "")),
-  lockMessage: user => `\n\n${module.exports.emojis.weewoo} ${module.exports.emojis.weewoo} ***CHANNEL IS LOCKED BY ${user}*** ${module.exports.emojis.weewoo} ${module.exports.emojis.weewoo}`,
+  lockMessage: user => `${module.exports.emojis.weewoo} ${module.exports.emojis.weewoo} ***CHANNEL IS LOCKED BY ${user}*** ${module.exports.emojis.weewoo} ${module.exports.emojis.weewoo}`,
   linkCategories: {
     // NEGATIVE
     101: 'MALWARE_OR_VIRUS',

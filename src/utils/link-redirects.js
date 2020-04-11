@@ -14,6 +14,7 @@ module.exports = link => new Promise(resolve => {
     resolve(redirects.filter((link, index, all) => {
       let last = index ? all[index - 1] : "";
       if (last.replace("http://", "https://") == link) return false;
+      if (last.replace("http://", "https://www.") == link) return false;
       if (link.replace("www.", "") == last) return false;
       return link;
     }).filter(link => link))
