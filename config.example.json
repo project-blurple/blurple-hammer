@@ -1,0 +1,10 @@
+{
+  "token": "",
+  "database_uri": "mongodb://",
+
+  "owner": "your user id",
+  "prefix": ">",
+
+  "wot": "the wot key",
+  "google": "the google key for safe browsing"
+}

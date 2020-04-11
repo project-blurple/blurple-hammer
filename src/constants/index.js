@@ -1,10 +1,9 @@
-const fs = require("fs");
+const fs = require("fs"), config = require("../../config.json");
 
-module.exports = config => ({
+module.exports = {
   embedColor: 0x7289DA,
   hexColor: "7289DA",
   getPermissionLevel: getPermissionLevel(config),
-  scanLinks: require("./link-scanner.js"),
   emojis: {
     loading: '<a:loading:572202235342225418>',
     blurple: '<:blurple:673265867840290859>',
@@ -48,10 +47,33 @@ module.exports = config => ({
     heart: '673265871094939674' 
   },
   onlyUnique: (value, index, self) => self.indexOf(value) == index,
+  flat: (input, depth = 1, stack = []) => {
+    for (let item of input) if (item instanceof Array && depth > 0) module.exports.flat(item, depth - 1, stack); else stack.push(item);
+    return stack;
+  },
   linkRegex: /[-a-zA-Z0-9@:%._\+~#=]{2,}\.[a-zA-Z0-9()]{2,24}\b([-a-zA-Z0-9()@:%_\+.~#?&\/=]*)/gm,
   linkDomainRegex: /[-a-zA-Z0-9@:%._\+~#=]{2,}\.[a-zA-Z0-9()]{2,24}\b/m,
-  urlBlacklist: fs.readFileSync("./constants/url-blacklist.txt", "utf8").split("\n").map(l => l.replace("\r", "")),
-  urlWhitelist: fs.readFileSync("./constants/url-whitelist.txt", "utf8").split("\n").map(l => l.replace("\r", "")),
+  parseArgs: _arguments => (_arguments.match(/\"[^"]+\"|[^ ]+/g) || []).map(argument => argument.startsWith("\"") && argument.endsWith("\"") ? argument.slice(1).slice(0, -1) : argument),
+  urlBlacklist: fs.readFileSync("./src/constants/url-blacklist.txt", "utf8").split("\n").map(l => l.replace("\r", "")),
+  urlWhitelist: fs.readFileSync("./src/constants/url-whitelist.txt", "utf8").split("\n").map(l => l.replace("\r", "")),
+  lockMessage: user => `${module.exports.emojis.weewoo} ${module.exports.emojis.weewoo} ***CHANNEL IS LOCKED BY ${user}*** ${module.exports.emojis.weewoo} ${module.exports.emojis.weewoo}`,
+  msToTime: ms => {
+    days = Math.floor(ms / 86400000); // 24*60*60*1000
+    daysms = ms % 86400000; // 24*60*60*1000
+    hours = Math.floor(daysms / 3600000); // 60*60*1000
+    hoursms = ms % 3600000; // 60*60*1000
+    minutes = Math.floor(hoursms / 60000); // 60*1000
+    minutesms = ms % 60000; // 60*1000
+    sec = Math.floor(minutesms / 1000);
+  
+    let str = "";
+    if (days) str = str + days + "d";
+    if (hours) str = str + hours + "h";
+    if (minutes) str = str + minutes + "m";
+    if (sec) str = str + sec + "s";
+  
+    return str;
+  },
   linkCategories: {
     // NEGATIVE
     101: 'MALWARE_OR_VIRUS',
@@ -92,8 +114,9 @@ module.exports = config => ({
       POSITIVE: 500,
     },
   },
+  badLinkCategories: [ 101, 103, 104, 105, 203, 204, 206, 401, 402, 403 ],
   rules: require("./rules.json"),
-  staffgl: fs.existsSync("./constants/staffgl.json") ? require("./staffgl.json") : {},
+  staffgl: fs.existsSync("./src/constants/staffgl.json") ? require("./staffgl.json") : {},
   roles: {
     admin: "443013283977494539",
     exec: "413213839866462220",
@@ -101,15 +124,21 @@ module.exports = config => ({
     mod: "569015549225598976",
     jrmod: "562886834301042698",
     helper: "442785212502507551",
-    staff: "569015549225598976",
-    duty: "674704168602042388",
+    duty: "460677952812744714",
     blacklist: "573392328912404480"
-  }
-})
+  },
+  publicChannels: [
+    "412754940885467148", // general
+    "453451178039312395", // international-channel
+    "476306069581201409", // auttaja-playground
+    "444135968631685120", // nonconformity-center
+    "472160259020947476"  // vc-context
+  ]
+}
 
 function getPermissionLevel(config) {
   return member => {
-    let roles = member.roles.map(r => r.id)
+    const roles = member.roles.cache.map(r => r.id)
     
     if (config.owner === member.user.id) return 7; // Promise#0001
     if (roles.includes(module.exports.roles.admin)) return 6; // admin

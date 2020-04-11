@@ -7,16 +7,18 @@ module.exports = {
   checkArgs: (args) => !args.length
 }
 
-module.exports.run = module.exports.run = async (client, message, args, config, constants, permissionLevel, db) => {
+const constants = require("../constants");
+
+module.exports.run = async (client, message, args, { content }) => {
   return message.author.send({
     embed: {
       title: client.user.tag,
       description: [
-        constants.emojis.wave + " I'm a moderation bot designed for Project Blurple.",
+        `${constants.emojis.wave} I'm a moderation bot designed for Project Blurple.`,
         "📖 My source code can be located here: [https://github.com/project-blurple/blurple-hammer](https://github.com/project-blurple/blurple-hammer)",
-        "📄 My documentation can be found here: [https://docs-for.a-mod-bot.but-it-actually.works](https://docs-for.a-mod-bot.but-it-actually.works)"
+        "📄 Although we do have documentation for the bot, it's personalized for Project Blurple's Staff team and also therefore not available to the public."
       ].join("\n"),
-      color: 7506394
+      color: constants.embedColor
     }
-  }).then(() => message.react(constants.emojiSnowflakes.thumbsup)).catch(() => message.react(constants.emojiSnowflakes.thumbsdown))
+  }).then(() => message.react(constants.emojiSnowflakes.tickyes)).catch(() => message.react(constants.emojiSnowflakes.tickno))
 }

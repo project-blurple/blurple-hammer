@@ -92,4 +92,4 @@ typings/
 config.json
 
 # Hidden files
-constants/staffgl.json
+src/constants/staffgl.json
