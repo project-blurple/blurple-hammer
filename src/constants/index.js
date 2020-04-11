@@ -57,6 +57,23 @@ module.exports = {
   urlBlacklist: fs.readFileSync("./src/constants/url-blacklist.txt", "utf8").split("\n").map(l => l.replace("\r", "")),
   urlWhitelist: fs.readFileSync("./src/constants/url-whitelist.txt", "utf8").split("\n").map(l => l.replace("\r", "")),
   lockMessage: user => `${module.exports.emojis.weewoo} ${module.exports.emojis.weewoo} ***CHANNEL IS LOCKED BY ${user}*** ${module.exports.emojis.weewoo} ${module.exports.emojis.weewoo}`,
+  msToTime: ms => {
+    days = Math.floor(ms / 86400000); // 24*60*60*1000
+    daysms = ms % 86400000; // 24*60*60*1000
+    hours = Math.floor(daysms / 3600000); // 60*60*1000
+    hoursms = ms % 3600000; // 60*60*1000
+    minutes = Math.floor(hoursms / 60000); // 60*1000
+    minutesms = ms % 60000; // 60*1000
+    sec = Math.floor(minutesms / 1000);
+  
+    let str = "";
+    if (days) str = str + days + "d";
+    if (hours) str = str + hours + "h";
+    if (minutes) str = str + minutes + "m";
+    if (sec) str = str + sec + "s";
+  
+    return str;
+  },
   linkCategories: {
     // NEGATIVE
     101: 'MALWARE_OR_VIRUS',
