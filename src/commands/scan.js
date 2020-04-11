@@ -16,8 +16,8 @@ module.exports.run = async (client, message, args) => {
 
   const results = await scanLinks(args);
 
-  for (const links of results) {
-    let results = links[0], embed = {
+  for (const links of results) await message.channel.send({
+    embed: {
       title: links[0].url,
       color: constants.embedColor,
       fields: links.map(r => ({
@@ -38,9 +38,7 @@ module.exports.run = async (client, message, args) => {
       },
       timestamp: Date.now()
     }
-
-    await message.channel.send({ embed })
-  }
+  })
 
   message.channel.stopTyping();
 }
