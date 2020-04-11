@@ -6,11 +6,7 @@ const client = new Discord.Client({
   disableMentions: "everyone",
   partials: [ "USER", "CHANNEL", "GUILD_MEMBER", "MESSAGE", "REACTION" ],
   presence: {
-    status: "idle",
-    activity: {
-      type: "WATCHING",
-      name: "the loading screen"
-    }
+    status: "online"
   }
 }), db = require("./database.js")(client);
 
