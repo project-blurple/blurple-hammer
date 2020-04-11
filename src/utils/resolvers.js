@@ -1,4 +1,4 @@
-const idResolver = /[0-9]+/
+const idResolver = /[0-9]+/, constants = require("../constants")
 
 module.exports.getRole = (search, guild) =>
   guild.roles.cache.find(r => r.name == search) ||
@@ -28,5 +28,5 @@ module.exports.getMembers = (searches, guild) => {
     }
   }
 
-  return members;
+  return members.map(m => m.id).filter(constants.onlyUnique).map(id => members.find(m => m.id == id));
 }
