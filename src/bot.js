@@ -12,7 +12,7 @@ const client = new Discord.Client({
       name: "the loading screen"
     }
   }
-}), db = require("./database.js")(client, constants);
+}), db = require("./database.js")(client);
 
 client.on("ready", () => {
   console.log("Ready as " + client.user.tag)
