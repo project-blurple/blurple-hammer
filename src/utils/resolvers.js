@@ -18,9 +18,9 @@ module.exports.getChannel = (search, guild) => {
 }
 
 module.exports.getMembers = (searches, guild) => {
-  let members = []; console.log(searches)
-  for (const search of searches) { console.log(search)
-    let member = module.exports.getMember(search, guild); console.log(member)
+  let members = [];
+  for (const search of searches) {
+    let member = module.exports.getMember(search, guild);
     if (member) members.push(member);
     else {
       let role = module.exports.getRole(search, guild); console.log(role)
