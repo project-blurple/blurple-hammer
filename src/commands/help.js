@@ -7,7 +7,9 @@ module.exports = {
   checkArgs: (args) => !args.length
 }
 
-module.exports.run = async (client, message, args, db, constants, { content }) => {
+const constants = require("../constants");
+
+module.exports.run = async (client, message, args, { content }) => {
   return message.author.send({
     embed: {
       title: client.user.tag,

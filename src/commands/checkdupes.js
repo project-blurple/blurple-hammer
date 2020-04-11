@@ -11,6 +11,8 @@ module.exports = {
   checkArgs: (args) => args.length >= 1
 }
 
-module.exports.run = async (client, message, args, db, constants, { content }) => {
+const constants = require("../constants")
+
+module.exports.run = async (client, message, args, { content }) => {
   message.channel.send(`${constants.emojis.sparkle} Here ya go: \`\`\`fix\n${content.split(" ").filter(s => s.length).filter(constants.onlyUnique).join(" ")}\`\`\``)
 }

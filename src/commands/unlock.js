@@ -11,7 +11,9 @@ module.exports = {
   }
 }
 
-module.exports.run = async (client, message, args, db, constants) => {
+const constants = require("../constants");
+
+module.exports.run = async (client, message, args) => {
   if (args[0] == "-public") {
     const channels = message.guild.channels.cache.filter(ch => constants.publicChannels.includes(ch.id));
     if (!channels.size) return message.channel.send(`${constants.emojis.tickno} This server doesnt have any public channels configured, unfortunately.`)

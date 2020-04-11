@@ -9,9 +9,9 @@ module.exports = {
   checkArgs: (args) => args.length >= 1
 }
 
-const { getMember } = require("../utils/resolvers.js")
+const { getMember } = require("../utils/resolvers.js"), constants = require("../constants")
 
-module.exports.run = async (client, message, args, db, constants) => {
+module.exports.run = async (client, message, args) => {
   let members = args.map(search => getMember(search, message.guild));
   if (!members.length) return message.channel.send(`${constants.emojis.tickNo} No users were found with your query.`)
 

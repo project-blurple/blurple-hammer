@@ -9,7 +9,7 @@ module.exports = {
   checkArgs: (args) => args.length >= 1
 }
 
-module.exports.run = async (client, message, args, db, constants, { content }) => {
+module.exports.run = async (client, message, args, { db, config, permissionLevel, content }) => { // we get all the values so we can use them in the eval-command itself
   try {
     let evaled = eval(content);
     if (typeof evaled != "string") evaled = require("util").inspect(evaled);

@@ -72,7 +72,7 @@ client.on("message", async message => {
       if (permissionLevel < commandFile.permissionRequired) return message.channel.send("❌ You don't have permission to do this!");
       if (!commandFile.checkArgs(args, permissionLevel, content)) return message.channel.send(`❌ Invalid arguments! Usage is \`${config.prefix}${command}${Object.keys(commandFile.usage).map(a => " " + a).join("")}\`, for additional help, see \`${config.prefix}help\`.`)
 
-      commandFile.run(client, message, args, db, constants, { config, permissionLevel, content })
+      commandFile.run(client, message, args, { db, config, permissionLevel, content })
     }
   }
 })
