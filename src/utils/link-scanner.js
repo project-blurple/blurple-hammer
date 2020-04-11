@@ -1,6 +1,6 @@
-const fetch = require("node-fetch"), config = require("../../config.json"), getRedirects = require("./link-redirects.js")
+const fetch = require("node-fetch"), config = require("../../config.json"), getRedirects = require("./link-redirects.js"), constants = require("../constants")
 
-module.exports = (rawLinks, constants, redirects = null) => new Promise(async resolve => {
+module.exports = (rawLinks, redirects = null) => new Promise(async resolve => {
   if (!redirects) redirects = await Promise.all(rawLinks.map(getRedirects));
   
   const links = redirects.filter(constants.onlyUnique), allLinks = flat(links).map(link => link.match(constants.linkDomainRegex)[0]).filter(constants.onlyUnique)

@@ -35,7 +35,7 @@ client.on("message", async message => {
   const links = message.content.match(linkRegex) || []; // https://stackoverflow.com/a/3809435
   if (getPermissionLevel(message.member) < 1 && links.length) {
     await message.react(constants.emojiSnowflakes.loading)
-    const results = flat(await scanLinks(links.filter(constants.onlyUnique), constants));
+    const results = flat(await scanLinks(links.filter(constants.onlyUnique)));
     
     if (results.find(r => r.safe == false)) return message.author.send({
       embed: {
