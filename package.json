@@ -1,6 +1,9 @@
 {
   "name": "blurple-hammer",
   "main": "src/bot.js",
+  "scripts": {
+    "start": "node src/bot.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/project-blurple/blurple-hammer.git"
@@ -20,5 +23,8 @@
     "mongoose": "^5.9.7",
     "node-fetch": "^2.6.0",
     "request": "^2.88.2"
+  },
+  "engines": {
+    "node": "12.x"
   }
 }
