@@ -14,9 +14,20 @@ const constants = require("../constants"), scanLinks = require("../utils/link-sc
 module.exports.run = async (client, message, args) => {
   message.channel.startTyping();
 
-  const results = await scanLinks(args);
-
-  for (const links of results) await message.channel.send({
+  const results = await scanLinks(args).catch(e => console.log(e) && null);
+  
+  if (!results) message.channel.send({
+    embed: {
+      title: "An error occoured.",
+      color: constants.embedColor,
+      description: "An error occoured when trying to scan for links.",
+      footer: {
+        text: `Requested by ${message.author.tag} • Powered by MyWOT`,
+        icon_url: message.author.avatarURL()
+      },
+      timestamp: Date.now()
+    }
+  }); else for (const links of results) await message.channel.send({
     embed: {
       title: links[0].url,
       color: constants.embedColor,
