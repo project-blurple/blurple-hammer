@@ -9,7 +9,7 @@ module.exports = {
   checkArgs: (args) => args.length == 1
 }
 
-const constants = require("../constants")
+const constants = require("../../constants")
 
 module.exports.run = async (client, message, args) => {
   const id = args[0];

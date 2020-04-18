@@ -9,7 +9,7 @@ module.exports = {
   checkArgs: (args) => args.length >= 1
 }
 
-const { getMember } = require("../utils/resolvers.js"), constants = require("../constants")
+const { getMember } = require("../../utils/resolvers.js"), constants = require("../../constants")
 
 module.exports.run = async (client, message, args) => {
   let members = args.map(search => getMember(search, message.guild));

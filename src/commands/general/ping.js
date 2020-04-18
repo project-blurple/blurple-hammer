@@ -7,7 +7,7 @@ module.exports = {
   checkArgs: (args) => !args.length
 }
 
-const constants = require("../constants");
+const constants = require("../../constants");
 
 module.exports.run = async (client, message, args) => {
   const botMsg = await message.channel.send(`${constants.emojis.loading} Pinging...`)

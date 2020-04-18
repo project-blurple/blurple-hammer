@@ -1,5 +1,5 @@
 module.exports = {
-  description: "Unlock the current channel, or all the public channels.",
+  description: "Lock the current channel, or all the public channels.",
   usage: {},
   examples: {},
   aliases: [],
@@ -11,26 +11,26 @@ module.exports = {
   }
 }
 
-const constants = require("../constants");
+const constants = require("../../constants");
 
 module.exports.run = async (client, message, args) => {
   if (args[0] == "-public") {
     const channels = message.guild.channels.cache.filter(ch => constants.publicChannels.includes(ch.id));
     if (!channels.size) return message.channel.send(`${constants.emojis.tickno} This server doesnt have any public channels configured, unfortunately.`)
-    else channels.map(ch => unlockChannel(ch, message.author, constants))
+    else channels.map(ch => lockChannel(ch, message.author, constants))
   } else {
-    let success = await unlockChannel(message.channel, message.author, constants)
+    let success = await lockChannel(message.channel, message.author, constants)
     if (success) message.delete();
-    else message.channel.send(`${constants.emojis.tickno} This channel isn't locked!`)
+    else message.channel.send(`${constants.emojis.tickno} This channel is already locked!`)
   }
 }
 
-async function unlockChannel(channel, author, constants) {
+async function lockChannel(channel, author, constants) {
   let permission = channel.permissionOverwrites.find(po => po.id == channel.guild.roles.everyone);
-  if (!permission.deny.has("SEND_MESSAGES")) return false;
+  if (permission.deny.has("SEND_MESSAGES")) return false;
     
-  await channel.edit({ topic: channel.topic.replace(constants.lockMessage(author), "") })
-  await permission.update({ "SEND_MESSAGES": null })
-  await channel.send(`${constants.emojis.weewoo} ***The channel has been unlocked.***`)
+  await channel.edit({ topic: `${channel.topic || ""}\n\n${constants.lockMessage(author)}` })
+  await permission.update({ "SEND_MESSAGES": false })
+  await channel.send(`${constants.emojis.weewoo} ***The channel has been locked.***`)
   return true;
 }
