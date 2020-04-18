@@ -7,7 +7,8 @@ const client = new Discord.Client({
   partials: [ "USER", "CHANNEL", "GUILD_MEMBER", "MESSAGE", "REACTION" ],
   presence: {
     status: "online"
-  }
+  },
+  fetchAllMembers: true
 }), db = require("./database.js")(client);
 
 client.on("ready", () => {
