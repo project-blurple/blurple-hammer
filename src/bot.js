@@ -102,6 +102,13 @@ client.on("message", async message => {
   }
 })
 
+client.on("voiceStateUpdate", (_, voiceState) => {
+  if (voiceState.channelID && voiceState.channelID !== constants.afkVoiceChannel && voiceState.selfDeaf == true) {
+    voiceState.setChannel(constants.afkVoiceChannel, "User deafened.")
+    voiceState.member.send(`${constants.emojis.pingsock} You've been moved to AFK for being deafened. We do this to clear up the voice chat for other members to join.`)
+  }
+})
+
 client
   .on("error", console.log)
   .on("guildCreate", guild => console.log(`Bot got added to server ${guild.name} (${guild.id})`) && client.users.get(config.owner).send(`Bot got added to server ${guild.name} (${guild.id})`))
