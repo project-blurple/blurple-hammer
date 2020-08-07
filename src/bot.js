@@ -32,6 +32,13 @@ fs.readdir("./src/commands", (err, categories) => {
 client.on("message", async message => {
   if (message.author.bot || !message.guild) return;
 
+  const sod = message.mentions.roles.find(r => r.id == constants.roles.duty);
+  if (sod) {
+    message.react(constants.emojiSnowflakes.weewoo)
+    sod.setMentionable(false, `Role was pinged in #${message.channel.name}`)
+    setTimeout(() => sod.setMentionable(true), 120000)
+  }
+
   const links = message.content.match(linkRegex) || []; // https://stackoverflow.com/a/3809435
   if (getPermissionLevel(message.member) < 1 && links.length) {
     await message.react(constants.emojiSnowflakes.loading)
