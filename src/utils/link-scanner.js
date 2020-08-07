@@ -69,4 +69,4 @@ module.exports = (rawLinks, redirects = null) => new Promise(async (resolve, rej
 
     return result;
   })))
-} catch (e) { reject(e) }})
+} catch(e) { reject(e) }})

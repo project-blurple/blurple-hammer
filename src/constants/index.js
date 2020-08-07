@@ -3,6 +3,7 @@ const fs = require("fs"), config = require("../../config.json");
 module.exports = {
   embedColor: 0x7289DA,
   hexColor: "7289DA",
+  guild: "412754940885467146",
   getPermissionLevel: getPermissionLevel(config),
   emojis: {
     loading: '<a:loading:572202235342225418>',
@@ -56,7 +57,7 @@ module.exports = {
   parseArgs: _arguments => (_arguments.match(/\"[^"]+\"|[^ ]+/g) || []).map(argument => argument.startsWith("\"") && argument.endsWith("\"") ? argument.slice(1).slice(0, -1) : argument),
   urlBlacklist: fs.readFileSync("./src/constants/url-blacklist.txt", "utf8").split("\n").map(l => l.replace("\r", "")),
   urlWhitelist: fs.readFileSync("./src/constants/url-whitelist.txt", "utf8").split("\n").map(l => l.replace("\r", "")),
-  lockMessage: user => `${module.exports.emojis.weewoo} ${module.exports.emojis.weewoo} ***CHANNEL IS LOCKED BY ${user}*** ${module.exports.emojis.weewoo} ${module.exports.emojis.weewoo}`,
+  lockMessage: user => `***CHANNEL IS LOCKED BY ${user}***`,
   msToTime: ms => {
     days = Math.floor(ms / 86400000); // 24*60*60*1000
     daysms = ms % 86400000; // 24*60*60*1000
@@ -125,7 +126,10 @@ module.exports = {
     jrmod: "562886834301042698",
     helper: "442785212502507551",
     duty: "460677952812744714",
-    blacklist: "573392328912404480"
+    blacklist: "573392328912404480",
+    blurple: "705295796773584976",
+    noreaction: "708546441563603065",
+    noembed: "708546418280890370"
   },
   publicChannels: [
     "412754940885467148", // general
@@ -133,7 +137,11 @@ module.exports = {
     "476306069581201409", // auttaja-playground
     "444135968631685120", // nonconformity-center
     "472160259020947476"  // vc-context
-  ]
+  ],
+  badLinkLogChannel: "698215895310270484",
+  blurpleCheckChannel: "707644984148492299",
+  blurpleCheckLogChannel: "707688847802368080",
+  afkVoiceChannel: "707945438828822579"
 }
 
 function getPermissionLevel(config) {
