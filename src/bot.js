@@ -42,14 +42,14 @@ client.on("message", async message => {
   const links = message.content.match(linkRegex) || []; // https://stackoverflow.com/a/3809435
   if (getPermissionLevel(message.member) < 1 && links.length) {
     await message.react(constants.emojiSnowflakes.loading)
-    const results = flat(await scanLinks(links.filter(constants.onlyUnique)));
+    const results = flat(await scanLinks(links.filter(constants.onlyUnique)).catch(() => null) || []);
     
     if (results.find(r => r.safe == false)) return message.author.send({
       embed: {
         title: "Bad Link Detected",
         description: `We have detected a bad link in your message in ${message.channel}: ${message.content.split("\n").map(line => "\n> " + line)}\nIf this was a mistake then please contact a staff member, and we'll get it fixed for you. **No automatic punishment has been made to your account.**`,
         fields: results.filter(r => r.safe == false).map(r => ({
-          name: r.url,
+          name: `${r.safe ? constants.emojis.tickyes : constants.emojis.tickno} ${r.url}`,
           value: [
             r.origin ? `**From:** Redirection of ${r.origin}` : `**Origin:** Original message`,
             `**Whitelisted?** ${r.whitelisted ? "Yes" : "No"}.`,
@@ -62,7 +62,25 @@ client.on("message", async message => {
         })),
         color: constants.embedColor
       }
-    }).catch() && message.delete();
+    }).catch() && message.delete() && message.guild.channels.cache.get(constants.badLinkLogChannel).send({
+      embed: {
+        title: "Bad Link Detected",
+        description: `Bad link was detected sent by ${message.author} in ${message.channel}: ${message.content.split("\n").map(line => "\n> " + line)}\n**No automatic action has been made to their account.**`,
+        fields: results.filter(r => r.safe == false).map(r => ({
+          name: `${r.safe ? constants.emojis.tickyes : constants.emojis.tickno} ${r.url}`,
+          value: [
+            r.origin ? `**From:** Redirection of ${r.origin}` : `**Origin:** Original message`,
+            `**Whitelisted?** ${r.whitelisted ? "Yes" : "No"}.`,
+            `**Blacklisted?** ${r.blacklisted ? "Yes" : "No"}.`,
+            `**Trustworthy?** ${r.trustworthy && r.trustworthy[1] >= 8 ? (r.trustworthy[0] <= 60 ? "No" : "Yes") : "N/A"}. ${r.trustworthy ? `(${r.trustworthy[0]}% from ${r.trustworthy[1]} reviews)` : ""}`,
+            `**Child-safe?** ${r.childsafe && r.childsafe[1] >= 8 ? (r.childsafe[0] <= 60 ? "No" : "Yes") : "N/A"}. ${r.childsafe ? `(${r.childsafe[0]}% from ${r.childsafe[1]} reviews)` : ""}`,
+            Object.keys(r.wot || {}).length ? "```" + Object.keys(r.wot).map(tag => `${tag}: ${r.wot[tag]}%`).join(", ") + "```" : ""
+          ].filter(line => line.length).join("\n"),
+          inline: true
+        })),
+        color: constants.embedColor
+      }
+    })
     else message.reactions.removeAll();
   }
 
