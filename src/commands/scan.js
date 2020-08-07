@@ -9,11 +9,11 @@ module.exports = {
   checkArgs: (args) => args.length >= 1
 }
 
-const constants = require("../../constants"), scanLinks = require("../../utils/link-scanner.js");
+const constants = require("../constants"), scanLinks = require("../utils/link-scanner.js");
 
 module.exports.run = async (client, message, args) => {
   message.channel.startTyping();
-
+  
   const results = await scanLinks(args).catch(e => console.log(e) && null);
   
   if (!results) message.channel.send({

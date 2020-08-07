@@ -9,7 +9,7 @@ module.exports = {
   checkArgs: (args) => args.length == 1
 }
 
-const fetch = require("node-fetch"), { getRole, getChannel, getUser } = require("../../utils/resolvers.js"), constants = require("../../constants");
+const fetch = require("node-fetch"), { getRole, getChannel, getUser } = require("../utils/resolvers.js"), constants = require("../constants");
 
 module.exports.run = async (client, message, args) => {
   message.channel.startTyping();

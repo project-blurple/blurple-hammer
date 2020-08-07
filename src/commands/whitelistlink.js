@@ -12,7 +12,7 @@ module.exports = {
   checkArgs: (args) => true
 }
 
-const fs = require("fs"), constants = require("../../constants");
+const fs = require("fs"), constants = require("../constants");
 
 module.exports.run = async (client, message, args, { content }) => {
   if (args.length == 0) return message.channel.send(`${constants.emojis.sparkle} Here you go!`, {

@@ -17,16 +17,13 @@ client.on("ready", () => {
 
 // command handler
 const commands = {}, aliases = {} // { "command": require("that_command") }, { "alias": "command" }
-fs.readdir("./src/commands", (err, categories) => {
+fs.readdir("./src/commands/", (err, files) => {
   if (err) return console.log(err);
-  for (const category of categories) fs.readdir(`./src/commands/${category}`, (err, files) => {
-    if (err) return console.log(err);
-    for (const file of files) if (file.endsWith(".js")) {
-      const commandFile = require(`./commands/${category}/${file}`), fileName = file.replace(".js", "");
-      commands[fileName] = commandFile;
-      if (commandFile.aliases) for (const alias of commandFile.aliases) aliases[alias] = fileName;
-    }
-  })
+  for (const file of files) if (file.endsWith(".js")) {
+    const commandFile = require(`./commands/${file}`), fileName = file.replace(".js", "");
+    commands[fileName] = commandFile;
+    if (commandFile.aliases) for (const alias of commandFile.aliases) aliases[alias] = fileName;
+  }
 })
 
 client.on("message", async message => {

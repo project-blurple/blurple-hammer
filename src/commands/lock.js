@@ -11,7 +11,7 @@ module.exports = {
   }
 }
 
-const constants = require("../../constants");
+const constants = require("../constants");
 
 module.exports.run = async (client, message, args) => {
   if (args[0] == "-public") {
@@ -29,7 +29,10 @@ async function lockChannel(channel, author, constants) {
   let permission = channel.permissionOverwrites.find(po => po.id == channel.guild.roles.everyone);
   if (permission.deny.has("SEND_MESSAGES")) return false;
     
-  await channel.edit({ topic: `${channel.topic || ""}\n\n${constants.lockMessage(author)}` })
+  await channel.edit({ topic: `${channel.topic || ""}\n\n${constants.emojis.weewoo} ${constants.emojis.weewoo} ${constants.lockMessage(author)} ${constants.emojis.weewoo} ${constants.emojis.weewoo}` })
+  await channel.updateOverwrite(channel.guild.me, {
+    "SEND_MESSAGES": true
+  })
   await permission.update({ "SEND_MESSAGES": false })
   await channel.send(`${constants.emojis.weewoo} ***The channel has been locked.***`)
   return true;

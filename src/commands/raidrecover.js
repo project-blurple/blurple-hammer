@@ -12,7 +12,7 @@ module.exports = {
   checkArgs: (args) => args.length == 2
 }
 
-const constants = require("../../constants")
+const constants = require("../constants")
 
 module.exports.run = async (client, message, args) => {
   const [ id, keyword ] = args;
