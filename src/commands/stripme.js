@@ -16,8 +16,8 @@ module.exports.run = async (client, message, args, { permissionLevel }) => {
   } else if (permissionLevel >= 1) {
     const roles = message.member.roles.cache.filter(r => r.id !== "442471461370724353" && !r.managed && message.guild.me.roles.highest.position > r.position && r.id !== message.guild.roles.everyone.id).map(r => r.id);
     stripped.set(message.member.user.id, roles)
-    fs.writeFile("./src/storage/staffstrips/" + message.member.id + "-" + Date.now() + ".json", JSON.stringify(roles), 'utf8', () => {}); // logs
-    await message.member.roles.remove(message.member.roles.cache.filter(r => r.id !== "442471461370724353"), "User stripped by " + message.author.tag)
+    fs.writeFile(`./src/storage/staffstrips/${message.member.id}-${Date.now()}.json`, JSON.stringify(roles), 'utf8', () => {}); // logs
+    await message.member.roles.remove(roles, "User stripped themselves")
   } else return;
   message.delete();
 }

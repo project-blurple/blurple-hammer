@@ -25,9 +25,9 @@ module.exports.run = async (client, message, args) => {
     } else {
       const roles = member.roles.cache.filter(r => r.id !== "442471461370724353" && !r.managed && message.guild.me.roles.highest.position > r.position && r.id !== message.guild.roles.everyone.id).map(r => r.id);
       stripped.set(member.user.id, roles)
-      fs.writeFile("./src/storage/strips/" + message.author.id + "-" + member.id + "-" + Date.now() + ".json", JSON.stringify(roles), 'utf8', () => {}); // logs
+      fs.writeFile(`./src/storage/strips/${message.author.id}-${member.id}-${Date.now()}.json`, JSON.stringify(roles), 'utf8', () => {}); // logs
       diff[member.user.tag] = "-";
-      success = await member.roles.remove(member.roles.cache.filter(r => r.id !== "442471461370724353"), "User stripped by " + message.author.tag)
+      success = await member.roles.remove(roles, `User stripped by ${message.author.tag}`)
     }
 
     if (!success) diff[member.user.tag] = "?";
