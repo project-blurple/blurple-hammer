@@ -21,7 +21,7 @@
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "mongoose": "^5.9.27",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "request": "^2.88.2",
     "utf-8-validate": "^5.0.2",
     "zlib-sync": "^0.1.7"
