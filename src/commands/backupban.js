@@ -13,7 +13,7 @@ module.exports = {
 const { getMember } = require("../utils/resolvers.js"), constants = require("../constants")
 
 module.exports.run = async (client, message, args) => {
-  let memberQuery = args.shift(), member = await getMember(memberQuery);
+  let memberQuery = args.shift(), member = await getMember(memberQuery, message.guild);
   if (!member) return message.channel.send(`${constants.emojis.tickNo} No user was found with your query.`)
   if (constants.getPermissionLevel(member) > 0) return message.channel.send(`${constants.emojis.tickNo} Are you seriously trynna ban one of your own?`)
 
