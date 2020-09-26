@@ -24,7 +24,7 @@ module.exports.run = async (client, message, args) => {
       color: 0xf1c40f,
       description: [
         `**User:** ${member} \`${member.user.tag}\` (${member.user.id})`,
-        `**Moderator:** ${message.author} \`${message.author.user.tag}\` (${message.author.user.id})`,
+        `**Moderator:** ${message.author} \`${message.author.tag}\` (${message.author.id})`,
         `**Reason:** ${reason}`
       ].join("\n"),
       thumbnail: {
