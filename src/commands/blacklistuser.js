@@ -13,7 +13,7 @@ const { getMember } = require("../utils/resolvers.js"), constants = require("../
 
 module.exports.run = async (client, message, args) => {
   let members = args.map(search => getMember(search, message.guild));
-  if (!members.length) return message.channel.send(`${constants.emojis.tickNo} No users were found with your query.`)
+  if (!members.length) return message.channel.send(`${constants.emojis.tickno} No users were found with your query.`)
 
   const diff = {};
   for (const member of members) {

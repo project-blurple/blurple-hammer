@@ -13,7 +13,7 @@ const { getMembers } = require("../utils/resolvers.js"), constants = require("..
 
 module.exports.run = async (client, message, args) => {
   let members = getMembers(args, message.guild)
-  if (!members.length) return message.channel.send(`${constants.emojis.tickNo} No users were found with your query.`)
+  if (!members.length) return message.channel.send(`${constants.emojis.tickno} No users were found with your query.`)
   
   let quote = ", you've been beaned!"
   if (members.length > 1) quote = ": you've all been beaned!"
