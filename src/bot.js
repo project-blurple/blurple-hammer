@@ -91,8 +91,8 @@ client.on("message", async message => {
     if (commandFile) {
       const args = parseArgs(content), permissionLevel = getPermissionLevel(message.member);
 
-      if (permissionLevel < commandFile.permissionRequired) return message.channel.send("❌ You don't have permission to do this!");
-      if (!commandFile.checkArgs(args, permissionLevel, content)) return message.channel.send(`❌ Invalid arguments! Usage is \`${config.prefix}${command}${Object.keys(commandFile.usage).map(a => " " + a).join("")}\`, for additional help, see \`${config.prefix}help\`.`)
+      if (permissionLevel < commandFile.permissionRequired) return message.channel.send(`${constants.emojis.tickno} You don't have permission to do this!`);
+      if (!commandFile.checkArgs(args, permissionLevel, content)) return message.channel.send(`${constants.emojis.tickno} Invalid arguments! Usage is \`${config.prefix}${command}${Object.keys(commandFile.usage).map(a => " " + a).join("")}\`, for additional help, see \`${config.prefix}help\`.`)
 
       commandFile.run(client, message, args, { db, config, permissionLevel, content })
     }
