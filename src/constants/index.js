@@ -143,7 +143,7 @@ module.exports = {
   blurpleCheckChannel: "707644984148492299",
   blurpleCheckLogChannel: "707688847802368080",
   afkVoiceChannel: "707945438828822579",
-  backupModerationLogChannel: "759378574099742720",
+  backupModerationLogChannel: "435711906867576842",
   gifs: {
     ban: [
       "https://imgur.com/V4TVpbC",
