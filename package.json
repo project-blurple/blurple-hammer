@@ -15,15 +15,19 @@
   },
   "homepage": "https://github.com/project-blurple/blurple-hammer#readme",
   "dependencies": {
-    "bufferutil": "^4.0.1",
-    "discord.js": "^12.2.0",
-    "erlpack": "github:discordapp/erlpack",
+    "bufferutil": "^4.0.2",
+    "discord-oauth2": "^2.6.0",
+    "discord.js": "^12.5.1",
+    "erlpack": "github:discord/erlpack",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
-    "mongoose": "^5.9.27",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
+    "quick-store": "^0.1.4",
     "request": "^2.88.2",
-    "utf-8-validate": "^5.0.2",
+    "utf-8-validate": "^5.0.3",
     "zlib-sync": "^0.1.7"
+  },
+  "devDependencies": {
+    "eslint": "^7.18.0"
   }
 }
