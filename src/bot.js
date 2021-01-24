@@ -2,11 +2,16 @@ const
   Discord = require("discord.js"),
   config = require("../config.json"),
   {
-    blurpleEmojis,
-    linkRegex = /d/g
+    roles,
+    regex: {
+      linkRegex
+    },
+    functions: {
+      getPermissionLevel
+    }
   } = require("./constants"),
-  dutyPingHandler = require("./handlers/dutyPing.js"),
   linkScanHandler = require("./handlers/linkScan.js"),
+  dutyPingHandler = require("./handlers/dutyPing.js"),
   {
     processCommand,
     setupSlashCommands
@@ -31,20 +36,17 @@ client.once("shardReady", () => {
 client.on("message", async message => {
   if (
     !message.guild || // dms
-    message.type !== "DEFAULT"
+    message.type !== "DEFAULT" ||
+    message.author.bot
   ) return;
 
-  // code here for bots too
-
-  if (message.author.bot) return;
-
   // duty ping handler
-  // const sod = message.mentions.roles.find(r => r.id == constants.roles.duty);
-  // if (sod) await dutyPingHandler(message, sod)
+  const sod = message.mentions.roles.find(r => r.id == roles.staffonduty);
+  if (sod) await dutyPingHandler(message, sod);
 
   // link scan handler
-  // const links = message.content.match(linkRegex) || [];
-  // if (getPermissionLevel(message.member) < 1 && links.length) await linkScanHandler(message, links)
+  const links = message.content.match(linkRegex) || [];
+  if (getPermissionLevel(message.member) < 1 && links.length) await linkScanHandler(message, links);
 
   // commands handler
   if (message.content.startsWith(config.prefix) || message.content.match(`^<@!?${client.user.id}> `)) await processCommand(message);
