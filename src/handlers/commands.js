@@ -83,10 +83,10 @@ module.exports.setupSlashCommands = async client => {
     const channel = guild.channels.cache.get(interaction.channel_id);
     const member = guild.members.cache.get(interaction.member.user.id);
 
-    if (commandFile.mainOnly && guild.id !== guilds.main) return channel.send("❌ This command only works in the main server..");
+    if (commandFile.mainOnly && guild.id !== guilds.main) return client.api.interactions(interaction.id, interaction.token).callback.post({ data: { type: 3, data: { flags: 64, content: "❌ This command only works in the main server.." }}});
 
     const permissionLevel = getPermissionLevel(member);
-    if (permissionLevel < commandFile.permissionRequired) return channel.send("❌ You don't have permission to do this.");
+    if (permissionLevel < commandFile.permissionRequired) return client.api.interactions(interaction.id, interaction.token).callback.post({ data: { type: 3, data: { flags: 64, content: "❌ You don't have permission to do this."}}});
 
     const args = {};
     if (interaction.data.options) for (const slashArg of interaction.data.options) {
