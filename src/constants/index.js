@@ -8,9 +8,9 @@ module.exports = {
   hexColor: "7289DA",
   guilds: {
     main: "793877712254009464", // "412754940885467146",
-    staff: "573169434227900417",
-    assets: "540758383582511115",
-    dev: "559341262302347314"
+    staff: require("./subservers/staff"),
+    assets: require("./subservers/assets"),
+    dev: require("./subservers/dev")
   },
   app: express(),
   oauth: new DiscordOAuth2(config.oauth),
