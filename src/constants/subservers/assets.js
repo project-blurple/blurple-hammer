@@ -7,7 +7,6 @@ module.exports = {
       roles: [
         //"708630517528002581", // super admon
         "559336076456755200", // Blurple Executive
-        "799262919111344128", // "Creative Team"
       ]
     },
     "413213839866462220": { // Blurple Executive
@@ -29,11 +28,11 @@ module.exports = {
       roles: []
     },
     "552226243517612032": { // Blurple Developer
-      access: 1,
+      access: 0,
       roles: []
     },
     "554776853869494309": { // Blurple Creative Assets
-      access: 1,
+      access: 2,
       roles: [
         "799262919111344128", // "Creative Team"
       ]

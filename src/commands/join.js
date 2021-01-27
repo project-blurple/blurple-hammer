@@ -43,7 +43,7 @@ module.exports.run = async ({ client, channel, member }, { subserver }) => {
       server = require(`../constants/subservers/${subserver}.js`),
       guild = client.guilds.cache.get(server.id),
       allRoles = member.roles.cache.map(r => r.id).filter(id => Object.keys(server.staffAccess).includes(id)),
-      access = allRoles.map(id => server.staffAccess[id].access).includes(true),
+      access = Math.max(0, ...allRoles.map(id => server.staffAccess[id].access)),
       allSubRoles = flat(allRoles.map(id => server.staffAccess[id].roles));
     
     if (!access) return channel.send(`${emojis.tickno} You do not have access to this subserver.`);

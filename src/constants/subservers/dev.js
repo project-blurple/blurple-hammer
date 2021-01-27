@@ -29,7 +29,7 @@ module.exports = {
       roles: []
     },
     "552226243517612032": { // Blurple Developer
-      access: 1,
+      access: 2,
       roles: [
         "559815628953878551", // Blurple Developer
       ]

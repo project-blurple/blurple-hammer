@@ -38,19 +38,23 @@ function checkMemberAccess(id, client) {
   if (!member) {
     console.log("member with id", id, "does not exist??");
   } else {
-    for (const subserver in Object.values(guilds).filter(p => typeof p !== "string")) {
+    for (const subserver of Object.values(guilds).filter(p => typeof p !== "string")) {
       const
-        sGuild = client.guilds.get(subserver.id),
+        sGuild = client.guilds.cache.get(subserver.id),
+        sMember = sGuild.members.cache.get(id),
         allMainServerRoles = member.roles.cache.map(r => r.id).filter(id => Object.keys(subserver.staffAccess).includes(id)),
-        access = Math.max(...allMainServerRoles.map(id => subserver.staffAccess[id].access)), // 0 = none, 1 = allowed, 2 = auto-add
+        access = Math.max(0, ...allMainServerRoles.map(id => subserver.staffAccess[id].access)), // 0 = none, 1 = allowed, 2 = auto-add
         allSubserverRoles = flat(Object.values(subserver.staffAccess).map(o => o.roles)).filter(onlyUnique),
         allAllowedRoles = flat(allMainServerRoles.map(id => subserver.staffAccess[id].roles)).filter(onlyUnique),
-        disallowedRoles = allSubserverRoles.filter(id => !allAllowedRoles.includes(id)),
-        sMember = sGuild.members.cache.get(id);
+        disallowedRoles = allSubserverRoles.filter(id => !allAllowedRoles.includes(id));
+      console.log(disallowedRoles, allAllowedRoles, allSubserverRoles, access);
 
       if (!access && sMember) console.log("Kick member", id, "from server", sGuild.name, "because no access");
-      else if (access == 2 && !sGuild.members.cache.has(id)) addMemberToGuild(id, subserver.id, allAllowedRoles);
-      else if (access && sMember && sMember.roles.find(r => disallowedRoles.includes(r.id))) sMember.roles.remove(disallowedRoles.filter(id => sMember.roles.cache.has(id)));
+      else if (access == 2 && !sGuild.members.cache.has(id)) addMemberToGuild(id, subserver.id, allAllowedRoles).catch(console.log);
+      else {
+        if (access && sMember && allAllowedRoles.find(id => !sMember.roles.cache.has(id))) sMember.roles.add(allAllowedRoles.filter(id => !sMember.roles.cache.has(id)));
+        if (access && sMember && sMember.roles.cache.find(r => disallowedRoles.includes(r.id))) sMember.roles.remove(disallowedRoles.filter(id => sMember.roles.cache.has(id)));
+      }
     }
   }
 }
