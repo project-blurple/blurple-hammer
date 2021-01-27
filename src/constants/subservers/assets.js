@@ -1,5 +1,5 @@
 module.exports = {
-  id: '540758383582511115',
+  id: "540758383582511115",
 
   staffAccess: {
     "801403041265483776": {//"443013283977494539": { // Blurple Administration

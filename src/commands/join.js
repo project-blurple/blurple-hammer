@@ -56,10 +56,10 @@ module.exports.run = async ({ client, channel, member }, { subserver }) => {
       userId: member.user.id,
       roles: allSubRoles
     }).then(() => {
-      channel.send(`${emojis.tickyes} You are now added to **${guild.name}**.`)
+      channel.send(`${emojis.tickyes} You are now added to **${guild.name}**.`);
     }).catch(e => {
       console.log(e);
-      channel.send(`${emojis.tickno} An unknown error occurred when trying to add you to the subserver.`)
-    })
+      channel.send(`${emojis.tickno} An unknown error occurred when trying to add you to the subserver.`);
+    });
   }).catch(e => console.log(e) && channel.send(`${emojis.tickno} Your OAuth2 is not working! \`${config.prefix}oauth\``));
 };
