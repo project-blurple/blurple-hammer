@@ -1,4 +1,4 @@
-const config = require("../../config.json"), fetch = require("node-fetch"), { app, emojis, oauth } = require("../constants"), { oauth: db } = require("../database");
+const config = require("../../config.json"), { emojis, oauth } = require("../constants"), { oauth: db } = require("../database"), { checkMemberAccess } = require("../handlers/staffHandler.js");
 
 module.exports = {
   mainOnly: true,
@@ -18,22 +18,7 @@ module.exports.run = async ({ client, channel, member }) => {
     scope: [ "identify", "guilds.join" ]
   }).then(({ access_token, refresh_token }) => {
     db.set(member.user.id, { access_token, refresh_token });
-    channel.send(`${emojis.tickyes} Your OAuth2 is working!`);
+    channel.send(`${emojis.tickyes} Your OAuth2 is working! Join subservers with \`/join\``);
+    checkMemberAccess(member.user.id, client);
   }).catch(() => channel.send(`${emojis.tickno} Your OAuth2 is not working! Click this link and reauthorize me: <${link}>`));
 };
-
-app.get("/oauth-callback", async (req, res) => {
-  if (req.query.code) {
-    const { access_token, refresh_token } = await oauth.tokenRequest({
-      code: req.query.code,
-      scope: "identify guilds.join",
-      grantType: "authorization_code"
-    }).catch(e => { console.log(e); return {}; });
-    if (!access_token) return res.redirect("https://www.youtube.com/watch?v=NhyE3errfnI");
-    
-    const { id } = await oauth.getUser(access_token);
-    db.set(id, { access_token, refresh_token });
-    
-    return res.status(200).send("okbye<script>window.close();</script>");
-  } else res.redirect("https://www.youtube.com/watch?v=NhyE3errfnI");
-});

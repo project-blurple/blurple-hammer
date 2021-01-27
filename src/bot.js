@@ -12,6 +12,7 @@ const
   } = require("./constants"),
   linkScanHandler = require("./handlers/linkScan.js"),
   dutyPingHandler = require("./handlers/dutyPing.js"),
+  staffHandler = require("./handlers/staffHandler.js"),
   {
     processCommand,
     setupSlashCommands
@@ -31,6 +32,7 @@ const
 client.once("shardReady", () => {
   console.log(`Ready as ${client.user.tag}!`);
   setupSlashCommands(client);
+  staffHandler(client);
 });
 
 client.on("message", async message => {
