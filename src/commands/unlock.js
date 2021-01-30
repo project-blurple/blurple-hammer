@@ -1,36 +1,33 @@
+const { channels: { public }, emojis } = require("../constants");
+
 module.exports = {
   description: "Unlock the current channel, or all the public channels.",
-  usage: {},
-  examples: {},
+  options: [
+    {
+      type: 5,
+      name: "all",
+      description: "Lock all public channels"
+    }
+  ],
   aliases: [],
-  permissionRequired: 2, // 0 All, 1 Helper, 2 JR.Mod, 3 Mod, 4 SR.Mod, 5 Exec, 6 Admin, 7 Promise#0001
-  checkArgs: (args) => {
-    if (args[0] == "-public" && args.length == 1) return true;
-    else if (!args.length) return true;
-    else return false;
-  }
-}
+  permissionRequired: 2 // 0 All, 1 Assistant, 2 Helper, 3 Moderator, 4 Exec.Assistant, 5 Executive, 6 Director, 7 Promise#0001
+};
 
-const constants = require("../constants");
-
-module.exports.run = async (client, message, args) => {
-  if (args[0] == "-public") {
-    const channels = message.guild.channels.cache.filter(ch => constants.publicChannels.includes(ch.id));
-    if (!channels.size) return message.channel.send(`${constants.emojis.tickno} This server doesnt have any public channels configured, unfortunately.`)
-    else channels.map(ch => unlockChannel(ch, message.author, constants))
+module.exports.run = async ({ guild, channel }, { all = false }) => {
+  if (all) {
+    const channels = guild.channels.cache.filter(ch => public.includes(ch.id));
+    channels.map(ch => unlockChannel(ch));
   } else {
-    let success = await unlockChannel(message.channel, message.author, constants)
-    if (success) message.delete();
-    else message.channel.send(`${constants.emojis.tickno} This channel isn't locked!`)
+    if (!(await unlockChannel(channel))) channel.send(`${emojis.tickno} This channel is not locked!`);
   }
-}
+};
 
-async function unlockChannel(channel, author, constants) {
+async function unlockChannel(channel) {
   let permission = channel.permissionOverwrites.find(po => po.id == channel.guild.roles.everyone);
-  if (!permission.deny.has("SEND_MESSAGES")) return false;
-    
-  await channel.edit({ topic: channel.topic.split("\n\n")[0] })
-  await permission.update({ "SEND_MESSAGES": null })
-  await channel.send(`${constants.emojis.weewoo} ***The channel has been unlocked.***`)
+  if (permission && !permission.deny.has("SEND_MESSAGES")) return false;
+  
+  await channel.edit({ topic: channel.topic.split("\n\n")[0] });
+  await channel.updateOverwrite(channel.guild.roles.everyone, { "SEND_MESSAGES": null });
+  await channel.send(`${emojis.weewoo} ***The channel has been unlocked.***`);
   return true;
 }

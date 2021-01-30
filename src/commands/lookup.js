@@ -1,126 +1,90 @@
+const fetch = require("node-fetch"), { emojis, functions: { flat, onlyUnique }, embedColor } = require("../constants");
+
 module.exports = {
-  description: "Lookup something unknown, like an ID or an invite, and hopefully get the meaning behind it!",
-  usage: {
-    "<unknown>": "The unknown you'd like to lookup."
-  },
-  examples: {},
-  aliases: [ "bot-lookup", "id-lookup", "invite-lookup", "whatis", "wit", "whatisthis" ],
-  permissionRequired: 1, // 0 All, 1 Helper, 2 JR.Mod, 3 Mod, 4 SR.Mod, 5 Exec, 6 Admin, 7 Promise#0001
-  checkArgs: (args) => args.length == 1
-}
-
-const fetch = require("node-fetch"), { getRole, getChannel, getUser } = require("../utils/resolvers.js"), constants = require("../constants");
-
-module.exports.run = async (client, message, args) => {
-  message.channel.startTyping();
-
-  const role = getRole(args[0], message.guild);
-  if (role) return send(message.channel, `${constants.emojis.tickyes} This ID is a role ID for the role ${role.name}.`)
-
-  const channel = getChannel(args[0], message.guild);
-  if (channel) return send(message.channel, `${constants.emojis.tickyes} This ID is a channel ID for the channel ${channel}.`)
-
-  // user lookup
-  try {
-    const user = await getUser(args[0], message.guild)
-    if (user) {
-      if (user.bot) {
-        const botblock = await fetch(`https://botblock.org/api/bots/${user.id}`).then(res => res.json())
-        if (botblock.discriminator == "0000") return send(message.channel, `${constants.emojis.tickyes} This ID is a bot ID of ${user.username}#${user.discriminator} (${user.id}). Unfortunately, this bot is not listed on any of BotBlock's bot lists.`)
-
-        const fields = [], add = values => { for (const name in values) fields.push({ name, value: values[name], inline: true }) }
-
-        let lists = Object.keys(botblock.list_data).filter(l => botblock.list_data[l][1] == 200 && !botblock.list_data[l].error).map(l => botblock.list_data[l][0]);
-
-        let listsWithDescriptions = lists.filter(l => Object.keys(l).find(k => k.toLowerCase().includes("short")));
-        let descriptions = listsWithDescriptions.map(l => l[Object.keys(l).find(k => k.toLowerCase().includes("short"))]).sort((a, b) => b.length - a.length);
-        if (descriptions[0]) add({ "Description": descriptions[0] })
-
-        let prefixes = lists.filter(l => l.prefix).map(l => l.prefix).sort((a, b) => b.length - a.length);
-        add({ "Prefix": prefixes[0] ? `\`${prefixes[0]}\`` : "Unknown" });
-
-        if (botblock.server_count) add({ "Server Count": botblock.server_count })
-
-        add({ "Invite": `${botblock.invite ? `[Invite with permissions](${botblock.invite})\n` : ""}[Invite without permissions](https://discordapp.com/oauth2/authorize?client_id=${botblock.id}&scope=bot)`})
-
-        if (lists.find(l => l.library)) add({ "Library": lists.find(l => l.library).library });
-
-        let websites = {}
-        for (const website of lists.filter(l => l.website).map(l => l.website)) if (!websites[website]) websites[website] = 1; else websites[website] += 1;
-        let websiteKeys = Object.keys(websites).sort((a, b) => websites[b] - websites[a]);
-        if (websiteKeys[0]) add({ "Website": websiteKeys[0] });
-
-        let allTags = lists.filter(l => l.tags).map(l => l.tags.filter(t => typeof t == "string").join(",")).join(",").split(",");
-        if (allTags.length) {
-          let tags = allTags.filter(t => t.length).filter(constants.onlyUnique);
-          if (tags.length) add({ "Tags": tags.join(", ") });
-        }
-
-        let owners = await Promise.all(botblock.owners.filter(o => !o.includes("#")).filter(constants.onlyUnique).map(u => getUser(u, message.guild)));
-        owners = owners.filter(o => o).map(o => `${o.username}#${o.discriminator} (${o.id})`);
-        if (owners.length > 1) add({ "Owners": owners.join("\n") });
-        else add({ "Owner": owners[0] });
-
-        return send(message.channel, `${constants.emojis.tickyes} This ID is a bot ID of ${user.username}#${user.discriminator} (${user.id}).`, {
-          embed: {
-            fields, thumbnail: user.avatar ? {
-              url: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=2048`
-            } : null, color: constants.embedColor
-          }
-        })
-      } else return send(message.channel, `${constants.emojis.tickyes} This ID is an user ID of ${user.username}#${user.discriminator} (${user.id}).`)
+  description: "Look up an unknown ID or invite URL to see the origin of it.",
+  options: [
+    {
+      type: 3,
+      name: "unknown",
+      description: "The unknown you'd like to search.",
+      required: true
     }
-  } catch(e) { console.log(e) }
+  ],
+  aliases: [ "whatis", "wit" ],
+  permissionRequired: 1 // 0 All, 1 Assistant, 2 Helper, 3 Moderator, 4 Exec.Assistant, 5 Executive, 6 Director, 7 Promise#0001
+};
 
-  // invite lookup
-  try {
-    let _invite = await client.fetchInvite(args[0]);
-    if (_invite) {
-      let invite = await fetch(`https://discordapp.com/api/v6/invites/` + _invite.code + "?with_counts=true").then(res => res.json());
+module.exports.run = async ({ client, channel, guild }, { unknown }) => {
+  channel.startTyping();
 
-      const fields = [], add = values => { for (const name in values) fields.push({ name, value: values[name], inline: true }) }
+  // check role
+  const roleSearch = guild.roles.resolve(unknown);
+  if (roleSearch) return send(channel, `${emojis.tickyes} This ID is a role ID for the role ${roleSearch.name}.`);
 
-      add({
-        "Guild": `${invite.guild.name} (${invite.guild.id})`,
-        "Channel": `${invite.channel.name} (${invite.channel.type && invite.channel.type !== "0" ? `${invite.channel.type}/` : ""}${invite.channel.id})`,
-        "Members": `${invite.approximate_presence_count} online, ${invite.approximate_member_count} total`
-      })
+  // check channel
+  const channelSearch = guild.channels.resolve(unknown);
+  if (channelSearch) return send(channel, `${emojis.tickyes} This ID is a channel ID for the channel ${channelSearch}.`);
 
-      if (invite.inviter) add({ "Inviter": `${invite.inviter.username}#${invite.inviter.discriminator} (${invite.inviter.bot ? "bot/" : ""}${invite.inviter.id})`})
-      if (invite.guild.features.length) add({ "Features": invite.guild.features.join(", ") })
-      if (invite.guild.vanity_url_code) add({ "Original Vanity URL": `https://discord.gg/${invite.guild.vanity_url_code}` })
-      if (invite.guild.description) add({ "Description": invite.guild.description })
-      if (invite.guild.verification_level) add({ "Verification Level": ["None", "Verified email", "Verified email and 5 minutes on Discord", "Verified email and 10 minutes on server", "Verified phone number"][invite.guild.verification_level] })
+  // check user
+  const user = await client.users.fetch(unknown).catch(() => null);
+  if (user && !user.bot) return send(channel, `${emojis.tickyes} This ID is an user ID of ${user.username}#${user.discriminator} (${user.id}).`);
+  else if (user) {
+    const bot = await fetch(`https://botblock.org/api/bots/${user.id}`).then(res => res.json());
+    if (bot.discriminator == "0000") return send(channel, `${emojis.tickyes} This ID is a bot ID of ${user.username}#${user.discriminator} (${user.id}).`);
 
-      return send(message.channel, `${constants.emojis.tickyes} This ID is a Discord invite.`, {
-        embed: {
-          title: "Invite Lookup",
-          description: `Information from the invite \`${invite.code}\``,
-          fields, image: invite.guild.banner ? {
-              url: `https://cdn.discordapp.com/banners/${invite.guild.id}/${invite.guild.banner}.jpg?size=4096`
-          } : undefined, thumbnail: invite.guild.icon ? {
-              url: `https://cdn.discordapp.com/icons/${invite.guild.id}/${invite.guild.icon}.jpg?size=4096`
-          } : undefined,
-          color: constants.embedColor
-        }
-      })
-    }
-  } catch(e) {}
-  
-  // emoji lookup
-  try {
-    let res = await fetch(`https://cdn.discordapp.com/emojis/${args[0]}.png`);
-    if (res.ok) return send(message.channel, `${constants.emojis.tickyes} This ID is an emoji ID: https://cdn.discordapp.com/emojis/${args[0]}.png`)
-  } catch(e) {}
+    const
+      fields = [], add = (name, value) => fields.push({ name, value, inline: true }),
+      lists = Object.keys(bot.list_data).filter(list => bot.list_data[list][1] == 200 && !bot.list_data[list].error).map(list => bot.list_data[list][0]),
+      descriptions = lists.map(list => list[Object.keys(list).find(i => i.includes("short")) || 0]).filter(desc => desc && typeof desc == "string").sort((a, b) => b.length - a.length),
+      prefixes = lists.map(list => list.prefix).filter(desc => desc).sort((a, b) => b.length - a.length),
+      websites_ = lists.map(list => list[Object.keys(list).find(i => i.includes("website")) || 0]).filter(link => link && typeof link == "string"),
+      websites = websites_.sort((a, b) => websites_.filter(v => v===b).length - websites_.filter(v => v===a).length),
+      tags = flat(lists.map(list => list.tags).filter(tags => tags && typeof tags == "object")),
+      owners = (await Promise.all(bot.owners.filter(o => !o.includes("#")).filter(onlyUnique).map(id => client.users.fetch(id).catch(() => null)))).filter(user => user);
+    
+    if (descriptions[0]) add("Description", descriptions[0]);
+    if (prefixes[0]) add("Prefix", prefixes[0]);
+    if (websites[0]) add("Website", websites[0]);
+    if (tags.length) add("Tags", tags.join(", "));
+    if (owners.length > 1) add("Owners", owners.join("\n")); else add("Owner", owners[0]);
 
-  // message lookup
-  let channels = message.guild.channels.cache.filter(ch => ["text", "news"].includes(ch.type)).array();
+    return send(channel, `${emojis.tickyes} This ID is a bot ID of ${user.username}#${user.discriminator} (${user.id}).`, {
+      embed: {
+        fields, thumbnail: user.avatar ? {
+          url: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=512`
+        } : null, color: embedColor
+      }
+    });
+  }
+
+  // check invite
+  const inviteSearch = await client.fetchInvite(unknown).catch(() => null);
+  if (inviteSearch) {
+    const
+      invite = fetch(`${client.options.http.api}/v${client.options.http.version}/invites/${inviteSearch.code}?with_counts=true`).then(res => res.json()),
+      fields = [], add = (name, value) => fields.push({ name, value, inline: true });
+    add("Guild", `${invite.guild.name} (${invite.guild.id})`);
+    add("Channel", `${invite.channel.name} (${invite.channel.type && invite.channel.type !== "0" ? `${invite.channel.type}/` : ""}${invite.channel.id})`);
+    add("Members", `${invite.approximate_presence_count} online, ${invite.approximate_member_count} total`);
+    
+    if (invite.inviter) add("Inviter", `${invite.inviter.username}#${invite.inviter.discriminator} ${invite.inviter.bot ? "[BOT] " : ""}(${invite.inviter.id})`);
+  }
+
+  // check emoji
+  const { ok } = await fetch(`${client.options.http.cdn}/emojis/${unknown}.png`).catch(() => ({ ok: false }));
+  if (ok) return send(channel, `${emojis.tickyes} This ID is an emoji ID: ${client.options.http.cdn}/emojis/${unknown}.png`);
+
+  // check message
+  const channels = [...guild.channels.cache.filter(ch => ["text", "news"].includes(ch.type))];
   for (const ch of channels) try {
-    let m = await ch.messages.fetch(args[0]);
-    if (m) return send(message.channel, `${constants.emojis.tickyes} This ID is a message ID: <https://discordapp.com/channels/${m.guild.id}/${m.channel.id}/${m.id}>`)
-  } catch(e) {}
+    const m = await ch.messages.fetch(unknown);
+    if (m) return send(channel, `${emojis.tickyes} This ID is a message ID: <${m.url}>`);
+  } catch(e) {/* not in the channel */}
 
-  return send(message.channel, `${constants.emojis.tickno} I don't know what the ID \`${args[0]}\` is coming from. Maybe it's from Auttaja?`)
+  return send(channel, `${emojis.tickno} This ID is unknown to me. (Is it from Auttaja?)`);
+};
+
+function send(channel, content = "", extra = {}) {
+  channel.send(content, extra);
+  channel.stopTyping();
 }
-
-const send = (channel, content, morecontent = undefined) => channel.send(content, morecontent).then(() => channel.stopTyping())

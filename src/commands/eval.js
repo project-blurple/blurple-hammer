@@ -1,23 +1,28 @@
+
+
 module.exports = {
   description: "Evaluate some code.",
-  usage: {
-    "<code ...>": "The code you want to run through the bot."
-  },
-  examples: {},
+  options: [
+    {
+      type: 3,
+      name: "code",
+      description: "The code you want to run through the bot.",
+      required: true
+    }
+  ],
   aliases: [],
-  permissionRequired: 7, // 0 All, 1 Helper, 2 JR.Mod, 3 Mod, 4 SR.Mod, 5 Exec, 6 Admin, 7 Promise#0001
-  checkArgs: (args) => args.length >= 1
-}
+  permissionRequired: 7 // 0 All, 1 Assistant, 2 Helper, 3 Moderator, 4 Exec.Assistant, 5 Executive, 6 Director, 7 Promise#0001
+};
 
-const constants = require("../constants")
-
-module.exports.run = async (client, message, args, { db, config, permissionLevel, content }) => { // we get all the values so we can use them in the eval-command itself
+module.exports.run = async ({ channel }, { code }) => {
   try {
-    let evaled = eval(content);
+    let evaled = eval(code);
     if (typeof evaled != "string") evaled = require("util").inspect(evaled);
-    message.channel.send(`🆗 Evaluated successfully.\n\`\`\`js\n${evaled}\`\`\``)
+    channel.send(`🆗 Evaluated successfully.\n\`\`\`js\n${evaled}\`\`\``);
   } catch(e) {
-    if (typeof e == "string") e = e.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203))
-    message.channel.send(`🆘 JavaScript failed.\n\`\`\`fix\n${e}\`\`\``)
+    let err;
+    if (typeof e == "string") err = e.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
+    else err = e;
+    channel.send(`🆘 JavaScript failed.\n\`\`\`fix\n${err}\`\`\``);
   }
-}
+};

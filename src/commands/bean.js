@@ -1,21 +1,17 @@
+
+
 module.exports = {
   description: "Bean someone ... because why not?",
-  usage: {
-    "<user(s ...)>": "The user(s) you want to bean. Yes, you can bean multiple users."
-  },
-  examples: {},
+  options: [
+    {
+      type: 6,
+      name: "user",
+      description: "The user you want to ban",
+      required: true
+    }
+  ],
   aliases: [],
-  permissionRequired: 1, // 0 All, 1 Helper, 2 JR.Mod, 3 Mod, 4 SR.Mod, 5 Exec, 6 Admin, 7 Promise#0001
-  checkArgs: (args) => args.length
-}
+  permissionRequired: 1 // 0 All, 1 Assistant, 2 Helper, 3 Moderator, 4 Exec.Assistant, 5 Executive, 6 Director, 7 Promise#0001
+};
 
-const { getMembers } = require("../utils/resolvers.js"), constants = require("../constants")
-
-module.exports.run = async (client, message, args) => {
-  let members = getMembers(args, message.guild)
-  if (!members.length) return message.channel.send(`${constants.emojis.tickno} No users were found with your query.`)
-  
-  let quote = ", you've been beaned!"
-  if (members.length > 1) quote = ": you've all been beaned!"
-  message.channel.send(members.map(m => m.toString()).join(", ") + quote)
-}
+module.exports.run = async ({ channel }, { user }) => channel.send(`${user}, you've been beaned!`);
