@@ -29,7 +29,7 @@ module.exports = {
   permissionRequired: 5 // 0 All, 1 Assistant, 2 Helper, 3 Moderator, 4 Exec.Assistant, 5 Executive, 6 Director, 7 Promise#0001
 };
 
-module.exports.run = async ({ client, channel, member }, { staff, subserver, force = false }) => {
+module.exports.run = async ({ client, channel, member }, { staff, subserver: acronym, force = false }) => {
   const tokens = await db.get(staff.user.id) || {};
   
   oauth.tokenRequest({
@@ -39,7 +39,8 @@ module.exports.run = async ({ client, channel, member }, { staff, subserver, for
   }).then(async ({ access_token, refresh_token }) => {
     db.set(staff.user.id, { access_token, refresh_token });
   
-    const { access, member: subMember, addRoles } = await calculateAccess(staff.user.id, guilds.find(g => g.acronym.toLowerCase() == subserver), client);
+    const subserver = Object.values(guilds).find(g => typeof g !== "string" && g.acronym.toLowerCase() == acronym),
+      { access, member: subMember, addRoles } = await calculateAccess(staff.user.id, Object.values(guilds).find(g => typeof g !== "string" && g.acronym.toLowerCase() == acronym), client);
 
     if (subMember) return channel.send(`${emojis.tickno} They are already in this subserver.`);
     if (!access && !force) return channel.send(`${emojis.tickno} They do not have access to this subserver.`);
@@ -58,5 +59,8 @@ module.exports.run = async ({ client, channel, member }, { staff, subserver, for
       console.log(e);
       channel.send(`${emojis.tickno} An unknown error occurred when trying to add them to the subserver.`);
     });
-  }).catch(e => console.log(e) && channel.send(`${emojis.tickno} Their OAuth2 is not set up correctly!`));
+  }).catch(e => {
+    console.log(e);
+    channel.send(`${emojis.tickno} Their OAuth2 is not set up correctly!`);
+  });
 };
