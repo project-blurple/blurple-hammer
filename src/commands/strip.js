@@ -1,6 +1,7 @@
 const { strips } = require("../database"), { roles: serverRoles, functions: { getPermissionLevel } } = require("../constants");
 
 module.exports = {
+  mainOnly: true,
   hideSource: true,
   description: "Strip all your roles temporarily, or get them back.",
   options: [

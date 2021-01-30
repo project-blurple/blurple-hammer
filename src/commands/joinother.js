@@ -1,6 +1,7 @@
 const { emojis, oauth, guilds } = require("../constants"), { oauth: db, subserveraccessoverrides: accessoverrides } = require("../database"), { calculateAccess } = require("../handlers/staffHandler.js");
 
 module.exports = {
+  mainOnly: true,
   description: "Make a staff staff join a subserver. Requires OAuth2 set up on their Staff account.",
   options: [
     {
