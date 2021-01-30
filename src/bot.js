@@ -30,6 +30,7 @@ const
   });
 
 client.once("shardReady", () => {
+  console.log(client.guilds.cache.map(g => g.name));
   console.log(`Ready as ${client.user.tag}!`);
   setupSlashCommands(client);
   staffHandler(client);

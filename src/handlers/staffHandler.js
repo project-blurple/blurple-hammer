@@ -5,7 +5,7 @@ module.exports = client => {
     const users = flat([
       ...client.guilds.cache.get(guilds.main).members.cache.filter(user => getPermissionLevel(user) > 0),
       ...client.guilds.cache.filter(g => g.id !== guilds.main).map(guild => ([...guild.members.cache]))
-    ], 2).filter(member => member.user ? !member.user.bot : !member.bot).map(member => member.id).filter(member => member).filter(onlyUnique);
+    ], 2).map(member => member.id).filter(member => member).filter(onlyUnique);
     for (const id of users) await checkMemberAccess(id, client);
   }, 60000);
 
@@ -18,6 +18,10 @@ module.exports = client => {
       )
     ) checkMemberAccess(member.user.id, client);
   });
+
+  client.on("guildMemberAdd", member => {
+    if (member.guild.id !== guilds.main) checkMemberAccess(member.user.id, client);
+  })
 
   app.get("/oauth-callback", async (req, res) => {
     if (req.query.code) {
@@ -48,18 +52,18 @@ async function checkMemberAccess(id, client) {
       const 
         subGuild = client.guilds.cache.get(subserver.id),
         subMember = subGuild.members.cache.get(id);
-      if (subMember) console.log("Kick member", member.user.tag, "from server", subGuild.name, "because not in main server");
+      if (subMember && !subMember.user.bot) console.log("Kick member", subMember.user.tag, "from server", subGuild.name, "because not in main server");
     }
-  } else {
+  } else if (!member.user.bot) {
     for (const subserver of Object.values(guilds).filter(p => typeof p !== "string")) {
 
       const { guild: subGuild, member: subMember, access, override, addRoles, removeRoles } = await calculateAccess(id, subserver, client);
 
-      if (!access && !override && subMember) console.log("Kick member", member.user.tag, "from server", subGuild.name, "because no access");
-      else if (access == 2 && !subMember) console.log("Add member", member.user.tag, "to server", subGuild.name, "with roles", addRoles);
+      if (!access && !override && subMember) console.log("Kick member", member.user.tag, "from server", subGuild.name, "because no access", await subMember.kick("Missing access").catch(() => null));
+      else if (access == 2 && !subMember) console.log("Add member", member.user.tag, "to server", subGuild.name, "with roles", addRoles, await addMemberToGuild(id, subserver.id, addRoles).catch(() => null)) 
       else {
-        if (access && subMember && addRoles.length) console.log("Add roles to", member.user.tag, "in server", subGuild.name, addRoles);
-        if (access && subMember && removeRoles.length) console.log("Remove roles from", member.user.tag, "in server", subGuild.name, removeRoles);
+        if (access && subMember && addRoles.length) console.log("Add roles to", member.user.tag, "in server", subGuild.name, addRoles, await subMember.roles.add(addRoles).catch(() => null));
+        if (access && subMember && removeRoles.length) console.log("Remove roles from", member.user.tag, "in server", subGuild.name, removeRoles, await subMember.roles.remove(removeRoles).catch(() => null));
       }
     }
   }
