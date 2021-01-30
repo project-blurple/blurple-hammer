@@ -76,8 +76,8 @@ module.exports.processCommand = message => {
 // registering and setting up slash commands
 module.exports.setupSlashCommands = async client => {
   commands.forEach(({ description, options, mainOnly = false }, name) => {
-    if (mainOnly) client.api.applications(client.user.id).guilds(guilds.main).commands.post({ data: { name, description, options } })
-    else client.api.applications(client.user.id).commands.post({ data: { name, description, options } })
+    if (mainOnly) client.api.applications(client.user.id).guilds(guilds.main).commands.post({ data: { name, description, options } });
+    else client.api.applications(client.user.id).commands.post({ data: { name, description, options } });
   });
 
   client.ws.on("INTERACTION_CREATE", async interaction => {

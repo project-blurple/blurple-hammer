@@ -1,4 +1,4 @@
-const { emojis, oauth, functions: { flat }, guilds } = require("../constants"), { oauth: db, subserveraccessoverrides: accessoverrides } = require("../database");
+const { emojis, oauth, guilds } = require("../constants"), { oauth: db, subserveraccessoverrides: accessoverrides } = require("../database"), { calculateAccess } = require("../handlers/staffHandler.js");
 
 module.exports = {
   description: "Make a staff staff join a subserver. Requires OAuth2 set up on their Staff account.",
@@ -39,21 +39,21 @@ module.exports.run = async ({ client, channel, member }, { staff, subserver, for
   }).then(async ({ access_token, refresh_token }) => {
     db.set(staff.user.id, { access_token, refresh_token });
   
-    const { access, member: subMember } = await calculateAccess(staff.user.id, guilds.find(g => g.acronym.toLowerCase() == subserver), client)
+    const { access, member: subMember, addRoles } = await calculateAccess(staff.user.id, guilds.find(g => g.acronym.toLowerCase() == subserver), client);
 
     if (subMember) return channel.send(`${emojis.tickno} They are already in this subserver.`);
     if (!access && !force) return channel.send(`${emojis.tickno} They do not have access to this subserver.`);
     
-    if (force) accessoverrides.set(`${server.id};${staff.user.id}`, member.user.id);
+    if (force) accessoverrides.set(`${subserver.id};${staff.user.id}`, member.user.id);
 
     oauth.addMember({
       accessToken: access_token,
       botToken: client.token,
-      guildId: server.id,
+      guildId: subserver.id,
       userId: staff.user.id,
-      roles: allSubRoles
+      roles: addRoles
     }).then(() => {
-      channel.send(`${emojis.tickyes} They are now added to **${guild.name}**.`);
+      channel.send(`${emojis.tickyes} They are now added to **${subserver.name}**.`);
     }).catch(e => {
       console.log(e);
       channel.send(`${emojis.tickno} An unknown error occurred when trying to add them to the subserver.`);

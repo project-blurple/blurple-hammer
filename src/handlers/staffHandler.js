@@ -48,7 +48,7 @@ async function checkMemberAccess(id, client) {
       const 
         subGuild = client.guilds.cache.get(subserver.id),
         subMember = subGuild.members.cache.get(id);
-      if (subMember) console.log("Kick member", member.user.tag, "from server", subGuild.name, "because not in main server")
+      if (subMember) console.log("Kick member", member.user.tag, "from server", subGuild.name, "because not in main server");
     }
   } else {
     for (const subserver of Object.values(guilds).filter(p => typeof p !== "string")) {
@@ -56,7 +56,7 @@ async function checkMemberAccess(id, client) {
       const { guild: subGuild, member: subMember, access, override, addRoles, removeRoles } = await calculateAccess(id, subserver, client);
 
       if (!access && !override && subMember) console.log("Kick member", member.user.tag, "from server", subGuild.name, "because no access");
-      else if (access == 2 && !subMember) console.log("Add member", member.user.tag, "to server", subGuild.name, "with roles", allAllowedRoles);
+      else if (access == 2 && !subMember) console.log("Add member", member.user.tag, "to server", subGuild.name, "with roles", addRoles);
       else {
         if (access && subMember && addRoles.length) console.log("Add roles to", member.user.tag, "in server", subGuild.name, addRoles);
         if (access && subMember && removeRoles.length) console.log("Remove roles from", member.user.tag, "in server", subGuild.name, removeRoles);
@@ -87,7 +87,7 @@ async function calculateAccess(id, subserver, client) {
     addRoles = allowedRoles.filter(id => !roles.includes(id)),
     removeRoles = disallowedRoles.filter(id => roles.includes(id));
   
-  return { guild, member, access, override, addRoles, removeRoles }
+  return { guild, member, access, override, addRoles, removeRoles };
 }
 
 module.exports.calculateAccess = calculateAccess;

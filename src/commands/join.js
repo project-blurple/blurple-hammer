@@ -1,4 +1,4 @@
-const config = require("../../config.json"), { emojis, oauth, functions: { flat }, guilds } = require("../constants"), { oauth: db } = require("../database"), { calculateAccess } = require("../handlers/staffHandler.js");
+const config = require("../../config.json"), { emojis, oauth, guilds } = require("../constants"), { oauth: db } = require("../database"), { calculateAccess } = require("../handlers/staffHandler.js");
 
 module.exports = {
   mainOnly: true,
@@ -29,7 +29,7 @@ module.exports.run = async ({ client, channel, member }, { subserver }) => {
   }).then(async ({ access_token, refresh_token }) => {
     db.set(member.user.id, { access_token, refresh_token });
   
-    const { access, member: subMember } = await calculateAccess(member.user.id, guilds.find(g => g.acronym.toLowerCase() == subserver), client)
+    const { access, member: subMember, addRoles } = await calculateAccess(member.user.id, guilds.find(g => g.acronym.toLowerCase() == subserver), client);
 
     if (subMember) return channel.send(`${emojis.tickno} You are already in this subserver.`);
     if (!access) return channel.send(`${emojis.tickno} You do not have access to add yourself to this subserver.`);
@@ -37,11 +37,11 @@ module.exports.run = async ({ client, channel, member }, { subserver }) => {
     oauth.addMember({
       accessToken: access_token,
       botToken: client.token,
-      guildId: server.id,
+      guildId: subserver.id,
       userId: member.user.id,
-      roles: allSubRoles
+      roles: addRoles
     }).then(() => {
-      channel.send(`${emojis.tickyes} You are now added to **${guild.name}**.`);
+      channel.send(`${emojis.tickyes} You are now added to **${subserver.name}**.`);
     }).catch(e => {
       console.log(e);
       channel.send(`${emojis.tickno} An unknown error occurred when trying to add you to the subserver.`);
