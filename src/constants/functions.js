@@ -32,11 +32,11 @@ module.exports = {
     if (!member) return 0; // not in main server
     const memberRoles = member.roles.cache.map(r => r.id);
     if (memberRoles.includes(roles.admin)) return 6; // director
-    if (memberRoles.includes(roles.exec)) return 5; // executive
-    if (memberRoles.includes(roles.srmod)) return 4; // executive assistant
+    if (memberRoles.includes(roles.executive)) return 5; // executive
+    if (memberRoles.includes(roles.executiveassistant)) return 4; // executive assistant
     if (memberRoles.includes(roles.mod)) return 3; // moderator
-    if (memberRoles.includes(roles.jrmod)) return 2; // helper
-    if (memberRoles.includes(roles.helper)) return 1; // assistant (developers and creative associates)
+    if (memberRoles.includes(roles.helper)) return 2; // helper
+    if (memberRoles.includes(roles.assistant)) return 1; // assistant (developers and creative associates)
     return 0; // normal user
   },
   lockMessage: user => `***CHANNEL IS LOCKED BY ${user}***`,
