@@ -1,6 +1,7 @@
 const { emojis, restrictions } = require("../constants");
 
 module.exports = {
+  mainOnly: true,
   description: "Give or restrict a user's abilities",
   options: [
     {

@@ -1,6 +1,7 @@
 const { emojis, functions: { getPermissionLevel, onlyUnique } } = require("../constants");
 
 module.exports = {
+  mainOnly: true,
   description: "Purge a channel from a raid, and get the raiders' IDs.",
   options: [
     {

@@ -1,6 +1,7 @@
 const { channels: { public }, emojis } = require("../constants");
 
 module.exports = {
+  mainOnly: true,
   description: "Unlock the current channel, or all the public channels.",
   options: [
     {

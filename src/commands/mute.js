@@ -1,6 +1,7 @@
 const { emojis, functions: { getPermissionLevel }, channels, gifs } = require("../constants");
 
 module.exports = {
+  mainOnly: true,
   description: "Mute someone if Auttaja is down.",
   options: [
     {

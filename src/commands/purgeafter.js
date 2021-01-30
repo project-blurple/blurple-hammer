@@ -1,6 +1,7 @@
 const { emojis } = require("../constants");
 
 module.exports = {
+  mainOnly: true,
   description: "Purge everything after a message. And I mean everything.",
   options: [
     {

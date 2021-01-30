@@ -1,6 +1,7 @@
 const { roles, emojis } = require("../constants");
 
 module.exports = {
+  mainOnly: true,
   description: "Toggle the Duty-role",
   options: [
     {
