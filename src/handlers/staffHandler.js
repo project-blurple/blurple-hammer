@@ -21,7 +21,7 @@ module.exports = client => {
 
   client.on("guildMemberAdd", member => {
     if (member.guild.id !== guilds.main) checkMemberAccess(member.user.id, client);
-  })
+  });
 
   app.get("/oauth-callback", async (req, res) => {
     if (req.query.code) {
@@ -60,7 +60,7 @@ async function checkMemberAccess(id, client) {
       const { guild: subGuild, member: subMember, access, override, addRoles, removeRoles } = await calculateAccess(id, subserver, client);
 
       if (!access && !override && subMember) console.log("Kick member", member.user.tag, "from server", subGuild.name, "because no access", await subMember.kick("Missing access").catch(() => null));
-      else if (access == 2 && !subMember) console.log("Add member", member.user.tag, "to server", subGuild.name, "with roles", addRoles, await addMemberToGuild(id, subserver.id, addRoles).catch(() => null)) 
+      else if (access == 2 && !subMember) console.log("Add member", member.user.tag, "to server", subGuild.name, "with roles", addRoles, await addMemberToGuild(id, subserver.id, addRoles).catch(() => null)); 
       else {
         if (access && subMember && addRoles.length) console.log("Add roles to", member.user.tag, "in server", subGuild.name, addRoles, await subMember.roles.add(addRoles).catch(() => null));
         if (access && subMember && removeRoles.length) console.log("Remove roles from", member.user.tag, "in server", subGuild.name, removeRoles, await subMember.roles.remove(removeRoles).catch(() => null));
