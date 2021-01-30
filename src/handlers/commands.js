@@ -9,6 +9,7 @@ const
       getChannel
     },
     functions: {
+      getPermissionLevel,
       getUsage
     }
   } = require("../constants");
@@ -35,7 +36,7 @@ module.exports.processCommand = message => {
   const commandFile = commands.get(commandName);
   if (!commandFile) return;
 
-  if (commandFile.mainOnly && message.guild.id !== guilds.main) return message.channel.send("❌ This command only works in the main server..");
+  if (commandFile.mainOnly && message.guild.id !== guilds.main) return message.channel.send("❌ This command only works in the main server.");
 
   const permissionLevel = getPermissionLevel(message.member);
   if (permissionLevel < commandFile.permissionRequired) return message.channel.send("❌ You don't have permission to do this.");
@@ -74,7 +75,10 @@ module.exports.processCommand = message => {
 
 // registering and setting up slash commands
 module.exports.setupSlashCommands = async client => {
-  commands.forEach(({ description, options }, name) => client.api.applications(client.user.id).guilds(guilds.main).commands.post({ data: { name, description, options } }));
+  commands.forEach(({ description, options, mainOnly = false }, name) => {
+    if (mainOnly) client.api.applications(client.user.id).guilds(guilds.main).commands.post({ data: { name, description, options } })
+    else client.api.applications(client.user.id).commands.post({ data: { name, description, options } })
+  });
 
   client.ws.on("INTERACTION_CREATE", async interaction => {
     const commandFile = commands.get(interaction.data.name);
@@ -100,10 +104,6 @@ module.exports.setupSlashCommands = async client => {
 
   console.log(`${commands.size} slash commands have been registered and is now ready.`);
 };
-
-function getPermissionLevel() {
-  return 99;
-}
 
 function convertArg(type, arg, choices, guild) {
   let converted = arg;
