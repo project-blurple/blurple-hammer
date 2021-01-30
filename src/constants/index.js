@@ -7,10 +7,12 @@ module.exports = {
   embedColor: 0x7289DA,
   hexColor: "7289DA",
   guilds: {
-    main: "793877712254009464", // "412754940885467146",
+    main: "412754940885467146",
     staff: require("./subservers/staff"),
     assets: require("./subservers/assets"),
-    dev: require("./subservers/dev")
+    dev: require("./subservers/dev"),
+    dev2: require("./subservers/dev2"),
+    minecraft: require("./subservers/minecraft")
   },
   app: express(),
   oauth: new DiscordOAuth2(config.oauth),
@@ -26,6 +28,6 @@ Object.assign(module.exports, {
   resolvers: require("./resolvers"),
   restrictions: require("./restrictions"),
   roles: require("./roles")
-})
+});
 
 module.exports.app.listen(config.port);

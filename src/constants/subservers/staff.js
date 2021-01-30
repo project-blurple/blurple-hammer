@@ -36,7 +36,7 @@ module.exports = {
       ]
     },
     "708540954302218311": { // Blurple Assistant (Developer/Creative)
-      access: 0,
+      access: 1,
       roles: []
     }
   }
