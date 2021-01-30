@@ -1,8 +1,10 @@
 module.exports = {
   id: "540758383582511115",
+  name: "Blurple Asset Resource Facility",
+  acronym: "BARF",
 
   staffAccess: {
-    "801403041265483776": {//"443013283977494539": { // Blurple Administration
+    "801403041265483776":{//"443013283977494539": { // Blurple Administration
       access: 1,
       roles: [
         //"708630517528002581", // super admon
@@ -27,14 +29,10 @@ module.exports = {
       access: 0,
       roles: []
     },
-    "552226243517612032": { // Blurple Developer
-      access: 0,
-      roles: []
-    },
-    "554776853869494309": { // Blurple Creative Assets
-      access: 2,
+    "708540954302218311": { // Blurple Assistant (Developer/Creative)
+      access: 1,
       roles: [
-        "799262919111344128", // "Creative Team"
+        "799262919111344128", // Creative Team
       ]
     }
   }

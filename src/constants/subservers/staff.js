@@ -1,5 +1,7 @@
 module.exports = {
   id: "573169434227900417",
+  name: "Blurple Analogous Staff Environment",
+  acronym: "BASE",
 
   staffAccess: {
     "443013283977494539": { // Blurple Administration
@@ -33,17 +35,9 @@ module.exports = {
         "573177050077069325", // Helper
       ]
     },
-    "552226243517612032": { // Blurple Developer
-      access: 1,
-      roles: [
-        "573223306627514386", // Development Team
-      ]
-    },
-    "554776853869494309": { // Blurple Creative Assets
-      access: 1,
-      roles: [
-        "573355860584038400", // Creative Team
-      ]
+    "708540954302218311": { // Blurple Assistant (Developer/Creative)
+      access: 0,
+      roles: []
     }
   }
 };
