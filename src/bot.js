@@ -8,7 +8,8 @@ const
     },
     functions: {
       getPermissionLevel
-    }
+    },
+    emojis
   } = require("./constants"),
   linkScanHandler = require("./handlers/linkScan.js"),
   dutyPingHandler = require("./handlers/dutyPing.js"),
@@ -52,10 +53,7 @@ client.on("message", async message => {
 
   // commands handler
   if (message.content.startsWith(config.prefix) || message.content.match(`^<@!?${client.user.id}> `)) await processCommand(message);
-  else if (message.content.match(`^<@!?${client.user.id}>`)) {
-    const response = db.responses.get("botping");
-    if (response) return message.channel.send(response);
-  }
+  else if (message.content.match(`^<@!?${client.user.id}>`)) await message.react(emojis.id.wave);
 });
 
 client
