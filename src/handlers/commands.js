@@ -48,7 +48,6 @@ module.exports.processCommand = message => {
     const { name = null, type = null } = commandFile.options[i] || {}, arg = rawArgs[i];
     if ( // if there's more args and the last option was a string, add the args to that string instead
       !name &&
-      commandFile.options &&
       commandFile.options.length &&
       commandFile.options[commandFile.options.length - 1].type == 3
     ) args[commandFile.options[commandFile.options.length - 1].name] = args[commandFile.options[commandFile.options.length - 1].name] + " " + arg; 
