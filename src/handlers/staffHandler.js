@@ -1,6 +1,14 @@
-const config = require("../../config.json"), { app, guilds, functions: { getPermissionLevel, flat, onlyUnique }, oauth, emojis } = require("../constants"), { oauth: db } = require("../database");
+const config = require("../../config.json"), { app, guilds, functions: { getPermissionLevel, flat, onlyUnique }, oauth, emojis } = require("../constants"), { oauth: db, subserveraccessoverrides: overrides } = require("../database");
 
 module.exports = client => {
+  setInterval(async () => {
+    const users = flat([
+      ...client.guilds.cache.get(guilds.main).members.cache.filter(user => getPermissionLevel(user) > 0),
+      ...client.guilds.cache.filter(g => g.id !== guilds.main).map(guild => ([...guild.members.cache]))
+    ], 2).filter(member => member.user ? !member.user.bot : !member.bot).map(member => member.id).filter(member => member).filter(onlyUnique);
+    for (const id of users) await checkMemberAccess(id, client);
+  }, 60000);
+
   client.on("guildMemberUpdate", (oldMember, member) => {
     if (
       member.guild.id == guilds.main &&
@@ -31,35 +39,58 @@ module.exports = client => {
   });
 };
 
-function checkMemberAccess(id, client) {
+async function checkMemberAccess(id, client) {
   const
     guild = client.guilds.cache.get(guilds.main),
     member = guild.members.cache.get(id);
   if (!member) {
-    console.log("member with id", id, "does not exist??");
+    for (const subserver of Object.values(guilds).filter(p => typeof p !== "string")) {
+      const 
+        subGuild = client.guilds.cache.get(subserver.id),
+        subMember = subGuild.members.cache.get(id);
+      if (subMember) console.log("Kick member", member.user.tag, "from server", subGuild.name, "because not in main server")
+    }
   } else {
     for (const subserver of Object.values(guilds).filter(p => typeof p !== "string")) {
-      const
-        sGuild = client.guilds.cache.get(subserver.id),
-        sMember = sGuild.members.cache.get(id),
-        allMainServerRoles = member.roles.cache.map(r => r.id).filter(id => Object.keys(subserver.staffAccess).includes(id)),
-        access = Math.max(0, ...allMainServerRoles.map(id => subserver.staffAccess[id].access)), // 0 = none, 1 = allowed, 2 = auto-add
-        allSubserverRoles = flat(Object.values(subserver.staffAccess).map(o => o.roles)).filter(onlyUnique),
-        allAllowedRoles = flat(allMainServerRoles.map(id => subserver.staffAccess[id].roles)).filter(onlyUnique),
-        disallowedRoles = allSubserverRoles.filter(id => !allAllowedRoles.includes(id));
-      console.log(disallowedRoles, allAllowedRoles, allSubserverRoles, access);
 
-      if (!access && sMember) console.log("Kick member", id, "from server", sGuild.name, "because no access");
-      else if (access == 2 && !sGuild.members.cache.has(id)) addMemberToGuild(id, subserver.id, allAllowedRoles).catch(console.log);
+      const { guild: subGuild, member: subMember, access, override, addRoles, removeRoles } = await calculateAccess(id, subserver, client);
+
+      if (!access && !override && subMember) console.log("Kick member", member.user.tag, "from server", subGuild.name, "because no access");
+      else if (access == 2 && !subMember) console.log("Add member", member.user.tag, "to server", subGuild.name, "with roles", allAllowedRoles);
       else {
-        if (access && sMember && allAllowedRoles.find(id => !sMember.roles.cache.has(id))) sMember.roles.add(allAllowedRoles.filter(id => !sMember.roles.cache.has(id)));
-        if (access && sMember && sMember.roles.cache.find(r => disallowedRoles.includes(r.id))) sMember.roles.remove(disallowedRoles.filter(id => sMember.roles.cache.has(id)));
+        if (access && subMember && addRoles.length) console.log("Add roles to", member.user.tag, "in server", subGuild.name, addRoles);
+        if (access && subMember && removeRoles.length) console.log("Remove roles from", member.user.tag, "in server", subGuild.name, removeRoles);
       }
     }
   }
 }
 
 module.exports.checkMemberAccess = checkMemberAccess;
+
+async function calculateAccess(id, subserver, client) {
+  const
+    mainGuild = client.guilds.cache.get(guilds.main),
+    mainMember = mainGuild.members.cache.get(id),
+    mainRoles = [...mainMember.roles.cache.map(r => r.id).filter(id => Object.keys(subserver.staffAccess).includes(id)), mainMember.user.id],
+
+    guild = client.guilds.cache.get(subserver.id),
+    member = guild.members.cache.get(id),
+    roles = member ? member.roles.cache.map(r => r.id) : [],
+    
+    access = Math.max(0, ...mainRoles.map(id => subserver.staffAccess[id] ? subserver.staffAccess[id].access : 0)),
+    override = await overrides.get(`${subserver.id};${id}`),
+
+    subRoles = flat(Object.values(subserver.staffAccess).map(o => o.roles)).filter(onlyUnique),
+    allowedRoles = flat(mainRoles.map(id => subserver.staffAccess[id] ? subserver.staffAccess[id].roles : [])).filter(onlyUnique),
+    disallowedRoles = subRoles.filter(id => !allowedRoles.includes(id)),
+
+    addRoles = allowedRoles.filter(id => !roles.includes(id)),
+    removeRoles = disallowedRoles.filter(id => roles.includes(id));
+  
+  return { guild, member, access, override, addRoles, removeRoles }
+}
+
+module.exports.calculateAccess = calculateAccess;
 
 function addMemberToGuild(userId, guildId, roles = []) {
   return new Promise((resolve, reject) => db.get(userId).then((tokens = {}) => {

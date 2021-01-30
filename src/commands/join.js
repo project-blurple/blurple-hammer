@@ -1,4 +1,4 @@
-const config = require("../../config.json"), { emojis, oauth, functions: { flat } } = require("../constants"), { oauth: db } = require("../database");
+const config = require("../../config.json"), { emojis, oauth, functions: { flat }, guilds } = require("../constants"), { oauth: db } = require("../database"), { calculateAccess } = require("../handlers/staffHandler.js");
 
 module.exports = {
   mainOnly: true,
@@ -9,20 +9,10 @@ module.exports = {
       name: "subserver",
       description: "The subserver you want to join.",
       required: true,
-      choices: [
-        {
-          name: "Blurple Staff Operations Center",
-          value: "staff"
-        },
-        {
-          name: "B.A.R.F. (Blurple Asset Resource Facility)",
-          value: "assets"
-        },
-        {
-          name: "B.A.D. (Blurple Application Development)",
-          value: "dev"
-        }
-      ]
+      choices: Object.values(guilds).filter(guild => typeof guild !== "string").map(guild => ({
+        name: `${guild.acronym.split("").join(".")}. (${guild.name})`,
+        value: guild.acronym.toLowerCase()
+      }))
     }
   ],
   aliases: [],
@@ -36,18 +26,13 @@ module.exports.run = async ({ client, channel, member }, { subserver }) => {
     refreshToken: tokens.refresh_token,
     grantType: "refresh_token",
     scope: [ "identify", "guilds.join" ]
-  }).then(({ access_token, refresh_token }) => {
+  }).then(async ({ access_token, refresh_token }) => {
     db.set(member.user.id, { access_token, refresh_token });
+  
+    const { access, member: subMember } = await calculateAccess(member.user.id, guilds.find(g => g.acronym.toLowerCase() == subserver), client)
 
-    const
-      server = require(`../constants/subservers/${subserver}.js`),
-      guild = client.guilds.cache.get(server.id),
-      allRoles = member.roles.cache.map(r => r.id).filter(id => Object.keys(server.staffAccess).includes(id)),
-      access = Math.max(0, ...allRoles.map(id => server.staffAccess[id].access)),
-      allSubRoles = flat(allRoles.map(id => server.staffAccess[id].roles));
-    
-    if (!access) return channel.send(`${emojis.tickno} You do not have access to this subserver.`);
-    if (guild.members.cache.get(member.user.id)) return channel.send(`${emojis.tickno} You are already in this subserver.`);
+    if (subMember) return channel.send(`${emojis.tickno} You are already in this subserver.`);
+    if (!access) return channel.send(`${emojis.tickno} You do not have access to add yourself to this subserver.`);
 
     oauth.addMember({
       accessToken: access_token,

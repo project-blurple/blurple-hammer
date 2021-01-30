@@ -1,4 +1,4 @@
-const { emojis, oauth, functions: { flat} } = require("../constants"), { oauth: db, subserveraccessoverrides: accessoverrides } = require("../database");
+const { emojis, oauth, functions: { flat }, guilds } = require("../constants"), { oauth: db, subserveraccessoverrides: accessoverrides } = require("../database");
 
 module.exports = {
   description: "Make a staff staff join a subserver. Requires OAuth2 set up on their Staff account.",
@@ -14,20 +14,10 @@ module.exports = {
       name: "subserver",
       description: "The subserver you want to join.",
       required: true,
-      choices: [
-        {
-          name: "Blurple Staff Operations Center",
-          value: "staff"
-        },
-        {
-          name: "B.A.R.F. (Blurple Asset Resource Facility)",
-          value: "assets"
-        },
-        {
-          name: "B.A.D. (Blurple Application Development)",
-          value: "dev"
-        }
-      ]
+      choices: Object.values(guilds).filter(guild => typeof guild !== "string").map(guild => ({
+        name: `${guild.acronym.split("").join(".")}. (${guild.name})`,
+        value: guild.acronym.toLowerCase()
+      }))
     },
     {
       type: 5,
@@ -39,27 +29,22 @@ module.exports = {
   permissionRequired: 5 // 0 All, 1 Assistant, 2 Helper, 3 Moderator, 4 Exec.Assistant, 5 Executive, 6 Director, 7 Promise#0001
 };
 
-module.exports.run = async ({ client, channel }, { staff, subserver, force = false }) => {
+module.exports.run = async ({ client, channel, member }, { staff, subserver, force = false }) => {
   const tokens = await db.get(staff.user.id) || {};
   
   oauth.tokenRequest({
     refreshToken: tokens.refresh_token,
     grantType: "refresh_token",
     scope: [ "identify", "guilds.join" ]
-  }).then(({ access_token, refresh_token }) => {
+  }).then(async ({ access_token, refresh_token }) => {
     db.set(staff.user.id, { access_token, refresh_token });
+  
+    const { access, member: subMember } = await calculateAccess(staff.user.id, guilds.find(g => g.acronym.toLowerCase() == subserver), client)
 
-    const
-      server = require(`../constants/subservers/${subserver}.js`),
-      guild = client.guilds.cache.get(server.id),
-      allRoles = staff.roles.cache.map(r => r.id).filter(id => Object.keys(server.staffAccess).includes(id)),
-      access = Math.max(0, ...allRoles.map(id => server.staffAccess[id].access)),
-      allSubRoles = flat(allRoles.map(id => server.staffAccess[id].roles));
-    
+    if (subMember) return channel.send(`${emojis.tickno} They are already in this subserver.`);
     if (!access && !force) return channel.send(`${emojis.tickno} They do not have access to this subserver.`);
-    if (guild.members.cache.get(staff.user.id)) return channel.send(`${emojis.tickno} They are already in this subserver.`);
     
-    if (force) accessoverrides.set(staff.user.id, true);
+    if (force) accessoverrides.set(`${server.id};${staff.user.id}`, member.user.id);
 
     oauth.addMember({
       accessToken: access_token,
