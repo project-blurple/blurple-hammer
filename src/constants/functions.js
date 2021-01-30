@@ -1,4 +1,4 @@
-const config = require("../../config.json");
+const config = require("../../config.json"), roles = require("./roles.js"), { guilds } = require("./");
 
 module.exports = {
   onlyUnique: (value, index, self) => self.indexOf(value) == index,
@@ -24,15 +24,19 @@ module.exports = {
   
     return str;
   },
-  getPermissionLevel: member => {
-    if (config.owner === member.user.id) return 7; // bot owner
-    const roles = member.roles.cache.map(r => r.id);
-    if (roles.includes(module.exports.roles.admin)) return 6; // director
-    if (roles.includes(module.exports.roles.exec)) return 5; // executive
-    if (roles.includes(module.exports.roles.srmod)) return 4; // executive assistant
-    if (roles.includes(module.exports.roles.mod)) return 3; // moderator
-    if (roles.includes(module.exports.roles.jrmod)) return 2; // helper
-    if (roles.includes(module.exports.roles.helper)) return 1; // assistant (developers and creative associates)
+  getPermissionLevel: user => {
+    if (config.owner === user.id) return 7; // bot owner
+    const
+      guild = user.client.guilds.cache.get(guilds.main),
+      member = guild.members.cache.get(user.id);
+    if (!member) return 0; // not in main server
+    const memberRoles = member.roles.cache.map(r => r.id);
+    if (memberRoles.includes(roles.admin)) return 6; // director
+    if (memberRoles.includes(roles.exec)) return 5; // executive
+    if (memberRoles.includes(roles.srmod)) return 4; // executive assistant
+    if (memberRoles.includes(roles.mod)) return 3; // moderator
+    if (memberRoles.includes(roles.jrmod)) return 2; // helper
+    if (memberRoles.includes(roles.helper)) return 1; // assistant (developers and creative associates)
     return 0; // normal user
   },
   lockMessage: user => `***CHANNEL IS LOCKED BY ${user}***`,
