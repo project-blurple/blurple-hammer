@@ -27,8 +27,7 @@ const
       status: "online"
     },
     fetchAllMembers: true
-  }),
-  db = require("./database");
+  });
 
 client.once("shardReady", () => {
   console.log(`Ready as ${client.user.tag}!`);
