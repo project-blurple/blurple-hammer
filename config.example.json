@@ -1,10 +1,20 @@
 {
-  "token": "",
-  "database_uri": "mongodb://",
-
-  "owner": "your user id",
+  "token": "discord token",
+  "owner": "your discord id",
   "prefix": ">",
-
-  "wot": "the wot key",
-  "google": "the google key for safe browsing"
+  "mywot": {
+    "userid": "1234567",
+    "apikey": "abcdefghijklmnopqrstuvwxyz"
+  },
+  "google": {
+    "apikey": "abcdefghijklmnopqrstuvwxyz",
+    "name": "Blurple Hammer"
+  },
+  "oauth": {
+    "clientId": "discord id of the bot",
+    "clientSecret": "discord secret of the bot",
+    "redirectUri": "redirect url of the bot"
+  },
+  "oauthPath": "/",
+  "port": "5050"
 }
