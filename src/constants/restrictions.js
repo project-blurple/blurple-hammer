@@ -1,22 +1,22 @@
 module.exports = [
-  {
-    name: "nickname",
-    description: "Change nickname",
-    role: ""
-  },
+//{
+//  name: "nickname",
+//  description: "Change nickname",
+//  role: ""
+//},
   {
     name: "embed",
     description: "Use embeds",
-    role: "801403041265483776"
+    role: "708546418280890370"
   },
   {
     name: "reactions",
     description: "Add reactions",
-    role: ""
+    role: "708546441563603065"
   },
   {
     name: "bots",
     description: "Use bots",
-    role: ""
+    role: "573392328912404480"
   }
 ];
