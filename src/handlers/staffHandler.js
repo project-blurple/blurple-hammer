@@ -23,7 +23,7 @@ module.exports = client => {
     if (member.guild.id !== guilds.main) checkMemberAccess(member.user.id, client);
   });
 
-  app.get("/oauth-callback", async (req, res) => {
+  app.get(config.oauthPath, async (req, res) => {
     if (req.query.code) {
       const { access_token, refresh_token } = await oauth.tokenRequest({
         code: req.query.code,
