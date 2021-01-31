@@ -25,6 +25,7 @@ module.exports = {
     "https://i.promise.solutions/9eW2w1.gif",
     "https://i.promise.solutions/GApsjU.gif",
     "https://i.promise.solutions/AbqbhV.gif",
-    "https://tenor.com/view/enjoy-the-silence-depeche-mode-gif-11379313"
+    "https://tenor.com/view/enjoy-the-silence-depeche-mode-gif-11379313",
+    "https://shutplea.se"
   ]
 };
