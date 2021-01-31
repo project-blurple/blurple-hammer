@@ -37,6 +37,7 @@ module.exports = {
     if (memberRoles.includes(roles.mod)) return 3; // moderator
     if (memberRoles.includes(roles.helper)) return 2; // helper
     if (memberRoles.includes(roles.assistant)) return 1; // assistant (developers and creative associates)
+    if (memberRoles.includes(roles.botban)) return -1; // banned from using bots
     return 0; // normal user
   },
   lockMessage: user => `***CHANNEL IS LOCKED BY ${user}***`,
