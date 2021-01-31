@@ -1,4 +1,4 @@
-const config = require("../../config.json"), { app, guilds, functions: { getPermissionLevel, flat, onlyUnique }, oauth, emojis } = require("../constants"), { oauth: db, subserveraccessoverrides: overrides } = require("../database");
+const config = require("../../config.json"), { app, guilds, functions: { getPermissionLevel, flat, onlyUnique }, oauth, emojis } = require("../constants"), { oauth: db, subserveraccessoverrides: overrides, strips } = require("../database");
 
 module.exports = client => {
   setInterval(async () => {
@@ -9,7 +9,7 @@ module.exports = client => {
     for (const id of users) await checkMemberAccess(id, client);
   }, 60000);
 
-  client.on("guildMemberUpdate", (oldMember, member) => {
+  client.on("guildMemberUpdate", async (oldMember, member) => {
     if (
       member.guild.id == guilds.main &&
       (
@@ -75,7 +75,11 @@ async function calculateAccess(id, subserver, client) {
   const
     mainGuild = client.guilds.cache.get(guilds.main),
     mainMember = mainGuild.members.cache.get(id),
-    mainRoles = [...mainMember.roles.cache.map(r => r.id).filter(id => Object.keys(subserver.staffAccess).includes(id)), mainMember.user.id],
+    mainRoles = [
+      ...mainMember.roles.cache.map(r => r.id).filter(id => Object.keys(subserver.staffAccess).includes(id)),
+      ...(await strips.get(id) || []),
+      mainMember.user.id
+    ],
 
     guild = client.guilds.cache.get(subserver.id),
     member = guild.members.cache.get(id),
