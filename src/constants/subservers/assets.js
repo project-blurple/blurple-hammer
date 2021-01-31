@@ -7,7 +7,7 @@ module.exports = {
     "801403041265483776":{//"443013283977494539": { // Blurple Administration
       access: 1,
       roles: [
-        //"708630517528002581", // super admon
+        "708630517528002581", // super admon
         "559336076456755200", // Blurple Executive
       ]
     },
