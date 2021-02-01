@@ -1,4 +1,4 @@
-const config = require("../../config.json"), { app, guilds, functions: { getPermissionLevel, flat, onlyUnique }, oauth, emojis } = require("../constants"), { oauth: db, subserveraccessoverrides: overrides, strips } = require("../database");
+const config = require("../../config.json"), { app, guilds, functions: { getPermissionLevel, flat, onlyUnique }, oauth, emojis } = require("../constants"), { oauth: db, subserveraccessoverrides: overrides, strips } = require("../database"), path = require("path");
 
 module.exports = client => {
   setInterval(async () => {
@@ -30,7 +30,7 @@ module.exports = client => {
         scope: "identify guilds.join",
         grantType: "authorization_code"
       }).catch(e => { console.log(e); return {}; });
-      if (!access_token) return res.status(500).sendFile(__dirname + "../web/oauth-failure.html");
+      if (!access_token) return res.status(500).sendFile(path.join(__dirname + "../web/oauth-failure.html"));
       
       const { id } = await oauth.getUser(access_token);
       db.set(id, { access_token, refresh_token });
@@ -38,7 +38,7 @@ module.exports = client => {
       client.users.cache.get(id).send(`${emojis.tada} Your OAuth2 has successfully been linked.`);
       checkMemberAccess(id, client);
 
-      return res.status(200).sendFile(__dirname + "../web/oauth-success.html");
+      return res.status(200).sendFile(path.join(__dirname + "../web/oauth-success.html"));
     } else res.redirect(`${client.options.http.api}/oauth2/authorize?client_id=${client.user.id}&redirect_uri=${encodeURI(config.oauth.redirectUri)}&response_type=code&scope=identify%20guilds.join`)
   });
 };
