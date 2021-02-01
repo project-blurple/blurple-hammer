@@ -15,6 +15,7 @@
     "clientSecret": "discord secret of the bot",
     "redirectUri": "redirect url of the bot"
   },
-  "oauthPath": "/",
+  "oauthPath": "/auth",
+  "authLink": "https://example.com/auth",
   "port": "5050"
 }
