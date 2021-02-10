@@ -53,7 +53,6 @@ client.on("message", async message => {
 
   // commands handler
   if (message.content.startsWith(config.prefix) || message.content.match(`^<@!?${client.user.id}> `)) await processCommand(message);
-  else if (message.content.match(`^<@!?${client.user.id}>`)) await message.react(emojis.id.wave);
 });
 
 client
