@@ -2,7 +2,8 @@
   "name": "blurple-hammer",
   "main": "src/bot.js",
   "scripts": {
-    "start": "node ."
+    "start": "node .",
+    "lint": "eslint --ext \".js\" ./"
   },
   "repository": {
     "type": "git",
