@@ -10,6 +10,13 @@
     "url": "git+https://github.com/project-blurple/blurple-hammer.git"
   },
   "author": "Promise <me@promise.solutions> (https://promise.solutions/)",
+  "contributors": [
+    "Promise <me@promise.solutions> (https://promise.solutions/)",
+    "Gigabitzz <> (https://www.gigabitz.pw)",
+    "wrac4242 <> ()",
+    "flamableassassin <lighter@highlyflammable.tech> (https://highlyflammable.tech/)"
+   ],
+
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/project-blurple/blurple-hammer/issues"
