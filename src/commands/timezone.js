@@ -22,15 +22,15 @@ module.exports.run = async ({ channel, member }, { user = member, timezone = "" 
   timezone = timezone.replace("UTC", "");
   if (timezone) {
     await timezones.set(user.user.id, timezone);
-    channel.send(`${emojis.tickyes} The timezone for ${user.user.tag} has been set to UTC${timezone}.`)
+    channel.send(`${emojis.tickyes} The timezone for ${user.user.tag} has been set to UTC${timezone}.`);
   } else {
     const userTimezone = await timezones.get(user.user.id);
-    if (!userTimezone) return channel.send(`${emojis.tickno} This user has no timezone registered yet.`)
+    if (!userTimezone) return channel.send(`${emojis.tickno} This user has no timezone registered yet.`);
     
     const
       offset = userTimezone.split(":")[0].replace("+0", "+").replace("-0", "-") + "." + (parseInt(userTimezone.split(":")[1]) / 60 * 10),
       date = getTimeInTimezone(offset);
-    channel.send(`📋 ${user.user.tag}'s timezone is UTC${userTimezone} and their local time is \`${date}\`.`)
+    channel.send(`📋 ${user.user.tag}'s timezone is UTC${userTimezone} and their local time is \`${date}\`.`);
   }
 };
 

@@ -39,7 +39,7 @@ module.exports = client => {
       checkMemberAccess(id, client);
 
       return res.status(200).sendFile(path.join(__dirname, "../web/auth-success.html"));
-    } else res.redirect(`${client.options.http.api}/oauth2/authorize?client_id=${client.user.id}&redirect_uri=${encodeURI(config.oauth.redirectUri)}&response_type=code&scope=identify%20guilds.join`)
+    } else res.redirect(`${client.options.http.api}/oauth2/authorize?client_id=${client.user.id}&redirect_uri=${encodeURI(config.oauth.redirectUri)}&response_type=code&scope=identify%20guilds.join`);
   });
 };
 

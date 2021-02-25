@@ -1,4 +1,4 @@
-const config = require("../../config.json"), { emojis, oauth, authLink } = require("../constants"), { oauth: db } = require("../database"), { checkMemberAccess } = require("../handlers/staffHandler.js");
+const config = require("../../config.json"), { emojis, oauth } = require("../constants"), { oauth: db } = require("../database"), { checkMemberAccess } = require("../handlers/staffHandler.js");
 
 module.exports = {
   mainOnly: true,
@@ -11,7 +11,7 @@ module.exports = {
 module.exports.run = async ({ client, channel, member }) => {
   const tokens = await db.get(member.user.id);
   if (!tokens || !tokens.refresh_token) return channel.send(`${emojis.tickno} Click this link to authenticate: <${config.authLink}>`);
-  
+
   oauth.tokenRequest({
     refreshToken: tokens.refresh_token,
     grantType: "refresh_token",
