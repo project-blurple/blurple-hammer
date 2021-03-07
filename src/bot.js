@@ -47,10 +47,6 @@ client.on("message", async message => {
   const sod = message.mentions.roles.find(r => r.id == roles.staffonduty);
   if (sod) await dutyPingHandler(message, sod);
 
-  // link scan handler
-  const links = message.content.match(linkRegex) || [];
-  if (getPermissionLevel(message.member) < 1 && links.length) await linkScanHandler(message, links);
-
   // commands handler
   if (message.content.startsWith(config.prefix) || message.content.match(`^<@!?${client.user.id}> `)) await processCommand(message);
   else if (message.content.match(`^<@!?${client.user.id}>`)) await message.react(emojis.ids.wave);

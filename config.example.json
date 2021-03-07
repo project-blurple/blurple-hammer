@@ -2,14 +2,6 @@
   "token": "discord token",
   "owner": "your discord id",
   "prefix": ">",
-  "mywot": {
-    "userid": "1234567",
-    "apikey": "abcdefghijklmnopqrstuvwxyz"
-  },
-  "google": {
-    "apikey": "abcdefghijklmnopqrstuvwxyz",
-    "name": "Blurple Hammer"
-  },
   "oauth": {
     "clientId": "discord id of the bot",
     "clientSecret": "discord secret of the bot",

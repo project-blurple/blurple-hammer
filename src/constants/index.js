@@ -23,7 +23,6 @@ Object.assign(module.exports, {
   emojis: require("./emojis"),
   functions: require("./functions"),
   gifs: require("./gifs"),
-  links: require("./links"),
   regex: require("./regex"),
   resolvers: require("./resolvers"),
   restrictions: require("./restrictions"),
