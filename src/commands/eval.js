@@ -14,7 +14,6 @@ module.exports.run = async ({ channel, client }, { code }) => {
   try {
     let evaled = await eval(code);
     if (typeof evaled != "string") evaled = require("util").inspect(evaled);
-    evaled = evaled.replace(client.token, "-- Redacted ---");
 
     channel.send(`🆗 Evaluated successfully.\n\`\`\`js\n${evaled}\`\`\``);
   } catch (e) {
