@@ -1,5 +1,3 @@
-
-
 module.exports = {
   description: "Evaluate some code.",
   options: [
@@ -16,10 +14,11 @@ module.exports = {
 
 module.exports.run = async ({ channel }, { code }) => {
   try {
-    let evaled = eval(code);
+    let evaled = await eval(code);
     if (typeof evaled != "string") evaled = require("util").inspect(evaled);
+
     channel.send(`🆗 Evaluated successfully.\n\`\`\`js\n${evaled}\`\`\``);
-  } catch(e) {
+  } catch (e) {
     let err;
     if (typeof e == "string") err = e.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
     else err = e;
