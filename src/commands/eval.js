@@ -1,11 +1,13 @@
 module.exports = {
   description: "Evaluate some code.",
-  options: [{
-    type: 3,
-    name: "code",
-    description: "The code you want to run through the bot.",
-    required: true
-  }],
+  options: [
+      {
+      type: 3,
+      name: "code",
+      description: "The code you want to run through the bot.",
+      required: true
+    }
+  ],
   aliases: [],
   permissionRequired: 7 // 0 All, 1 Assistant, 2 Helper, 3 Moderator, 4 Exec.Assistant, 5 Executive, 6 Director, 7 Promise#0001
 };
