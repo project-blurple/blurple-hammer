@@ -1,7 +1,7 @@
 module.exports = {
   description: "Evaluate some code.",
   options: [
-      {
+    {
       type: 3,
       name: "code",
       description: "The code you want to run through the bot.",
@@ -12,7 +12,7 @@ module.exports = {
   permissionRequired: 7 // 0 All, 1 Assistant, 2 Helper, 3 Moderator, 4 Exec.Assistant, 5 Executive, 6 Director, 7 Promise#0001
 };
 
-module.exports.run = async ({ channel, client }, { code }) => {
+module.exports.run = async ({ channel }, { code }) => {
   try {
     let evaled = await eval(code);
     if (typeof evaled != "string") evaled = require("util").inspect(evaled);
