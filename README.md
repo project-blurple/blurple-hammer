@@ -8,7 +8,7 @@
 
 Blurple Hammer is an advanced moderation bot customized for Project Blurple, but is open-source for educational purposes.
 
-## Contributrs
+## Contributors
 
 You can see all contributors and their GitHub-profiles [here](https://github.com/project-blurple/blurple-hammer/graphs/contributors).
 
