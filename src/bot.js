@@ -53,15 +53,16 @@ client.on("message", async message => {
 });
 
 client
-  .on("error", console.log)
+  .on("error", err => console.log("Client error.", err))
   .on("guildCreate", guild => importantLog(`Bot got added to server ${guild.name} (${guild.id})`))
   .on("guildDelete", guild => importantLog(`Bot removed from server ${guild.name} (${guild.id})`))
   .on("guildUnavailable", guild => importantLog(`Guild ${guild.name} is unavailable.`))
-  .on("rateLimit", ({ timeout, limit, method, path }) => console.log(`Rate-limited. [${timeout}ms, ${method} ${path}, limit: ${limit}]`))
-  .on("shardDisconnect", event => console.log("Disconnected:", event.reason))
-  .on("shardReconnecting", () => console.log("Reconnecting..."))
-  .on("shardResume", (_, replayed) => console.log(`Resumed. [${replayed} events replayed]`))
-  .on("warn", info => console.log("Info:", info))
+  .on("rateLimit", rateLimitInfo => console.log("Rate limited.", JSON.stringify(rateLimitInfo)))
+  .on("shardDisconnected", closeEvent => console.log("Disconnected.", closeEvent))
+  .on("shardError", err => console.log("Error.", err))
+  .on("shardReconnecting", () => console.log("Reconnecting."))
+  .on("shardResume", (_, replayedEvents) => console.log(`Resumed. ${replayedEvents} replayed events.`))
+  .on("warn", info => console.log("Warning.", info))
   .login(config.token);
 
 function importantLog(message) {
