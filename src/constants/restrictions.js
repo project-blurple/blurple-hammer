@@ -24,5 +24,12 @@ module.exports = [
     allowed: "Can use bot commands",
     disallowed: "Cannot use bot commands",
     role: "573392328912404480"
+  },
+  {
+    name: "vad",
+    description: "Disallow voice activity detection",
+    allowed: "Can use voice activity detection",
+    disallowed: "Cannot use voice activity detection",
+    role: "518114943019778069"
   }
 ];
