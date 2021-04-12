@@ -11,9 +11,14 @@ module.exports = async client => {
       guild: client.guilds.cache.get(guilds.main),
       channel: client.guilds.cache.get(guilds.main).channels.cache.get(interaction.channel_id),
       member: client.guilds.cache.get(guilds.main).members.cache.get(interaction.member.user.id),
-      respond: (content = null, hidden = false) => content ?
-        client.api.interactions(interaction.id, interaction.token).callback.post({ data: { type: 4, data: { content, flags: hidden ? 64 : 0 }}}) :
-        client.api.interactions(interaction.id, interaction.token).callback.post({ data: { type: 5 }}),
+      respond: (content = null, hidden = false) => {
+        const data = { flags: hidden ? 64 : 0 }, type = 4;
+        if (!content) type = 5;
+        else if (typeof content == "string") data.content = content;
+        else data.embeds = [ content ];
+
+        return client.api.interactions(interaction.id, interaction.token).callback.post({ data: { type, data }});
+      },
       edit: content => client.api.webhooks(client.user.id, interaction.token).messages["@original"].patch({ data: { content }}),
     }, getSlashArgs(interaction.data.options || []));
   });
