@@ -9,6 +9,7 @@ const
   slashCommandHandler = require("./handlers/slashCommands.js"),
   dutyPingHandler = require("./handlers/dutyPing.js"),
   staffHandler = require("./handlers/staffHandler.js"),
+  aboutHandler = require("./handlers/aboutHandler"),
   client = new Discord.Client({
     messageCacheLifetime: 30,
     messageSweepInterval: 60,
@@ -24,6 +25,7 @@ client.once("shardReady", () => {
   console.log(`Ready as ${client.user.tag}!`);
   slashCommandHandler(client);
   staffHandler(client);
+  aboutHandler(client);
 });
 
 client.on("message", async message => {
