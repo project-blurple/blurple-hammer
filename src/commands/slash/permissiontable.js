@@ -20,13 +20,13 @@ module.exports = {
     }
   ],
   permissionRequired: 4 // 0 All, 1 Assistant, 2 Helper, 3 Moderator, 4 Exec.Assistant, 5 Executive, 6 Director, 7 Promise#0001
-}
+};
 
 const { allow, deny, none } = {
   allow: "✅",
   deny: "❌",
   none: "✴️"
-}
+};
 
 module.exports.run = async ({ guild, respond }, { channel, roles = "blurple executives, executive assistants, moderators, official blurple bots, utility bots, muted, @everyone", permissions = "view channel, send messages, manage messages, embed links, attach files, connect, speak, change nickname" }) => {
   roles = roles.split(", ").map(r => getRole(r, guild)).filter(r => r);
@@ -53,7 +53,7 @@ module.exports.run = async ({ guild, respond }, { channel, roles = "blurple exec
             if (perms.allow.has(p)) return allow;
             if (perms.deny.has(p)) return deny;
             return none;
-          }).join("|")
+          }).join("|");
         }).join("\n"),
         inline: true
       }
@@ -75,5 +75,5 @@ module.exports.run = async ({ guild, respond }, { channel, roles = "blurple exec
       }
     ],
     color: embedColor
-  })
-}
+  });
+};

@@ -4,8 +4,7 @@ const
   {
     guilds,
     functions: {
-      getPermissionLevel,
-      getUsage
+      getPermissionLevel
     }
   } = require("../constants");
 
@@ -25,9 +24,9 @@ module.exports = message => {
   if (permissionLevel < commandFile.permissionRequired) return message.channel.send("❌ You don't have permission to do this.");
 
   const args = (content.match(/"[^"]+"|[^ ]+/g) || []).map(arg => arg.startsWith("\"") && arg.endsWith("\"") ? arg.slice(1).slice(0, -1) : arg);
-  if (!commandFile.checkArgs(args, permissionLevel)) return message.channel.send(`❌ Invalid arguments. For help, type \`${prefix}help ${commandName}\`.`);
+  if (!commandFile.checkArgs(args, permissionLevel)) return message.channel.send(`❌ Invalid arguments. For help, type \`${config.prefix}help ${commandName}\`.`);
 
-  return commandFile.run(message, args, { permissionLevel, content })
+  return commandFile.run(message, args, { permissionLevel, content });
 };
 
 // loading commands

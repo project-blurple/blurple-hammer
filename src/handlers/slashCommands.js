@@ -12,7 +12,7 @@ module.exports = async client => {
       channel: client.guilds.cache.get(guilds.main).channels.cache.get(interaction.channel_id),
       member: client.guilds.cache.get(guilds.main).members.cache.get(interaction.member.user.id),
       respond: (content = null, hidden = false) => {
-        const data = { flags: hidden ? 64 : 0 }, type = 4;
+        let data = { flags: hidden ? 64 : 0 }, type = 4;
         if (!content) type = 5;
         else if (typeof content == "string") data.content = content;
         else data.embeds = [ content ];
@@ -22,7 +22,7 @@ module.exports = async client => {
       edit: content => client.api.webhooks(client.user.id, interaction.token).messages["@original"].patch({ data: { content }}),
     }, getSlashArgs(interaction.data.options || []));
   });
-}
+};
 
 function getSlashArgs(options) {
   const args = {};
@@ -56,7 +56,7 @@ async function registerCommands(client) {
       ) return true; else return false;
     })
     .map(name => { 
-      const { description, options, permissionRequired } = commands.get(name);
+      const { description, options } = commands.get(name);
       return client.api.applications(client.user.id).guilds(guilds.main).commands.post({ data: { name, description, options } });
     })
   );
@@ -73,7 +73,7 @@ async function registerCommands(client) {
     }).map(({ id, name }) => {
       const { permissionRequired } = commands.get(name);
       return { id, permissions: permissionRoles[permissionRequired].map(role => ({ id: role, type: 1, permission: true }))};
-    })})
+    })});
 }
 
 let prev = [];
@@ -86,7 +86,7 @@ const permissionRoles = [
   roles.executive,
   roles.admin,
   null // god
-].reverse().map(role => prev = [ role, ...prev ].filter(r => r !== null)).reverse()
+].reverse().map(role => prev = [ role, ...prev ].filter(r => r !== null)).reverse();
 
 // loading commands
 const commands = new Map();

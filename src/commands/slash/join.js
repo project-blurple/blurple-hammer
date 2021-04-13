@@ -1,4 +1,4 @@
-const config = require("../../../config.json"), { emojis, oauth, guilds } = require("../../constants"), { oauth: db } = require("../../database"), { calculateAccess } = require("../../handlers/staffHandler.js");
+const { emojis, oauth, guilds } = require("../../constants"), { oauth: db } = require("../../database"), { calculateAccess } = require("../../handlers/staffHandler.js");
 
 module.exports = {
   description: "Join a subserver. Requires OAuth2 set up on your Staff account.",

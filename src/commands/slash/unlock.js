@@ -17,13 +17,13 @@ module.exports.run = async ({ guild, channel, respond, edit }, { all }) => {
     const channels = guild.channels.cache.filter(ch => public.includes(ch.id));
     await respond();
     await Promise.all(channels.map(ch => unlockChannel(ch)));
-    return edit(`${emojis.tickyes} All public channels are now unlocked.`)
+    return edit(`${emojis.tickyes} All public channels are now unlocked.`);
   } else {
-    const success = await lockChannel(channel);
+    const success = await unlockChannel(channel);
     if (success) respond(`${emojis.tickyes} This channel is now unlocked.`);
     else respond(`${emojis.tickno} This channel is not locked!`, true);
   }
-}
+};
 
 async function unlockChannel(channel) {
   let permission = channel.permissionOverwrites.find(po => po.id == channel.guild.roles.everyone);

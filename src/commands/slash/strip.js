@@ -17,7 +17,7 @@ module.exports.run = async ({ client, guild, member: author, respond }, { user =
   if (strip) {
     strips.unset(user);
     member.roles.add(strip, user == member ? "User unstripped" : `${member.user.tag} (${member.user.id}) unstripped`);
-    return respond(`${emojis.tickyes} ${ member.id == author.id ? "You are" : `${member.user.tag} is`} no longer stripped.`, true)
+    return respond(`${emojis.tickyes} ${ member.id == author.id ? "You are" : `${member.user.tag} is`} no longer stripped.`, true);
   } else if (getPermissionLevel({ id: user, client }) >= 1) {
     const roles = member.roles.cache.filter(r => 
       r.id !== serverRoles.muted &&
@@ -27,6 +27,6 @@ module.exports.run = async ({ client, guild, member: author, respond }, { user =
     ).map(r => r.id);
     strips.set(user, roles);
     member.roles.remove(roles, member.id == author.id ? "User stripped" : `${member.user.tag} (${member.user.id}) stripped`);
-    return respond(`${emojis.tickyes} ${ member.id == author.id ? "You are" : `${member.user.tag} is`} now stripped.`, true)
+    return respond(`${emojis.tickyes} ${ member.id == author.id ? "You are" : `${member.user.tag} is`} now stripped.`, true);
   } else return respond(`${emojis.tickno} ${member.id == author.id ? "You" : "This person"} cannot strip.`, true);
-}
+};

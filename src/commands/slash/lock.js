@@ -1,4 +1,4 @@
-const { channels: { public }, emojis, functions: { lockMessage }, guilds } = require("../../constants");
+const { channels: { public }, emojis, functions: { lockMessage } } = require("../../constants");
 
 module.exports = {
   description: "Lock the current channel, or all the public channels.",
@@ -17,13 +17,13 @@ module.exports.run = async ({ guild, channel, member, respond, edit }, { all }) 
     const channels = guild.channels.cache.filter(ch => public.includes(ch.id));
     await respond();
     await Promise.all(channels.map(ch => lockChannel(ch, member)));
-    return edit(`${emojis.tickyes} All public channels are now locked.`)
+    return edit(`${emojis.tickyes} All public channels are now locked.`);
   } else {
     const success = await lockChannel(channel, member);
     if (success) respond(`${emojis.tickyes} This channel is now locked.`);
     else respond(`${emojis.tickno} This channel is already locked!`, true);
   }
-}
+};
 
 async function lockChannel(channel, author) {
   let permission = channel.permissionOverwrites.find(po => po.id == channel.guild.roles.everyone);
