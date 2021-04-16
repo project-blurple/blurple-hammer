@@ -1,16 +1,20 @@
-const { guilds } = require("../constants"), fs = require("fs");
-const roles = require("../constants/roles");
+const { guilds, functions: { getPermissionLevel }, roles, emojis } = require("../constants"), fs = require("fs");
 
 module.exports = async client => {
   registerCommands(client).then(() => console.log("Slash Commands have been registered."));
 
   client.ws.on("INTERACTION_CREATE", async interaction => {
     const commandFile = require(`../commands/slash/${interaction.data.name}.js`);
+
+    const
+      member = client.guilds.cache.get(guilds.main).members.cache.get(interaction.member.user.id),
+      permissionLevel = getPermissionLevel(member);
+    if (commandFile.permissionRequired > permissionLevel) return client.api.interactions(interaction.id, interaction.token).callback.post({ data: { type: 4, data: { content: `${emojis.tickno} You don't have permission to do this.`, flags: 64 } }});
+
     return commandFile.run({
-      client, interaction,
-      guild: client.guilds.cache.get(guilds.main),
-      channel: client.guilds.cache.get(guilds.main).channels.cache.get(interaction.channel_id),
-      member: client.guilds.cache.get(guilds.main).members.cache.get(interaction.member.user.id),
+      client, interaction, member,
+      guild: member.guild,
+      channel: member.guild.channels.cache.get(interaction.channel_id),
       respond: (content = null, hidden = false) => {
         let data = { flags: hidden ? 64 : 0 }, type = 4;
         if (!content) type = 5;
