@@ -15,6 +15,10 @@ module.exports = client => {
           {
             id: message.guild.roles.everyone.id,
             deny: [ "VIEW_CHANNEL" ]
+          },
+          {
+            id: client.user.id,
+            allow: [ "VIEW_CHANNEL", "SEND_MESSAGES" ]
           }
         ]);
       } catch(e) {/* something went wrong */}
