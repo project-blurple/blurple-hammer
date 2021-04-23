@@ -57,7 +57,7 @@ module.exports = client => {
       });
       await message.channel.send({
         embed: {
-          description: Object.keys(navigation).map(name => `• [${name}](<${navigation[name]}>)`).join("\n\n"),
+          description: Object.keys(navigation).map(name => `• [${name}](<${navigation[name]}>)`).join("\n"),
           color: 0x7289DA
         }
       });
