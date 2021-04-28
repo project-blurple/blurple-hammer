@@ -16,9 +16,6 @@ module.exports = {
   },
   app: express(),
   oauth: new DiscordOAuth2(config.oauth),
-};
-
-Object.assign(module.exports, {
   channels: require("./channels"),
   emojis: require("./emojis"),
   functions: require("./functions"),
@@ -27,6 +24,6 @@ Object.assign(module.exports, {
   resolvers: require("./resolvers"),
   restrictions: require("./restrictions"),
   roles: require("./roles")
-});
+};
 
 module.exports.app.listen(config.port);
