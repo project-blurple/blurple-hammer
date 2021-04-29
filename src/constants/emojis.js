@@ -1,4 +1,5 @@
 module.exports = {
+  blank: "<:blank:831188041862873149>",
   loading: "<a:loading:572202235342225418>",
   blurple: "<:blurple:673265867840290859>",
   thumbsup: "<:thumbsup:673265868301533194>",

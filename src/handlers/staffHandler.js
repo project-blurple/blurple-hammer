@@ -1,4 +1,4 @@
-const config = require("../../config.json"), { app, guilds, functions: { getPermissionLevel, flat, onlyUnique }, oauth, emojis } = require("../constants"), { oauth: db, subserveraccessoverrides: overrides } = require("../database");
+const config = require("../../config.json"), { app, guilds, functions: { getPermissionLevel, flat, onlyUnique }, oauth, emojis } = require("../constants"), { oauth: db, subserveraccessoverrides: overrides, strips } = require("../database"), path = require("path");
 
 module.exports = client => {
   setInterval(async () => {
@@ -9,7 +9,7 @@ module.exports = client => {
     for (const id of users) await checkMemberAccess(id, client);
   }, 60000);
 
-  client.on("guildMemberUpdate", (oldMember, member) => {
+  client.on("guildMemberUpdate", async (oldMember, member) => {
     if (
       member.guild.id == guilds.main &&
       (
@@ -23,14 +23,14 @@ module.exports = client => {
     if (member.guild.id !== guilds.main) checkMemberAccess(member.user.id, client);
   });
 
-  app.get("/oauth-callback", async (req, res) => {
+  app.get(config.oauthPath, async (req, res) => {
     if (req.query.code) {
       const { access_token, refresh_token } = await oauth.tokenRequest({
         code: req.query.code,
         scope: "identify guilds.join",
         grantType: "authorization_code"
       }).catch(e => { console.log(e); return {}; });
-      if (!access_token) return res.redirect("https://www.youtube.com/watch?v=NhyE3errfnI");
+      if (!access_token) return res.status(500).sendFile(path.join(__dirname, "../web/auth-failure.html"));
       
       const { id } = await oauth.getUser(access_token);
       db.set(id, { access_token, refresh_token });
@@ -38,8 +38,8 @@ module.exports = client => {
       client.users.cache.get(id).send(`${emojis.tada} Your OAuth2 has successfully been linked.`);
       checkMemberAccess(id, client);
 
-      return res.status(200).send("okbye<script>window.close();</script>");
-    } else res.redirect("https://www.youtube.com/watch?v=NhyE3errfnI");
+      return res.status(200).sendFile(path.join(__dirname, "../web/auth-success.html"));
+    } else res.redirect(`${client.options.http.api}/oauth2/authorize?client_id=${client.user.id}&redirect_uri=${encodeURI(config.oauth.redirectUri)}&response_type=code&scope=identify%20guilds.join`);
   });
 };
 
@@ -75,7 +75,11 @@ async function calculateAccess(id, subserver, client) {
   const
     mainGuild = client.guilds.cache.get(guilds.main),
     mainMember = mainGuild.members.cache.get(id),
-    mainRoles = [...mainMember.roles.cache.map(r => r.id).filter(id => Object.keys(subserver.staffAccess).includes(id)), mainMember.user.id],
+    mainRoles = [
+      ...mainMember.roles.cache.map(r => r.id).filter(id => Object.keys(subserver.staffAccess).includes(id)),
+      ...(await strips.get(id) || []),
+      mainMember.user.id
+    ],
 
     guild = client.guilds.cache.get(subserver.id),
     member = guild.members.cache.get(id),
