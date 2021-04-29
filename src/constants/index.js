@@ -15,8 +15,8 @@ module.exports = {
     minecraft: require("./subservers/minecraft")
   },
   app: express(),
-  oauth: new DiscordOAuth2(config.oauth),
-};
+  oauth: new DiscordOAuth2(config.oauth)
+}
 
 Object.assign(module.exports, {
   channels: require("./channels"),
