@@ -3,21 +3,13 @@ const
   config = require("../config.json"),
   {
     roles,
-    regex: {
-      linkRegex
-    },
-    functions: {
-      getPermissionLevel
-    },
     emojis
   } = require("./constants"),
-  linkScanHandler = require("./handlers/linkScan.js"),
+  commandHandler = require("./handlers/commands.js"),
+  slashCommandHandler = require("./handlers/slashCommands.js"),
   dutyPingHandler = require("./handlers/dutyPing.js"),
   staffHandler = require("./handlers/staffHandler.js"),
-  {
-    processCommand,
-    setupSlashCommands
-  } = require("./handlers/commands.js"),
+  aboutHandler = require("./handlers/aboutHandler"),
   client = new Discord.Client({
     messageCacheLifetime: 30,
     messageSweepInterval: 60,
@@ -30,10 +22,10 @@ const
   });
 
 client.once("shardReady", () => {
-  console.log(client.guilds.cache.map(g => g.name));
   console.log(`Ready as ${client.user.tag}!`);
-  setupSlashCommands(client);
+  slashCommandHandler(client);
   staffHandler(client);
+  aboutHandler(client);
 });
 
 client.on("message", async message => {
@@ -48,7 +40,7 @@ client.on("message", async message => {
   if (sod) await dutyPingHandler(message, sod);
 
   // commands handler
-  if (message.content.startsWith(config.prefix) || message.content.match(`^<@!?${client.user.id}> `)) await processCommand(message);
+  if (message.content.startsWith(config.prefix) || message.content.match(`^<@!?${client.user.id}> `)) await commandHandler(message);
   else if (message.content.match(`^<@!?${client.user.id}>`)) await message.react(emojis.ids.wave);
 });
 
