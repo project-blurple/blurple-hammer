@@ -30,28 +30,28 @@ module.exports = {
 };
 
 module.exports.run = async ({ client, member, respond }, { staff, subserver: acronym, force = false }) => {
-  const tokens = await db.get(staff.user.id) || {};
+  const tokens = await db.get(staff) || {};
 
   oauth.tokenRequest({
     refreshToken: tokens.refresh_token,
     grantType: "refresh_token",
     scope: ["identify", "guilds.join"]
   }).then(async ({ access_token, refresh_token }) => {
-    db.set(staff.user.id, { access_token, refresh_token });
+    db.set(staff, { access_token, refresh_token });
 
     const subserver = Object.values(guilds).find(g => typeof g !== "string" && g.acronym.toLowerCase() == acronym),
-      { access, member: subMember, addRoles } = await calculateAccess(staff.user.id, Object.values(guilds).find(g => typeof g !== "string" && g.acronym.toLowerCase() == acronym), client);
+      { access, member: subMember, addRoles } = await calculateAccess(staff, Object.values(guilds).find(g => typeof g !== "string" && g.acronym.toLowerCase() == acronym), client);
 
     if (subMember) return respond(`${emojis.tickno} They are already in this subserver.`);
     if (!access && !force) return respond(`${emojis.tickno} They do not have access to this subserver.`);
 
-    if (force) accessoverrides.set(`${subserver.id};${staff.user.id}`, member.user.id);
+    if (force) accessoverrides.set(`${subserver.id};${staff}`, member.user.id);
 
     oauth.addMember({
       accessToken: access_token,
       botToken: client.token,
       guildId: subserver.id,
-      userId: staff.user.id,
+      userId: staff,
       roles: addRoles
     }).then(() => {
       respond(`${emojis.tickyes} They are now added to **${subserver.name}**.`);
