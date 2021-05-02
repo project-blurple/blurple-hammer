@@ -23,10 +23,11 @@ module.exports = [
           inline: true
         },
         {
-          name: "Blurple Blob Emoji Servers",
+          name: "​", // zero width space
           value: [
-            "**1:** [discord.gg/9hPpBEY](https://discord.gg/9hPpBEY)",
-            "**2:** [discord.gg/AqggbcT](https://discord.gg/AqggbcT)"
+            "**Server Invite:** [discord.gg/qEmKyCf](https://discord.gg/qEmKyCf)",
+            "**Blob Server 1:** [discord.gg/9hPpBEY](https://discord.gg/9hPpBEY)",
+            "**Blob Server 2:** [discord.gg/AqggbcT](https://discord.gg/AqggbcT)"
           ].join("\n"),
           inline: true
         }
