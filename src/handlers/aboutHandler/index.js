@@ -1,6 +1,6 @@
 const contents = require("./contents.js");
 
-const channel_id = "831482789537775617";
+const channel_id = "412755378732793868";
 
 module.exports = client => {
   client.on("message", async message => {
