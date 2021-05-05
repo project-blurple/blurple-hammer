@@ -29,7 +29,6 @@ async function unlockChannel(channel) {
   let permission = channel.permissionOverwrites.find(po => po.id == channel.guild.roles.everyone);
   if (permission && !permission.deny.has("SEND_MESSAGES")) return false;
   
-  await channel.edit({ topic: channel.topic.split("\n\n")[0] });
   await channel.updateOverwrite(channel.guild.roles.everyone, { "SEND_MESSAGES": null });
   return true;
 }
