@@ -99,7 +99,7 @@ module.exports = [
             "**<@&799239965149102161>** » Users who donated an enormous value to be given to Blurple users.",
             "**<@&799239968190890004>** » Given to users who kindly donated prizes during the event.",
             "**<@&431934652153069569>** » Users who were part of the early development of this server, as well as those who were previously in the staff team.",
-            "**<@&799240274849169428>** » Blurple server owners who are celebrating with us and joined the server roster in blurple server list.",
+            "**<@&799240274849169428>** » Blurple server owners and admins who are celebrating with us and joined the server roster in blurple server list.",
             "**<@&799240275234390048>** » Blurple users who are celebrating with us by setting their profile picture to a Blurple-colored picture.",
             "**<@&799240276538687509>** » Blurple users who have collected paint and unlocked the mighty role.",
             "**<@&799240276542619649>** » Blurple users who have shown their artistic skills in the Blurple Canvas.",
