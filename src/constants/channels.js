@@ -7,4 +7,5 @@ module.exports = {
   ],
   afkVoice: "707945438828822579",
   backupModerationLog: "435711906867576842",
+  manualCheck: "840177344013664256",
 };

@@ -3,13 +3,15 @@ const
   config = require("../config.json"),
   {
     roles,
-    emojis
+    emojis,
+    channels
   } = require("./constants"),
   commandHandler = require("./handlers/commands.js"),
   slashCommandHandler = require("./handlers/slashCommands.js"),
   dutyPingHandler = require("./handlers/dutyPing.js"),
   staffHandler = require("./handlers/staffHandler.js"),
   aboutHandler = require("./handlers/aboutHandler"),
+  manualcheckHandler = require("./handlers/manualcheckHandler.js"),
   client = new Discord.Client({
     messageCacheLifetime: 30,
     messageSweepInterval: 60,
@@ -26,6 +28,7 @@ client.once("shardReady", () => {
   slashCommandHandler(client);
   staffHandler(client);
   aboutHandler(client);
+  manualcheckHandler.setupEvents(client);
 });
 
 client.on("message", async message => {
@@ -34,6 +37,8 @@ client.on("message", async message => {
     message.type !== "DEFAULT" ||
     message.author.bot
   ) return;
+
+  if (message.channel.id == channels.manualCheck) return manualcheckHandler(message);
 
   // duty ping handler
   const sod = message.mentions.roles.find(r => r.id == roles.staffonduty);
