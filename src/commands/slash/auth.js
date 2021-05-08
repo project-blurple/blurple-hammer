@@ -16,7 +16,7 @@ module.exports.run = async ({ client, member, respond }) => {
     scope: [ "identify", "guilds.join" ]
   }).then(({ access_token, refresh_token }) => {
     db.set(member.user.id, { access_token, refresh_token });
-    respond(`${emojis.tickyes} Your authentication is working! Join subservers with \`/join\``);
+    respond(`${emojis.tickyes} Your authentication is working! Join subservers with \`/joinsub\``);
     checkMemberAccess(member.user.id, client);
   }).catch(() => respond(`${emojis.tickno} Your authentication is not working! Click this link and reauthorize me: <${config.authLink}>`));
 };
