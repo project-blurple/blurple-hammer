@@ -34,7 +34,7 @@ module.exports = async client => {
         .replace(/{{TITLE}}/g, "Failure")
         .replace(/{{MESSAGE}}/g, "We could not verify you. Please try again.")
       );
-      const user = await oauth.getUser(access_token), avatar = `${client.options.http.cdn}/avatars/${user.id}/${user.avatar}.${user.avatar.startsWith("a_") ? "gif" : "png"}?size=64`;
+      const user = await oauth.getUser(access_token), avatar = getAvatar(user, client);
       if (await appealbanned.get(user.id)) return res.status(403).send(alertFile
         .replace(/{{TITLE}}/g, "Forbidden")
         .replace(/{{MESSAGE}}/g, "You have been banned from using the appeal system. Please contact BlurpleMail or promise@projectblurple.com if you feel this was an error.")
@@ -55,7 +55,7 @@ module.exports = async client => {
         title: `${req.query.casetype.toUpperCase()} - #${req.query.caseid || "???"}`,
         author: {
           name: user ? `${user.username}#${user.discriminator} (${user.id})` : "Unknown User",
-          icon_url: user ? `${client.options.http.cdn}/avatars/${user.id}/${user.avatar}.${user.avatar.startsWith("a_") ? "gif" : "png"}?size=64` : null
+          icon_url: user ? getAvatar(user, client) : null
         },
         fields: [
           ...[
@@ -150,3 +150,8 @@ module.exports = async client => {
     }
   });
 };
+
+const getAvatar = (user, client) => 
+  user.avatar ?
+    `${client.options.http.cdn}/avatars/${user.id}/${user.avatar}.${user.avatar.startsWith("a_") ? "gif" : "png"}?size=64` :
+    `${client.options.http.cdn}/embed/avatars/${user.discriminator % 5}.png?size=64`; // user has no avatar
