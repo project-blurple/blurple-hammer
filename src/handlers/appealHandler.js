@@ -1,10 +1,8 @@
-const config = require("../../config.json"), { app, oauth, guilds, channels, emojis } = require("../constants"), { appeals, appealbanned } = require("../database"), fs = require("fs"), { join } = require("path");
+const config = require("../../config.json"), { app, oauth, guilds, channels, emojis } = require("../constants"), { appeals, appealbanned, tokenToUser } = require("../database"), fs = require("fs"), { join } = require("path");
 
 const
   formFile = fs.readFileSync(join(__dirname, "../web/appeals/form.html"), "utf8").replace(/{{PATH}}/g, config.appeal.path),
   alertFile = fs.readFileSync(join(__dirname, "../web/appeals/alert.html"), "utf8").replace(/{{PATH}}/g, config.appeal.path);
-
-const tokenToUser = new Map();
 
 const
   caseEmojis = {
@@ -49,7 +47,7 @@ module.exports = async client => {
     }
     else if (req.query.token) {
       console.log(req.query);
-      const user = tokenToUser.get(req.query.token);
+      const user = await tokenToUser.get(req.query.token);
 
       const embed = {
         title: `${req.query.casetype.toUpperCase()} - #${req.query.caseid || "???"}`,
@@ -84,7 +82,7 @@ module.exports = async client => {
 
       if (!user) res.redirect(config.appeal.link + "?failure=1");
       else {
-        tokenToUser.delete(req.query.token);
+        tokenToUser.unset(req.query.token);
         res.redirect(config.appeal.link + "?failure=0");
       }
 

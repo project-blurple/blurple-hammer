@@ -3,7 +3,7 @@ const database = require("quick-store");
 module.exports = {};
 
 for (const db of [
-  "strips", "oauth", "subserveraccessoverrides", "timezones", "statistics", "appeals", "appealbanned"
+  "strips", "oauth", "subserveraccessoverrides", "timezones", "statistics", "appeals", "appealbanned", "tokenToUser"
 ]) {
   const qsdb = database(`${__dirname}/${db}.json`);
   module.exports[db] = {
