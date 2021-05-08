@@ -12,7 +12,7 @@ module.exports = {
   permissionRequired: 2 // 0 All, 1 Assistant, 2 Helper, 3 Moderator, 4 Exec.Assistant, 5 Executive, 6 Director, 7 Promise#0001
 };
 
-module.exports.run = async ({ guild, channel, member, respond, edit }, { all }) => {
+module.exports.run = async ({ guild, channel, respond, edit }, { all }) => {
   if (all) {
     const channels = guild.channels.cache.filter(ch => public.includes(ch.id));
     await respond();

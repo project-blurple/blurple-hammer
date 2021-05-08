@@ -14,4 +14,4 @@ module.exports = {
   permissionRequired: 2 // 0 All, 1 Assistant, 2 Helper, 3 Moderator, 4 Exec.Assistant, 5 Executive, 6 Director, 7 Promise#0001
 };
 
-module.exports.run = ({ respond }, { type }) => respond(gifs[type][Math.floor(Math.random()*gifs[type].length)])
+module.exports.run = ({ respond }, { type }) => respond(gifs[type][Math.floor(Math.random()*gifs[type].length)]);

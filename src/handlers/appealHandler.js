@@ -18,7 +18,7 @@ const
     accepted: 0x2ecc71,
     rejected: 0xe74c3c,
     default: 0xf1c40f
-  }
+  };
 
 module.exports = async client => {
   const guild = client.guilds.cache.get(guilds.main), appealChannel = guild.channels.cache.get(channels.appeals);
@@ -33,8 +33,8 @@ module.exports = async client => {
       if (!access_token) return res.status(500).send(alertFile
         .replace(/{{TITLE}}/g, "Failure")
         .replace(/{{MESSAGE}}/g, "We could not verify you. Please try again.")
-      )
-      const user = await oauth.getUser(access_token), avatar = `${client.options.http.cdn}/avatars/${user.id}/${user.avatar}.${user.avatar.startsWith("a_") ? "gif" : "png"}?size=64`
+      );
+      const user = await oauth.getUser(access_token), avatar = `${client.options.http.cdn}/avatars/${user.id}/${user.avatar}.${user.avatar.startsWith("a_") ? "gif" : "png"}?size=64`;
       if (await appealbanned.get(user.id)) return res.status(403).send(alertFile
         .replace(/{{TITLE}}/g, "Forbidden")
         .replace(/{{MESSAGE}}/g, "You have been banned from using the appeal system. Please contact BlurpleMail or promise@projectblurple.com if you feel this was an error.")
@@ -48,7 +48,7 @@ module.exports = async client => {
       );
     }
     else if (req.query.token) {
-      console.log(req.query)
+      console.log(req.query);
       const user = tokenToUser.get(req.query.token);
 
       const embed = {
@@ -77,12 +77,12 @@ module.exports = async client => {
           }
         ],
         color: caseColors.default
-      }
+      };
 
       const m = await appealChannel.send({ embed });
-      appeals.set(m.id, { user: user.id, embed, content: "", log: [] })
+      appeals.set(m.id, { user: user.id, embed, content: "", log: [] });
 
-      if (!user) res.redirect(config.appeal.link + "?failure=1")
+      if (!user) res.redirect(config.appeal.link + "?failure=1");
       else {
         tokenToUser.delete(req.query.token);
         res.redirect(config.appeal.link + "?failure=0");
@@ -93,15 +93,15 @@ module.exports = async client => {
       return res.send(alertFile
         .replace(/{{TITLE}}/g, "Success!")
         .replace(/{{MESSAGE}}/g, "We have received your appeal. If you're available on DMs thorugh the server, we will contact you via BlurpleMail. Otherwise, we will contact you via e-mail.")
-      )
+      );
     } else if (req.query.failure) {
       return res.send(alertFile
         .replace(/{{TITLE}}/g, "Failure")
         .replace(/{{MESSAGE}}/g, "An unknown error occurred from our end. Please try again later. If the issue persists, contact BlurpleMail. If you're banned, contact promise@projectblurple.com from the mail you tried to appeal with, and we will sort it out with you :)")
-      )
+      );
     } else return res.redirect(`${client.options.http.api}/oauth2/authorize?client_id=${client.user.id}&redirect_uri=${encodeURI(config.appeal.link)}&response_type=code&scope=identify%20email`);
-  })
-  app.get("/appeal.css", (_, res) => res.sendFile(join(__dirname, "../web/appeals/appeal.css")))
+  });
+  app.get("/appeal.css", (_, res) => res.sendFile(join(__dirname, "../web/appeals/appeal.css")));
 
   client.on("messageReactionAdd", async (reaction, user) => {
     if (reaction.message.partial) await reaction.message.fetch();
@@ -116,37 +116,37 @@ module.exports = async client => {
         appeal.content = "";
         if (reaction.emoji.name == caseEmojis.accept) {
           appeal.embed.color = caseColors.accepted;
-          appeal.log.push(`Accepted by ${user} (${user.id})`)
+          appeal.log.push(`Accepted by ${user} (${user.id})`);
         } else if (reaction.emoji.name == caseEmojis.claim) {
           appeal.embed.color = caseColors.default;
           appeal.content = user.toString();
-          appeal.log.push(`Claimed by ${user} (${user.id})`)
+          appeal.log.push(`Claimed by ${user} (${user.id})`);
         } else if (reaction.emoji.name == caseEmojis.reject) {
           appeal.embed.color = caseColors.rejected;
-          appeal.log.push(`Rejected by ${user} (${user.id})`)
+          appeal.log.push(`Rejected by ${user} (${user.id})`);
         } else if (reaction.emoji.name == caseEmojis.reset) {
           appeal.embed.color = caseColors.default;
-          appeal.log.push(`Reset by ${user} (${user.id})`)
+          appeal.log.push(`Reset by ${user} (${user.id})`);
         } else if (reaction.emoji.name == caseEmojis.trash) {
           update = false;
           reaction.message.delete();
-          appeal.log.push(`Deleted by ${user} (${user.id})`)
+          appeal.log.push(`Deleted by ${user} (${user.id})`);
         } else if (reaction.emoji.name == caseEmojis.ban) {
           update = false;
           reaction.message.delete();
-          appeal.log.push(`Banned from appeals by ${user} (${user.id})`)
+          appeal.log.push(`Banned from appeals by ${user} (${user.id})`);
           appealbanned.set(appeal.user, true);
         }
 
-        appeals.set(reaction.message.id, appeal)
+        appeals.set(reaction.message.id, appeal);
 
         if (update) {
           const e = JSON.parse(JSON.stringify(appeal.embed));
-          e.fields.find(f => f.name == "Appeal log").value = appeal.log.map(l => `• ${l}`).join("\n")
-          reaction.message.edit(appeal.content, { embed: e })
+          e.fields.find(f => f.name == "Appeal log").value = appeal.log.map(l => `• ${l}`).join("\n");
+          reaction.message.edit(appeal.content, { embed: e });
           reaction.users.remove(user);
         }
       }
     }
-  })
-}
+  });
+};

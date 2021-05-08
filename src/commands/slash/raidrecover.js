@@ -38,7 +38,7 @@ module.exports.run = async ({ channel, member, respond, edit }, { first_message_
       m.content.includes(keyword)
     ));
     if (messages.size) {
-      users.push(...messages.map(m => m.member.id))
+      users.push(...messages.map(m => m.member.id));
       await channel.bulkDelete(messages);
       amount += messages.size;
     } else processing = false;

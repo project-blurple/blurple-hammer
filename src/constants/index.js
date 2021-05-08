@@ -16,7 +16,7 @@ module.exports = {
   },
   app: express(),
   oauth: new DiscordOAuth2(config.oauth)
-}
+};
 
 Object.assign(module.exports, {
   channels: require("./channels"),

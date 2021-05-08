@@ -9,7 +9,7 @@ module.exports = async message => {
   await m.react(check);
   await m.react(cross);
   message.delete();
-}
+};
 
 module.exports.setupEvents = async client => client.on("messageReactionAdd", (reaction, user) => {
   if (reaction.message.channel.id == manualCheck && !user.bot && getPermissionLevel(user)) {
@@ -17,6 +17,6 @@ module.exports.setupEvents = async client => client.on("messageReactionAdd", (re
       const member = reaction.message.guild.members.cache.get(reaction.message.content);
       if (member) member.roles.add(roles.blurpleusers);
     }
-    reaction.message.delete()
+    reaction.message.delete();
   }
-})
+});

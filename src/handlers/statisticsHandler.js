@@ -12,5 +12,5 @@ module.exports = async client => {
       adventurers: guild.roles.cache.get(roles.adventurers).members.size,
       messages
     });
-  })
-}
+  });
+};

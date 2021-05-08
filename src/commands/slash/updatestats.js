@@ -15,5 +15,5 @@ module.exports = {
 
 module.exports.run = async ({ respond }, { message_count }) => {
   await statistics.set("messages", message_count);
-  respond(`${emojis.tickyes} Done.`, true)
+  respond(`${emojis.tickyes} Done.`, true);
 };

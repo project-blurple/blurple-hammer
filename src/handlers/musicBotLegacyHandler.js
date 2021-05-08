@@ -12,5 +12,5 @@ module.exports = async client => {
       await client.api.guilds(guilds.main).members(bot).patch({ data: { channel_id: channels.eventsVoice } });
       client.api.guilds(guilds.main)["voice-states"](bot).patch({ data: { channel_id: channels.eventsVoice, suppress: false } }); 
     }
-  })
-}
+  });
+};
