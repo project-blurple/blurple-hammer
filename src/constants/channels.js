@@ -10,4 +10,5 @@ module.exports = {
   manualCheck: "840177344013664256",
   musicManagingVoice: "840551859654623282",
   eventsVoice: "837822812194078740",
+  appeals: "840618237616062464"
 };

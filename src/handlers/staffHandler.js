@@ -23,12 +23,13 @@ module.exports = client => {
     if (member.guild.id !== guilds.main) checkMemberAccess(member.user.id, client);
   });
 
-  app.get(config.oauthPath, async (req, res) => {
+  app.get(config.auth.path, async (req, res) => {
     if (req.query.code) {
       const { access_token, refresh_token } = await oauth.tokenRequest({
         code: req.query.code,
         scope: "identify guilds.join",
-        grantType: "authorization_code"
+        grantType: "authorization_code",
+        redirectUri: config.auth.link
       }).catch(e => { console.log(e); return {}; });
       if (!access_token) return res.status(500).sendFile(path.join(__dirname, "../web/auth-failure.html"));
       
@@ -39,7 +40,7 @@ module.exports = client => {
       checkMemberAccess(id, client);
 
       return res.status(200).sendFile(path.join(__dirname, "../web/auth-success.html"));
-    } else res.redirect(`${client.options.http.api}/oauth2/authorize?client_id=${client.user.id}&redirect_uri=${encodeURI(config.oauth.redirectUri)}&response_type=code&scope=identify%20guilds.join`);
+    } else res.redirect(`${client.options.http.api}/oauth2/authorize?client_id=${client.user.id}&redirect_uri=${encodeURI(config.auth.link)}&response_type=code&scope=identify%20guilds.join`);
   });
 };
 
