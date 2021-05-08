@@ -16,7 +16,7 @@ module.exports.run = async ({ guild, channel, member, respond, edit }, { all }) 
   if (all) {
     const channels = guild.channels.cache.filter(ch => public.includes(ch.id));
     await respond();
-    await Promise.all(channels.map(ch => lockChannel(ch, member)));
+    await Promise.all(channels.map(lockChannel));
     return edit(`${emojis.tickyes} All public channels are now locked.`);
   } else {
     const success = await lockChannel(channel);

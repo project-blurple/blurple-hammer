@@ -55,7 +55,7 @@ module.exports = async client => {
         title: `${req.query.casetype.toUpperCase()} - #${req.query.caseid || "???"}`,
         author: {
           name: user ? `${user.username}#${user.discriminator} (${user.id})` : "Unknown User",
-          icon_url: `${client.options.http.cdn}/avatars/${user.id}/${user.avatar}.${user.avatar.startsWith("a_") ? "gif" : "png"}?size=64`
+          icon_url: user ? `${client.options.http.cdn}/avatars/${user.id}/${user.avatar}.${user.avatar.startsWith("a_") ? "gif" : "png"}?size=64` : null
         },
         fields: [
           ...[
@@ -104,7 +104,7 @@ module.exports = async client => {
   app.get("/appeal.css", (_, res) => res.sendFile(join(__dirname, "../web/appeals/appeal.css")))
 
   client.on("messageReactionAdd", async (reaction, user) => {
-    if (!reaction.message || reaction.message.partial) await reaction.message.fetch();
+    if (reaction.message.partial) await reaction.message.fetch();
     if (
       reaction.message.channel.id == channels.appeals &&
       !user.bot &&

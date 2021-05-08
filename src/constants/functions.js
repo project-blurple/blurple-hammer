@@ -1,4 +1,4 @@
-const config = require("../../config.json"), roles = require("./roles.js"), { guilds } = require("./"), emojis = require("./emojis.js");
+const config = require("../../config.json"), roles = require("./roles.js"), { guilds } = require("./");
 
 module.exports = {
   onlyUnique: (value, index, self) => self.indexOf(value) == index,

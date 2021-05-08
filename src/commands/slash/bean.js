@@ -1,5 +1,3 @@
-const { emojis } = require("../../constants");
-
 module.exports = {
   description: "Bena someone",
   options: [
