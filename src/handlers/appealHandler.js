@@ -59,7 +59,7 @@ module.exports = async client => {
           ...[
             req.query.caseid ? { name: "See case info", value: `\`!case ${req.query.caseid}\``, inline: true } : null,
             user && user.id ? { name: "See all cases", value: `\`!cases ${user.id}\``, inline: true } : null,
-            user && user.email { name: "Email", value: user.email + "\n" + emojis.blank, inline: true } : null
+            user && user.email ? { name: "Email", value: user.email + "\n" + emojis.blank, inline: true } : null
           ].filter(f => f),
           {
             name: "User Statement",
