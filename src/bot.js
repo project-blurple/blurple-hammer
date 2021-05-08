@@ -12,6 +12,7 @@ const
   staffHandler = require("./handlers/staffHandler.js"),
   aboutHandler = require("./handlers/aboutHandler"),
   manualcheckHandler = require("./handlers/manualcheckHandler.js"),
+  musicBotLegacyHandler = require("./handlers/musicBotLegacyHandler.js"),
   client = new Discord.Client({
     messageCacheLifetime: 30,
     messageSweepInterval: 60,
@@ -29,6 +30,7 @@ client.once("shardReady", () => {
   staffHandler(client);
   aboutHandler(client);
   manualcheckHandler.setupEvents(client);
+  musicBotLegacyHandler(client);
 });
 
 client.on("message", async message => {
