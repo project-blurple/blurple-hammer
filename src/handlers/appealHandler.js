@@ -58,8 +58,8 @@ module.exports = async client => {
         fields: [
           ...[
             req.query.caseid ? { name: "See case info", value: `\`!case ${req.query.caseid}\``, inline: true } : null,
-            { name: "See all cases", value: `\`!cases ${user.id}\``, inline: true },
-            { name: "Email", value: user.email + "\n" + emojis.blank, inline: true }
+            user && user.id ? { name: "See all cases", value: `\`!cases ${user.id}\``, inline: true } : null,
+            user && user.email { name: "Email", value: user.email + "\n" + emojis.blank, inline: true } : null
           ].filter(f => f),
           {
             name: "User Statement",
@@ -78,7 +78,7 @@ module.exports = async client => {
       };
 
       const m = await appealChannel.send({ embed });
-      appeals.set(m.id, { user: user.id, embed, content: "", log: [] });
+      appeals.set(m.id, { user: user && user.id ? user.id : null, embed, content: "", log: [] });
 
       if (!user) res.redirect(config.appeal.link + "?failure=1");
       else {
