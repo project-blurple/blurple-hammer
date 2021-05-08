@@ -95,7 +95,7 @@ module.exports = async client => {
     } else if (req.query.failure) {
       return res.send(alertFile
         .replace(/{{TITLE}}/g, "Failure")
-        .replace(/{{MESSAGE}}/g, "An unknown error occurred from our end. Please try again later. If the issue persists, contact BlurpleMail. If you're banned, contact promise@projectblurple.com from the mail you tried to appeal with, and we will sort it out with you :)")
+        .replace(/{{MESSAGE}}/g, "An unknown error occurred from our end. Please contact BlurpleMail. If you're banned, contact promise@projectblurple.com from the mail you tried to appeal with, and we will sort it out with you :)")
       );
     } else return res.redirect(`${client.options.http.api}/oauth2/authorize?client_id=${client.user.id}&redirect_uri=${encodeURI(config.appeal.link)}&response_type=code&scope=identify%20email`);
   });
