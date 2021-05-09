@@ -9,7 +9,10 @@ module.exports = {
   star: "<:star:840901011274989588>",
   sparkle: "<:sparkle:840901008204234772>",
   hammer: "<:hammer:840901015317250058>",
-  blank: "<:blank:840901752642338837>"
+  blank: "<:blank:840901752642338837>",
+  weewoo: "<a:weewoo:840901273011486720>",
+  love: "<a:love:840901274342129674>",
+  loading: "<a:loading:840901275339587604>"
 };
 
 module.exports.ids = {};
