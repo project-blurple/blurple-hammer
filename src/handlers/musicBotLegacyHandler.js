@@ -1,4 +1,4 @@
-const config = require("../../config.json"), { guilds, channels } = require("../constants");
+const { guilds, channels } = require("../constants");
 
 const bot = "837825364540915762";
 
