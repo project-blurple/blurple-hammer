@@ -26,7 +26,7 @@ fs.readdir("./src/handlers", (err, files) => err ? console.log(err) : handlers.p
 
 client.once("shardReady", () => {
   console.log(`Ready as ${client.user.tag}!`);
-  handlers.forEach(handler => typeof handler !== "undefined" ? handler(client) : null);
+  handlers.forEach(handler => typeof handler == "function" ? handler(client) : null);
 });
 
 client.on("message", async message => {
