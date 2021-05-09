@@ -53,7 +53,7 @@ async function checkMemberAccess(id, client) {
       const 
         subGuild = client.guilds.cache.get(subserver.id),
         subMember = subGuild.members.cache.get(id);
-      if (subMember && !subMember.user.bot) console.log("Kick member", subMember.user.tag, "from server", subGuild.name, "because not in main server");
+      if (subMember && !subMember.user.bot) console.log("Kick member", subMember.user.tag, "from server", subGuild.name, "because not in main server", await subMember.kick("Not in main server").then(() => "success").catch(() => "failure"));
     }
   } else if (!member.user.bot) {
     for (const subserver of Object.values(guilds).filter(p => typeof p !== "string")) {
