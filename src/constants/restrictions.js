@@ -1,9 +1,4 @@
 module.exports = [
-//{
-//  name: "nickname",
-//  description: "Change nickname",
-//  role: ""
-//},
   {
     name: "embed",
     description: "Disallow the use of embeds",
@@ -31,5 +26,12 @@ module.exports = [
     allowed: "Can use voice activity detection",
     disallowed: "Cannot use voice activity detection",
     role: "518114943019778069"
+  },
+  {
+    name: "nick",
+    description: "Disallow nickname change",
+    allowed: "Can change nickname",
+    disallowed: "Cannot change nickname",
+    role: "841051057496391680"
   }
 ];
