@@ -12,7 +12,7 @@ const
   staffHandler = require("./handlers/staffHandler.js"),
   aboutHandler = require("./handlers/aboutHandler"),
   manualcheckHandler = require("./handlers/manualcheckHandler.js"),
-  musicBotLegacyHandler = require("./handlers/musicBotLegacyHandler.js"),
+  musicBotAfkRadio = require("./handlers/musicBotAfkRadio.js"),
   statisticsHandler = require("./handlers/statisticsHandler.js"),
   appealHandler = require("./handlers/appealHandler.js"),
   client = new Discord.Client({
@@ -32,7 +32,7 @@ client.once("shardReady", () => {
   staffHandler(client);
   aboutHandler(client);
   manualcheckHandler.setupEvents(client);
-  musicBotLegacyHandler(client);
+  musicBotAfkRadio(client);
   statisticsHandler(client);
   appealHandler(client);
 });
