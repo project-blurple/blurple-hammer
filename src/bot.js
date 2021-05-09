@@ -13,7 +13,6 @@ const
   aboutHandler = require("./handlers/aboutHandler"),
   manualcheckHandler = require("./handlers/manualcheckHandler.js"),
   musicBotAfkRadio = require("./handlers/musicBotAfkRadio.js"),
-  moveDeafened = require("./handlers/moveDeafened.js"),
   statisticsHandler = require("./handlers/statisticsHandler.js"),
   appealHandler = require("./handlers/appealHandler.js"),
   client = new Discord.Client({
@@ -34,7 +33,6 @@ client.once("shardReady", () => {
   aboutHandler(client);
   manualcheckHandler.setupEvents(client);
   musicBotAfkRadio(client);
-  moveDeafened(client);
   statisticsHandler(client);
   appealHandler(client);
 });

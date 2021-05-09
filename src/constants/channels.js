@@ -6,7 +6,6 @@ module.exports = {
     "472160259020947476"  // vc-context
   ],
   afkVoice: "707945438828822579",
-  generalVoice: "453509541015977984",
   backupModerationLog: "435711906867576842",
   manualCheck: "840177344013664256",
   musicManagingVoice: "840551859654623282",
