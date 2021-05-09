@@ -28,9 +28,9 @@ module.exports.run = async ({ guild, channel, respond, edit }, { all }) => {
 async function lockChannel(channel) {
   let permission = channel.permissionOverwrites.find(po => po.id == channel.guild.roles.everyone);
   if (permission && permission.deny.has("SEND_MESSAGES")) return false;
-  
+
   await channel.updateOverwrite(channel.guild.me, { "SEND_MESSAGES": true, "MANAGE_PERMISSIONS": true });
   await channel.updateOverwrite(mod, { "SEND_MESSAGES": true });
-  await channel.updateOverwrite(channel.guild.roles.everyone, { "SEND_MESSAGES": false });
+  await channel.updateOverwrite(channel.guild.roles.everyone, { "SEND_MESSAGES": false, "ADD_REACTIONS": false });
   return true;
 }
