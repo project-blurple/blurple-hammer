@@ -8,7 +8,7 @@ const
     }
   } = require("../constants");
 
-module.exports = message => {
+module.exports.exec = message => {
   let content;
   if (message.content.match(`^<@!?${message.client.user.id}> `)) content = message.content.split(" ").slice(1);
   else content = message.content.slice(config.prefix.length).split(" ");

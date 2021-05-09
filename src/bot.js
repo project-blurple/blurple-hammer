@@ -1,5 +1,6 @@
 const
   Discord = require("discord.js"),
+  fs = require("fs"),
   config = require("../config.json"),
   {
     roles,
@@ -7,14 +8,8 @@ const
     channels
   } = require("./constants"),
   commandHandler = require("./handlers/commands.js"),
-  slashCommandHandler = require("./handlers/slashCommands.js"),
   dutyPingHandler = require("./handlers/dutyPing.js"),
-  staffHandler = require("./handlers/staffHandler.js"),
-  aboutHandler = require("./handlers/aboutHandler"),
   manualcheckHandler = require("./handlers/manualcheckHandler.js"),
-  musicBotAfkRadio = require("./handlers/musicBotAfkRadio.js"),
-  statisticsHandler = require("./handlers/statisticsHandler.js"),
-  appealHandler = require("./handlers/appealHandler.js"),
   client = new Discord.Client({
     messageCacheLifetime: 30,
     messageSweepInterval: 60,
@@ -26,15 +21,12 @@ const
     fetchAllMembers: true
   });
 
+const handlers = [];
+fs.readdir("./src/handlers", (err, files) => err ? console.log(err) : handlers.push(...files.map(f => require("./handlers/" + f))))
+
 client.once("shardReady", () => {
   console.log(`Ready as ${client.user.tag}!`);
-  slashCommandHandler(client);
-  staffHandler(client);
-  aboutHandler(client);
-  manualcheckHandler.setupEvents(client);
-  musicBotAfkRadio(client);
-  statisticsHandler(client);
-  appealHandler(client);
+  handlers.forEach(handler => typeof handler !== "undefined" ? handler(client) : null);
 });
 
 client.on("message", async message => {
@@ -44,14 +36,14 @@ client.on("message", async message => {
     message.author.bot
   ) return;
 
-  if (message.channel.id == channels.manualCheck) return manualcheckHandler(message);
+  if (message.channel.id == channels.manualCheck) return manualcheckHandler.exec(message);
 
   // duty ping handler
   const sod = message.mentions.roles.find(r => r.id == roles.staffonduty);
-  if (sod) await dutyPingHandler(message, sod);
+  if (sod) await dutyPingHandler.exec(message, sod);
 
   // commands handler
-  if (message.content.startsWith(config.prefix) || message.content.match(`^<@!?${client.user.id}> `)) await commandHandler(message);
+  if (message.content.startsWith(config.prefix) || message.content.match(`^<@!?${client.user.id}> `)) await commandHandler.exec(message);
   else if (message.content.match(`^<@!?${client.user.id}>`)) await message.react(emojis.ids.wave);
 });
 

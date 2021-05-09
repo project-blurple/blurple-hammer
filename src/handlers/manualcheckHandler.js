@@ -2,7 +2,7 @@ const { channels: { manualCheck }, functions: { getPermissionLevel }, roles } = 
 
 const check = "✅", cross = "❌";
 
-module.exports = async message => {
+module.exports.exec = async message => {
   const m = await message.channel.send(message.author.id, {
     files: [ message.author.avatarURL({ format: "png", dynamic: true, size: 128 }) ]
   });
@@ -11,12 +11,14 @@ module.exports = async message => {
   message.delete();
 };
 
-module.exports.setupEvents = async client => client.on("messageReactionAdd", (reaction, user) => {
-  if (reaction.message.channel.id == manualCheck && !user.bot && getPermissionLevel(user)) {
-    if (reaction.emoji.name == check) {
-      const member = reaction.message.guild.members.cache.get(reaction.message.content);
-      if (member) member.roles.add(roles.blurpleusers);
+module.exports = async client => {
+  client.on("messageReactionAdd", (reaction, user) => {
+    if (reaction.message.channel.id == manualCheck && !user.bot && getPermissionLevel(user)) {
+      if (reaction.emoji.name == check) {
+        const member = reaction.message.guild.members.cache.get(reaction.message.content);
+        if (member) member.roles.add(roles.blurpleusers);
+      }
+      reaction.message.delete();
     }
-    reaction.message.delete();
-  }
-});
+  });
+}
