@@ -2,15 +2,6 @@ const { channels: { manualCheck }, functions: { getPermissionLevel }, roles } = 
 
 const check = "✅", cross = "❌";
 
-module.exports.exec = async message => {
-  const m = await message.channel.send(message.author.id, {
-    files: [ message.author.avatarURL({ format: "png", dynamic: true, size: 128 }) ]
-  });
-  await m.react(check);
-  await m.react(cross);
-  message.delete();
-};
-
 module.exports = async client => {
   client.on("messageReactionAdd", (reaction, user) => {
     if (reaction.message.channel.id == manualCheck && !user.bot && getPermissionLevel(user)) {
@@ -22,3 +13,12 @@ module.exports = async client => {
     }
   });
 }
+
+module.exports.exec = async message => {
+  const m = await message.channel.send(message.author.id, {
+    files: [ message.author.avatarURL({ format: "png", dynamic: true, size: 128 }) ]
+  });
+  await m.react(check);
+  await m.react(cross);
+  message.delete();
+};
