@@ -9,11 +9,9 @@ module.exports = async client => {
         const member = reaction.message.guild.members.cache.get(reaction.message.content.trim());
         reaction.message.delete();
         if (!member) return;
-        try {
-          member.roles.add(roles.blurpleusers);
-        } catch {
+        member.roles.add(roles.blurpleusers).catch(() => {
           setTimeout(() => member.roles.add(roles.blurpleusers), 5000);
-        }
+        });
       }
     }
   });
