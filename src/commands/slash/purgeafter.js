@@ -16,7 +16,7 @@ module.exports = {
 module.exports.run = async ({ channel, respond, edit }, { message_id }) => {
   const afterMessage = await channel.messages.fetch(message_id);
   if (!afterMessage) return respond(`${emojis.tickno} No message with ID \`${message_id}\` was found in this channel.`, true);
-  if (afterMessage.createdTimestamp < Date.now() - 1800000) return channel.send(`${emojis.tickno} You can only delete messages that are 30 minutes old. This limitation is not bypassable due to security reasons.`, true);
+  if (afterMessage.createdTimestamp < Date.now() - 1800000) return respond(`${emojis.tickno} You can only delete messages that are 30 minutes old. This limitation is not bypassable due to security reasons.`, true);
 
   await respond();
 
