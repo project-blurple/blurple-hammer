@@ -6,10 +6,15 @@ module.exports = async client => {
   client.on("messageReactionAdd", (reaction, user) => {
     if (reaction.message.channel.id == manualCheck && !user.bot && getPermissionLevel(user)) {
       if (reaction.emoji.name == check) {
-        const member = reaction.message.guild.members.cache.get(reaction.message.content);
-        if (member) member.roles.add(roles.blurpleusers);
+        const member = reaction.message.guild.members.cache.get(reaction.message.content.trim());
+        reaction.message.delete();
+        if (!member) return;
+        try {
+          member.roles.add(roles.blurpleusers);
+        } catch {
+          setTimeout(() => member.roles.add(roles.blurpleusers), 5000);
+        }
       }
-      reaction.message.delete();
     }
   });
 }
