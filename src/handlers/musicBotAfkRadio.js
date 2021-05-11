@@ -7,7 +7,8 @@ module.exports = async client => {
     if (
       voice.member.id == bot &&
       voice.channel &&
-      voice.channel.id == channels.afkVoice
+      voice.channel.id == channels.afkVoice &&
+      voice.serverMute
     ) voice.setMute(false);
   });
 };
