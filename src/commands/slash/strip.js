@@ -13,12 +13,13 @@ module.exports = {
 };
 
 module.exports.run = async ({ client, guild, member: author, respond }, { user = author.id }) => {
-  const strip = await strips.get(user), member = guild.members.cache.get(user);
+  const strip = await strips.get(user), member = guild.members.cache.get(user), executor = guild.members.cache.get(author);
   if (strip) {
     strips.unset(user);
-    member.roles.add(strip, user == member ? "User unstripped" : `${member.user.tag} (${member.user.id}) unstripped`);
+    member.roles.add(strip, user == member ? "User unstripped" : `${executor.user.tag} (${executor.user.id}) unstripped`);
     return respond(`${emojis.tickyes} ${ member.id == author.id ? "You are" : `${member.user.tag} is`} no longer stripped.`, true);
-  } else if (getPermissionLevel({ id: user, client }) >= 1) {
+  } else if (getPermissionLevel({ id: executor.id, client }) < 1) return respond(`You cannot strip.`, true);
+  else if (getPermissionLevel({ id: member.id, client }) >= 1) {
     const roles = member.roles.cache.filter(r => 
       r.id !== serverRoles.muted &&
       r.id !== guild.roles.everyone.id &&
@@ -26,7 +27,7 @@ module.exports.run = async ({ client, guild, member: author, respond }, { user =
       guild.me.roles.highest.position > r.position
     ).map(r => r.id);
     strips.set(user, roles);
-    member.roles.remove(roles, member.id == author.id ? "User stripped" : `${member.user.tag} (${member.user.id}) stripped`);
+    member.roles.remove(roles, member.id == author.id ? "User stripped" : `${executor.user.tag} (${executor.user.id}) stripped`);
     return respond(`${emojis.tickyes} ${ member.id == author.id ? "You are" : `${member.user.tag} is`} now stripped.`, true);
-  } else return respond(`${emojis.tickno} ${member.id == author.id ? "You" : "This person"} cannot strip.`, true);
+  } else return respond(`${emojis.tickno} This person cannot strip.`, true);
 };
