@@ -13,12 +13,12 @@ module.exports = {
 };
 
 module.exports.run = async ({ client, guild, member: author, respond }, { user = author.id }) => {
-  const strip = await strips.get(user), member = guild.members.cache.get(user), executor = guild.members.cache.get(author);
+  const strip = await strips.get(user), member = guild.members.cache.get(user);
   if (strip) {
     strips.unset(user);
     member.roles.add(strip, user == author.id ? "User unstripped" : `${author.user.tag} (${author.user.id}) unstripped`);
     return respond(`${emojis.tickyes} ${member.id == author.id ? "You are" : `${member.user.tag} is`} no longer stripped.`, true);
-  } else if (getPermissionLevel({ id: executor.id, client }) < 1) return respond(`You cannot strip.`, true);
+  } else if (getPermissionLevel({ id: author.id, client }) < 1) return respond(`You cannot strip.`, true);
   else if (getPermissionLevel({ id: member.id, client }) >= 1) {
     const roles = member.roles.cache.filter(r =>
       r.id !== serverRoles.muted &&
