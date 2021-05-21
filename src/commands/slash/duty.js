@@ -15,10 +15,10 @@ module.exports = {
 module.exports.run = ({ guild, member: author, respond }, { user = author.id }) => {
   const member = guild.members.cache.get(user), role = guild.roles.cache.get(roles.staffonduty);
   if (member.roles.cache.find(r => r.id == role.id)) {
-    member.roles.remove(role, member.id == author.id ? "User toggled" : `${member.user.tag} (${member.user.id}) toggled`);
+    member.roles.remove(role, member.id == author.id ? "User toggled" : `${member.user.tag} (${member.user.id}) toggled by ${author.user.tag} (${author.user.id})`);
     return respond(`${emojis.tickyes} ${member.id == author.id ? "You no longer have" : `${member.user.tag} no longer has`} the duty role.`);
   } else {
-    member.roles.add(role, member.id == author.id ? "User toggled" : `${member.user.tag} (${member.user.id}) toggled`);
+    member.roles.add(role, member.id == author.id ? "User toggled" : `${member.user.tag} (${member.user.id}) toggled by ${author.user.tag} (${author.user.id})`);
     return respond(`${emojis.tickyes} ${member.id == author.id ? "You now have" : `${member.user.tag} now has`} the duty role.`);
   }
 };
