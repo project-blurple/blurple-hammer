@@ -147,6 +147,18 @@ module.exports = [
         {
           name: "I have a feedback or complaint!",
           value: "Feel free to forward any suggestions or complaints to the Executive Team through <@536491357322346499>! We want everyone to have the best experience they can, so please do not hesitate to forward any concerns."
+        },
+        {
+          name: "Why can't I upload files?",
+          value: "We've denied everyone access to upload files. All event roles from this year will have access to upload media files (images, GIFs, videos and audio files)."
+        },
+        {
+          name: "Can I change my profile picture now that the event is over?",
+          value: "Yes. You can change your profile picture and server avatar back to the normal one."
+        },
+        {
+          name: "Will Project Blurple rebrand to the new Blurple?",
+          value: "We are still discussing the future of Project Blurple, we will send an announcement when we have a conclusion."
         }
       ]
     },
