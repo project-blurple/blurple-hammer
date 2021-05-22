@@ -57,7 +57,8 @@ module.exports = [
       description: [
         "It is our responsibility to ensure that all content being posted in this server is appropriate for the entire community, especially when the server is open to all users. Therefore, we have to mind the presence of underage members and tackle inappropriate content with extreme sensitivity.",
         "While we believe that everyone has the right to free speech, we also have the right to implement and enforce rules for everyone's safety. If you are the kind of person to express offensive messages, sorry but this is not the right place for you.",
-        "We will not deny the fact that our rule listing is not perfect, but one thing you should take note is that our rules are not, in any way, written by lawyers. If you are the kind of person to exploit and abuse every loophole you can find, there is this thing called common sense. Use it."
+        "We will not deny the fact that our rule listing is not perfect, but one thing you should take note is that our rules are not, in any way, written by lawyers. If you are the kind of person to exploit and abuse every loophole you can find, there is this thing called common sense. Use it.",
+        "If you want to appeal your punishment, you can do so here: [projectblurple.com/appeal](https://projectblurple.com/appeal)"
       ].join("\n\n")
     },
     navigation: "About Moderation"
@@ -139,10 +140,6 @@ module.exports = [
         {
           name: "Is this server an official Discord server?",
           value: "No, we are in no way affiliated, endorsed, verified nor partnered with Discord."
-        },
-        {
-          name: "What do I do if I was punished by a staff member and feel it was unfair?",
-          value: "We believe in fairness and therefore everyone has the right to appeal any punishment if it was deemed unjustified: [projectblurple.com/appeal](https://projectblurple.com/appeal)"
         },
         {
           name: "I have a feedback or complaint!",
