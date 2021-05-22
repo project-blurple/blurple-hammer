@@ -1,4 +1,6 @@
 module.exports = {
+  blurple: "<:blurple:845640066797797386>",
+  darkblurple: "<:darkblurple:845640066676424706>",
   white: "<:white:840901385426829312>",
   wave: "<:wave:840901016220336149>",
   tickyes: "<:tickyes:840901012441006100>",
