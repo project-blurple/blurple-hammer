@@ -1,0 +1,169 @@
+body {
+  background: #36393f;
+  font-family: 'Fira Sans', sans-serif;
+  color: white;
+}
+
+.flex {
+  display: flex;
+}
+
+.main {
+  width: calc(100% - 12px);
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background: #2f3136;
+}
+
+.header > div {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header > div > h1 {
+  font-size: 32px;
+  height: 32px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.header > div > img {
+  height: 64px;
+  border-radius: 100%;
+}
+
+.profile {
+  display: flex;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profile > 
+
+.user {
+  padding-left: 10px;
+  height: 128px;
+}
+
+.user > h2 {
+  font-size: 64px;
+  height: 64px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: red;
+  overflow-wrap: normal;
+}
+
+.user > pre {
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+.group {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.group > .break {
+  height: 10px;
+}
+
+.group > .full {
+  width: 100%;
+}
+
+.group > label {
+  font-size: 24px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.group > .smaller {
+  font-size: 16px;
+}
+
+.inline-box {
+  display: flex;
+  grid-column: auto;
+  gap: 32px;
+  justify-content: space-between;
+}
+
+form > .flex > .submit {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 34px;
+}
+
+textarea, input {
+  color: #dcddde !important;
+
+  background: rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid rgba(0, 0, 0, 0.3) !important;
+
+  outline: none !important;
+  box-shadow: none !important;
+
+  transition: border-color .2s ease-in-out;
+  resize: none;
+}
+
+textarea {
+  overflow-y: hidden;
+}
+
+textarea:hover {
+  border-color: #040405 !important;
+}
+
+textarea:focus {
+  border-color: #7289da !important;
+}
+
+@media (min-width: 800px) {
+  .main {
+    width: 780px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.screen {
+  height: 90vh;
+}
+
+.message {
+  background-color: #2f3136;
+  border-radius: 10px;
+  padding: 0px 10px 10px 10px;
+  max-width: 500px;
+  margin: auto auto auto auto;
+  text-align: center;
+}
+
+a {
+  color: #00b0f4;
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  text-decoration: underline;
+}

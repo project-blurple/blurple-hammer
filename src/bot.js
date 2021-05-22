@@ -1,23 +1,15 @@
 const
   Discord = require("discord.js"),
+  fs = require("fs"),
   config = require("../config.json"),
   {
     roles,
-    regex: {
-      linkRegex
-    },
-    functions: {
-      getPermissionLevel
-    },
-    emojis
+    emojis,
+    channels
   } = require("./constants"),
-  linkScanHandler = require("./handlers/linkScan.js"),
+  commandHandler = require("./handlers/commands.js"),
   dutyPingHandler = require("./handlers/dutyPing.js"),
-  staffHandler = require("./handlers/staffHandler.js"),
-  {
-    processCommand,
-    setupSlashCommands
-  } = require("./handlers/commands.js"),
+  manualcheckHandler = require("./handlers/manualcheckHandler.js"),
   client = new Discord.Client({
     messageCacheLifetime: 30,
     messageSweepInterval: 60,
@@ -29,11 +21,12 @@ const
     fetchAllMembers: true
   });
 
+const handlers = [];
+fs.readdir("./src/handlers", (err, files) => err ? console.log(err) : handlers.push(...files.map(f => require("./handlers/" + f))))
+
 client.once("shardReady", () => {
-  console.log(client.guilds.cache.map(g => g.name));
   console.log(`Ready as ${client.user.tag}!`);
-  setupSlashCommands(client);
-  staffHandler(client);
+  handlers.forEach(handler => typeof handler == "function" ? handler(client) : null);
 });
 
 client.on("message", async message => {
@@ -43,25 +36,28 @@ client.on("message", async message => {
     message.author.bot
   ) return;
 
+  if (message.channel.id == channels.manualCheck) return manualcheckHandler.exec(message);
+
   // duty ping handler
   const sod = message.mentions.roles.find(r => r.id == roles.staffonduty);
-  if (sod) await dutyPingHandler(message, sod);
+  if (sod) await dutyPingHandler.exec(message, sod);
 
   // commands handler
-  if (message.content.startsWith(config.prefix) || message.content.match(`^<@!?${client.user.id}> `)) await processCommand(message);
+  if (message.content.startsWith(config.prefix) || message.content.match(`^<@!?${client.user.id}> `)) await commandHandler.exec(message);
   else if (message.content.match(`^<@!?${client.user.id}>`)) await message.react(emojis.ids.wave);
 });
 
 client
-  .on("error", console.log)
+  .on("error", err => console.log("Client error.", err))
   .on("guildCreate", guild => importantLog(`Bot got added to server ${guild.name} (${guild.id})`))
   .on("guildDelete", guild => importantLog(`Bot removed from server ${guild.name} (${guild.id})`))
   .on("guildUnavailable", guild => importantLog(`Guild ${guild.name} is unavailable.`))
-  .on("rateLimit", ({ timeout, limit, method, path }) => console.log(`Rate-limited. [${timeout}ms, ${method} ${path}, limit: ${limit}]`))
-  .on("shardDisconnect", event => console.log("Disconnected:", event.reason))
-  .on("shardReconnecting", () => console.log("Reconnecting..."))
-  .on("shardResume", (_, replayed) => console.log(`Resumed. [${replayed} events replayed]`))
-  .on("warn", info => console.log("Info:", info))
+  .on("rateLimit", rateLimitInfo => console.log("Rate limited.", JSON.stringify(rateLimitInfo)))
+  .on("shardDisconnected", closeEvent => console.log("Disconnected.", closeEvent))
+  .on("shardError", err => console.log("Error.", err))
+  .on("shardReconnecting", () => console.log("Reconnecting."))
+  .on("shardResume", (_, replayedEvents) => console.log(`Resumed. ${replayedEvents} replayed events.`))
+  .on("warn", info => console.log("Warning.", info))
   .login(config.token);
 
 function importantLog(message) {

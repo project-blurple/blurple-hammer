@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Blurple Appeal</title>
+  <link href="/appeal.css" rel="stylesheet">
+</head>
+<body>
+  <div class="header">
+    <div>
+      <img src="{{ICON}}">
+      <h1>Project Blurple Appeals</h1>
+      <img src="{{AVATAR}}">
+    </div>
+  </div>
+  <div class="main">
+    <form method="get" name="appeal" action="{{PATH}}">
+      <input type="hidden" id="token" name="token" value="{{TOKEN}}">
+      <div class="inline-box">
+        <div class="group">
+          <label for="caseid">Case ID</label><br/>
+          <input type="text" id="caseid" name="caseid" maxlength="16" placeholder="(if you have it)"></textarea>
+        </div>
+        <div class="group">
+          <label>Case Type</label><br/>
+          <input type="radio" id="ban" name="casetype" value="ban" required>
+          <label class="smaller" for="ban">Ban</label>
+          <input type="radio" id="kick" name="casetype" value="kick" required>
+          <label class="smaller" for="ban">Kick</label>
+          <input type="radio" id="mute" name="casetype" value="mute" required>
+          <label class="smaller" for="ban">Mute</label>
+          <input type="radio" id="warning" name="casetype" value="warning" required>
+          <label class="smaller" for="ban">Warning</label>
+        </div>
+      </div>
+      <div class="group">
+        <label for="statement">User Statement</label><br/>
+        <textarea class="full" id="statement" name="statement" required maxlength="1024" rows="20"></textarea>
+      </div>
+      <div class="group">
+        <label for="reason">Why should we appeal your punishment?</label><br/>
+        <textarea class="full" id="reason" name="reason" required maxlength="1024" rows="20"></textarea>
+      </div>
+      <div class="flex">
+        <input class="submit" type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
+</body>
+</html>

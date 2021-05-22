@@ -4,10 +4,16 @@
   "prefix": ">",
   "oauth": {
     "clientId": "discord id of the bot",
-    "clientSecret": "discord secret of the bot",
-    "redirectUri": "redirect url of the bot"
+    "clientSecret": "discord secret of the bot"
   },
-  "oauthPath": "/auth",
-  "authLink": "https://example.com/auth",
-  "port": "5050"
+  "auth": {
+    "path": "/auth",
+    "link": "redirect url to /auth"
+  },
+  "appeal": {
+    "path": "/appeal",
+    "link": "redirect url to /appeal"
+  },
+  "statisticsPath": "/statistics",
+  "port": "1010"
 }

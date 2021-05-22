@@ -40,7 +40,6 @@ module.exports = {
     if (memberRoles.includes(roles.botban)) return -1; // banned from using bots
     return 0; // normal user
   },
-  lockMessage: user => `***CHANNEL IS LOCKED BY ${user}***`,
   getUsage: args => JSON.parse(JSON.stringify(args)).map(arg => {
     let str = arg.name;
     if (arg.type == 4 && !arg.choices) arg.choices = [ "number" ];
