@@ -15,10 +15,6 @@ module.exports = client => {
           {
             id: message.guild.roles.everyone.id,
             deny: [ "VIEW_CHANNEL" ]
-          },
-          {
-            id: client.user.id,
-            allow: [ "VIEW_CHANNEL", "SEND_MESSAGES" ]
           }
         ]);
       } catch(e) {/* something went wrong */}
@@ -68,12 +64,7 @@ module.exports = client => {
 
       // unhide the channel
       try {
-        await message.channel.overwritePermissions([
-          {
-            id: message.guild.roles.everyone,
-            deny: [ "ADD_REACTIONS", "SEND_MESSAGES", "MANAGE_MESSAGES" ]
-          }
-        ]);
+        await message.channel.lockPermissions();
       } catch(e) {/* something went wrong */}
     }
   });
