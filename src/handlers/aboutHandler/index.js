@@ -11,12 +11,9 @@ module.exports = client => {
     ) {
       // hide the channel so people who somehow have notifications for all the messages in the channel doesn't get notified
       try {
-        await message.channel.overwritePermissions([
-          {
-            id: message.guild.roles.everyone.id,
-            deny: [ "VIEW_CHANNEL" ]
-          }
-        ]);
+        await message.channel.updateOverwrite(message.guild.roles.everyone, {
+          VIEW_CHANNEL: false
+        });
       } catch(e) {/* something went wrong */}
 
       // delete the contents of the channel that can be bulk-deleted
