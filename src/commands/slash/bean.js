@@ -18,7 +18,7 @@ module.exports = {
 
 module.exports.run = ({ respond }, { user, reason}) => {
     if (reason){
-        respond(`${user}, you've been beaned for ${reason}!`);
+        respond(`<@!${user}>, you've been beaned for ${reason}!`);
     } else {
         respond(`<@!${user}>, you've been beaned!`);
     }
