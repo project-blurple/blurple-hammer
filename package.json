@@ -3,6 +3,7 @@
   "main": "src/bot.js",
   "scripts": {
     "start": "node .",
+    "start:docker": "docker compose build && docker compose up",
     "lint": "eslint --ext \".js\" ./"
   },
   "repository": {
