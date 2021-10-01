@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  blurple-hammer:
+    build: .
+    volumes:
+      - ./src/database:/app/src/database
+    ports:
+      - 1011:1011
