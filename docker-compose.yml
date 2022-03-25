@@ -1,0 +1,12 @@
+version: '3.3'
+
+services:
+  hammer:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+    ports:
+      - $API_PORT:$API_PORT

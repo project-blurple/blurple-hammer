@@ -1,0 +1,18 @@
+enum Channels {
+  GENERAL = "412754940885467148",
+  BOT_PLAYGROUND = "476306069581201409",
+  MUTED = "444135968631685120",
+  AFK_VOICE = "707945438828822579",
+  EVENTS_VOICE = "837822812194078740",
+  APPEALS = "840618237616062464",
+}
+
+export const publicChannels = [
+  Channels.GENERAL,
+  Channels.BOT_PLAYGROUND,
+  Channels.MUTED,
+  Channels.AFK_VOICE,
+  Channels.EVENTS_VOICE,
+];
+
+export default Channels;
