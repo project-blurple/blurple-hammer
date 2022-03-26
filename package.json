@@ -5,7 +5,7 @@
   "scripts": {
     "build": "tsc",
     "docker": "docker compose up --build",
-    "lint": "eslint ./src",
+    "lint": "eslint ./src --max-warnings=0",
     "start": "node .",
     "watch": "tsc -w"
   },
