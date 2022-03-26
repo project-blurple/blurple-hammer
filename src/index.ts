@@ -36,9 +36,11 @@ client.once("ready", async client => {
 
   // todo: interaction handler
 
+  // load modules
   readdir(join(__dirname, "modules"))
     .then(async files => {
-      for (const file of files) {
+      const start = Date.now();
+      for (const file of files.filter(file => !file.startsWith("index"))) {
         try {
           const module = (await import(join(__dirname, "modules", file))).default as Module;
           await module(client);
@@ -47,8 +49,9 @@ client.once("ready", async client => {
           hammerLogger.error(`Module "${file}" failed to load: ${inspect(e)}`);
         }
       }
+      hammerLogger.info(`Modules loaded in ${Date.now() - start}ms.`);
     })
-    .catch(e => hammerLogger.error(`Error running modules: ${inspect(e)}`));
+    .catch(e => hammerLogger.error(`Error loading modules: ${inspect(e)}`));
 });
 
 client.on("messageCreate", async message => {
