@@ -1,8 +1,8 @@
+import Emojis from "../../constants/emojis";
 import type { Module } from "..";
 import { app } from "../../utils/express";
 import { checkMemberAccess } from "./access";
 import config from "../../config";
-import emojis from "../../constants/emojis";
 import { hammerLogger } from "../../utils/logger/hammer";
 import { oauth } from "../../utils/oauth";
 import { oauthTokens } from "../../database";
@@ -35,7 +35,7 @@ const module: Module = client => {
     res.redirect("https://discord.com/oauth2/authorized");
 
     const user = await client.users.fetch(id);
-    user.send(`${emojis.tada} Your OAuth2 has successfully been linked.`);
+    user.send(`${Emojis.TADA} Your OAuth2 has successfully been linked.`);
     checkMemberAccess(user);
   });
 };

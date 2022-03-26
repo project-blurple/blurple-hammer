@@ -1,20 +1,20 @@
-const emojis = {
-  blurple: "<:blurple:845640066797797386>",
-  darkblurple: "<:darkblurple:845640066676424706>",
-  white: "<:white:840901385426829312>",
-  wave: "<:wave:840901016220336149>",
-  tickyes: "<:tickyes:840901012441006100>",
-  tickno: "<:tickno:840901009010458645>",
-  thumbsup: "<:thumbsup:840901010216976396>",
-  thumbsdown: "<:thumbsdown:840901014550085652>",
-  tada: "<:tada:840901013727871006>",
-  star: "<:star:840901011274989588>",
-  sparkle: "<:sparkle:840901008204234772>",
-  hammer: "<:hammer:840901015317250058>",
-  blank: "<:blank:840901752642338837>",
-  weewoo: "<a:weewoo:840901273011486720>",
-  love: "<a:love:840901274342129674>",
-  loading: "<a:loading:840901275339587604>",
-};
+enum Emojis {
+  BLURPLE = "<:blurple:845640066797797386>",
+  DARKBLURPLE = "<:darkblurple:845640066676424706>",
+  WHITE = "<:white:840901385426829312>",
+  WAVE = "<:wave:840901016220336149>",
+  TICKYES = "<:tickyes:840901012441006100>",
+  TICKNO = "<:tickno:840901009010458645>",
+  THUMBSUP = "<:thumbsup:840901010216976396>",
+  THUMBSDOWN = "<:thumbsdown:840901014550085652>",
+  TADA = "<:tada:840901013727871006>",
+  STAR = "<:star:840901011274989588>",
+  SPARKLE = "<:sparkle:840901008204234772>",
+  HAMMER = "<:hammer:840901015317250058>",
+  BLANK = "<:blank:840901752642338837>",
+  WEEWOO = "<a:weewoo:840901273011486720>",
+  LOVE = "<a:love:840901274342129674>",
+  LOADING = "<a:loading:840901275339587604>",
+}
 
-export default emojis;
+export default Emojis;
