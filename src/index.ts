@@ -3,6 +3,7 @@ import { discordLogger, hammerLogger } from "./utils/logger";
 import Emojis from "./constants/emojis";
 import type { Module } from "./modules";
 import config from "./config";
+import { connection } from "./database";
 import { inspect } from "util";
 import { join } from "path";
 import mentionCommandHandler from "./handlers/mentionCommands";
@@ -83,4 +84,8 @@ client
   .on("shardResume", (id, replayed) => void discordLogger.info(`Shard ${id} resumed. ${replayed} events replayed.`))
   .on("warn", info => void discordLogger.warn(info));
 
-client.login(config.client.token);
+hammerLogger.info("Connecting to database.");
+connection.then(() => {
+  hammerLogger.info("Database connected, logging in to Discord.");
+  client.login(config.client.token);
+}).catch(e => hammerLogger.warn(`Database connection failed: ${inspect(e)}`));

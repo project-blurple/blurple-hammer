@@ -8,3 +8,4 @@ export const dailyRotateFileOptions = {
 export { discordLogger } from "./discord";
 export { expressLogger } from "./express";
 export { hammerLogger } from "./hammer";
+export { mongooseLogger } from "./mongoose";

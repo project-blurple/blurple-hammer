@@ -1,6 +1,11 @@
-import type { Snowflake } from "discord.js";
-import { createQuickDatabase } from "./quick";
+import config from "../config";
+import mongoose from "mongoose";
+import { mongooseLogger } from "../utils/logger";
 
-export const strips = createQuickDatabase<Array<Snowflake>>("strips"); // userId: Array<roleIds>
-export const oauthTokens = createQuickDatabase<{ accessToken: string; refreshToken: string; }>("oauth"); // userId: { accessToken: string; refreshToken: string; }
-export const subserverOverrides = createQuickDatabase<Snowflake>("subserverOverrides"); // `${guildId}-${userId}`: adminId
+mongoose.set("debug", (collectionName, method, query, doc) => mongooseLogger.debug(JSON.stringify({ collectionName, method, query, doc })));
+
+export const connection = mongoose.connect(config.databaseUri);
+
+connection
+  .then(() => mongooseLogger.info("Connected to database"))
+  .catch(err => mongooseLogger.error(`Error when connecting to database: ${JSON.stringify({ err })}`));

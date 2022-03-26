@@ -8,6 +8,8 @@ export default {
     secret: process.env.CLIENT_SECRET,
     token: process.env.CLIENT_TOKEN,
   },
+  databaseUri: process.env.DATABASE_URI,
+
   ownerId: process.env.OWNER_ID,
   guildId: process.env.GUILD_ID,
 
@@ -61,6 +63,7 @@ interface Config {
     secret: string;
     token: string;
   }
+  databaseUri: string;
   ownerId: Snowflake;
   guildId: Snowflake;
   colors: Record<"primary" | "success" | "error" | "warning" | "info", number>;
