@@ -1,5 +1,6 @@
 import { Client, Intents, Options } from "discord.js";
 import { discordLogger, hammerLogger } from "./utils/logger";
+import Emojis from "./constants/emojis";
 import type { Module } from "./modules";
 import config from "./config";
 import { inspect } from "util";
