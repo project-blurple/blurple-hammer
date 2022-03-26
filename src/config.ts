@@ -50,6 +50,8 @@ export default {
       },
     },
   },
+
+  hastebinLink: "https://hastebin.but-it-actually.works",
 } as Config;
 
 
@@ -79,4 +81,5 @@ interface Config {
       link: string;
     }
   }
+  hastebinLink: string;
 }

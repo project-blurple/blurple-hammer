@@ -15,6 +15,7 @@ enum Emojis {
   WEEWOO = "<a:weewoo:840901273011486720>",
   LOVE = "<a:love:840901274342129674>",
   LOADING = "<a:loading:840901275339587604>",
+  ANGER = "<:blurpleanger:708662727140311041>",
 }
 
 export default Emojis;

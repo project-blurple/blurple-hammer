@@ -5,6 +5,6 @@ export const dailyRotateFileOptions = {
   extension: ".log",
 };
 
-export { hammerLogger } from "./hammer";
 export { discordLogger } from "./discord";
 export { expressLogger } from "./express";
+export { hammerLogger } from "./hammer";

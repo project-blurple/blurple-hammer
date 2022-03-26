@@ -1,6 +1,6 @@
 import { createLogger, format, transports } from "winston";
 import DailyRotateFile from "winston-daily-rotate-file";
-import { dailyRotateFileOptions } from "./";
+import { dailyRotateFileOptions } from ".";
 
 export const discordLogger = createLogger({
   format: format.combine(
