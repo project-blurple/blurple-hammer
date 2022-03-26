@@ -20,8 +20,19 @@ export const client = new Client({
   allowedMentions: { parse: [], users: [], roles: [], repliedUser: true },
 });
 
-client.once("ready", client => {
-  hammerLogger.info(`Logged in as ${client.user.tag}`);
+client.once("ready", async client => {
+  hammerLogger.info(`Logged in as ${client.user.tag}. Caching everything...`);
+
+  // cache everything. not really needed but always handy.
+  const start = Date.now();
+  await Promise.all(client.guilds.cache.map(async guild => {
+    await guild.fetch();
+    await guild.members.fetch();
+    await guild.channels.fetch();
+    await guild.channels.fetchActiveThreads();
+    await guild.roles.fetch();
+  }));
+  hammerLogger.info(`Cached in ${Date.now() - start}ms. Starting handlers and modules...`);
 
   // todo: interaction handler
 
