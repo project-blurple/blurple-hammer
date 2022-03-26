@@ -23,7 +23,7 @@
     "erlpack": "github:discord/erlpack",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.7",
     "quick-store": "^0.1.4",
     "request": "^2.88.2",
     "utf-8-validate": "^5.0.3",
