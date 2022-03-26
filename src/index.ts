@@ -4,6 +4,7 @@ import type { Module } from "./modules";
 import config from "./config";
 import { inspect } from "util";
 import { join } from "path";
+import mentionCommandHandler from "./handlers/mentionCommands";
 import { readdir } from "fs/promises";
 
 export const client = new Client({
@@ -37,6 +38,22 @@ client.once("ready", client => {
       }
     })
     .catch(e => hammerLogger.error(`Error running modules: ${inspect(e)}`));
+});
+
+client.on("messageCreate", async message => {
+  if (
+    !message.guild ||
+    message.type !== "DEFAULT" ||
+    message.author.bot
+  ) return;
+
+  // mention command handler
+  if (message.content.match(`^<@!?${client.user?.id}> `)) return void mentionCommandHandler(message);
+  else if (message.content.match(`^<@!?${client.user?.id}>`)) await message.react(Emojis.WAVE);
+});
+
+client.on("messageUpdate", async (_, message) => {
+  if (!message.partial && message.content.match(`^<@!?${client.user?.id}> `)) return void mentionCommandHandler(message);
 });
 
 client
