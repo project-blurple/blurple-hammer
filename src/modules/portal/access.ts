@@ -8,7 +8,7 @@ import { hammerLogger } from "../../utils/logger/hammer";
 import { inspect } from "util";
 import { oauth } from "../../utils/oauth";
 
-const module: Module = client => {
+export default (client => {
   setInterval(async () => {
     const users = [
       ...client.guilds.cache.filter(guild => guild.id !== config.guildId).map(guild => guild.members.cache.map(m => m.id)).flat(2),
@@ -19,7 +19,7 @@ const module: Module = client => {
       if (user) await checkMemberAccess(user);
     }
   }, 60_000);
-};
+}) as Module;
 
 export async function checkMemberAccess(user: User) {
   const guild = user.client.guilds.resolve(config.guildId);
@@ -106,5 +106,3 @@ async function addMember(user: User, { id: guildId }: Subserver, roles: Array<Sn
     roles,
   });
 }
-
-export default module;

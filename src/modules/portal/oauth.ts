@@ -12,7 +12,7 @@ const authorizeLink = oauth.generateAuthUrl({
   scope: ["identify", "guilds.join"],
 });
 
-const module: Module = client => {
+export default (client => {
   app.get(`${config.web?.portal?.path}`, async (req, res) => {
     const code = `${req.query.code || ""}`;
     if (!code) return res.redirect(authorizeLink);
@@ -38,6 +38,4 @@ const module: Module = client => {
     user.send(`${Emojis.TADA} Your OAuth2 has successfully been linked.`);
     checkMemberAccess(user);
   });
-};
-
-export default module;
+}) as Module;
