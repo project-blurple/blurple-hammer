@@ -1,5 +1,5 @@
 import Emojis from "../../constants/emojis";
-import type { MentionCommand } from "./_index";
+import type { MentionCommand } from ".";
 import { PermissionLevel } from "../../constants/permissions";
 import { msToTime } from "../../utils/time";
 

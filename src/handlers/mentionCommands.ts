@@ -1,6 +1,6 @@
 import type { Message, MessageOptions, Snowflake } from "discord.js";
 import Emojis from "../constants/emojis";
-import type { MentionCommand } from "../commands/mention/_index";
+import type { MentionCommand } from "../commands/mention";
 import { getPermissionLevel } from "../constants/permissions";
 import { hammerLogger } from "../utils/logger";
 import { inspect } from "util";
@@ -45,7 +45,7 @@ async function reply(message: Message, contentOrOptions: string | MessageOptions
 // loading commands
 const commands = new Map<string, MentionCommand>(), aliases = new Map<string, string>();
 readdir(join(__dirname, "../commands/mention")).then(async files => {
-  for (const file of files.filter(file => file.endsWith(".js") && !file.startsWith("_"))) {
+  for (const file of files.filter(file => file.endsWith(".js") && !file.startsWith("_") && file !== "index.js")) {
     const { default: command } = await import(`../commands/mention/${file}`) as { default: MentionCommand };
     const commandName = file.replace(".js", "").toLowerCase();
     commands.set(commandName, command);

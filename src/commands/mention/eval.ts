@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Emojis from "../../constants/emojis";
-import type { MentionCommand } from "./_index";
+import type { MentionCommand } from ".";
 import type { MessageOptions } from "discord.js";
 import { PermissionLevel } from "../../constants/permissions";
 import config from "../../config";
