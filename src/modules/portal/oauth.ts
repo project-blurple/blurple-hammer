@@ -5,7 +5,7 @@ import { checkMemberAccess } from "./access";
 import config from "../../config";
 import { hammerLogger } from "../../utils/logger/hammer";
 import { oauth } from "../../utils/oauth";
-import { oauthTokens } from "../../database";
+import { OAuthTokensDatabase } from "../../database";
 
 const authorizeLink = oauth.generateAuthUrl({
   prompt: "none",
@@ -30,7 +30,15 @@ export default (client => {
     if (!accessToken || !refreshToken) return res.redirect(authorizeLink);
 
     const { id } = await oauth.getUser(accessToken);
-    oauthTokens.set(id, { accessToken, refreshToken });
+    OAuthTokensDatabase.findOne({ userId: id }).then(async oAuthTokens => {
+      if (oAuthTokens) {
+        oAuthTokens.accessToken = accessToken;
+        oAuthTokens.refreshToken = refreshToken;
+        await oAuthTokens.save();
+      } else {
+        await OAuthTokensDatabase.create({ userId: id, accessToken, refreshToken });
+      }
+    });
 
     res.redirect("https://discord.com/oauth2/authorized");
 

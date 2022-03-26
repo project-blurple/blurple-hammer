@@ -1,6 +1,6 @@
+import { AccessOverrideDatabase, OAuthTokensDatabase, StripDatabase } from "../../database";
 import { PermissionLevel, getPermissionLevel } from "../../constants/permissions";
 import type { Snowflake, User } from "discord.js";
-import { oauthTokens, strips, subserverOverrides } from "../../database";
 import subservers, { Access, Subserver } from "../../constants/subservers";
 import type { Module } from "..";
 import config from "../../config";
@@ -64,7 +64,7 @@ export async function calculateAccess(user: User, subserver: Subserver) {
 
   const mainRoles = [
     ...mainMember.roles.cache.map(r => r.id),
-    ...await strips.get(user.id) || [],
+    ...await StripDatabase.findOne({ userId: user.id })?.roles || [],
     user.id,
   ];
 
@@ -73,7 +73,10 @@ export async function calculateAccess(user: User, subserver: Subserver) {
   const subRoles = subMember?.roles.cache.map(r => r.id) ?? [];
 
   const access: Access = Math.max(0, ...mainRoles.map(id => subserver.staffAccess[id]?.presence || 0));
-  const override = Boolean(await subserverOverrides.get(`${user.id}-${subserver.id}`));
+  const override = Boolean(await AccessOverrideDatabase.findOne({
+    userId: user.id,
+    subserverId: subserver.id,
+  }));
 
   const managedRoles = Object.values(subserver.staffAccess).map(o => o?.roles || []).flat().filter((v, i, a) => a.indexOf(v) === i);
   const allowedRoles = mainRoles.map(id => subserver.staffAccess[id]?.roles || []).flat().filter((v, i, a) => a.indexOf(v) === i);
@@ -86,7 +89,7 @@ export async function calculateAccess(user: User, subserver: Subserver) {
 }
 
 async function addMember(user: User, { id: guildId }: Subserver, roles: Array<Snowflake>) {
-  const tokens = await oauthTokens.get(user.id) || {} as never;
+  const tokens = await OAuthTokensDatabase.findOne({ userId: user.id }) || {} as never;
   if (!tokens) throw new Error(`User ${user.tag} has no tokens`);
 
   const { access_token: accessToken, refresh_token: refreshToken } = await oauth.tokenRequest({
@@ -96,7 +99,9 @@ async function addMember(user: User, { id: guildId }: Subserver, roles: Array<Sn
   }).catch(() => ({} as never));
   if (!accessToken || !refreshToken) throw new Error(`Failed to refresh tokens for user ${user.tag}`);
 
-  await oauthTokens.set(user.id, { accessToken, refreshToken });
+  tokens.accessToken = accessToken;
+  tokens.refreshToken = refreshToken;
+  await tokens.save();
 
   return oauth.addMember({
     accessToken,
