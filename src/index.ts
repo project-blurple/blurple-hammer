@@ -7,7 +7,7 @@ import { join } from "path";
 import mentionCommandHandler from "./handlers/mentionCommands";
 import { readdir } from "fs/promises";
 
-export const client = new Client({
+const client = new Client({
   makeCache: Options.cacheEverything(),
   partials: ["USER", "CHANNEL", "GUILD_MEMBER", "MESSAGE", "REACTION", "GUILD_SCHEDULED_EVENT"],
   userAgentSuffix: [
