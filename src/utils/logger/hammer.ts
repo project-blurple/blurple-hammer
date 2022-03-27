@@ -10,7 +10,7 @@ export const hammerLogger = createLogger({
   ),
   transports: [
     new DailyRotateFile({
-      filename: "logs/kai-info.%DATE%",
+      filename: "logs/hammer-info.%DATE%",
       level: "info",
       ...dailyRotateFileOptions,
     }),

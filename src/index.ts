@@ -33,8 +33,9 @@ client.once("ready", async client => {
     await guild.channels.fetch();
     await guild.channels.fetchActiveThreads();
     await guild.roles.fetch();
+    hammerLogger.info(`Cached guild ${guild.name} in ${Date.now() - start}ms`);
   }));
-  hammerLogger.info(`Cached in ${Date.now() - start}ms. Starting handlers and modules...`);
+  hammerLogger.info(`Cached all guilds in ${Date.now() - start}ms. Starting handlers and modules...`);
 
   // todo: interaction handler
 
@@ -68,7 +69,7 @@ client.on("messageCreate", async message => {
   else if (message.content.match(`^<@!?${client.user?.id}>`)) await message.react(Emojis.WAVE);
 });
 
-client.on("messageUpdate", async (_, message) => {
+client.on("messageUpdate", (_, message) => {
   if (!message.partial && message.content.match(`^<@!?${client.user?.id}> `)) return void mentionCommandHandler(message);
 });
 
