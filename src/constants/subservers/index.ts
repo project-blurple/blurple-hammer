@@ -1,10 +1,5 @@
 import type Roles from "../roles";
 import type { Snowflake } from "discord.js";
-import assets from "./assets";
-import dev from "./dev";
-import dev2 from "./dev2";
-import minecraft from "./minecraft";
-import staff from "./staff";
 
 export enum Access {
   PROHIBITED,
@@ -23,5 +18,11 @@ export interface Subserver {
     };
   }
 }
+
+import assets from "./assets";
+import dev from "./dev";
+import dev2 from "./dev2";
+import minecraft from "./minecraft";
+import staff from "./staff";
 
 export default [assets, dev, dev2, minecraft, staff] as Array<Subserver>;
