@@ -5,8 +5,14 @@ services:
     build: .
     restart: unless-stopped
     env_file: .env
+    environment:
+      - DATABASE_URI=mongodb://mongo/hammer
     volumes:
       - ./logs:/app/logs
-      - ./data:/app/data
     ports:
       - $API_PORT:$API_PORT
+  mongo:
+    image: mongo:4
+    restart: always
+    volumes:
+      - ./data:/data/db
