@@ -5,6 +5,7 @@ import type { Module } from "./modules";
 import config from "./config";
 import { connection } from "./database";
 import { inspect } from "util";
+import interactionsHandler from "./handlers/interactions";
 import { join } from "path";
 import mentionCommandHandler from "./handlers/mentionCommands";
 import { readdir } from "fs/promises";
@@ -37,7 +38,7 @@ client.once("ready", async client => {
   }));
   hammerLogger.info(`Cached all guilds in ${Date.now() - start}ms. Starting handlers and modules...`);
 
-  // todo: interaction handler
+  interactionsHandler(client);
 
   // load modules
   readdir(join(__dirname, "modules"))
