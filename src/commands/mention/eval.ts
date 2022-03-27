@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Emojis from "../../constants/emojis";
 import type { MentionCommand } from ".";
-import type { MessageOptions } from "discord.js";
 import { PermissionLevel } from "../../constants/permissions";
+import type { WebhookEditMessageOptions } from "discord.js";
+import { components } from "../../handlers/interactions/components";
 import config from "../../config";
 import { inspect } from "util";
 import { randomBytes } from "crypto";
@@ -30,7 +31,7 @@ const command: MentionCommand = {
 
 export default command;
 
-async function generateMessage(result: any, time?: number, success = true, hastebin = false): Promise<MessageOptions> {
+async function generateMessage(result: any, time?: number, success = true, hastebin = false): Promise<WebhookEditMessageOptions> { // type is weird to support a lot of other types
   if (hastebin) {
     const res = await superagent.post(`${config.hastebinLink}/documents`).send(inspect(result, { depth: Infinity, maxArrayLength: Infinity, maxStringLength: Infinity })).catch(() => null);
     if (res?.ok) {
@@ -52,7 +53,13 @@ async function generateMessage(result: any, time?: number, success = true, haste
   if (!content) return generateMessage(result, time, success, true);
 
   const identifier = randomBytes(16).toString("hex");
-  // todo: component
+  components.set(`${identifier}-hastebin`, {
+    type: "BUTTON",
+    allowedUsers: [config.ownerId],
+    async callback(interaction) {
+      interaction.update(await generateMessage(result, time, success, true));
+    },
+  });
 
   return {
     content,
