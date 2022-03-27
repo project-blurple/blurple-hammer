@@ -29,6 +29,7 @@ const command: ContextMenuCommand = {
 
   },
   permissionLevelRequired: PermissionLevel.NONE,
+  onlyInMainServer: true,
 };
 
 export default command;

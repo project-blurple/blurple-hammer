@@ -13,4 +13,5 @@ interface UserMenuCommand {
 
 export type ContextMenuCommand = (MessageMenuCommand | UserMenuCommand) & {
   permissionLevelRequired: PermissionLevel;
+  onlyInMainServer?: true;
 };
