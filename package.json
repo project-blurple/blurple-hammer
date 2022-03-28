@@ -19,7 +19,7 @@
     "express": "^4.17.3",
     "express-rate-limit": "^6.3.0",
     "express-winston": "^4.2.0",
-    "mongoose": "^6.2.8",
+    "mongoose": "^6.2.9",
     "superagent": "^7.1.1",
     "utf-8-validate": "^5.0.9",
     "winston": "^3.6.0",
