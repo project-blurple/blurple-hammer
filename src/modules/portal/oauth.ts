@@ -1,15 +1,17 @@
 import Emojis from "../../constants/emojis";
 import type { Module } from "..";
+import { OAuthTokensDatabase } from "../../database";
 import { app } from "../../utils/express";
 import { checkMemberAccess } from "./access";
 import config from "../../config";
 import { hammerLogger } from "../../utils/logger/hammer";
 import { oauth } from "../../utils/oauth";
-import { OAuthTokensDatabase } from "../../database";
+
+export const scope = ["identify", "guilds.join"];
 
 const authorizeLink = oauth.generateAuthUrl({
   prompt: "none",
-  scope: ["identify", "guilds.join"],
+  scope,
 });
 
 export default (client => {
@@ -19,7 +21,7 @@ export default (client => {
 
     const { access_token: accessToken, refresh_token: refreshToken } = await oauth.tokenRequest({
       code,
-      scope: ["identify", "guilds.join"],
+      scope,
       grantType: "authorization_code",
       redirectUri: `${config.web?.portal?.link}`,
     }).catch(() => {

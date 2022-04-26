@@ -8,7 +8,7 @@ import { join } from "path";
 import { readdir } from "fs/promises";
 
 
-export default async (message: Message) => {
+export default (message: Message) => {
   const existingReply = replies.get(message.id);
   if (!existingReply && message.editedTimestamp) return; // ignore editing into a command, but allow editing from a command to a new command
 

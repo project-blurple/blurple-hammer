@@ -28,7 +28,7 @@ const command: ContextMenuCommand = {
     }
 
   },
-  permissionLevelRequired: PermissionLevel.NONE,
+  permissionLevelRequired: PermissionLevel.SUPPORT,
   onlyInMainServer: true,
 };
 

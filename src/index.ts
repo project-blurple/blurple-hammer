@@ -2,6 +2,7 @@ import { Client, Intents, Options } from "discord.js";
 import { discordLogger, hammerLogger } from "./utils/logger";
 import Emojis from "./constants/emojis";
 import type { Module } from "./modules";
+import Roles from "./constants/roles";
 import config from "./config";
 import { connection } from "./database";
 import { inspect } from "util";
@@ -64,6 +65,9 @@ client.on("messageCreate", async message => {
     message.type !== "DEFAULT" ||
     message.author.bot
   ) return;
+
+  // staff on duty ping handler
+  if (message.mentions.roles.some(role => role.id === Roles.STAFF_ON_DUTY)) return; // todo: await duty ping handler
 
   // mention command handler
   if (message.content.match(`^<@!?${client.user?.id}> `)) return void mentionCommandHandler(message);

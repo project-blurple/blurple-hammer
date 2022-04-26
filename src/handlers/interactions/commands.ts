@@ -7,7 +7,7 @@ export default async (interaction: CommandInteraction) => {
 
   if (command) {
     const permissionLevel = await getPermissionLevel(interaction.user);
-    if (permissionLevel < permissions[command.name] || PermissionLevel.NONE) return;
+    if (permissionLevel < (permissions[command.name] || PermissionLevel.NONE)) return;
 
     const path = [command.name];
 

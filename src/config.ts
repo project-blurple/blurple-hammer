@@ -1,8 +1,14 @@
+import "dotenv/config";
 import type { Snowflake } from "discord.js";
-import { config } from "dotenv";
-config(); // load env variables from .env file
 
-export default {
+if (!process.env.CLIENT_ID) throw new Error("CLIENT_ID is not defined");
+if (!process.env.CLIENT_SECRET) throw new Error("CLIENT_SECRET is not defined");
+if (!process.env.CLIENT_TOKEN) throw new Error("TOKEN is not defined");
+if (!process.env.DATABASE_URI) throw new Error("DATABASE_URI is not defined");
+if (!process.env.OWNER_ID) throw new Error("OWNER_ID is not defined");
+if (!process.env.GUILD_ID) throw new Error("GUILD_ID is not defined");
+
+const config: Config = {
   client: {
     id: process.env.CLIENT_ID,
     secret: process.env.CLIENT_SECRET,
@@ -54,8 +60,9 @@ export default {
   },
 
   hastebinLink: "https://hastebin.but-it-actually.works",
-} as Config;
+};
 
+export default config;
 
 interface Config {
   client: {

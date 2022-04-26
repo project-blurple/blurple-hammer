@@ -1,6 +1,6 @@
 import type { ApplicationCommandAutocompleteOption, ApplicationCommandChannelOptionData, ApplicationCommandChoicesData, ApplicationCommandNonOptionsData, ApplicationCommandNumericOptionData, Awaitable, CommandInteraction } from "discord.js";
 import type { Autocomplete } from "../../handlers/interactions/autocompletes";
-import type { PermissionLevel } from "../../constants/permissions";
+import { PermissionLevel } from "../../constants/permissions";
 
 export interface SlashCommand {
   description: string;
@@ -19,5 +19,6 @@ export interface SlashCommand {
 }
 
 export const permissions: Record<string, PermissionLevel> = {
-
+  debug: PermissionLevel.BLACKLISTED,
+  gif: PermissionLevel.MODERATOR,
 };
