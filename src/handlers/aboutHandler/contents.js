@@ -71,11 +71,16 @@ module.exports = [
         "**2.** For web-based image transformations, head to [our official website](https://projectblurple.com/paint).",
         "**3.** If you prefer to design your own logo, the color codes you need to know are as follows:",
         "",
-        `> ${emojis.blurple} **Blurple** - HEX: #7289DA or RGB: (114, 137, 218)`,
+        "**New colors:**",
+        `> ${emojis.blurplenew} **Blurple** - HEX: #5865F2 or RGB: (88, 101, 242)`,
+        `> ${emojis.darkblurplenew} **Dark Blurple** - HEX: #454FBF or RGB: (69, 79, 191)`,
         `> ${emojis.white} **White** - HEX: #FFFFFF or RGB: (255, 255, 255)`,
-        `> ${emojis.darkblurple} **Dark Blurple** - HEX: #4E5D94 or RGB: (78, 93, 148)`,
         "",
-        "These are some examples of Blurple logos: https://i.imgur.com/F91nmLP.png"
+        "*Legacy colors:**",
+        `> ${emojis.blurple} **Legacy Blurple** - HEX: #7289DA or RGB: (114, 137, 218)`,
+        `> ${emojis.darkblurple} **Legacy Dark Blurple** - HEX: #4E5D94 or RGB: (78, 93, 148)`,
+        "",
+        "These are some examples of Blurple logos: https://i.imgur.com/9qSLgpH.png"
       ].join("\n")
     },
     navigation: "How to Make a Blurple Image"
@@ -96,22 +101,23 @@ module.exports = [
         {
           name: "Colored Roles",
           value: [
-            "**<@&799239966399922206>** » Server owners that have partnered up with Project Blurple.",
-            "**<@&799239965149102161>** » Users who donated an enormous value to be given to Blurple users.",
-            "**<@&799239968190890004>** » Given to users who kindly donated prizes during the event.",
+            "**<@&970547222175424593>** » Server owners that have partnered up with Project Blurple.",
+            "**<@&970547278886612992>** » Users who donated an enormous value to be given to Blurple users.",
+            "**<@&970547300072030259>** » Given to users who kindly donated prizes during the event.",
             "**<@&431934652153069569>** » Staff members who voluntarily resigned from the team.",
-            "**<@&799240274849169428>** » Blurple server representatives who are celebrating with us and joined the server roster in blurple server list.",
-            "**<@&799240275234390048>** » Blurple users who are celebrating with us by setting their profile picture to a Blurple-colored picture.",
-            "**<@&799240276538687509>** » Blurple users who have collected paint and unlocked the mighty role.",
-            "**<@&799240276542619649>** » Blurple users who have shown their artistic skills in the Blurple Canvas.",
-            "**<@&804674660792926229>** » Blurple users who have or are currently participating in the Project Blurple Minecraft server."
+            "**<@&970547497862844446>** » Blurple server representatives who are celebrating with us and joined the server roster in blurple server list.",
+            "**<@&970547507811737621>** » Blurple users who are celebrating with us by setting their profile picture to a Blurple-colored picture.",
+            "**<@&970547328660439090>** » Blurple users who have collected paint and unlocked the mighty role.",
+            "**<@&971633030122840064>** » Blurple users who have shown their artistic skills in the Blurple Canvas.",
+            "**<@&970547349254467606>** » Blurple users who have or are currently participating in the Project Blurple Minecraft server."
           ].join("\n\n")
         },
         {
           name: "Miscellaneous Roles",
           value: [
-            "**<@&831156380680323105>** » Has access to archived channels. You can get access by typing `!role archives`."
-          ].join("\n")
+            "**<@&831156380680323105>** » Has access to archived channels. You can get access by typing `!role archives`.",
+            "**<@886591961996349470>** » Gets notified whenever we have an event. You can get notified by typing `!role events`.",
+          ].join("\n\n")
         }
       ]
     },

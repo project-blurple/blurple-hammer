@@ -37,7 +37,7 @@ module.exports = client => {
             }
           ]
         }); else {
-          const m = await message.channel.send({ embed: Object.assign({ color: 0x7289DA }, content.embed) });
+          const m = await message.channel.send({ embed: Object.assign({ color: 0x5865F2 }, content.embed) });
           if (content.navigation) navigation[content.navigation] = m.url;
         }
         first = false;
@@ -55,7 +55,7 @@ module.exports = client => {
       await message.channel.send({
         embed: {
           description: Object.keys(navigation).map(name => `• [${name}](<${navigation[name]}>)`).join("\n"),
-          color: 0x7289DA
+          color: 0x5865F2
         }
       });
 

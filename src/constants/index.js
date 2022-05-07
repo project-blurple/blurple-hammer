@@ -4,8 +4,8 @@ const
   DiscordOAuth2 = require("discord-oauth2");
 
 module.exports = {
-  embedColor: 0x7289DA,
-  hexColor: "7289DA",
+  embedColor: 0x5865F2,
+  hexColor: "5865F2",
   guilds: {
     main: "412754940885467146",
     staff: require("./subservers/staff"),
