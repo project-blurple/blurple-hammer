@@ -116,7 +116,7 @@ module.exports = [
           name: "Miscellaneous Roles",
           value: [
             "**<@&831156380680323105>** » Has access to archived channels. You can get access by typing `!role archives`.",
-            "**<@886591961996349470>** » Gets notified whenever we have an event. You can get notified by typing `!role events`.",
+            "**<@&886591961996349470>** » Gets notified whenever we have an event. You can get notified by typing `!role events`.",
           ].join("\n\n")
         }
       ]
