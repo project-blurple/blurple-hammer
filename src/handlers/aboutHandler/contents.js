@@ -76,7 +76,7 @@ module.exports = [
         `> ${emojis.darkblurplenew} **Dark Blurple** - HEX: #454FBF or RGB: (69, 79, 191)`,
         `> ${emojis.white} **White** - HEX: #FFFFFF or RGB: (255, 255, 255)`,
         "",
-        "*Legacy colors:**",
+        "**Legacy colors:**",
         `> ${emojis.blurple} **Legacy Blurple** - HEX: #7289DA or RGB: (114, 137, 218)`,
         `> ${emojis.darkblurple} **Legacy Dark Blurple** - HEX: #4E5D94 or RGB: (78, 93, 148)`,
         "",
