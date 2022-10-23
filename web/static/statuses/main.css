@@ -1,0 +1,38 @@
+* {
+  --not-quite-black: rgb(35, 39, 42);
+  --blurple: rgb(88, 101, 242);
+  --full-white: rgb(255, 255, 255);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--not-quite-black);
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+img {
+  width: min(100%, 1000px);
+}
+
+h1 {
+  color: var(--full-white);
+  font-weight: 500;
+  font-size: 3rem;
+}
+
+p {
+  color: var(--full-white);
+  font-weight: 300;
+  font-size: 1.5rem;
+}
+
+a {
+  color: var(--blurple);
+}
