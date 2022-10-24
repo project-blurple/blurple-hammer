@@ -25,6 +25,6 @@ RUN npm ci --omit=dev
 
 COPY .env ./.env
 COPY --from=builder /app/build ./build
-COPY /app/web ./web
+COPY web ./web
 
 CMD ["dumb-init", "npm", "start"]
