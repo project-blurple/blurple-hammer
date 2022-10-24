@@ -20,6 +20,7 @@ export default {
     developers: String(process.env["ROLE_DEVELOPERS"]),
     medias: String(process.env["ROLE_MEDIAS"]),
     supportStaff: String(process.env["ROLE_SUPPORT_STAFF"]),
+    eventsTeam: String(process.env["ROLE_EVENTS_TEAM"]),
     minecraftTeam: String(process.env["ROLE_MINECRAFT_TEAM"]),
     staffOnDuty: String(process.env["ROLE_STAFF_ON_DUTY"]),
     restrictions: {
