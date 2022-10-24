@@ -19,8 +19,8 @@ const command: ChatInputCommand = {
     const me = await interaction.guild.members.fetchMe({ force: false, cache: true });
     const roleIds = interaction.member.roles.cache.filter(role => role.id !== interaction.guild.roles.everyone.id && !role.managed && me.roles.highest.position > role.position).map(role => role.id);
 
-    await interaction.member.roles.remove(roleIds, "User stripped");
     await UserStrip.create({ userId: interaction.user.id, roleIds });
+    await interaction.member.roles.remove(roleIds, "User stripped");
     return void interaction.reply({ content: `${Emojis.ThumbsUp} You have been stripped.`, ephemeral: true });
   },
 };
