@@ -1,14 +1,15 @@
+import subservers, { Access } from "../../constants/subservers";
 import { ApplicationCommandOptionType } from "discord.js";
 import type { ChatInputCommand } from ".";
 import Emojis from "../../constants/emojis";
 import { OAuthTokens } from "../../database/models/OAuthTokens.model";
 import { SubserverAccessOverride } from "../../database/models/SubserverAccessOverride";
+import calculateAccess from "../../handlers/staffAccess/calculator";
 import { commandMentions } from "../../handlers/interactions";
 import config from "../../config";
 import { inspect } from "util";
 import { mainLogger } from "../../utils/logger/main";
 import oauth from "../../utils/oauth";
-import subservers from "../../constants/subservers";
 
 const command: ChatInputCommand = {
   description: "Force-join someone else in to a subserver",
@@ -45,8 +46,11 @@ const command: ChatInputCommand = {
     const subserver = subservers.find(server => server.id === interaction.options.getString("subserver", true))!;
     const server = interaction.client.guilds.cache.get(subserver.id)!;
 
+    const { access } = await calculateAccess(interaction.user.id, subserver, interaction.client);
+    if (access < Access.Allowed) return void interaction.reply({ content: `${Emojis.TickNo} You don't have permission to force-join users in to this subserver.`, ephemeral: true });
+
     const member = await server.members.fetch(user.id).catch(() => null);
-    if (member) return void interaction.reply({ content: `${Emojis.TickNo} You're already in this subserver!`, ephemeral: true });
+    if (member) return void interaction.reply({ content: `${Emojis.TickNo} They're already in this subserver!`, ephemeral: true });
 
     return void oauth.tokenRequest({
       refreshToken: tokens.refreshToken,
