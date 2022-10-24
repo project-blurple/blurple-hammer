@@ -7,6 +7,7 @@ import config from "../../../config";
 import express from "express";
 import { join } from "path";
 import oauth from "../../../utils/oauth";
+import refreshSubserverAccess from "../../staffAccess/subservers";
 
 export default function handleWebStaffPortal(client: Client<true>, webConfig: Exclude<typeof config["staffPortal"], null>): void {
   const [app, listen] = createExpressApp("staff-portal", webConfig.numberOfProxies);
@@ -40,6 +41,7 @@ export default function handleWebStaffPortal(client: Client<true>, webConfig: Ex
         await tokens.save();
 
         res.cookie("token", await sign({ id })).redirect(state);
+        refreshSubserverAccess(id, client);
       })
       .catch(() => res.redirect(authorizationLink(state)));
   });
