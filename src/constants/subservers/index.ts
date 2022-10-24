@@ -1,9 +1,4 @@
 import type { Snowflake } from "discord.js";
-import assetsSubserver from "./assets";
-import dev2Subserver from "./dev2";
-import devSubserver from "./dev";
-import minecraftSubserver from "./minecraft";
-import staffSubserver from "./staff";
 
 export enum Access { Denied, Allowed, Forced }
 
@@ -20,6 +15,12 @@ export interface Subserver {
 
   userOverrideNoticeRoleId?: Snowflake;
 }
+
+import assetsSubserver from "./assets";
+import dev2Subserver from "./dev2";
+import devSubserver from "./dev";
+import minecraftSubserver from "./minecraft";
+import staffSubserver from "./staff";
 
 export default [
   assetsSubserver,
