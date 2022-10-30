@@ -3,7 +3,7 @@ import type { ChatInputCommand } from ".";
 import Emojis from "../../constants/emojis";
 
 const command: ChatInputCommand = {
-  description: "Bean a user (Staff Only)",
+  description: "Bean a user",
   options: [
     {
       type: ApplicationCommandOptionType.User,
@@ -19,9 +19,9 @@ const command: ChatInputCommand = {
     },
   ],
   execute(interaction) {
-    const user = interaction.options.getUser("user", true).id;
+    const user = interaction.options.getUser("user", true);
     const message = interaction.options.getString("message", true);
-    return void interaction.reply({ content: `<@${user}>: You have been beaned for ${message} ${Emojis.Sparkle}` });
+    return void interaction.reply({ content: `${user.toString()}: You have been beaned for ${message} ${Emojis.Sparkle}` });
   },
 };
 
