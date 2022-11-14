@@ -11,6 +11,7 @@ export default {
 
   ownerId: String(process.env["OWNER_ID"]),
   mainGuildId: String(process.env["GUILD_ID"]),
+  otherGuildIds: String(process.env["OTHER_GUILD_IDS"]).split(","),
 
   roles: {
     administrators: String(process.env["ROLE_ADMINISTRATORS"]),
