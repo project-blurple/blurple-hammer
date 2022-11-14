@@ -1,12 +1,12 @@
 import type { Client, Snowflake } from "discord.js";
-import { Access } from "../../constants/subservers";
-import type { Subserver } from "../../constants/subservers";
-import { SubserverAccessOverride } from "../../database/models/SubserverAccessOverride";
-import { UserStrip } from "../../database/models/UserStrip";
-import config from "../../config";
+import { Access } from "../../../constants/subservers";
+import type { Subserver } from "../../../constants/subservers";
+import { SubserverAccessOverride } from "../../../database/models/SubserverAccessOverride";
+import { UserStrip } from "../../../database/models/UserStrip";
+import config from "../../../config";
 
 export default async function calculateAccess(userId: Snowflake, subserver: Subserver, client: Client): Promise<{ access: Access; applicableRoles: Snowflake[]; prohibitedRoles: Snowflake[] }> {
-  const member = await client.guilds.cache.get(config.guildId)!.members.fetch({ user: userId, force: false }).catch(() => null);
+  const member = await client.guilds.cache.get(config.mainGuildId)!.members.fetch({ user: userId, force: false }).catch(() => null);
   if (!member) return { access: Access.Denied, applicableRoles: [], prohibitedRoles: []};
 
   const override = await SubserverAccessOverride.findOne({ userId, subserverId: subserver.id });

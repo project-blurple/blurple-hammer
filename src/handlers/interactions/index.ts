@@ -46,7 +46,7 @@ function registerCommands(client: Client<true>): void {
     nestCommands("../../commands/chatInput", "CHAT_INPUT"),
     nestCommands("../../commands/menu", "MENU"),
   ])
-    .then(([chatInputCommands, contextMenuCommands]) => client.guilds.cache.get(config.guildId)!.commands.set([...chatInputCommands, ...contextMenuCommands]))
+    .then(([chatInputCommands, contextMenuCommands]) => client.guilds.cache.get(config.mainGuildId)!.commands.set([...chatInputCommands, ...contextMenuCommands]))
     .then(commands => {
       // add command mentions
       commands.forEach(command => {

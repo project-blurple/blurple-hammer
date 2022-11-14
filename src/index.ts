@@ -7,7 +7,7 @@ import handleDutyPing from "./handlers/dutyPing";
 import handleInteractions from "./handlers/interactions";
 import handleMentionCommands from "./handlers/mentionCommands";
 import handleRestrictions from "./handlers/restrictions";
-import handleStaffAccess from "./handlers/staffAccess";
+import handleStaff from "./handlers/staffAccess";
 import handleWeb from "./handlers/web";
 import { inspect } from "util";
 import { mainLogger } from "./utils/logger/main";
@@ -43,7 +43,7 @@ client.once("ready", trueClient => {
   handleInteractions(trueClient);
   handleMentionCommands(trueClient);
   handleRestrictions(trueClient);
-  handleStaffAccess(trueClient);
+  handleStaff(trueClient);
   handleWeb(trueClient);
 });
 

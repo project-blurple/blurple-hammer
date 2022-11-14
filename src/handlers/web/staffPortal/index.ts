@@ -7,7 +7,7 @@ import config from "../../../config";
 import express from "express";
 import { join } from "path";
 import oauth from "../../../utils/oauth";
-import refreshSubserverAccess from "../../staffAccess/subservers";
+import refreshSubserverAccess from "../../staffAccess/subservers/access";
 
 export default function handleWebStaffPortal(client: Client<true>, webConfig: Exclude<typeof config["staffPortal"], null>): void {
   const [app, listen] = createExpressApp("staff-portal", webConfig.numberOfProxies);
@@ -41,7 +41,7 @@ export default function handleWebStaffPortal(client: Client<true>, webConfig: Ex
         await tokens.save();
 
         res.cookie("token", await sign({ id })).redirect(state);
-        refreshSubserverAccess(id, client);
+        void refreshSubserverAccess(id, client);
       })
       .catch(() => res.redirect(authorizationLink(state)));
   });
@@ -66,7 +66,7 @@ export default function handleWebStaffPortal(client: Client<true>, webConfig: Ex
     const { token } = req.cookies as { token: string };
 
     const { id } = decode<{ id: Snowflake }>(token);
-    void client.guilds.cache.get(config.guildId)!.members.fetch({ user: id, force: false }).catch(() => null)
+    void client.guilds.cache.get(config.mainGuildId)!.members.fetch({ user: id, force: false }).catch(() => null)
       .then(member => {
         if (member?.roles.cache.some(role => allStaffRoles.includes(role.id))) return next();
         return res.status(403).sendFile(join(webFolderPath, "forbidden.html"));

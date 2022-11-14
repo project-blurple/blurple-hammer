@@ -3,7 +3,7 @@ import type { ContextMenuCommandInteraction } from "discord.js";
 import config from "../../config";
 
 export default async function contextMenuCommandHandler(interaction: ContextMenuCommandInteraction<"cached">): Promise<void> {
-  const applicationCommand = interaction.client.guilds.cache.get(config.guildId)!.commands.cache.find(({ name }) => name === interaction.commandName);
+  const applicationCommand = interaction.client.guilds.cache.get(config.mainGuildId)!.commands.cache.find(({ name }) => name === interaction.commandName);
   if (!applicationCommand) return;
 
   const { default: command } = await import(`../../commands/menu/${applicationCommand.name}`) as { default: ContextMenuCommand };

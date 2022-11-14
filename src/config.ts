@@ -10,7 +10,7 @@ export default {
   databaseUri: String(process.env["DATABASE_URI"]),
 
   ownerId: String(process.env["OWNER_ID"]),
-  guildId: String(process.env["GUILD_ID"]),
+  mainGuildId: String(process.env["GUILD_ID"]),
 
   roles: {
     administrators: String(process.env["ROLE_ADMINISTRATORS"]),
