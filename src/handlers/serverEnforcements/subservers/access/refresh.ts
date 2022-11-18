@@ -1,11 +1,11 @@
 import type { Client, Snowflake } from "discord.js";
-import subservers, { Access } from "../../../constants/subservers";
-import { OAuthTokens } from "../../../database/models/OAuthTokens.model";
-import type { OAuthTokensDocument } from "../../../database/models/OAuthTokens.model";
+import subservers, { Access } from "../../../../constants/subservers";
+import { OAuthTokens } from "../../../../database/models/OAuthTokens.model";
+import type { OAuthTokensDocument } from "../../../../database/models/OAuthTokens.model";
 import calculateAccess from "./calculator";
 import { inspect } from "util";
-import oauth from "../../../utils/oauth";
-import { staffLogger } from "../../../utils/logger/staff";
+import oauth from "../../../../utils/oauth";
+import { staffLogger } from "../../../../utils/logger/staff";
 
 export default async function refreshSubserverAccess(userId: Snowflake, client: Client): Promise<void> {
   let tokens: OAuthTokensDocument | false | null = false;

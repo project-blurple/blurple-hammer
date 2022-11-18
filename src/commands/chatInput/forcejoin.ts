@@ -4,7 +4,7 @@ import type { ChatInputCommand } from ".";
 import Emojis from "../../constants/emojis";
 import { OAuthTokens } from "../../database/models/OAuthTokens.model";
 import { SubserverAccessOverride } from "../../database/models/SubserverAccessOverride";
-import calculateAccess from "../../handlers/staffAccess/subservers/calculator";
+import calculateAccess from "../../handlers/serverEnforcements/subservers/access/calculator";
 import { commandMentions } from "../../handlers/interactions";
 import config from "../../config";
 import { inspect } from "util";

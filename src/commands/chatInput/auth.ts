@@ -3,7 +3,7 @@ import Emojis from "../../constants/emojis";
 import { OAuthTokens } from "../../database/models/OAuthTokens.model";
 import config from "../../config";
 import oauth from "../../utils/oauth";
-import refreshSubserverAccess from "../../handlers/staffAccess/subservers/access";
+import refreshSubserverAccess from "../../handlers/serverEnforcements/subservers/access/refresh";
 
 const command: ChatInputCommand = {
   description: "Authenticate yourself to the staff portal to gain access",
