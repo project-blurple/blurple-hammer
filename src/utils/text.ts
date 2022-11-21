@@ -4,3 +4,5 @@ export function fitText(string: string, length: number, includeTrail = true): st
   if (includeTrail) return `${string.slice(0, length - trail.length).trimEnd()}${trail}`;
   return string.slice(0, length);
 }
+
+export const zeroWidthSpace = "\u200B";

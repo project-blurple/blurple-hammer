@@ -2,3 +2,6 @@
 	path = web/staff-document
 	url = https://github.com/project-blurple/staff-document
 	branch = build
+[submodule "web/fonts"]
+	path = web/fonts
+	url = https://github.com/ROMVoid95/DiscordFonts

@@ -2,7 +2,6 @@ import { Client, IntentsBitField, Options, Partials } from "discord.js";
 import config from "./config";
 import { connection } from "./database";
 import { discordLogger } from "./utils/logger/discord";
-import handleAbout from "./handlers/about";
 import handleDutyPing from "./handlers/dutyPing";
 import handleInteractions from "./handlers/interactions";
 import handleMentionCommands from "./handlers/mentionCommands";
@@ -39,7 +38,6 @@ export const client = new Client({
 client.once("ready", trueClient => {
   mainLogger.info(`Ready as ${trueClient.user.tag}!`);
 
-  handleAbout(trueClient);
   handleDutyPing(trueClient);
   handleInteractions(trueClient);
   handleMentionCommands(trueClient);

@@ -13,6 +13,10 @@ export default {
   mainGuildId: String(process.env["GUILD_ID"]),
   otherGuildIds: String(process.env["OTHER_GUILD_IDS"]).split(","),
 
+  channels: {
+    about: String(process.env["CHANNEL_ABOUT"]),
+  },
+
   roles: {
     administrators: String(process.env["ROLE_ADMINISTRATORS"]),
     teamLeaders: String(process.env["ROLE_TEAM_LEADERS"]),
@@ -31,6 +35,23 @@ export default {
       vad: String(process.env["ROLE_RESTRICTION_VAD"]),
       nick: String(process.env["ROLE_RESTRICTION_NICK"]),
     },
+    partners: String(process.env["ROLE_PARTNERS"]),
+    megaDonators: String(process.env["ROLE_MEGA_DONATORS"]),
+    donators: String(process.env["ROLE_DONATORS"]),
+    retiredStaff: String(process.env["ROLE_RETIRED_STAFF"]),
+    blurpleServerRepresentative: String(process.env["ROLE_BLURPLE_SERVER_REPRESENTATIVE"]),
+    blurpleUser: String(process.env["ROLE_BLURPLE_USER"]),
+    painters: String(process.env["ROLE_PAINTERS"]),
+    artists: String(process.env["ROLE_ARTISTS"]),
+    adventurers: String(process.env["ROLE_ADVENTURERS"]),
+    miscellaneous: {
+      archiveAccess: String(process.env["ROLE_ARCHIVE_ACCESS"]),
+      eventsPing: String(process.env["ROLE_EVENTS_PING"]),
+    },
+  },
+
+  bots: {
+    modmail: String(process.env["BOT_MODMAIL"]),
   },
 
   appeals: process.env["APPEALS_PORT"] ?
