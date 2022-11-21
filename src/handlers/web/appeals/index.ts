@@ -6,7 +6,8 @@ import express from "express";
 import { join } from "path";
 import oauth from "../../../utils/oauth";
 
-export default function handleWebAppeals(client: Client<true>, webConfig: Exclude<typeof config["appeals"], null>): void {
+// todo: use client
+export default function handleWebAppeals(_client: Client<true>, webConfig: Exclude<typeof config["appeals"], null>): void {
   const [app, listen] = createExpressApp("staff-portal", webConfig.numberOfProxies);
 
   const redirectUri = new URL("/oauth-callback", webConfig.url).href;
