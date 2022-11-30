@@ -48,7 +48,7 @@
     "@types/express": "4.17.14",
     "@types/jsonwebtoken": "8.5.9",
     "@types/morgan": "1.9.3",
-    "@types/node": "18.11.9",
+    "@types/node": "18.11.10",
     "@types/nodemailer": "6.4.6",
     "@types/superagent": "4.1.16",
     "@types/text-to-svg": "3.1.1",
