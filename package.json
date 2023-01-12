@@ -17,7 +17,7 @@
     "docker:up": "docker-compose up -d"
   },
   "dependencies": {
-    "@typegoose/typegoose": "9.11.2",
+    "@typegoose/typegoose": "10.0.0",
     "bufferutil": "4.0.7",
     "cookie-parser": "1.4.6",
     "dedent": "0.7.0",
