@@ -14,7 +14,8 @@
     "docker:up": "docker-compose --project-directory . up -d",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "start": "node ."
+    "start": "node .",
+    "test": "jest"
   },
   "dependencies": {
     "@sapphire/type": "2.3.0",
