@@ -10,7 +10,7 @@ import { msToHumanShortTime } from "../../utils/time";
 import { zeroWidthSpace } from "../../utils/text";
 
 export default {
-  names: ["recreateAbout"],
+  names: ["recreateabout"],
   ownerOnly: true,
   testArgs(args) { return args.length === 0; },
   async execute(message, reply) {
@@ -54,7 +54,8 @@ export default {
       ],
     });
 
-    const response = (botMessage?.edit ?? message.channel.send)(`${Emojis.Sparkle} Recreated in \`${msToHumanShortTime(Date.now() - now)}\`.`);
-    if (aboutChannel.id === message.channel.id) setTimeout(() => void response.then(res => res.delete()), 10 * 1000);
+    const response = `${Emojis.Sparkle} Recreated in \`${msToHumanShortTime(Date.now() - now)}\`.`;
+    if (botMessage) void botMessage.edit(response);
+    else void message.channel.send(response).then(res => setTimeout(() => void res.delete(), 10 * 1000));
   },
 } as MentionCommand;
