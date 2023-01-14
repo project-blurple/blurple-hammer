@@ -74,7 +74,7 @@ export default {
     {
       host: String(process.env["SMTP_HOST"]),
       port: Number(process.env["SMTP_PORT"]),
-      secure: Boolean(process.env["SMTP_SECURE"]),
+      secure: String(process.env["SMTP_SECURE"]) === "true",
       username: String(process.env["SMTP_USERNAME"]),
       password: String(process.env["SMTP_PASSWORD"]),
       displayName: String(process.env["SMTP_DISPLAY_NAME"]),

@@ -12,7 +12,7 @@ const defaults: SMTPTransport.Options = {
   },
 };
 
-const transporter = (async () => {
+const promisedTransporter = (async () => {
   if (config.smtpSettings) {
     return nodemailer.createTransport({
       host: config.smtpSettings.host,
@@ -39,16 +39,16 @@ const transporter = (async () => {
 })();
 
 export const mailLogger = createLogger({ format: globalFormat, transports: createFileTransports("mail", ["debug", "error"]) });
-void transporter.then(tp => {
+void promisedTransporter.then(tp => {
   tp.on("error", err => void mailLogger.error(`Mail transporter errored: ${inspect(err)}`));
   tp.on("idle", () => void mailLogger.debug("Mail transporter is idle"));
   tp.on("token", token => void mailLogger.debug(`Mail transporter got new token: ${inspect(token)}`));
 });
 
 export async function sendMail(to: [name: string, email: string], subject: string, text: string): Promise<boolean> {
-  const { sendMail: send } = await transporter;
+  const transporter = await promisedTransporter;
   return new Promise(resolve => {
-    send({
+    transporter.sendMail({
       to: `"${to[0]}" <${to[1]}>`,
       subject,
       text,
