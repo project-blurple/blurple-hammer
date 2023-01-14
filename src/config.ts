@@ -82,6 +82,4 @@ export default {
       replyToEmailAddress: String(process.env["SMTP_REPLY_TO_EMAIL_ADDRESS"]),
     } :
     null,
-
-  hastebinLink: process.env["HASTEBIN_LINK"] ?? "https://hastebin.but-it-actually.works",
 } as const;
