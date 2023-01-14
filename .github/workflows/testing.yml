@@ -1,0 +1,33 @@
+name: Testing
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  jest:
+    name: Jest
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3
+
+    - name: Set up node
+      uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3
+      with:
+        node-version: "18.x"
+
+    - name: Restore cached modules
+      uses: actions/cache@58c146cc91c5b9e778e71775dfe9bf1442ad9a12 # v3
+      id: cache-packages
+      with:
+        path: node_modules
+        key: ${{ hashFiles('**/package-lock.json') }}
+
+    - name: Fallback if module cache fails
+      run: npm ci
+      if: steps.cache-packages.outputs.cache-hit != 'true'
+
+    - name: Run Jest
+      run: npm test
