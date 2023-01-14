@@ -1,11 +1,12 @@
-import type { ChatInputCommand } from ".";
 import Emojis from "../../constants/emojis";
+import type { FirstLevelChatInputCommand } from ".";
 import { OAuthTokens } from "../../database/models/OAuthTokens.model";
 import config from "../../config";
 import oauth from "../../utils/oauth";
 import refreshSubserverAccess from "../../handlers/serverEnforcements/subservers/access/refresh";
 
-const command: ChatInputCommand = {
+export default {
+  name: "auth",
   description: "Authenticate yourself to the staff portal to gain access",
   async execute(interaction) {
     const tokens = await OAuthTokens.findOne({ userId: interaction.user.id });
@@ -28,6 +29,4 @@ const command: ChatInputCommand = {
         return void interaction.reply({ content: `${Emojis.TickNo} Your authentication is no longer working, please authenticate yourself [here](${new URL("/login", config.staffPortal!.url).href}).`, ephemeral: true });
       });
   },
-};
-
-export default { ...command } as const;
+} as FirstLevelChatInputCommand;

@@ -1,26 +1,63 @@
-import type { Awaitable, ButtonInteraction, SelectMenuInteraction, Snowflake } from "discord.js";
-import { mainLogger } from "../../utils/logger/main";
+import type{ AnySelectMenuInteraction, Awaitable, ButtonInteraction, ChannelSelectMenuInteraction, MentionableSelectMenuInteraction, RoleSelectMenuInteraction, Snowflake, StringSelectMenuInteraction, UserSelectMenuInteraction } from "discord.js";
+import { ComponentType } from "discord.js";
 
-interface SelectMenuComponentDetails {
-  type: "SELECT_MENU";
-  callback(interaction: SelectMenuInteraction<"cached">): Awaitable<void>;
+interface BaseComponent {
+  allowedUsers: "all" | [Snowflake, ...Snowflake[]];
+  persistent?: true;
 }
 
-interface ButtonComponentDetails {
-  type: "BUTTON";
+interface ButtonComponent extends BaseComponent {
   callback(interaction: ButtonInteraction<"cached">): Awaitable<void>;
 }
 
-type ComponentInteractionDetails = {
-  allowedUsers: "all" | [Snowflake, ...Snowflake[]];
-} & (ButtonComponentDetails | SelectMenuComponentDetails);
+interface ChannelSelectMenuComponent extends BaseComponent {
+  selectType: "channel";
+  callback(interaction: ChannelSelectMenuInteraction<"cached">): Awaitable<void>;
+}
 
-export const components = new Map<string, ComponentInteractionDetails>();
+interface MentionableSelectMenuComponent extends BaseComponent {
+  selectType: "mentionable";
+  callback(interaction: MentionableSelectMenuInteraction<"cached">): Awaitable<void>;
+}
 
-export default function componentHandler(interaction: ButtonInteraction<"cached"> | SelectMenuInteraction<"cached">): void {
-  const component = components.get(interaction.customId);
-  if (!component) return void mainLogger.info(`Component interaction ${interaction.customId} not found for interaction ${interaction.id}, channel ${interaction.channelId}, guild ${interaction.guildId}`);
+interface RoleSelectMenuComponent extends BaseComponent {
+  selectType: "role";
+  callback(interaction: RoleSelectMenuInteraction<"cached">): Awaitable<void>;
+}
 
-  if (component.allowedUsers !== "all" && !component.allowedUsers.includes(interaction.user.id)) return;
-  void component.callback(interaction as never);
+interface StringSelectMenuComponent extends BaseComponent {
+  selectType: "string";
+  callback(interaction: StringSelectMenuInteraction<"cached">): Awaitable<void>;
+}
+
+interface UserSelectMenuComponent extends BaseComponent {
+  selectType: "user";
+  callback(interaction: UserSelectMenuInteraction<"cached">): Awaitable<void>;
+}
+
+export const buttonComponents = new Map<string, ButtonComponent>();
+export const selectMenuComponents = new Map<string, ChannelSelectMenuComponent | MentionableSelectMenuComponent | RoleSelectMenuComponent | StringSelectMenuComponent | UserSelectMenuComponent>();
+
+export default function componentHandler(interaction: AnySelectMenuInteraction<"cached"> | ButtonInteraction<"cached">): void {
+  if (interaction.isButton()) {
+    const component = buttonComponents.get(interaction.customId);
+    if (component && (component.allowedUsers === "all" || component.allowedUsers.includes(interaction.user.id))) void component.callback(interaction);
+    if (!component?.persistent) buttonComponents.delete(interaction.customId);
+  } else if (interaction.isAnySelectMenu()) {
+    const component = selectMenuComponents.get(interaction.customId);
+    if (component && (component.allowedUsers === "all" || component.allowedUsers.includes(interaction.user.id)) && selectComponentMatchesInteractionType(interaction, component)) void component.callback(interaction as never);
+    if (!component?.persistent) selectMenuComponents.delete(interaction.customId);
+  }
+}
+
+const selectTypes: Record<(ChannelSelectMenuComponent | MentionableSelectMenuComponent | RoleSelectMenuComponent | StringSelectMenuComponent | UserSelectMenuComponent)["selectType"], ComponentType> = {
+  channel: ComponentType.ChannelSelect,
+  mentionable: ComponentType.MentionableSelect,
+  role: ComponentType.RoleSelect,
+  string: ComponentType.StringSelect,
+  user: ComponentType.UserSelect,
+};
+
+function selectComponentMatchesInteractionType(interaction: AnySelectMenuInteraction<"cached">, component: ChannelSelectMenuComponent | MentionableSelectMenuComponent | RoleSelectMenuComponent | StringSelectMenuComponent | UserSelectMenuComponent): boolean {
+  return selectTypes[component.selectType] === interaction.componentType;
 }

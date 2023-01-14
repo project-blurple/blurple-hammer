@@ -1,7 +1,7 @@
 import subservers, { Access } from "../../constants/subservers";
 import { ApplicationCommandOptionType } from "discord.js";
-import type { ChatInputCommand } from ".";
 import Emojis from "../../constants/emojis";
+import type { FirstLevelChatInputCommand } from ".";
 import { OAuthTokens } from "../../database/models/OAuthTokens.model";
 import calculateAccess from "../../handlers/serverEnforcements/subservers/access/calculator";
 import { commandMentions } from "../../handlers/interactions";
@@ -9,7 +9,8 @@ import { inspect } from "util";
 import { mainLogger } from "../../utils/logger/main";
 import oauth from "../../utils/oauth";
 
-const command: ChatInputCommand = {
+export default {
+  name: "join",
   description: "Join a subserver",
   options: [
     {
@@ -65,6 +66,4 @@ const command: ChatInputCommand = {
         return void interaction.reply({ content: `${Emojis.TickNo} Your authentication is not working, please re-authenticate yourself using ${commandMentions["auth"]!}`, ephemeral: true });
       });
   },
-};
-
-export default { ...command } as const;
+} as FirstLevelChatInputCommand;

@@ -1,9 +1,10 @@
-import type { ChatInputCommand } from ".";
 import Emojis from "../../constants/emojis";
+import type { FirstLevelChatInputCommand } from ".";
 import { UserStrip } from "../../database/models/UserStrip";
 import { allStaffRoles } from "../../constants/staff";
 
-const command: ChatInputCommand = {
+export default {
+  name: "strip",
   description: "Strip yourself (staff-only command)",
   async execute(interaction) {
     const strip = await UserStrip.findOne({ userId: interaction.user.id });
@@ -23,6 +24,4 @@ const command: ChatInputCommand = {
     await interaction.member.roles.remove(roleIds, "User stripped");
     return void interaction.reply({ content: `${Emojis.ThumbsUp} You have been stripped.`, ephemeral: true });
   },
-};
-
-export default { ...command } as const;
+} as FirstLevelChatInputCommand;

@@ -1,8 +1,9 @@
-import type { ChatInputCommand } from ".";
 import Emojis from "../../constants/emojis";
+import type { FirstLevelChatInputCommand } from ".";
 import config from "../../config";
 
-const command: ChatInputCommand = {
+export default {
+  name: "duty",
   description: "Toggle the duty role",
   async execute(interaction) {
     const role = interaction.guild.roles.cache.get(config.roles.staffOnDuty)!;
@@ -14,6 +15,4 @@ const command: ChatInputCommand = {
     await interaction.member.roles.add(role, "User toggled duty role");
     return void interaction.reply({ content: `${Emojis.TickYes} You now have the duty role.`, ephemeral: true });
   },
-};
-
-export default { ...command } as const;
+} as FirstLevelChatInputCommand;

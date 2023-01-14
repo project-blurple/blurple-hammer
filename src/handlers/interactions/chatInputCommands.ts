@@ -1,22 +1,15 @@
-import type { ChatInputCommand } from "../../commands/chatInput";
-import type { ChatInputCommandInteraction } from "discord.js";
+import type{ ChatInputCommandInteraction } from "discord.js";
+import { allChatInputCommands } from "../../commands/chatInput";
 import config from "../../config";
-import { inspect } from "util";
-import { mainLogger } from "../../utils/logger/main";
 
-export default async function chatInputCommandHandler(interaction: ChatInputCommandInteraction<"cached">): Promise<void> {
-  const commandSegments = [
-    interaction.commandName,
-    interaction.options.getSubcommandGroup(false),
-    interaction.options.getSubcommand(false),
-  ].filter(Boolean) as string[];
+export default function chatInputCommandHandler(interaction: ChatInputCommandInteraction<"cached">): void {
+  const hierarchy = [interaction.commandName, interaction.options.getSubcommandGroup(false), interaction.options.getSubcommand(false)] as const;
+  let command = allChatInputCommands.find(({ name }) => name === hierarchy[0]);
+  if (command && hierarchy[1] && "subcommands" in command) command = command.subcommands.find(({ name }) => name === hierarchy[1]);
+  if (command && hierarchy[2] && "subcommands" in command) command = command.subcommands.find(({ name }) => name === hierarchy[2]);
 
-  try {
-    const { default: command } = await import(`../../commands/chatInput/${commandSegments.join("/")}`) as { default: ChatInputCommand };
-    if (command.ownerOnly && interaction.user.id !== config.ownerId) return;
-
-    return await command.execute(interaction);
-  } catch (err) {
-    mainLogger.info(`Failed to run interaction command /${commandSegments.join(" ")} on interaction ${interaction.id}, channel ${interaction.channelId}, guild ${interaction.guildId}, member ${interaction.user.id}: ${inspect(err)}`);
+  if (command && "execute" in command) {
+    if (!command.public && interaction.user.id !== config.ownerId) return;
+    return void command.execute(interaction);
   }
 }

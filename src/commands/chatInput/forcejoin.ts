@@ -1,7 +1,7 @@
 import subservers, { Access } from "../../constants/subservers";
 import { ApplicationCommandOptionType } from "discord.js";
-import type { ChatInputCommand } from ".";
 import Emojis from "../../constants/emojis";
+import type { FirstLevelChatInputCommand } from ".";
 import { OAuthTokens } from "../../database/models/OAuthTokens.model";
 import { SubserverAccessOverride } from "../../database/models/SubserverAccessOverride";
 import calculateAccess from "../../handlers/serverEnforcements/subservers/access/calculator";
@@ -11,7 +11,8 @@ import { inspect } from "util";
 import { mainLogger } from "../../utils/logger/main";
 import oauth from "../../utils/oauth";
 
-const command: ChatInputCommand = {
+export default {
+  name: "forcejoin",
   description: "Force-join someone else in to a subserver",
   options: [
     {
@@ -86,6 +87,4 @@ const command: ChatInputCommand = {
         return void interaction.reply({ content: `${Emojis.TickNo} Their authentication is not working, please have them re-authenticate themselves using ${commandMentions["auth"]!} or [copy this link](${new URL("/login", config.staffPortal!.url).href}) and give it to them if they're not staff.`, ephemeral: true });
       });
   },
-};
-
-export default { ...command } as const;
+} as FirstLevelChatInputCommand;

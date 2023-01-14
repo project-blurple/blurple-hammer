@@ -1,8 +1,9 @@
 import { ApplicationCommandOptionType } from "discord.js";
-import type { ChatInputCommand } from ".";
 import Emojis from "../../constants/emojis";
+import type { FirstLevelChatInputCommand } from ".";
 
-const command: ChatInputCommand = {
+export default {
+  name: "bean",
   description: "Bean a user",
   options: [
     {
@@ -23,6 +24,4 @@ const command: ChatInputCommand = {
     const message = interaction.options.getString("message", true);
     return void interaction.reply({ content: `${user.toString()}: You have been beaned for ${message} ${Emojis.Sparkle}` });
   },
-};
-
-export default { ...command } as ChatInputCommand;
+} as FirstLevelChatInputCommand;

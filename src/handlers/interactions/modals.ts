@@ -1,18 +1,14 @@
 import type { ActionRowData, Awaitable, ModalSubmitInteraction, TextInputComponentData, TextInputModalData } from "discord.js";
 import { ComponentType } from "discord.js";
-import { mainLogger } from "../../utils/logger/main";
 
-interface ModalInteractionDetails {
-  callback(interaction: ModalSubmitInteraction<"cached">): Awaitable<void>;
-}
+export type Modal = (interaction: ModalSubmitInteraction<"cached">) => Awaitable<void>;
 
-export const modals = new Map<string, ModalInteractionDetails>();
+export const modals = new Map<string, Modal>();
 
 export default function modalHandler(interaction: ModalSubmitInteraction<"cached">): void {
   const modal = modals.get(interaction.customId);
-  if (!modal) return void mainLogger.debug(`Modal interaction ${interaction.customId} not found for interaction ${interaction.id}, channel ${interaction.channelId ?? "null"}, guild ${interaction.guildId}`);
-
-  void modal.callback(interaction);
+  if (modal) void modal(interaction);
+  modals.delete(interaction.customId);
 }
 
 export function getModalTextInput(actionRows: ModalSubmitInteraction["components"], customId: string): string | null {

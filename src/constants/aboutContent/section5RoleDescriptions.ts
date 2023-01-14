@@ -2,7 +2,7 @@ import type { ButtonComponentData, MessageCreateOptions, Snowflake } from "disco
 import { ButtonStyle, ComponentType } from "discord.js";
 import type { AboutSection } from ".";
 import Emojis from "../emojis";
-import { components } from "../../handlers/interactions/components";
+import { buttonComponents } from "../../handlers/interactions/components";
 import config from "../../config";
 
 const section5RoleDescriptions: AboutSection = {
@@ -57,8 +57,7 @@ function formatRoleList(roleDescriptions: Record<Snowflake, string>) {
 
 function selfObtainableRoleButtons(roles: Record<Snowflake, string>): MessageCreateOptions["components"] {
   for (const roleId in roles) {
-    components.set(`self-assign-role:${roleId}`, {
-      type: "BUTTON",
+    buttonComponents.set(`self-assign-role:${roleId}`, {
       allowedUsers: "all",
       callback(button) {
         const hasRole = button.member.roles.cache.has(roleId);

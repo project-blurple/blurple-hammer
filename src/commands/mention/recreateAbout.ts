@@ -9,7 +9,9 @@ import generateHeader from "../../utils/header";
 import { msToHumanShortTime } from "../../utils/time";
 import { zeroWidthSpace } from "../../utils/text";
 
-const command: MentionCommand = {
+export default {
+  names: ["recreateAbout"],
+  ownerOnly: true,
   testArgs(args) { return args.length === 0; },
   async execute(message, reply) {
     let botMessage: Message | null = null;
@@ -54,8 +56,5 @@ const command: MentionCommand = {
 
     const response = (botMessage?.edit ?? message.channel.send)(`${Emojis.Sparkle} Recreated in \`${msToHumanShortTime(Date.now() - now)}\`.`);
     if (aboutChannel.id === message.channel.id) setTimeout(() => void response.then(res => res.delete()), 10 * 1000);
-    return response;
   },
-};
-
-export default { ...command } as const;
+} as MentionCommand;
