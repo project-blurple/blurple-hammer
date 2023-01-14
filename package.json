@@ -4,17 +4,17 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "start": "node .",
-    "watch": "tsc -w",
+    "build:watch": "tsc -w",
     "docker": "npm run docker:build && npm run docker:up",
-    "docker:build": "docker-compose build",
-    "docker:down": "docker-compose down",
-    "docker:logs": "docker-compose logs --tail=500 -f",
+    "docker:build": "docker-compose --project-directory . build",
+    "docker:down": "docker-compose --project-directory . down",
+    "docker:logs": "docker-compose --project-directory . logs --tail=500 -f",
     "docker:start": "npm run docker:up",
     "docker:stop": "npm run docker:down",
-    "docker:up": "docker-compose up -d"
+    "docker:up": "docker-compose --project-directory . up -d",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "start": "node ."
   },
   "dependencies": {
     "@typegoose/typegoose": "10.0.0",
