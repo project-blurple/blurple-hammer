@@ -13,7 +13,7 @@ export function sign(payload: object, expiresIn: StringValue = "7 days"): Promis
 
 export function verify(token: string): Promise<boolean> {
   return new Promise(resolve => {
-    jwt.verify(token, config.client.secret, {}, (err, decoded) => resolve(!err || Boolean(decoded)));
+    jwt.verify(token, config.client.secret, {}, (err, decoded) => resolve(err ? false : Boolean(decoded)));
   });
 }
 
