@@ -1,5 +1,5 @@
-import type { Client } from "discord.js";
 import { ApplicationCommandOptionType } from "discord.js";
+import type { Client } from "discord.js";
 import autocompleteHandler from "./autocompletes";
 import chatInputCommandHandler from "./chatInputCommands";
 import componentHandler from "./components";
