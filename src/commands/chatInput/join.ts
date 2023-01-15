@@ -2,7 +2,7 @@ import subservers, { Access } from "../../constants/subservers";
 import { ApplicationCommandOptionType } from "discord.js";
 import Emojis from "../../constants/emojis";
 import type { FirstLevelChatInputCommand } from ".";
-import { OAuthTokens } from "../../database/models/OAuthTokens.model";
+import { OAuthTokens } from "../../database/models/OAuthTokens";
 import calculateAccess from "../../handlers/serverEnforcements/subservers/access/calculator";
 import { commandMentions } from "../../handlers/interactions";
 import { inspect } from "util";

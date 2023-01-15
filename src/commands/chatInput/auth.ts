@@ -1,6 +1,6 @@
 import Emojis from "../../constants/emojis";
 import type { FirstLevelChatInputCommand } from ".";
-import { OAuthTokens } from "../../database/models/OAuthTokens.model";
+import { OAuthTokens } from "../../database/models/OAuthTokens";
 import config from "../../config";
 import oauth from "../../utils/oauth";
 import refreshSubserverAccess from "../../handlers/serverEnforcements/subservers/access/refresh";

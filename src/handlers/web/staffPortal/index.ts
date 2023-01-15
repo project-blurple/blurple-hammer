@@ -1,7 +1,7 @@
 import type { Client, Snowflake } from "discord.js";
 import { createExpressApp, webFolderPath } from "..";
 import { decode, sign, verify } from "../../../utils/webtokens";
-import { OAuthTokens } from "../../../database/models/OAuthTokens.model";
+import { OAuthTokens } from "../../../database/models/OAuthTokens";
 import { allStaffRoles } from "../../../constants/staff";
 import config from "../../../config";
 import express from "express";
