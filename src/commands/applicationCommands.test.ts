@@ -1,9 +1,9 @@
 import { ApplicationCommandType } from "discord.js";
 import getAllApplicationCommands from "./applicationCommands";
 
-const nameRegex = /^[-_\p{L}\p{N}\p{sc=Deva}\p{sc=Thai}]{1,32}$/u;
-const nameRegexMenus = /^.{1,32}$/ui;
-const choiceRegex = /^[-_\p{L}\p{N}\p{sc=Deva}\p{sc=Thai}]{1,100}$/u;
+const nameRegex = /^[-_\p{Ll}\p{N}]{1,32}$/u;
+const nameRegexMenus = /^[-_\p{L}\p{N} ]{1,32}$/ui;
+const choiceRegex = /^.{1,100}$/u;
 const descriptionRegex = /^.{1,100}$/u;
 
 describe.each(getAllApplicationCommands().map(command => [command.name, command] as const))("command %s", (_1, command) => {
