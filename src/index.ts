@@ -13,7 +13,7 @@ import handleWeb from "./handlers/web";
 import { inspect } from "util";
 import { mainLogger } from "./utils/logger/main";
 
-export const client = new Client({
+const client = new Client({
   allowedMentions: { parse: [], users: [], roles: [], repliedUser: true },
   intents: [
     IntentsBitField.Flags.GuildMembers,
