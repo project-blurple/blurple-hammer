@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Blurple | Appeals</title>
+  <link rel="stylesheet" href="/main.css">
+</head>
+<body id="form">
+  <div class="header">
+    <div class="contents">
+      <img src="/server.webp">
+      <h1>Project Blurple Appeals</h1>
+      <a href="/logout"><img src="/avatar.webp"></a>
+    </div>
+  </div>
+  <div class="form">
+    <form action="/" method="POST">
+      <label>Case information</label>
+      <div class="case-info">
+        <select name="case-type" id="case-type" required>
+          <option value="ban">Ban</option>
+          <option value="kick">Kick</option>
+          <option value="mute">Mute</option>
+          <option value="warning">Warning</option>
+        </select>
+        <input type="text" name="case-id" id="case-id" placeholder="Case ID (optional, we will find it either way)" maxlength="5" pattern="[0-9]{1,5}">
+      </div>
+      <label for="user-statement">User Statement</label>
+      <textarea name="user-statement" id="user-statement" cols="30" rows="10" placeholder="Explain your side of the story so we get a better understanding." required maxlength="4096"></textarea>
+      <label for="reason">Why should we appeal your punishment?</label>
+      <textarea name="reason" id="reason" cols="30" rows="10" placeholder="Explain why you think it makes sense for us to remove the punishment." required maxlength="4096"></textarea>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+</body>
+</html>

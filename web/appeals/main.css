@@ -1,0 +1,160 @@
+* {
+  --not-quite-black: rgb(35, 39, 42);
+  --blurple: rgb(88, 101, 242);
+  --full-white: rgb(255, 255, 255);
+  --dark-but-not-black: rgb(44, 47, 51);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--not-quite-black);
+  color: var(--full-white);
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--blurple);
+}
+
+
+/********************/
+/** the alert page **/
+/********************/
+
+body#alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+}
+
+body#alert > div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 800px;
+  padding: 1rem;
+  background-color: var(--dark-but-not-black);
+  border-radius: 0.5rem;
+}
+
+body#alert > div > h1 {
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+body#alert > div > p {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+
+/*******************/
+/** the form page **/
+/*******************/
+
+/** the header **/
+
+body#form > .header {
+  display: flex;
+  width: 100vw;
+  margin: 1rem 0;
+  background-color: var(--dark-but-not-black);
+}
+
+body#form > .header > .contents {
+  display: flex;
+  margin: 0 auto;
+  gap: 20px;
+  padding: 1rem 0;
+}
+
+body#form > .header > .contents > h1 {
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+body#form > .header > .contents > img,
+body#form > .header > .contents > a,
+body#form > .header > .contents > a > img {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  margin: auto 0;
+}
+
+/** the form **/
+
+body#form > .form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+body#form > .form > form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--dark-but-not-black);
+  border-radius: 0.5rem
+}
+
+body#form > .form > form > label {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+body#form > .form > form > div.case-info > input,
+body#form > .form > form > div.case-info > select,
+body#form > .form > form > textarea {
+  font-size: 1.5rem;
+  font-weight: 300;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--not-quite-black);
+  color: var(--full-white);
+}
+
+body#form > .form > form > input[type="submit"] {
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--blurple);
+  color: var(--full-white);
+  cursor: pointer;
+}
+
+body#form > .form > form > input[type="submit"]:focus,
+body#form > .form > form > input[type="submit"]:hover {
+  background-color: var(--not-quite-black);
+  color: var(--blurple);
+}
+
+body#form > .form > form > div.case-info {
+  display: flex;
+  gap: 1rem;
+  width: 80%;
+  margin: 0 auto;
+}
+
+body#form > .form > form > div.case-info > input {
+  width: 100%;
+}
+
+body#form > .form > form > div.case-info > input:invalid {
+  border: 1px solid red;
+}

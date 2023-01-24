@@ -15,6 +15,7 @@ export default {
 
   channels: {
     about: String(process.env["CHANNEL_ABOUT"]),
+    appeals: String(process.env["CHANNEL_APPEALS"]),
   },
 
   roles: {
