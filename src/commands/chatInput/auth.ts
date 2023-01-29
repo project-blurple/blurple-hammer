@@ -3,7 +3,7 @@ import type { FirstLevelChatInputCommand } from ".";
 import { OAuthTokens } from "../../database/models/OAuthTokens";
 import config from "../../config";
 import oauth from "../../utils/oauth";
-import refreshSubserverAccess from "../../handlers/serverEnforcements/subservers/access/refresh";
+import { refreshSubserverAccess } from "../../handlers/serverEnforcements/subservers/access/refresh";
 
 export default {
   name: "auth",

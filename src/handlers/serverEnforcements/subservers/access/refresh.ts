@@ -7,7 +7,7 @@ import { inspect } from "util";
 import oauth from "../../../../utils/oauth";
 import { staffLogger } from "../../../../utils/logger/staff";
 
-export default async function refreshSubserverAccess(userId: Snowflake, client: Client): Promise<void> {
+export async function refreshSubserverAccess(userId: Snowflake, client: Client): Promise<void> {
   let tokens: OAuthTokensDocument | false | null = false;
   for (const subserver of subservers) {
     const server = client.guilds.cache.get(subserver.id);
@@ -75,4 +75,11 @@ export default async function refreshSubserverAccess(userId: Snowflake, client: 
     }
   }
   staffLogger.debug(`Refreshed subserver access for user ${userId}`);
+}
+
+export function refreshAllSubserverAccess(client: Client<true>): void {
+  void Promise.all(client.guilds.cache.map(guild => guild.members.fetch())).then(async memberChunks => {
+    const members = memberChunks.reduce<Snowflake[]>((a, b) => [...a, ...b.map(member => member.id).filter(id => !a.includes(id))], []);
+    for (const member of members) await refreshSubserverAccess(member, client);
+  });
 }
