@@ -1,4 +1,4 @@
-import subservers, { Access } from "../../constants/subservers";
+import subservers, { SubserverAccess } from "../../constants/subservers";
 import { ApplicationCommandOptionType } from "discord.js";
 import Emojis from "../../constants/emojis";
 import type { FirstLevelChatInputCommand } from ".";
@@ -46,7 +46,7 @@ export default {
 
         const { access, applicableRoles: roles } = await calculateAccess(interaction.user.id, subserver, interaction.client);
 
-        if (access < Access.Allowed) return void interaction.reply({ content: `${Emojis.TickNo} You don't have access to this subserver.`, ephemeral: true });
+        if (access < SubserverAccess.Allowed) return void interaction.reply({ content: `${Emojis.TickNo} You don't have access to this subserver.`, ephemeral: true });
 
         return void oauth.addMember({
           accessToken,

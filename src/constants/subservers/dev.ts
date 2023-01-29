@@ -1,5 +1,5 @@
-import { Access } from ".";
 import type { Subserver } from ".";
+import { SubserverAccess } from ".";
 import config from "../../config";
 
 enum Roles {
@@ -13,19 +13,19 @@ const devSubserver: Subserver = {
   acronym: "BAD",
   staffAccess: {
     [config.roles.administrators]: {
-      access: Access.Allowed,
+      access: SubserverAccess.Allowed,
       roles: [Roles.Management],
     },
     [config.roles.teamLeaders]: {
-      access: Access.Allowed,
+      access: SubserverAccess.Allowed,
       roles: [Roles.Management],
     },
     [config.roles.leadershipStaff]: {
-      access: Access.Allowed,
+      access: SubserverAccess.Allowed,
       roles: [Roles.Management],
     },
     [config.roles.developers]: {
-      access: Access.Allowed,
+      access: SubserverAccess.Allowed,
       roles: [Roles.Developer],
     },
   },

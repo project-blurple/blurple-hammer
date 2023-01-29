@@ -1,5 +1,5 @@
 import type { Client, Snowflake } from "discord.js";
-import subservers, { Access } from "../../../../constants/subservers";
+import subservers, { SubserverAccess } from "../../../../constants/subservers";
 import { OAuthTokens } from "../../../../database/models/OAuthTokens";
 import type { OAuthTokensDocument } from "../../../../database/models/OAuthTokens";
 import calculateAccess from "./calculator";
@@ -16,13 +16,13 @@ export default async function refreshSubserverAccess(userId: Snowflake, client: 
       const { access, applicableRoles, prohibitedRoles } = await calculateAccess(userId, subserver, client);
 
       // kick user for having no access
-      if (access === Access.Denied && member && !member.user.bot) {
+      if (access === SubserverAccess.Denied && member && !member.user.bot) {
         await member.kick("User has no access to subserver")
           .then(() => staffLogger.info(`Kicked user ${userId} from subserver ${subserver.name} due to no access`))
           .catch(err => staffLogger.error(`Failed to kick user ${userId} from subserver ${subserver.name}: ${inspect(err)}`));
 
       // force-add user
-      } else if (access === Access.Forced && !member) {
+      } else if (access === SubserverAccess.Forced && !member) {
         if (tokens === false) {
           tokens = await OAuthTokens.findOne({ userId }).then(tokenDoc => {
             if (!tokenDoc) return null;

@@ -1,5 +1,5 @@
-import { Access } from ".";
 import type { Subserver } from ".";
+import { SubserverAccess } from ".";
 import config from "../../config";
 
 enum Roles {
@@ -13,20 +13,20 @@ const minecraftSubserver: Subserver = {
   acronym: "BAMF",
   staffAccess: {
     [config.roles.administrators]: {
-      access: Access.Allowed,
+      access: SubserverAccess.Allowed,
       roles: [Roles.SuperAdmin],
     },
     [config.roles.teamLeaders]: {
-      access: Access.Allowed,
+      access: SubserverAccess.Allowed,
     },
     [config.roles.leadershipStaff]: {
-      access: Access.Allowed,
+      access: SubserverAccess.Allowed,
     },
     [config.roles.moderationStaff]: {
-      access: Access.Allowed,
+      access: SubserverAccess.Allowed,
     },
     [config.roles.minecraftTeam]: {
-      access: Access.Forced,
+      access: SubserverAccess.Forced,
     },
   },
 };

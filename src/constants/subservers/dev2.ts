@@ -1,5 +1,5 @@
-import { Access } from ".";
 import type { Subserver } from ".";
+import { SubserverAccess } from ".";
 import config from "../../config";
 
 // todo: add roles after refining server
@@ -11,16 +11,16 @@ const dev2Subserver: Subserver = {
   acronym: "BIDE",
   staffAccess: {
     [config.roles.administrators]: {
-      access: Access.Allowed,
+      access: SubserverAccess.Allowed,
     },
     [config.roles.teamLeaders]: {
-      access: Access.Allowed,
+      access: SubserverAccess.Allowed,
     },
     [config.roles.leadershipStaff]: {
-      access: Access.Allowed,
+      access: SubserverAccess.Allowed,
     },
     [config.roles.developers]: {
-      access: Access.Allowed,
+      access: SubserverAccess.Allowed,
     },
   },
 };

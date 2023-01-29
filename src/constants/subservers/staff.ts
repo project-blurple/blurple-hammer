@@ -1,5 +1,5 @@
-import { Access } from ".";
 import type { Subserver } from ".";
+import { SubserverAccess } from ".";
 import config from "../../config";
 
 enum Roles {
@@ -17,31 +17,31 @@ const staffSubserver: Subserver = {
   acronym: "BASE",
   staffAccess: {
     [config.roles.administrators]: {
-      access: Access.Forced,
+      access: SubserverAccess.Forced,
       roles: [Roles.Administrator],
     },
     [config.roles.teamLeaders]: {
-      access: Access.Forced,
+      access: SubserverAccess.Forced,
       roles: [Roles.TeamLeader],
     },
     [config.roles.leadershipStaff]: {
-      access: Access.Forced,
+      access: SubserverAccess.Forced,
       roles: [Roles.Leadership],
     },
     [config.roles.moderationStaff]: {
-      access: Access.Forced,
+      access: SubserverAccess.Forced,
       roles: [Roles.Moderator],
     },
     [config.roles.developers]: {
-      access: Access.Allowed,
+      access: SubserverAccess.Allowed,
       roles: [Roles.Developer],
     },
     [config.roles.medias]: {
-      access: Access.Allowed,
+      access: SubserverAccess.Allowed,
       roles: [Roles.CreativeTeam],
     },
     [config.roles.supportStaff]: {
-      access: Access.Allowed,
+      access: SubserverAccess.Allowed,
       // no roles as they are either a developer or a media team member
     },
   },

@@ -1,5 +1,5 @@
-import { Access } from ".";
 import type { Subserver } from ".";
+import { SubserverAccess } from ".";
 import config from "../../config";
 
 enum Roles {
@@ -15,15 +15,15 @@ const assetsSubserver: Subserver = {
 
   staffAccess: {
     [config.roles.administrators]: {
-      access: Access.Allowed,
+      access: SubserverAccess.Allowed,
       roles: [Roles.SuperAdmin, Roles.TeamLeaders],
     },
     [config.roles.teamLeaders]: {
-      access: Access.Allowed,
+      access: SubserverAccess.Allowed,
       roles: [Roles.TeamLeaders],
     },
     [config.roles.medias]: {
-      access: Access.Allowed,
+      access: SubserverAccess.Allowed,
       roles: [Roles.CreativeTeam],
     },
   },

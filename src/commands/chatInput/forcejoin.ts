@@ -1,4 +1,4 @@
-import subservers, { Access } from "../../constants/subservers";
+import subservers, { SubserverAccess } from "../../constants/subservers";
 import { ApplicationCommandOptionType } from "discord.js";
 import Emojis from "../../constants/emojis";
 import type { FirstLevelChatInputCommand } from ".";
@@ -48,7 +48,7 @@ export default {
     const server = interaction.client.guilds.cache.get(subserver.id)!;
 
     const { access } = await calculateAccess(interaction.user.id, subserver, interaction.client);
-    if (access < Access.Allowed) return void interaction.reply({ content: `${Emojis.TickNo} You don't have permission to force-join users in to this subserver.`, ephemeral: true });
+    if (access < SubserverAccess.Allowed) return void interaction.reply({ content: `${Emojis.TickNo} You don't have permission to force-join users in to this subserver.`, ephemeral: true });
 
     const member = await server.members.fetch(user.id).catch(() => null);
     if (member) return void interaction.reply({ content: `${Emojis.TickNo} They're already in this subserver!`, ephemeral: true });
