@@ -1,13 +1,13 @@
 import type { Client, Snowflake } from "discord.js";
-import { createExpressApp, webFolderPath } from "..";
-import { decode, sign, verify } from "../../../utils/webtokens";
-import { OAuthTokens } from "../../../database/models/OAuthTokens";
-import { allStaffRoles } from "../../../constants/staff";
-import config from "../../../config";
+import { createExpressApp, webFolderPath } from ".";
+import { decode, sign, verify } from "../../utils/webtokens";
+import { OAuthTokens } from "../../database/models/OAuthTokens";
+import { allStaffRoles } from "../../constants/staff";
+import config from "../../config";
 import express from "express";
 import { join } from "path";
-import oauth from "../../../utils/oauth";
-import refreshSubserverAccess from "../../serverEnforcements/subservers/access/refresh";
+import oauth from "../../utils/oauth";
+import refreshSubserverAccess from "../serverEnforcements/subservers/access/refresh";
 
 export default function handleWebStaffPortal(client: Client<true>, webConfig: Exclude<typeof config["staffPortal"], null>): void {
   const [app, listen] = createExpressApp("staff-portal", webConfig.numberOfProxies);

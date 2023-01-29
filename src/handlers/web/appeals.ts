@@ -1,18 +1,18 @@
-import { createExpressApp, webFolderPath } from "..";
-import { decode, sign, verify } from "../../../utils/webtokens";
-import { Appeal } from "../../../database/models/Appeal";
-import type { AppealType } from "../../../database/models/Appeal";
+import { createExpressApp, webFolderPath } from ".";
+import { decode, sign, verify } from "../../utils/webtokens";
+import { Appeal } from "../../database/models/Appeal";
+import type { AppealType } from "../../database/models/Appeal";
 import type { Client } from "discord.js";
-import config from "../../../config";
-import { createNewAppeal } from "../../appeals";
+import config from "../../config";
+import { createNewAppeal } from "../appeals";
 import express from "express";
 import { join } from "path";
-import oauth from "../../../utils/oauth";
+import oauth from "../../utils/oauth";
 import { readFileSync } from "fs";
 import superagent from "superagent";
 
 export default function handleWebAppeals(client: Client<true>, webConfig: Exclude<typeof config["appeals"], null>): void {
-  const [app, listen] = createExpressApp("staff-portal", webConfig.numberOfProxies);
+  const [app, listen] = createExpressApp("appeals", webConfig.numberOfProxies);
 
   const redirectUri = new URL("/oauth-callback", webConfig.url).href;
   const authorizationLink = (state?: string) => oauth.generateAuthUrl({
