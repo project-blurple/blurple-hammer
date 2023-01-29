@@ -1,6 +1,6 @@
 import type { Client, Snowflake } from "discord.js";
-import { SubserverAccess } from "../../../../constants/subservers";
 import type { Subserver } from "../../../../constants/subservers";
+import { SubserverAccess } from "../../../../constants/subservers";
 import { SubserverAccessOverride } from "../../../../database/models/SubserverAccessOverride";
 import { UserStrip } from "../../../../database/models/UserStrip";
 import config from "../../../../config";
