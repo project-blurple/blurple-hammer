@@ -1,4 +1,4 @@
-import { refreshAllSubserverAccess, refreshSubserverAccess } from "./subservers/access/refresh";
+import { refreshAllSubserverAccess, refreshSubserverAccess } from "./subserverAccess/refresh";
 import type { Client } from "discord.js";
 import { SubserverAccessOverride } from "../../database/models/SubserverAccessOverride";
 

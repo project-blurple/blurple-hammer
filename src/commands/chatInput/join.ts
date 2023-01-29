@@ -3,7 +3,7 @@ import { ApplicationCommandOptionType } from "discord.js";
 import Emojis from "../../constants/emojis";
 import type { FirstLevelChatInputCommand } from ".";
 import { OAuthTokens } from "../../database/models/OAuthTokens";
-import calculateAccess from "../../handlers/serverEnforcements/subservers/access/calculator";
+import calculateAccess from "../../handlers/serverEnforcements/subserverAccess/calculator";
 import { commandMentions } from "../../handlers/interactions";
 import { inspect } from "util";
 import { mainLogger } from "../../utils/logger/main";
