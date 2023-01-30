@@ -16,6 +16,8 @@ export default {
   channels: {
     about: String(process.env["CHANNEL_ABOUT"]),
     appeals: String(process.env["CHANNEL_APPEALS"]),
+    publicChannels: String(process.env["CHANNELS_PUBLIC"]).split(","),
+    blurplefierChannels: String(process.env["CHANNELS_BLURPLEFIER"]).split(","),
   },
 
   roles: {
