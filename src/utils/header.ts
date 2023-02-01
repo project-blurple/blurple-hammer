@@ -2,7 +2,7 @@ import { Colors } from "discord.js";
 import TextToSVG from "text-to-svg";
 import { join } from "path";
 import { promisify } from "util";
-import { svg2png } from "svg-png-converter";
+import svg2img from "svg2img";
 
 const fontPromise = promisify(TextToSVG.load)(join(__dirname, "../../web/fonts/Ginto-Nord/Ginto-Nord-700.woff"));
 
@@ -41,9 +41,12 @@ async function generateTextPath(text: string): Promise <string> {
 }
 
 export default async function generateHeader(text: string, backgroundColor: number = Colors.Blurple): Promise<Buffer> {
-  return svg2png({
-    input: await svgTemplate(text, backgroundColor),
-    encoding: "buffer",
-    format: "png",
+  return new Promise(resolve => {
+    void svgTemplate(text, backgroundColor).then(svg => {
+      svg2img(svg, (error, buffer) => {
+        if (error) throw error;
+        resolve(buffer);
+      });
+    })
   });
 }
