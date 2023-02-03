@@ -5,6 +5,17 @@ WORKDIR /app
 ENV IS_DOCKER=true
 
 
+# get staff document
+FROM alpine AS staff-document
+RUN apk --no-cache add git
+
+ARG GITHUB_AUTH=none
+
+RUN git clone --recurse-submodules https://${GITHUB_AUTH}@github.com/project-blurple/staff-document.git /staff-document | true
+RUN mkdir -p /staff-document/.git
+RUN rm -rf /staff-document/.git
+
+
 # base image for package installation
 
 FROM base AS dep-base
@@ -38,6 +49,7 @@ COPY .env* ./
 COPY --from=ts-builder /app/build ./build
 COPY --from=prod-deps /app/node_modules ./node_modules
 COPY ./web ./web
+COPY --from=staff-document /staff-document ./web/staff-document
 COPY package.json ./
 
 ENV NODE_ENV=production

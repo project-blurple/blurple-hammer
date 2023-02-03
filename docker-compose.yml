@@ -2,7 +2,10 @@ version: '3'
 
 services:
   bot:
-    build: .
+    build:
+      context: .
+      args:
+        - GITHUB_AUTH=$GITHUB_AUTH
     restart: unless-stopped
     environment:
       - BOT_ID=$BOT_ID
