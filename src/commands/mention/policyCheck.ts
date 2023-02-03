@@ -41,6 +41,15 @@ export default {
             },
           ] :
           [],
+        ...policyStatus.filter(([, { status }]) => status !== PolicyStatus.NonApplicable).length === 0 ?
+          [
+            {
+              title: "No Policies",
+              description: "*This server has no enforced policies, most likely because of its server type.*",
+              color: Colors.LightGrey,
+            },
+          ] :
+          [],
       ],
     });
   },
