@@ -21,7 +21,7 @@ export interface Subserver {
 const subservers = [...require("./overrides").default as Subserver[]];
 if (!subservers.length) {
   readdirSync(__dirname)
-    .filter(file => file !== "index.ts" && file !== "overrides")
+    .filter(file => !file.startsWith("index") && file !== "overrides")
     .forEach(file => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires -- we need this for it to be synchronous
       const subserver = require(`./${file}`).default as Subserver;
