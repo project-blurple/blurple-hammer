@@ -62,6 +62,9 @@ services:
       - ./logs:/app/logs
     depends_on:
       - db
+    ports:
+      - 127.0.0.1:$APPEALS_PORT:$APPEALS_PORT
+      - 127.0.0.1:$STAFF_PORTAL_PORT:$STAFF_PORTAL_PORT
   db:
     image: mongo:4@sha256:2712bd291a3d1e1534aef34ab5518b79845fb27bc325d2b912633f586ac9a523
     restart: always
