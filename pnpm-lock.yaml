@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@sapphire/type': 2.3.0
   '@tsconfig/node18-strictest': 1.0.0
-  '@typegoose/typegoose': 10.0.0
+  '@typegoose/typegoose': 10.1.0
   '@types/cookie-parser': 1.4.3
   '@types/dedent': 0.7.0
   '@types/express': 4.17.16
@@ -29,7 +29,7 @@ specifiers:
   jest: 29.4.1
   jsonwebtoken: 9.0.0
   match-sorter: 6.3.1
-  mongoose: 6.8.4
+  mongoose: 6.9.0
   morgan: 1.10.0
   ms: 3.0.0-canary.1
   nodemailer: 6.9.1
@@ -46,7 +46,7 @@ specifiers:
 
 dependencies:
   '@sapphire/type': 2.3.0
-  '@typegoose/typegoose': 10.0.0_mongoose@6.8.4
+  '@typegoose/typegoose': 10.1.0_mongoose@6.9.0
   bufferutil: 4.0.7
   cookie-parser: 1.4.6
   dedent: 0.7.0
@@ -59,7 +59,7 @@ dependencies:
   helmet: 6.0.1
   jsonwebtoken: 9.0.0
   match-sorter: 6.3.1
-  mongoose: 6.8.4
+  mongoose: 6.9.0
   morgan: 1.10.0
   nodemailer: 6.9.1
   superagent: 8.0.9
@@ -2542,15 +2542,15 @@ packages:
     resolution: {integrity: sha512-bOuNKwO4Fzbt+Su5wqI9zNHwx5C25gLnutwVQA1sBZk0cW8UjVPVcwzIUhJIIJDUx7zDEbAwdCD2HfvIsV8dYg==}
     dev: true
 
-  /@typegoose/typegoose/10.0.0_mongoose@6.8.4:
-    resolution: {integrity: sha512-40Y2yZYbyeTYFJBWucBovJlopgtKyEvyNYK2zNgw/NXOUkvijkyHeWsyPGKOXEaXqhrku/cjrVIWMbdKx2YiuA==}
+  /@typegoose/typegoose/10.1.0_mongoose@6.9.0:
+    resolution: {integrity: sha512-2TEOW5oLbU2d52+Tz23C3vr5gFPk+qP5gl/745IFisOAHnoAuTKf3znbagy4Ce90XBMnHUtsTjZD+mmUsEVJ1w==}
     engines: {node: '>=14.17.0'}
     peerDependencies:
-      mongoose: ~6.8.0
+      mongoose: ~6.9.0
     dependencies:
       lodash: 4.17.21
       loglevel: 1.8.1
-      mongoose: 6.8.4
+      mongoose: 6.9.0
       reflect-metadata: 0.1.13
       semver: 7.3.8
       tslib: 2.5.0
@@ -5919,8 +5919,8 @@ packages:
       whatwg-url: 11.0.0
     dev: false
 
-  /mongodb/4.12.1:
-    resolution: {integrity: sha512-koT87tecZmxPKtxRQD8hCKfn+ockEL2xBiUvx3isQGI6mFmagWt4f4AyCE9J4sKepnLhMacoCTQQA6SLAI2L6w==}
+  /mongodb/4.13.0:
+    resolution: {integrity: sha512-+taZ/bV8d1pYuHL4U+gSwkhmDrwkWbH1l4aah4YpmpscMwgFBkufIKxgP/G7m87/NUuQzc2Z75ZTI7ZOyqZLbw==}
     engines: {node: '>=12.9.0'}
     dependencies:
       bson: 4.7.2
@@ -5933,13 +5933,13 @@ packages:
       - aws-crt
     dev: false
 
-  /mongoose/6.8.4:
-    resolution: {integrity: sha512-19Jk2hbSAPcM4u6ErW0UPwaSO2YfP/cXfBS9YEiNgNzZfXd+jkyemqJ+t2aflaicXeU4VdTP33pZYxqjk2hUYw==}
+  /mongoose/6.9.0:
+    resolution: {integrity: sha512-5tu6+trwjk5TIH6b6iYgAwmzZ0RNOxFoqXQb9h21Oi45DeM1rWM/niHxJ4ROqBISDfQMwRvLSABHTsyn3AzoFQ==}
     engines: {node: '>=12.0.0'}
     dependencies:
       bson: 4.7.2
       kareem: 2.5.1
-      mongodb: 4.12.1
+      mongodb: 4.13.0
       mpath: 0.9.0
       mquery: 4.0.3
       ms: 2.1.3
