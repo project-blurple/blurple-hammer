@@ -38,7 +38,7 @@ export async function refreshSubserverAccess(userId: Snowflake, client: Client):
                 return tokenDoc;
               })
               .catch(err => {
-                staffLogger.debug(`Failed to refresh access token for user ${userId}: ${inspect(err)}`);
+                staffLogger.error(`Failed to refresh access token for user ${userId}: ${inspect(err)}`);
                 return null;
               });
           });
@@ -55,7 +55,7 @@ export async function refreshSubserverAccess(userId: Snowflake, client: Client):
             .then(() => staffLogger.info(`Added user ${userId} to subserver ${subserver.name} due to forced access`))
             .catch(err => staffLogger.error(`Failed to add user ${userId} to subserver ${subserver.name}: ${inspect(err)}`));
         } else {
-          staffLogger.debug(`Failed to add user ${userId} to subserver ${subserver.name} because access token could not be refreshed`);
+          staffLogger.error(`Failed to add user ${userId} to subserver ${subserver.name} because access token could not be refreshed`);
         }
 
       // apply roles to existing member
