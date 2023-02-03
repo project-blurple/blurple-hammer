@@ -85,4 +85,8 @@ export default {
       replyToEmailAddress: String(process.env["SMTP_REPLY_TO_EMAIL_ADDRESS"]),
     } :
     null,
+
+  subservers: {
+    noDestructiveActions: String(process.env["SUBSERVERS_NO_DESTRUCTIVE_ACTIONS"]) === "true",
+  },
 } as const;

@@ -3,6 +3,7 @@ import subservers, { SubserverAccess } from "../../../constants/subservers";
 import { OAuthTokens } from "../../../database/models/OAuthTokens";
 import type { OAuthTokensDocument } from "../../../database/models/OAuthTokens";
 import calculateAccess from "./calculator";
+import config from "../../../config";
 import { inspect } from "util";
 import oauth from "../../../utils/oauth";
 import { staffLogger } from "../../../utils/logger/staff";
@@ -17,10 +18,12 @@ export async function refreshSubserverAccess(userId: Snowflake, client: Client):
 
       // kick user for having no access
       if (access === SubserverAccess.Denied && member && !member.user.bot) {
-        await member.kick("User has no access to subserver")
-          .then(() => staffLogger.info(`Kicked user ${userId} from subserver ${subserver.name} due to no access`))
-          .catch(err => staffLogger.error(`Failed to kick user ${userId} from subserver ${subserver.name}: ${inspect(err)}`));
-
+        if (config.subservers.noDestructiveActions) staffLogger.warn(`Would have kicked user ${userId} from subserver ${subserver.name} due to no access`);
+        else {
+          await member.kick("User has no access to subserver")
+            .then(() => staffLogger.info(`Kicked user ${userId} from subserver ${subserver.name} due to no access`))
+            .catch(err => staffLogger.error(`Failed to kick user ${userId} from subserver ${subserver.name}: ${inspect(err)}`));
+        }
       // force-add user
       } else if (access === SubserverAccess.Forced && !member) {
         if (tokens === false) {
@@ -45,15 +48,18 @@ export async function refreshSubserverAccess(userId: Snowflake, client: Client):
         }
 
         if (tokens) {
-          await oauth.addMember({
-            accessToken: tokens.accessToken,
-            botToken: client.token!,
-            guildId: subserver.id,
-            userId,
-            roles: applicableRoles,
-          })
-            .then(() => staffLogger.info(`Added user ${userId} to subserver ${subserver.name} due to forced access`))
-            .catch(err => staffLogger.error(`Failed to add user ${userId} to subserver ${subserver.name}: ${inspect(err)}`));
+          if (config.subservers.noDestructiveActions) staffLogger.warn(`Would have added user ${userId} to subserver ${subserver.name} due to forced access`);
+          else {
+            await oauth.addMember({
+              accessToken: tokens.accessToken,
+              botToken: client.token!,
+              guildId: subserver.id,
+              userId,
+              roles: applicableRoles,
+            })
+              .then(() => staffLogger.info(`Added user ${userId} to subserver ${subserver.name} due to forced access`))
+              .catch(err => staffLogger.error(`Failed to add user ${userId} to subserver ${subserver.name}: ${inspect(err)}`));
+          }
         } else {
           staffLogger.error(`Failed to add user ${userId} to subserver ${subserver.name} because access token could not be refreshed`);
         }
