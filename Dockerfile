@@ -11,7 +11,6 @@ FROM base AS dep-base
 RUN npm install -g pnpm
 
 COPY package.json ./
-COPY package-lock.json ./
 COPY pnpm-lock.yaml ./
 
 
