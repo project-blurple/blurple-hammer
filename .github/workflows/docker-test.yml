@@ -14,7 +14,7 @@ jobs:
       uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3
 
     - name: Touch .env file
-      run: touch ".env"
+      run: echo -e "APPEALS_PORT=1234\nSTAFF_PORTAL_PORT=2345" > .env
 
     - name: Test docker compose build
       run: docker compose build
