@@ -11,7 +11,7 @@ RUN apk --no-cache add git
 
 ARG GITHUB_AUTH=none
 
-RUN git clone --recurse-submodules https://${GITHUB_AUTH}@github.com/project-blurple/staff-document.git /staff-document | true
+RUN git clone --branch build --recurse-submodules https://${GITHUB_AUTH}@github.com/project-blurple/staff-document.git /staff-document | true
 RUN mkdir -p /staff-document/.git
 RUN rm -rf /staff-document/.git
 
