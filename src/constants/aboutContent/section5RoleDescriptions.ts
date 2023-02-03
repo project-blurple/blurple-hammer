@@ -59,6 +59,7 @@ function selfObtainableRoleButtons(roles: Record<Snowflake, string>): MessageCre
   for (const roleId in roles) {
     buttonComponents.set(`self-assign-role:${roleId}`, {
       allowedUsers: "all",
+      persistent: true,
       callback(button) {
         const hasRole = button.member.roles.cache.has(roleId);
         if (hasRole) {
