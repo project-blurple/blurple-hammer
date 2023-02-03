@@ -6,6 +6,7 @@ import { allStaffRoles } from "../../constants/staff";
 export default {
   name: "strip",
   description: "Strip yourself (staff-only command)",
+  public: true,
   async execute(interaction) {
     const strip = await UserStrip.findOne({ userId: interaction.user.id });
     if (strip) {
