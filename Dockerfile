@@ -34,7 +34,7 @@ RUN pnpm run build
 
 FROM base
 
-COPY .env ./
+COPY .env* ./
 COPY --from=ts-builder /app/build ./build
 COPY --from=prod-deps /app/node_modules ./node_modules
 COPY ./web ./web
