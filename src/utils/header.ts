@@ -43,10 +43,10 @@ async function generateTextPath(text: string): Promise <string> {
 export default async function generateHeader(text: string, backgroundColor: number = Colors.Blurple): Promise<Buffer> {
   return new Promise(resolve => {
     void svgTemplate(text, backgroundColor).then(svg => {
-      svg2img(svg, (error, buffer) => {
+      svg2img(svg, (error: Error | null, buffer: Buffer | null) => {
         if (error) throw error;
-        resolve(buffer);
+        if (buffer) resolve(buffer);
       });
-    })
+    });
   });
 }
