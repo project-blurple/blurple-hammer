@@ -1,3 +1,7 @@
+/*
+ * This is the CSS file for the appeals page. Since the page and server are both relatively simple, the CSS is also simple. We will not bother optimizing it.
+ */
+
 * {
   --not-quite-black: rgb(35, 39, 42);
   --blurple: rgb(88, 101, 242);
