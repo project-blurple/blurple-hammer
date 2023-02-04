@@ -12,7 +12,7 @@ const section3AboutModeration: AboutSection = {
 
       We will not deny the fact that our rule listing is not perfect, but one thing you should take note is that our rules are not, in any way, written by lawyers. If you are the kind of person to exploit and abuse every loophole you can find, there is this thing called common sense. Use it.
 
-      If you want to appeal your punishment, you can do so here: [projectblurple.com/appeal](https://projectblurple.com/appeal)
+      If you want to appeal your punishment, you can do so here: [appeals.projectblurple.com](https://appeals.projectblurple.com)
     `,
   },
 };
