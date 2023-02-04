@@ -11,6 +11,9 @@ RUN apk --no-cache add git
 
 ARG GITHUB_AUTH=none
 
+# https://stackoverflow.com/a/58801213 - this skips docker caching and forces a new clone every time. however, if the staff document is the same then it will still use cache. so all good.
+ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
+
 RUN git clone --branch build --recurse-submodules https://${GITHUB_AUTH}@github.com/project-blurple/staff-document.git /staff-document | true
 RUN mkdir -p /staff-document/.git
 RUN rm -rf /staff-document/.git
@@ -45,8 +48,8 @@ COPY .env* ./
 COPY --from=deps /app/node_modules ./node_modules
 COPY --from=ts-builder /app/build ./build
 COPY ./web ./web
-COPY --from=staff-document /staff-document ./web/staff-document
 COPY package.json ./
+COPY --from=staff-document /staff-document ./web/staff-document
 
 ENV NODE_ENV=production
 ENTRYPOINT [ "npm", "run" ]
