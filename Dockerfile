@@ -16,24 +16,20 @@ RUN mkdir -p /staff-document/.git
 RUN rm -rf /staff-document/.git
 
 
-# base image for package installation
+# install prod dependencies
 
-FROM base AS dep-base
+FROM base AS deps
 RUN npm install -g pnpm
 
 COPY package.json ./
 COPY pnpm-lock.yaml ./
 
-
-# install production dependencies
-
-FROM dep-base AS prod-deps
 RUN pnpm install --frozen-lockfile --prod
 
 
 # install all dependencies and build typescript
 
-FROM prod-deps AS ts-builder
+FROM deps AS ts-builder
 RUN pnpm install --frozen-lockfile
 
 COPY tsconfig.json ./
@@ -46,8 +42,8 @@ RUN pnpm run build
 FROM base
 
 COPY .env* ./
+COPY --from=deps /app/node_modules ./node_modules
 COPY --from=ts-builder /app/build ./build
-COPY --from=prod-deps /app/node_modules ./node_modules
 COPY ./web ./web
 COPY --from=staff-document /staff-document ./web/staff-document
 COPY package.json ./
