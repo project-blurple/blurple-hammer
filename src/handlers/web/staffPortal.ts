@@ -8,6 +8,7 @@ import express from "express";
 import { join } from "path";
 import oauth from "../../utils/oauth";
 import { refreshSubserverAccess } from "../serverEnforcements/subserverAccess/refresh";
+import dedent from "dedent";
 
 export default function handleWebStaffPortal(client: Client<true>, webConfig: Exclude<typeof config["staffPortal"], null>): void {
   const [app, listen] = createExpressApp("staff-portal", webConfig.numberOfProxies);
@@ -74,7 +75,24 @@ export default function handleWebStaffPortal(client: Client<true>, webConfig: Ex
   });
 
   // serve content
-  app.use(express.static(join(webFolderPath, "staff-document")));
+  app.use((_, res, next) => {
+    // docusaurus uses inline scripts so we need to manually allow this :( - below is a copy of CloudFlare's headers, with the addition of 'unsafe-inline' for script-src
+    res.setHeader("Content-Security-Policy", dedent`
+      default-src 'self';
+      base-uri 'self';
+      font-src 'self' https: data:;
+      form-action 'self';
+      frame-ancestors 'self';
+      img-src 'self' data:;
+      object-src 'none';
+      script-src 'self' 'unsafe-inline';
+      script-src-attr 'none';
+      style-src 'self' https: 'unsafe-inline';
+      upgrade-insecure-requests
+    `.split("\n").map(line => line.trim()).join(""));
+    next();
+  });
+  app.use(express.static(join(webFolderPath, "staff-document"));
   app.get("*", (_, res) => res.status(404).sendFile(join(webFolderPath, "staff-document", "404.html")));
 
   // start app
