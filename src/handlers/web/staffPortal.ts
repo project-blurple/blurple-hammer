@@ -89,10 +89,13 @@ export default function handleWebStaffPortal(client: Client<true>, webConfig: Ex
       script-src-attr 'none';
       style-src 'self' https: 'unsafe-inline';
       upgrade-insecure-requests
-    `.split("\n").map(line => line.trim()).join(""));
+    `
+      .split("\n")
+      .map(line => line.trim())
+      .join(""));
     next();
   });
-  app.use(express.static(join(webFolderPath, "staff-document"));
+  app.use(express.static(join(webFolderPath, "staff-document")));
   app.get("*", (_, res) => res.status(404).sendFile(join(webFolderPath, "staff-document", "404.html")));
 
   // start app
