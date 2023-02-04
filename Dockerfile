@@ -6,7 +6,7 @@ ENV IS_DOCKER=true
 
 
 # get staff document
-FROM alpine AS staff-document
+FROM alpine@sha256:f271e74b17ced29b915d351685fd4644785c6d1559dd1f2d4189a5e851ef753a AS staff-document
 RUN apk --no-cache add git
 
 ARG GITHUB_AUTH=none
