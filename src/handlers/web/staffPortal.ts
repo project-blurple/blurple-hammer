@@ -4,11 +4,11 @@ import { decode, sign, verify } from "../../utils/webtokens";
 import { OAuthTokens } from "../../database/models/OAuthTokens";
 import { allStaffRoles } from "../../constants/staff";
 import config from "../../config";
+import dedent from "dedent";
 import express from "express";
 import { join } from "path";
 import oauth from "../../utils/oauth";
 import { refreshSubserverAccess } from "../serverEnforcements/subserverAccess/refresh";
-import dedent from "dedent";
 
 export default function handleWebStaffPortal(client: Client<true>, webConfig: Exclude<typeof config["staffPortal"], null>): void {
   const [app, listen] = createExpressApp("staff-portal", webConfig.numberOfProxies);
