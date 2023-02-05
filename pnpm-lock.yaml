@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@sapphire/type': 2.3.0
   '@tsconfig/node18-strictest': 1.0.0
-  '@typegoose/typegoose': 10.1.0
+  '@typegoose/typegoose': 10.1.1
   '@types/cookie-parser': 1.4.3
   '@types/dedent': 0.7.0
   '@types/express': 4.17.17
@@ -46,7 +46,7 @@ specifiers:
 
 dependencies:
   '@sapphire/type': 2.3.0
-  '@typegoose/typegoose': 10.1.0_mongoose@6.9.0
+  '@typegoose/typegoose': 10.1.1_mongoose@6.9.0
   bufferutil: 4.0.7
   cookie-parser: 1.4.6
   dedent: 0.7.0
@@ -2542,8 +2542,8 @@ packages:
     resolution: {integrity: sha512-bOuNKwO4Fzbt+Su5wqI9zNHwx5C25gLnutwVQA1sBZk0cW8UjVPVcwzIUhJIIJDUx7zDEbAwdCD2HfvIsV8dYg==}
     dev: true
 
-  /@typegoose/typegoose/10.1.0_mongoose@6.9.0:
-    resolution: {integrity: sha512-2TEOW5oLbU2d52+Tz23C3vr5gFPk+qP5gl/745IFisOAHnoAuTKf3znbagy4Ce90XBMnHUtsTjZD+mmUsEVJ1w==}
+  /@typegoose/typegoose/10.1.1_mongoose@6.9.0:
+    resolution: {integrity: sha512-QzRzgFnsQ3/UTToUEVJ5ln4t/QzlznEat7bcn9tNt4U6QCytPVvTJnRe5SwrJllxakgz0yrnbKkTw9YeoiYXuQ==}
     engines: {node: '>=14.17.0'}
     peerDependencies:
       mongoose: ~6.9.0
