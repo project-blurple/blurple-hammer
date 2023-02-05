@@ -25,7 +25,7 @@ export default async function calculateAccess(userId: Snowflake, subserver: Subs
 
   const access = applicableEntries.reduce((previous, { access: current = SubserverAccess.Denied }) => current > previous ? current : previous, SubserverAccess.Denied);
   const applicableRoles = applicableEntries.reduce<Snowflake[]>((previous, { roles = []}) => previous.concat(roles), []).filter((role, index, array) => array.indexOf(role) === index);
-  const prohibitedRoles = otherManagedEntries.reduce<Snowflake[]>((previous, { roles = []}) => previous.concat(roles), []).filter((role, index, array) => array.indexOf(role) === index);
+  const prohibitedRoles = otherManagedEntries.reduce<Snowflake[]>((previous, { roles = []}) => previous.concat(roles), []).filter((role, index, array) => array.indexOf(role) === index && !applicableRoles.includes(role));
   if (subserver.userOverrideNoticeRoleId) prohibitedRoles.push(subserver.userOverrideNoticeRoleId);
 
   return { access, applicableRoles, prohibitedRoles };
