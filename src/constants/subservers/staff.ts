@@ -9,6 +9,8 @@ enum Roles {
   Moderator = "573176977683644450",
   Developer = "573223306627514386",
   CreativeTeam = "573355860584038400",
+  EventsTeam = "972864361293029406",
+  MinecraftTeam = "701872110754070590",
 }
 
 const staffSubserver: Subserver = {
@@ -43,6 +45,12 @@ const staffSubserver: Subserver = {
     [config.roles.supportStaff]: {
       access: SubserverAccess.Allowed,
       // no roles as they are either a developer or a media team member
+    },
+    [config.roles.eventsTeam]: {
+      roles: [Roles.EventsTeam],
+    },
+    [config.roles.minecraftTeam]: {
+      roles: [Roles.MinecraftTeam],
     },
   },
 };

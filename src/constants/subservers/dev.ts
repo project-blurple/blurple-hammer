@@ -3,8 +3,10 @@ import { SubserverAccess } from ".";
 import config from "../../config";
 
 enum Roles {
-  Management = "559351138034647070",
+  Administrators = "559351138034647070",
+  TeamLeaders = "1072131732817596509",
   Developer = "559815628953878551",
+  OverrideRole = "837388484565925931",
 }
 
 const devSubserver: Subserver = {
@@ -14,21 +16,18 @@ const devSubserver: Subserver = {
   staffAccess: {
     [config.roles.administrators]: {
       access: SubserverAccess.Allowed,
-      roles: [Roles.Management],
+      roles: [Roles.Administrators, Roles.TeamLeaders],
     },
     [config.roles.teamLeaders]: {
       access: SubserverAccess.Allowed,
-      roles: [Roles.Management],
-    },
-    [config.roles.leadershipStaff]: {
-      access: SubserverAccess.Allowed,
-      roles: [Roles.Management],
+      roles: [Roles.TeamLeaders],
     },
     [config.roles.developers]: {
       access: SubserverAccess.Allowed,
       roles: [Roles.Developer],
     },
   },
+  userOverrideNoticeRoleId: Roles.OverrideRole,
 };
 
 export default devSubserver;

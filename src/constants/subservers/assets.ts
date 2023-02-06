@@ -3,9 +3,10 @@ import { SubserverAccess } from ".";
 import config from "../../config";
 
 enum Roles {
-  SuperAdmin = "708630517528002581",
+  FullAccess = "708630517528002581",
   TeamLeaders = "559336076456755200",
   CreativeTeam = "799262919111344128",
+  OverrideRole = "1072130561184911481",
 }
 
 const assetsSubserver: Subserver = {
@@ -16,7 +17,7 @@ const assetsSubserver: Subserver = {
   staffAccess: {
     [config.roles.administrators]: {
       access: SubserverAccess.Allowed,
-      roles: [Roles.SuperAdmin, Roles.TeamLeaders],
+      roles: [Roles.FullAccess, Roles.TeamLeaders],
     },
     [config.roles.teamLeaders]: {
       access: SubserverAccess.Allowed,
@@ -27,6 +28,7 @@ const assetsSubserver: Subserver = {
       roles: [Roles.CreativeTeam],
     },
   },
+  userOverrideNoticeRoleId: Roles.OverrideRole,
 };
 
 export default assetsSubserver;
