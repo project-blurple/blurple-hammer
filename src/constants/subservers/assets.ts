@@ -2,7 +2,7 @@ import type { Subserver } from ".";
 import { SubserverAccess } from ".";
 import config from "../../config";
 
-enum Roles {
+export enum Roles {
   FullAccess = "708630517528002581",
   TeamLeaders = "559336076456755200",
   CreativeTeam = "799262919111344128",

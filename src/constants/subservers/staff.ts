@@ -1,8 +1,9 @@
+import { Roles as MinecraftRoles } from "./minecraft";
 import type { Subserver } from ".";
 import { SubserverAccess } from ".";
 import config from "../../config";
 
-enum Roles {
+export enum Roles {
   Administrator = "573193684296925204",
   TeamLeader = "573176976454713344",
   Leadership = "573176977045979147",
@@ -11,6 +12,7 @@ enum Roles {
   CreativeTeam = "573355860584038400",
   EventsTeam = "972864361293029406",
   MinecraftTeam = "701872110754070590",
+  MinecraftManagement = "573177129693609984",
 }
 
 const staffSubserver: Subserver = {
@@ -51,6 +53,9 @@ const staffSubserver: Subserver = {
     },
     [config.roles.minecraftTeam]: {
       roles: [Roles.MinecraftTeam],
+    },
+    [MinecraftRoles.MinecraftManagement]: {
+      roles: [Roles.MinecraftManagement],
     },
   },
 };

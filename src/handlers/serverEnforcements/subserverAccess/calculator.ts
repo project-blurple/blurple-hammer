@@ -12,12 +12,15 @@ export default async function calculateAccess(userId: Snowflake, subserver: Subs
   const override = await SubserverAccessOverride.findOne({ userId, subserverId: subserver.id });
   if (override) return { access: SubserverAccess.Allowed, applicableRoles: subserver.userOverrideNoticeRoleId ? [subserver.userOverrideNoticeRoleId] : [], prohibitedRoles: []};
 
+  const members = client.guilds.cache.map(guild => guild.members.cache.get(userId));
+
   const userStrip = await UserStrip.findOne({ userId });
   const allUserOrRoleIdsApplicable = [
     member.id,
     ...member.roles.cache.map(role => role.id),
     ...userStrip?.roleIds ?? [],
-  ];
+    ...members.flatMap(user => user?.roles.cache.map(role => role.id) ?? []),
+  ].filter((id, index, array) => array.indexOf(id) === index);
 
   const allEntries = Object.entries(subserver.staffAccess);
   const applicableEntries = allEntries.filter(([userOrRoleId]) => allUserOrRoleIdsApplicable.includes(userOrRoleId)).map(([, access]) => access);
