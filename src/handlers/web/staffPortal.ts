@@ -83,7 +83,7 @@ export default function handleWebStaffPortal(client: Client<true>, webConfig: Ex
       font-src 'self' https: data:;
       form-action 'self';
       frame-ancestors 'self';
-      img-src 'self' data:;
+      img-src 'self' data: https:;
       object-src 'none';
       script-src 'self' 'unsafe-inline';
       script-src-attr 'none';
@@ -94,6 +94,16 @@ export default function handleWebStaffPortal(client: Client<true>, webConfig: Ex
       .map(line => line.trim())
       .join(""));
     next();
+  });
+  app.get("/api/users/:userId.json", (req, res) => {
+    client.users.fetch(req.params.userId, { cache: true, force: false }).then(user => {
+      res.send({
+        username: user.username,
+        discriminator: user.discriminator,
+        avatar: user.displayAvatarURL({ extension: "webp", size: 32 }),
+      });
+    })
+      .catch(() => res.status(404).send({ error: "user not found" }));
   });
   app.use(express.static(join(webFolderPath, "staff-document")));
   app.get("*", (_, res) => res.status(404).sendFile(join(webFolderPath, "staff-document", "404.html")));
