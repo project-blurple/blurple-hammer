@@ -35,7 +35,6 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY --from=ts-builder /app/build ./build
 COPY ./web ./web
 COPY package.json ./
-COPY --from=staff-document /staff-document ./web/staff-document
 
 ENV NODE_ENV=production
 ENTRYPOINT [ "npm", "run" ]
