@@ -89,4 +89,6 @@ export default {
   subservers: {
     noDestructiveActions: String(process.env["SUBSERVERS_NO_DESTRUCTIVE_ACTIONS"]) === "true",
   },
+
+  staffDocumentCloningToken: String(process.env["STAFF_DOCUMENT_CLONING_TOKEN"]) || null,
 } as const;

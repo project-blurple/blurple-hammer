@@ -5,20 +5,6 @@ WORKDIR /app
 ENV IS_DOCKER=true
 
 
-# get staff document
-FROM alpine@sha256:f271e74b17ced29b915d351685fd4644785c6d1559dd1f2d4189a5e851ef753a AS staff-document
-RUN apk --no-cache add git
-
-ARG GITHUB_AUTH=none
-
-# https://stackoverflow.com/a/58801213 - this skips docker caching and forces a new clone every time. however, if the staff document is the same then it will still use cache. so all good.
-ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" skipcache
-
-RUN git clone --branch build --recurse-submodules https://${GITHUB_AUTH}@github.com/project-blurple/staff-document.git /staff-document | true
-RUN mkdir -p /staff-document/.git
-RUN rm -rf /staff-document/.git
-
-
 # install prod dependencies
 
 FROM base AS deps

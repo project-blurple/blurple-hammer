@@ -1,14 +1,15 @@
 import type { Client, Snowflake } from "discord.js";
-import { createExpressApp, webFolderPath } from ".";
-import { decode, sign, verify } from "../../utils/webtokens";
-import { OAuthTokens } from "../../database/models/OAuthTokens";
-import { allStaffRoles } from "../../constants/staff";
-import config from "../../config";
+import cloneStaffDocument, { staffDocumentFolder } from "./staffDocumentCloner";
+import { createExpressApp, webFolderPath } from "..";
+import { decode, sign, verify } from "../../../utils/webtokens";
+import { OAuthTokens } from "../../../database/models/OAuthTokens";
+import { allStaffRoles } from "../../../constants/staff";
+import config from "../../../config";
 import dedent from "dedent";
 import express from "express";
 import { join } from "path";
-import oauth from "../../utils/oauth";
-import { refreshSubserverAccess } from "../serverEnforcements/subserverAccess/refresh";
+import oauth from "../../../utils/oauth";
+import { refreshSubserverAccess } from "../../serverEnforcements/subserverAccess/refresh";
 
 export default function handleWebStaffPortal(client: Client<true>, webConfig: Exclude<typeof config["staffPortal"], null>): void {
   const [app, listen] = createExpressApp("staff-portal", webConfig.numberOfProxies);
@@ -50,6 +51,16 @@ export default function handleWebStaffPortal(client: Client<true>, webConfig: Ex
   // login and logout
   app.get("/login", (_, res) => res.clearCookie("token").redirect(authorizationLink("/")));
   app.get("/logout", (_, res) => res.clearCookie("token").sendFile(join(webFolderPath, "logout.html")));
+
+  // refresh staff document
+  app.post("/refresh-staff-document", (req, res) => {
+    const { authorization } = req.headers;
+    if (authorization !== config.staffDocumentCloningToken) return res.status(401).send("Unauthorized");
+
+    return void cloneStaffDocument()
+      .then(() => res.status(200).send("OK"))
+      .catch(() => res.status(500).send("Internal Server Error"));
+  });
 
   // check if token is valid
   app.use((req, res, next) => {
@@ -105,7 +116,7 @@ export default function handleWebStaffPortal(client: Client<true>, webConfig: Ex
     })
       .catch(() => res.status(404).send({ error: "user not found" }));
   });
-  app.use(express.static(join(webFolderPath, "staff-document")));
+  app.use(express.static(staffDocumentFolder));
   app.get("*", (_, res) => res.status(404).sendFile(join(webFolderPath, "staff-document", "404.html")));
 
   // start app

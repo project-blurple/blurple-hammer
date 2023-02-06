@@ -1,4 +1,0 @@
-[submodule "web/staff-document"]
-	path = web/staff-document
-	url = https://github.com/project-blurple/staff-document
-	branch = build
