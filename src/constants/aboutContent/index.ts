@@ -22,4 +22,4 @@ export default [
   section4HowToMakeABlurpleImage,
   section5RoleDescriptions,
   section6FrequentlyAskedQuestions,
-] satisfies AboutSection[];
+] as AboutSection[];
