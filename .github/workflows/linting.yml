@@ -36,7 +36,7 @@ jobs:
       id: cache-packages
       with:
         path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-        key: pnpm-store-${{ hashFiles('**/package-lock.json') }}
+        key: pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: |
           pnpm-store-
 
