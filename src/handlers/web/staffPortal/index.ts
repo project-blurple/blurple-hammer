@@ -5,7 +5,6 @@ import { decode, sign, verify } from "../../../utils/webtokens";
 import { OAuthTokens } from "../../../database/models/OAuthTokens";
 import { allStaffRoles } from "../../../constants/staff";
 import config from "../../../config";
-import dedent from "dedent";
 import express from "express";
 import { join } from "path";
 import oauth from "../../../utils/oauth";
@@ -86,29 +85,9 @@ export default function handleWebStaffPortal(client: Client<true>, webConfig: Ex
   });
 
   // serve content
-  app.use((_, res, next) => {
-    // docusaurus uses inline scripts so we need to manually allow this :( - below is a copy of CloudFlare's headers, with the addition of 'unsafe-inline' for script-src
-    res.setHeader("Content-Security-Policy", dedent`
-      default-src 'self';
-      base-uri 'self';
-      font-src 'self' https: data:;
-      form-action 'self';
-      frame-ancestors 'self';
-      img-src 'self' data: https:;
-      object-src 'none';
-      script-src 'self' 'unsafe-inline';
-      script-src-attr 'none';
-      style-src 'self' https: 'unsafe-inline';
-      upgrade-insecure-requests
-    `
-      .split("\n")
-      .map(line => line.trim())
-      .join(""));
-    next();
-  });
   app.get("/api/users/:userId.json", (req, res) => {
     client.users.fetch(req.params.userId, { cache: true, force: false }).then(user => {
-      res.send({
+      res.setHeader("Cache-Control", "public, max-age=0").send({
         username: user.username,
         discriminator: user.discriminator,
         avatar: user.displayAvatarURL({ extension: "webp", size: 32 }),

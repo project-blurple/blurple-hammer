@@ -28,7 +28,17 @@ export function createExpressApp(name: string, numberOfProxies = 0): [app: Expre
   app.use(morgan(":remote-addr :method :url :status :res[content-length] - :response-time ms", { stream: { write: message => logger.http(`Received HTTP request: ${message.slice(0, -1)}`) }}));
 
   // security
-  app.use(helmet());
+  app.use(helmet({
+    // for docusaurus
+    contentSecurityPolicy: {
+      directives: {
+        "img-src": [...Array.from(helmet.contentSecurityPolicy.getDefaultDirectives()["img-src"]!), "https://cdn.discordapp.com/"],
+        "script-src": [...Array.from(helmet.contentSecurityPolicy.getDefaultDirectives()["script-src"]!), "'unsafe-inline'"],
+      },
+    },
+    // for cloudflare assets, apparently they don't support COEP
+    crossOriginEmbedderPolicy: false,
+  }));
   app.use(
     rateLimit({
       windowMs: 5 * 60 * 1000,
