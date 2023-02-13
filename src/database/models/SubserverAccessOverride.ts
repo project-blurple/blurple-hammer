@@ -1,5 +1,5 @@
-import { getModelForClass, prop } from "@typegoose/typegoose";
 import type { DocumentType } from "@typegoose/typegoose";
+import { getModelForClass, prop } from "@typegoose/typegoose";
 import type { Snowflake } from "discord.js";
 
 export class SubserverAccessOverrideSchema {

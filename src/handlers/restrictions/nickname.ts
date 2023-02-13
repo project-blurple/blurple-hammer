@@ -1,5 +1,5 @@
-import { AuditLogEvent } from "discord.js";
 import type { Client } from "discord.js";
+import { AuditLogEvent } from "discord.js";
 import config from "../../config";
 
 export default function handleNicknameRestriction(client: Client<true>): void {

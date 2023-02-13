@@ -1,5 +1,5 @@
-import type{ FirstLevelChatInputCommand } from ".";
 import { msToHumanShortTime } from "../../utils/time";
+import type{ FirstLevelChatInputCommand } from ".";
 
 export default {
   name: "ping",

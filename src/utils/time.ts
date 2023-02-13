@@ -1,4 +1,5 @@
 // https://stackoverflow.com/a/19700358
+// eslint-disable-next-line import/prefer-default-export -- multiple exports can be defined in this file
 export function msToHumanShortTime(ms: number): string {
   const days = Math.floor(ms / 86400000);
   const daysMs = ms % 86400000;

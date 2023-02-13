@@ -1,5 +1,5 @@
-import { PropType, getModelForClass, prop } from "@typegoose/typegoose";
 import type { DocumentType } from "@typegoose/typegoose";
+import { PropType, getModelForClass, prop } from "@typegoose/typegoose";
 import type { Snowflake } from "discord.js";
 
 export class UserStripSchema {

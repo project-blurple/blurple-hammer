@@ -1,7 +1,7 @@
+import { inspect } from "util";
 import { Client, IntentsBitField, Options, Partials } from "discord.js";
 import config from "./config";
-import { connection } from "./database";
-import { discordLogger } from "./utils/logger/discord";
+import connection from "./database";
 import handleAppeals from "./handlers/appeals";
 import handleDutyPing from "./handlers/dutyPing";
 import handleInteractions from "./handlers/interactions";
@@ -9,8 +9,8 @@ import handleMentionCommands from "./handlers/mentionCommands";
 import handleRestrictions from "./handlers/restrictions";
 import handleServerEnforcements from "./handlers/serverEnforcements";
 import handleWeb from "./handlers/web";
-import { inspect } from "util";
-import { mainLogger } from "./utils/logger/main";
+import discordLogger from "./utils/logger/discord";
+import mainLogger from "./utils/logger/main";
 
 const client = new Client({
   allowedMentions: { parse: [], users: [], roles: [], repliedUser: true },

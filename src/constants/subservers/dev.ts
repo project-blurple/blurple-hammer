@@ -1,6 +1,6 @@
+import config from "../../config";
 import type { Subserver } from ".";
 import { SubserverAccess } from ".";
-import config from "../../config";
 
 export enum Roles {
   Administrators = "559351138034647070",

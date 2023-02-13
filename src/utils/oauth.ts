@@ -1,7 +1,7 @@
-import { createFileTransports, globalFormat } from "./logger";
 import OAuth2 from "discord-oauth2";
-import config from "../config";
 import { createLogger } from "winston";
+import config from "../config";
+import { createFileTransports, globalFormat } from "./logger";
 
 const oauth = new OAuth2({
   clientId: config.client.id,

@@ -1,15 +1,15 @@
-import subservers, { SubserverAccess } from "../../constants/subservers";
+import { inspect } from "util";
 import { ApplicationCommandOptionType } from "discord.js";
+import config from "../../config";
 import Emojis from "../../constants/emojis";
-import type { FirstLevelChatInputCommand } from ".";
+import subservers, { SubserverAccess } from "../../constants/subservers";
 import { OAuthTokens } from "../../database/models/OAuthTokens";
 import { SubserverAccessOverride } from "../../database/models/SubserverAccessOverride";
-import calculateAccess from "../../handlers/serverEnforcements/subserverAccess/calculator";
 import { commandMentions } from "../../handlers/interactions";
-import config from "../../config";
-import { inspect } from "util";
-import { mainLogger } from "../../utils/logger/main";
+import calculateAccess from "../../handlers/serverEnforcements/subserverAccess/calculator";
+import mainLogger from "../../utils/logger/main";
 import oauth from "../../utils/oauth";
+import type { FirstLevelChatInputCommand } from ".";
 
 export default {
   name: "forcejoin",

@@ -1,5 +1,5 @@
-import type{ MentionCommand } from ".";
 import { msToHumanShortTime } from "../../utils/time";
+import type{ MentionCommand } from ".";
 
 export default {
   names: ["ping", "pong", ""],

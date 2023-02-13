@@ -1,6 +1,6 @@
-import type { AboutSection } from ".";
 import dedent from "dedent";
 import { zeroWidthSpace } from "../../utils/text";
+import type { AboutSection } from ".";
 
 const section1ProjectBlurple: AboutSection = {
   title: "Project Blurple",

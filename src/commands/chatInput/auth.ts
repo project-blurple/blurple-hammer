@@ -1,9 +1,9 @@
-import Emojis from "../../constants/emojis";
-import type { FirstLevelChatInputCommand } from ".";
-import { OAuthTokens } from "../../database/models/OAuthTokens";
 import config from "../../config";
-import oauth from "../../utils/oauth";
+import Emojis from "../../constants/emojis";
+import { OAuthTokens } from "../../database/models/OAuthTokens";
 import { refreshSubserverAccess } from "../../handlers/serverEnforcements/subserverAccess/refresh";
+import oauth from "../../utils/oauth";
+import type { FirstLevelChatInputCommand } from ".";
 
 export default {
   name: "auth",

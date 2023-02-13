@@ -1,15 +1,15 @@
-import { createExpressApp, webFolderPath } from "..";
-import { decode, sign, verify } from "../../../utils/webtokens";
-import { Appeal } from "../../../database/models/Appeal";
-import type { AppealType } from "../../../database/models/Appeal";
-import type { Client } from "discord.js";
-import config from "../../../config";
-import { createNewAppeal } from "../../appeals";
-import express from "express";
-import { join } from "path";
-import oauth from "../../../utils/oauth";
 import { readFileSync } from "fs";
+import { join } from "path";
+import type { Client } from "discord.js";
+import express from "express";
 import superagent from "superagent";
+import { createExpressApp, webFolderPath } from "..";
+import config from "../../../config";
+import type { AppealType } from "../../../database/models/Appeal";
+import { Appeal } from "../../../database/models/Appeal";
+import oauth from "../../../utils/oauth";
+import { decode, sign, verify } from "../../../utils/webtokens";
+import { createNewAppeal } from "../../appeals";
 
 export default function handleWebAppeals(client: Client<true>, webConfig: Exclude<typeof config["appeals"], null>): void {
   const [app, listen] = createExpressApp("appeals", webConfig.numberOfProxies);

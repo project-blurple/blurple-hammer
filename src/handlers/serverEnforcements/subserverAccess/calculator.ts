@@ -1,9 +1,9 @@
 import type { Client, Snowflake } from "discord.js";
+import config from "../../../config";
 import type { Subserver } from "../../../constants/subservers";
 import { SubserverAccess } from "../../../constants/subservers";
 import { SubserverAccessOverride } from "../../../database/models/SubserverAccessOverride";
 import { UserStrip } from "../../../database/models/UserStrip";
-import config from "../../../config";
 
 export default async function calculateAccess(userId: Snowflake, subserver: Subserver, client: Client): Promise<{ access: SubserverAccess; applicableRoles: Snowflake[]; prohibitedRoles: Snowflake[] }> {
   const member = await client.guilds.cache.get(config.mainGuildId)!.members.fetch({ user: userId, force: false }).catch(() => null);

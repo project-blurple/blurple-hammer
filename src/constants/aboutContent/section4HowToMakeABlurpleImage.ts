@@ -1,6 +1,6 @@
-import type { AboutSection } from ".";
-import Emojis from "../emojis";
 import dedent from "dedent";
+import Emojis from "../emojis";
+import type { AboutSection } from ".";
 
 const section4HowToMakeABlurpleImage: AboutSection = {
   title: "How to make a Blurple image",

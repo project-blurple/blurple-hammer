@@ -1,13 +1,13 @@
 import type { Message, TextChannel } from "discord.js";
-import type { AboutSection } from "../../constants/aboutContent";
 import { Colors } from "discord.js";
-import Emojis from "../../constants/emojis";
-import type { MentionCommand } from ".";
-import aboutSections from "../../constants/aboutContent";
 import config from "../../config";
+import type { AboutSection } from "../../constants/aboutContent";
+import aboutSections from "../../constants/aboutContent";
+import Emojis from "../../constants/emojis";
 import generateHeader from "../../utils/header";
-import { msToHumanShortTime } from "../../utils/time";
 import { zeroWidthSpace } from "../../utils/text";
+import { msToHumanShortTime } from "../../utils/time";
+import type { MentionCommand } from ".";
 
 export default {
   names: ["recreateabout"],

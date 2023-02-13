@@ -1,6 +1,6 @@
 /* eslint-disable max-classes-per-file */
-import { PropType, getModelForClass, prop } from "@typegoose/typegoose";
 import type { DocumentType } from "@typegoose/typegoose";
+import { PropType, getModelForClass, prop } from "@typegoose/typegoose";
 import type { Snowflake } from "discord.js";
 
 export type AppealType = "ban" | "kick" | "mute" | "warning";

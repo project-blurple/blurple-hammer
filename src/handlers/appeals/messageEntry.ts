@@ -1,10 +1,9 @@
 import type { Client, InteractionUpdateOptions, MessageCreateOptions } from "discord.js";
-import { Colors, ComponentType, time } from "discord.js";
+import { Colors, ComponentType, time, ButtonStyle } from "discord.js";
 import type { AppealDocument } from "../../database/models/Appeal";
-import { ButtonStyle } from "discord.js";
-import { finalResolutionColors } from "./finalResolutionColors";
 import { fitText } from "../../utils/text";
 import registerAppealButtons from "./buttons";
+import finalResolutionColors from "./finalResolutionColors";
 
 export default function generateAppealMessage(appeal: AppealDocument, client: Client<true>): InteractionUpdateOptions & MessageCreateOptions {
   registerAppealButtons(appeal, client);

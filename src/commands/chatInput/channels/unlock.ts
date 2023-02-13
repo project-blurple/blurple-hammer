@@ -1,9 +1,9 @@
-import { ApplicationCommandOptionType, ChannelType } from "discord.js";
+import { inspect } from "util";
 import type { ForumChannel, Snowflake, StageChannel, TextChannel, VoiceChannel } from "discord.js";
-import Emojis from "../../../constants/emojis";
+import { ApplicationCommandOptionType, ChannelType } from "discord.js";
 import type { SecondLevelChatInputCommand } from "..";
 import config from "../../../config";
-import { inspect } from "util";
+import Emojis from "../../../constants/emojis";
 
 export default {
   name: "unlock",

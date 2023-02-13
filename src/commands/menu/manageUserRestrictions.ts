@@ -1,15 +1,14 @@
 import type { ButtonComponentData, GuildMember, InteractionReplyOptions, InteractionUpdateOptions } from "discord.js";
 import { ButtonStyle, ComponentType } from "discord.js";
 import Emojis from "../../constants/emojis";
-import type { MenuCommand } from ".";
 import { buttonComponents } from "../../handlers/interactions/components";
 import { restrictions } from "../../handlers/restrictions";
+import type { MenuCommand } from ".";
 
 export default {
   name: "Manage user restrictions",
   type: "user",
   execute(interaction, target) {
-    // todo: i hate naming variables bro, i've been sitting here for 12 hours trying to figure out what to name this, PLEASE make a PR with a better name
     const restrictionStatusRecord: Record<string, boolean> = Object.fromEntries(restrictions.map(restriction => [restriction.name, target.roles.cache.has(restriction.roleId)]));
 
     restrictions.forEach(({ name, roleId }) => {

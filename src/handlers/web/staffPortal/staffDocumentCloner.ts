@@ -1,12 +1,12 @@
-import { mkdir, readdir, rm } from "fs/promises";
-import config from "../../../config";
 import { createWriteStream } from "fs";
-import decompress from "decompress";
+import { mkdir, readdir, rm } from "fs/promises";
+import { tmpdir } from "os";
 import { join } from "path";
-import { mainLogger } from "../../../utils/logger/main";
+import decompress from "decompress";
 import { move } from "fs-extra";
 import superfetch from "superagent";
-import { tmpdir } from "os";
+import config from "../../../config";
+import mainLogger from "../../../utils/logger/main";
 
 export const staffDocumentFolder = join(__dirname, "../../../staff-document");
 
