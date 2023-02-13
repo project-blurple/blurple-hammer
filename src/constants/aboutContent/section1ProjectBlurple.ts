@@ -2,7 +2,7 @@ import dedent from "dedent";
 import { zeroWidthSpace } from "../../utils/text";
 import type { AboutSection } from ".";
 
-const section1ProjectBlurple: AboutSection = {
+export default {
   title: "Project Blurple",
   embed: {
     fields: [
@@ -35,6 +35,4 @@ const section1ProjectBlurple: AboutSection = {
       },
     ],
   },
-};
-
-export default { ...section1ProjectBlurple } as AboutSection;
+} satisfies AboutSection;

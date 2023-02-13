@@ -15,13 +15,11 @@ export interface AboutSection {
 
 export const modmailMention = `<@${config.bots.modmail}>`;
 
-const aboutSections: AboutSection[] = [
+export default [
   section1ProjectBlurple,
   section2ServerRules,
   section3AboutModeration,
   section4HowToMakeABlurpleImage,
   section5RoleDescriptions,
   section6FrequentlyAskedQuestions,
-];
-
-export default aboutSections;
+] satisfies AboutSection[];

@@ -1,7 +1,7 @@
 import dedent from "dedent";
 import type { AboutSection } from ".";
 
-const section3AboutModeration: AboutSection = {
+export default {
   title: "About Moderation",
   embed: {
     // turn on word wrapping lol
@@ -15,6 +15,4 @@ const section3AboutModeration: AboutSection = {
       If you want to appeal your punishment, you can do so here: [appeals.projectblurple.com](https://appeals.projectblurple.com)
     `,
   },
-};
-
-export default { ...section3AboutModeration } as AboutSection;
+} satisfies AboutSection;

@@ -5,7 +5,7 @@ import { buttonComponents } from "../../handlers/interactions/components";
 import Emojis from "../emojis";
 import type { AboutSection } from ".";
 
-const section5RoleDescriptions: AboutSection = {
+export default {
   title: "Role Descriptions",
   embed: {
     fields: [
@@ -45,9 +45,7 @@ const section5RoleDescriptions: AboutSection = {
     [config.roles.miscellaneous.archiveAccess]: "Archive Access",
     [config.roles.miscellaneous.eventsPing]: "Events Ping",
   }),
-};
-
-export default { ...section5RoleDescriptions } as AboutSection;
+} satisfies AboutSection;
 
 function formatRoleList(roleDescriptions: Record<Snowflake, string>) {
   return Object.entries(roleDescriptions)

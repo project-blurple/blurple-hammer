@@ -2,7 +2,7 @@ import dedent from "dedent";
 import type { AboutSection } from ".";
 import { modmailMention } from ".";
 
-const section2ServerRules: AboutSection = {
+export default {
   title: "Server Rules",
   embed: {
     description: dedent`
@@ -13,9 +13,7 @@ const section2ServerRules: AboutSection = {
       \`3.\` Advertising is not allowed, we are not the place for this. Some channels might except this rule.
       \`4.\` We do not tolerate any form of harassment or hate speech, this includes but is not limited to: racism, sexism, homophobia, transphobia, ableism, ageism, and any other form of discrimination.
 
-      *Moderators can take appropriate action to you, regardless if it's a server rule or not.*
+      *Moderators can take appropriate action to you, regardless if it's a server rule or not. If you feel like your punishment was unfair, you can appeal here: [appeals.projectblurple.com](https://appeals.projectblurple.com)*
     `,
   },
-};
-
-export default { ...section2ServerRules } as AboutSection;
+} satisfies AboutSection;
