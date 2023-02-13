@@ -51,6 +51,7 @@ export default {
     adventurers: String(process.env["ROLE_ADVENTURERS"]),
     miscellaneous: {
       archiveAccess: String(process.env["ROLE_ARCHIVE_ACCESS"]),
+      canvasPing: String(process.env["ROLE_CANVAS_PING"]),
       eventsPing: String(process.env["ROLE_EVENTS_PING"]),
     },
   },

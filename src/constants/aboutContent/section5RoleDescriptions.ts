@@ -36,6 +36,7 @@ export default {
         name: "Self-obtainable Roles",
         value: formatRoleList({
           [config.roles.miscellaneous.archiveAccess]: "Has access to archived channels.",
+          [config.roles.miscellaneous.canvasPing]: "Gets notified about Canvas updates.",
           [config.roles.miscellaneous.eventsPing]: "Gets notified whenever we have an event.",
         }),
       },
@@ -43,6 +44,7 @@ export default {
   },
   components: selfObtainableRoleButtons({
     [config.roles.miscellaneous.archiveAccess]: "Archive Access",
+    [config.roles.miscellaneous.canvasPing]: "Canvas Ping",
     [config.roles.miscellaneous.eventsPing]: "Events Ping",
   }),
 } satisfies AboutSection;
