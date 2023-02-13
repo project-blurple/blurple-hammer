@@ -1,14 +1,14 @@
-import { ButtonStyle, ComponentType, blockQuote, codeBlock } from "discord.js";
-import type{ MentionCommand } from ".";
-import type{ MessageReplyOptions } from "discord.js";
-import Type from "@sapphire/type";
-import { buttonComponents } from "../../handlers/interactions/components";
-import config from "../../config";
-import dedent from "dedent";
-import { inlineCode } from "discord.js";
+import { randomBytes } from "crypto";
 import { inspect } from "util";
 import { isPromise } from "util/types";
-import { randomBytes } from "crypto";
+import Type from "@sapphire/type";
+import dedent from "dedent";
+import type{ MessageReplyOptions } from "discord.js";
+import { ButtonStyle, ComponentType, blockQuote, codeBlock, inlineCode } from "discord.js";
+import config from "../../config";
+import { buttonComponents } from "../../handlers/interactions/components";
+import type{ MentionCommand } from ".";
+
 
 export default {
   names: ["eval", "evaluate", "run"],

@@ -1,7 +1,6 @@
 import type{ ApplicationCommandData, ApplicationCommandOptionData, ApplicationCommandSubCommandData, ApplicationCommandSubGroupData } from "discord.js";
+import { ApplicationCommandOptionType, ApplicationCommandType } from "discord.js";
 import type{ ChatInputCommand, ChatInputCommandExecutable, ChatInputCommandOptionData, ChatInputCommandOptionDataAutocomplete } from "./chatInput";
-import { ApplicationCommandOptionType } from "discord.js";
-import { ApplicationCommandType } from "discord.js";
 import { allChatInputCommands } from "./chatInput";
 import { allMenuCommands } from "./menu";
 

@@ -1,5 +1,5 @@
-import type{ Awaitable, GuildMember, Message, MessageContextMenuCommandInteraction, UserContextMenuCommandInteraction } from "discord.js";
 import { readdirSync } from "fs";
+import type{ Awaitable, GuildMember, Message, MessageContextMenuCommandInteraction, UserContextMenuCommandInteraction } from "discord.js";
 
 interface BaseMenuCommand {
   name: string;

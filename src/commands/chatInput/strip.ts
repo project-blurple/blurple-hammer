@@ -1,7 +1,7 @@
 import Emojis from "../../constants/emojis";
-import type { FirstLevelChatInputCommand } from ".";
-import { UserStrip } from "../../database/models/UserStrip";
 import { allStaffRoles } from "../../constants/staff";
+import { UserStrip } from "../../database/models/UserStrip";
+import type { FirstLevelChatInputCommand } from ".";
 
 export default {
   name: "strip",

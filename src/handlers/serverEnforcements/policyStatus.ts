@@ -1,7 +1,7 @@
-import { PolicyStatus, ServerType, policies } from "../../constants/policies";
 import type { Guild } from "discord.js";
-import type { Policy } from "../../constants/policies";
 import config from "../../config";
+import type { Policy } from "../../constants/policies";
+import { PolicyStatus, ServerType, policies } from "../../constants/policies";
 import subservers from "../../constants/subservers";
 
 export default async function getPolicyStatus(guild: Guild): Promise<Record<Policy, { status: PolicyStatus; message?: string }>> {

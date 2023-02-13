@@ -1,16 +1,16 @@
-import { createFileTransports, globalFormat } from "../../utils/logger";
+import { join } from "path";
+import cookieParser from "cookie-parser";
 import type { Client } from "discord.js";
 import type { Express } from "express";
-import config from "../../config";
-import cookieParser from "cookie-parser";
-import { createLogger } from "winston";
 import express from "express";
+import rateLimit from "express-rate-limit";
+import helmet, { contentSecurityPolicy } from "helmet";
+import morgan from "morgan";
+import { createLogger } from "winston";
+import config from "../../config";
+import { createFileTransports, globalFormat } from "../../utils/logger";
 import handleWebAppeals from "./appeals";
 import handleWebStaffPortal from "./staffPortal";
-import helmet from "helmet";
-import { join } from "path";
-import morgan from "morgan";
-import rateLimit from "express-rate-limit";
 
 export default function handleWeb(client: Client<true>): void {
   if (config.appeals) handleWebAppeals(client, config.appeals);
@@ -32,8 +32,8 @@ export function createExpressApp(name: string, numberOfProxies = 0): [app: Expre
     // for docusaurus
     contentSecurityPolicy: {
       directives: {
-        "img-src": [...Array.from(helmet.contentSecurityPolicy.getDefaultDirectives()["img-src"]!), "https://cdn.discordapp.com/"],
-        "script-src": [...Array.from(helmet.contentSecurityPolicy.getDefaultDirectives()["script-src"]!), "'unsafe-inline'"],
+        "img-src": [...Array.from(contentSecurityPolicy.getDefaultDirectives()["img-src"]!), "https://cdn.discordapp.com/"],
+        "script-src": [...Array.from(contentSecurityPolicy.getDefaultDirectives()["script-src"]!), "'unsafe-inline'"],
       },
     },
     // for cloudflare assets, apparently they don't support COEP

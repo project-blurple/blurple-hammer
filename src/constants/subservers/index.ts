@@ -1,5 +1,5 @@
-import type { Snowflake } from "discord.js";
 import { readdirSync } from "fs";
+import type { Snowflake } from "discord.js";
 
 export enum SubserverAccess { Denied, Allowed, Forced }
 
@@ -19,6 +19,7 @@ export interface Subserver {
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires -- we can't import this in the file because it's a circular dependency
 const subservers = [...require("./overrides").default as Subserver[]];
+
 if (!subservers.length) {
   readdirSync(__dirname)
     .filter(file => !file.startsWith("index") && file !== "overrides")

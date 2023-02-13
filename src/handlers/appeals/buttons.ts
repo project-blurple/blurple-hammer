@@ -1,17 +1,17 @@
-import type { AppealAction, AppealDocument } from "../../database/models/Appeal";
 import type { Client, TextChannel } from "discord.js";
 import { ComponentType, TextInputStyle, time } from "discord.js";
+import config from "../../config";
+import Emojis from "../../constants/emojis";
+import type { AppealAction, AppealDocument } from "../../database/models/Appeal";
+import { Appeal } from "../../database/models/Appeal";
+import { sendMail } from "../../utils/mail";
+import { fitText } from "../../utils/text";
 import { buttonComponents, selectMenuComponents } from "../interactions/components";
 import { createModalTextInput, getModalTextInput, modals } from "../interactions/modals";
-import { Appeal } from "../../database/models/Appeal";
-import Emojis from "../../constants/emojis";
-import addLogToAppeal from "./logging";
 import { appealEmailActionTemplates } from "./emails";
-import config from "../../config";
-import { finalResolutionColors } from "./finalResolutionColors";
-import { fitText } from "../../utils/text";
+import finalResolutionColors from "./finalResolutionColors";
+import addLogToAppeal from "./logging";
 import generateAppealMessage from "./messageEntry";
-import { sendMail } from "../../utils/mail";
 
 export default function registerAppealButtons(appeal: AppealDocument, client: Client<true>): void {
   // remove all appeal buttons

@@ -1,11 +1,11 @@
-import { ApplicationCommandOptionType } from "discord.js";
 import type { Client } from "discord.js";
+import { ApplicationCommandOptionType } from "discord.js";
+import getAllApplicationCommands from "../../commands/applicationCommands";
+import config from "../../config";
+import mainLogger from "../../utils/logger/main";
 import autocompleteHandler from "./autocompletes";
 import chatInputCommandHandler from "./chatInputCommands";
 import componentHandler from "./components";
-import config from "../../config";
-import getAllApplicationCommands from "../../commands/applicationCommands";
-import { mainLogger } from "../../utils/logger/main";
 import menuCommandHandler from "./menuCommands";
 import modalHandler from "./modals";
 

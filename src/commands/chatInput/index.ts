@@ -1,6 +1,6 @@
+import { readdirSync } from "fs";
 import type{ ApplicationCommandAutocompleteNumericOptionData, ApplicationCommandAutocompleteStringOptionData, ApplicationCommandBooleanOptionData, ApplicationCommandChannelOptionData, ApplicationCommandMentionableOptionData, ApplicationCommandNonOptionsData, ApplicationCommandNumericOptionData, ApplicationCommandRoleOptionData, ApplicationCommandStringOptionData, ApplicationCommandUserOptionData, Awaitable, ChatInputCommandInteraction } from "discord.js";
 import type{ Autocomplete } from "../../handlers/interactions/autocompletes";
-import { readdirSync } from "fs";
 
 export type FirstLevelChatInputCommand = ChatInputCommandMeta & {
   public?: true;

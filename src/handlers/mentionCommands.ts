@@ -1,10 +1,9 @@
 import type{ Client, Message, MessageReplyOptions, Snowflake } from "discord.js";
+import { MessageType, escapeInlineCode } from "discord.js";
 import { allMentionCommands, quickResponses } from "../commands/mention";
-import { MessageType } from "discord.js";
 import config from "../config";
-import { escapeInlineCode } from "discord.js";
+import mainLogger from "../utils/logger/main";
 import { fitText } from "../utils/text";
-import { mainLogger } from "../utils/logger/main";
 
 const replies = new Map<Snowflake, Message>();
 

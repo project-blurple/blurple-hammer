@@ -1,14 +1,14 @@
-import type { Client, Snowflake } from "discord.js";
-import cloneStaffDocument, { staffDocumentFolder } from "./staffDocumentCloner";
-import { createExpressApp, webFolderPath } from "..";
-import { decode, sign, verify } from "../../../utils/webtokens";
-import { OAuthTokens } from "../../../database/models/OAuthTokens";
-import { allStaffRoles } from "../../../constants/staff";
-import config from "../../../config";
-import express from "express";
 import { join } from "path";
+import type { Client, Snowflake } from "discord.js";
+import express from "express";
+import { createExpressApp, webFolderPath } from "..";
+import config from "../../../config";
+import { allStaffRoles } from "../../../constants/staff";
+import { OAuthTokens } from "../../../database/models/OAuthTokens";
 import oauth from "../../../utils/oauth";
+import { decode, sign, verify } from "../../../utils/webtokens";
 import { refreshSubserverAccess } from "../../serverEnforcements/subserverAccess/refresh";
+import cloneStaffDocument, { staffDocumentFolder } from "./staffDocumentCloner";
 
 export default function handleWebStaffPortal(client: Client<true>, webConfig: Exclude<typeof config["staffPortal"], null>): void {
   const [app, listen] = createExpressApp("staff-portal", webConfig.numberOfProxies);

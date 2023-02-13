@@ -1,5 +1,5 @@
-import type{ Awaitable, Message, MessageReplyOptions } from "discord.js";
 import { readdirSync } from "fs";
+import type{ Awaitable, Message, MessageReplyOptions } from "discord.js";
 
 export interface MentionCommand {
   names: [string, ...string[]];

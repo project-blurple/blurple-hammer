@@ -1,5 +1,5 @@
-import type { AboutSection } from ".";
 import dedent from "dedent";
+import type { AboutSection } from ".";
 
 const section3AboutModeration: AboutSection = {
   title: "About Moderation",

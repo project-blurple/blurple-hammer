@@ -1,6 +1,6 @@
-import { refreshAllSubserverAccess, refreshSubserverAccess } from "./subserverAccess/refresh";
 import type { Client } from "discord.js";
 import { SubserverAccessOverride } from "../../database/models/SubserverAccessOverride";
+import { refreshAllSubserverAccess, refreshSubserverAccess } from "./subserverAccess/refresh";
 
 export default function handleServerPolicies(client: Client<true>): void {
   refreshAllSubserverAccess(client);

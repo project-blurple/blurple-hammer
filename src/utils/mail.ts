@@ -1,9 +1,9 @@
-import { createFileTransports, globalFormat } from "./logger";
-import type SMTPTransport from "nodemailer/lib/smtp-transport";
-import config from "../config";
-import { createLogger } from "winston";
 import { inspect } from "util";
 import nodemailer from "nodemailer";
+import type SMTPTransport from "nodemailer/lib/smtp-transport";
+import { createLogger } from "winston";
+import config from "../config";
+import { createFileTransports, globalFormat } from "./logger";
 
 const defaults: SMTPTransport.Options = {
   ...config.smtpSettings && {

@@ -1,5 +1,5 @@
-import type { Subserver } from "..";
 import { readdirSync } from "fs";
+import type { Subserver } from "..";
 
 const files = readdirSync(__dirname).filter(file => file !== "index.ts" && file !== ".gitignore");
 

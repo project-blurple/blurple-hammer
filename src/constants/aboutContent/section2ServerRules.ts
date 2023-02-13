@@ -1,5 +1,5 @@
-import type { AboutSection } from ".";
 import dedent from "dedent";
+import type { AboutSection } from ".";
 import { modmailMention } from ".";
 
 const section2ServerRules: AboutSection = {

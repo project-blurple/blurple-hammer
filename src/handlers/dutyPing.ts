@@ -1,6 +1,6 @@
 import type { Client } from "discord.js";
-import Emojis from "../constants/emojis";
 import config from "../config";
+import Emojis from "../constants/emojis";
 
 export default function handleDutyPing(client: Client<true>): void {
   const role = client.guilds.cache.get(config.mainGuildId)?.roles.cache.get(config.roles.staffOnDuty);

@@ -1,14 +1,14 @@
-import type { Client, Snowflake, TextChannel } from "discord.js";
-import { Appeal } from "../../database/models/Appeal";
-import type { AppealType } from "../../database/models/Appeal";
-import { ThreadAutoArchiveDuration } from "discord.js";
-import { appealEmailConfirmationOnReceive } from "./emails";
-import config from "../../config";
-import generateAppealMessage from "./messageEntry";
 import { inspect } from "util";
-import { mainLogger } from "../../utils/logger/main";
-import registerAppealButtons from "./buttons";
+import type { Client, Snowflake, TextChannel } from "discord.js";
+import { ThreadAutoArchiveDuration } from "discord.js";
+import config from "../../config";
+import type { AppealType } from "../../database/models/Appeal";
+import { Appeal } from "../../database/models/Appeal";
+import mainLogger from "../../utils/logger/main";
 import { sendMail } from "../../utils/mail";
+import registerAppealButtons from "./buttons";
+import { appealEmailConfirmationOnReceive } from "./emails";
+import generateAppealMessage from "./messageEntry";
 
 export default function handleAppeals(client: Client<true>): void {
   void Appeal.find().then(appeals => appeals.forEach(appeal => {

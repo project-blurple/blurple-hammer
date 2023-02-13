@@ -1,7 +1,7 @@
+import config from "../../config";
 import { Roles as MinecraftRoles } from "./minecraft";
 import type { Subserver } from ".";
 import { SubserverAccess } from ".";
-import config from "../../config";
 
 export enum Roles {
   Administrator = "573193684296925204",

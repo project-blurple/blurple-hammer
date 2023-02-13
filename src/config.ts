@@ -1,4 +1,6 @@
-import "dotenv/config";
+import { config } from "dotenv";
+
+config();
 
 export default {
   client: {
