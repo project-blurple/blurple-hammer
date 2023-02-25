@@ -67,7 +67,7 @@ services:
       - 127.0.0.1:$APPEALS_PORT:$APPEALS_PORT
       - 127.0.0.1:$STAFF_PORTAL_PORT:$STAFF_PORTAL_PORT
   db:
-    image: mongo:4@sha256:d23ec07162ca06646a6329c452643f37494af644d045c002a7b41873981c160d
+    image: mongo:4@sha256:164c3f8dd6c81f95346c478e7cc447a58804cb661c623d542f416221cd6c037c
     restart: always
     volumes:
       - ./database:/data/db
