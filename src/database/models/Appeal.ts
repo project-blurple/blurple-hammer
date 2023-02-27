@@ -40,7 +40,7 @@ export class AppealSchema {
   @prop({ type: String, default: null }) staffAssigneeId!: Snowflake | null;
   @prop({ type: FinalResolutionSchema, default: null }) finalResolution!: FinalResolutionSchema | null;
 
-  @prop({ type: [LogEntrySchema], default: []}, PropType.ARRAY) logs!: LogEntrySchema[];
+  @prop({ type: [LogEntrySchema], default: [] }, PropType.ARRAY) logs!: LogEntrySchema[];
   @prop({ type: String, required: true }) messageId!: Snowflake;
 }
 

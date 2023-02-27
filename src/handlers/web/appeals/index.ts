@@ -71,7 +71,7 @@ export default function handleWebAppeals(client: Client<true>, webConfig: Exclud
     const { token } = req.cookies as { token: string };
     const { id } = decode<{ id: string }>(token);
 
-    void Appeal.findOne({ "user.id": id, "finalResolution.action": "blocked", "finalResolution.timestamp": { $gte: new Date(Date.now() - 7776000000) }})
+    void Appeal.findOne({ "user.id": id, "finalResolution.action": "blocked", "finalResolution.timestamp": { $gte: new Date(Date.now() - 7776000000) } })
       .then(Boolean)
       .then(isBanned => {
         if (isBanned) {

@@ -15,7 +15,7 @@ export default function generateAppealMessage(appeal: AppealDocument, client: Cl
   return {
     ...appeal.staffAssigneeId && { content: `*Assigned to <@${appeal.staffAssigneeId}>.*` },
     ...appeal.finalResolution && { content: `Resolved by <@${appeal.finalResolution.staffId}> ${time(appeal.finalResolution.timestamp, "R")} with action **${appeal.finalResolution.action.toUpperCase()}**.` },
-    allowedMentions: { users: appeal.staffAssigneeId && !appeal.finalResolution ? [appeal.staffAssigneeId] : []},
+    allowedMentions: { users: appeal.staffAssigneeId && !appeal.finalResolution ? [appeal.staffAssigneeId] : [] },
     embeds: [
       {
         author: {

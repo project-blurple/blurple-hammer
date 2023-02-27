@@ -25,7 +25,7 @@ export function createExpressApp(name: string, numberOfProxies = 0): [app: Expre
 
   // logging
   const logger = createLogger({ format: globalFormat, transports: createFileTransports(`express-${name}`, ["http"]) });
-  app.use(morgan(":remote-addr :method :url :status :res[content-length] - :response-time ms", { stream: { write: message => logger.http(`Received HTTP request: ${message.slice(0, -1)}`) }}));
+  app.use(morgan(":remote-addr :method :url :status :res[content-length] - :response-time ms", { stream: { write: message => logger.http(`Received HTTP request: ${message.slice(0, -1)}`) } }));
 
   // security
   app.use(helmet({

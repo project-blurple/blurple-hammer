@@ -13,7 +13,7 @@ export default function getAllApplicationCommands(): ApplicationCommandData[] {
       description: command.description,
       type: ApplicationCommandType.ChatInput,
       ...chatInputIsExecutable(command) ?
-        { ...command.options && { options: convertChatInputCommandOptionsToApplicationCommandOptions(command.options) }} :
+        { ...command.options && { options: convertChatInputCommandOptionsToApplicationCommandOptions(command.options) } } :
         {
           options: command.subcommands.map(subcommand => ({
             name: subcommand.name,

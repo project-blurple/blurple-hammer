@@ -28,7 +28,7 @@ export default {
     const navigation: Record<AboutSection["title"], Message["url"]> = {};
     for (const section of aboutSections) {
       const header = await generateHeader(section.title);
-      await aboutChannel.send({ files: [{ name: `${section.title.toLowerCase()}.png`, attachment: header }]});
+      await aboutChannel.send({ files: [{ name: `${section.title.toLowerCase()}.png`, attachment: header }] });
       const navigationMessage = await aboutChannel.send({
         embeds: [
           {
@@ -42,7 +42,7 @@ export default {
       navigation[section.title] = navigationMessage.url;
     }
 
-    await aboutChannel.send({ files: [{ name: "navigation.png", attachment: await generateHeader("Navigation") }]});
+    await aboutChannel.send({ files: [{ name: "navigation.png", attachment: await generateHeader("Navigation") }] });
     await aboutChannel.send({
       embeds: [
         {
