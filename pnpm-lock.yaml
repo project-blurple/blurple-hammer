@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@sapphire/type': 2.3.0
   '@tsconfig/node18-strictest': 1.0.0
-  '@typegoose/typegoose': 10.2.0
+  '@typegoose/typegoose': 10.3.0
   '@types/cookie-parser': 1.4.3
   '@types/decompress': 4.2.4
   '@types/dedent': 0.7.0
@@ -33,7 +33,7 @@ specifiers:
   jest: 29.5.0
   jsonwebtoken: 9.0.0
   match-sorter: 6.3.1
-  mongoose: 6.10.0
+  mongoose: 6.10.1
   morgan: 1.10.0
   ms: 3.0.0-canary.1
   nodemailer: 6.9.1
@@ -50,7 +50,7 @@ specifiers:
 
 dependencies:
   '@sapphire/type': 2.3.0
-  '@typegoose/typegoose': 10.2.0_mongoose@6.10.0
+  '@typegoose/typegoose': 10.3.0_mongoose@6.10.1
   bufferutil: 4.0.7
   cookie-parser: 1.4.6
   decompress: 4.2.1
@@ -65,7 +65,7 @@ dependencies:
   helmet: 6.0.1
   jsonwebtoken: 9.0.0
   match-sorter: 6.3.1
-  mongoose: 6.10.0
+  mongoose: 6.10.1
   morgan: 1.10.0
   nodemailer: 6.9.1
   superagent: 8.0.9
@@ -2581,15 +2581,15 @@ packages:
     resolution: {integrity: sha512-bOuNKwO4Fzbt+Su5wqI9zNHwx5C25gLnutwVQA1sBZk0cW8UjVPVcwzIUhJIIJDUx7zDEbAwdCD2HfvIsV8dYg==}
     dev: true
 
-  /@typegoose/typegoose/10.2.0_mongoose@6.10.0:
-    resolution: {integrity: sha512-HP+0IGjjdxXeN57q0NgnSqTEAdPVuW17yL0QcHKqqI4Hb/cSJR+xEMBn8QcansS+hCCkzkYOKodo0Wv6Fzn12Q==}
+  /@typegoose/typegoose/10.3.0_mongoose@6.10.1:
+    resolution: {integrity: sha512-5D7a4Jd1CJNrQRa/hwSY/Y13xo9cZWFcd/tCh+y+KgEMhNIlH6vPmlWcynQfjTZo1wTQ7YzyUGnmMyPb1e6LYw==}
     engines: {node: '>=14.17.0'}
     peerDependencies:
       mongoose: ~6.10.0
     dependencies:
       lodash: 4.17.21
       loglevel: 1.8.1
-      mongoose: 6.10.0
+      mongoose: 6.10.1
       reflect-metadata: 0.1.13
       semver: 7.3.8
       tslib: 2.5.0
@@ -6404,9 +6404,9 @@ packages:
       - aws-crt
     dev: false
 
-  /mongoose/6.10.0:
-    resolution: {integrity: sha512-0zrKDEnmNscYyAyN94smo2LlJ63gaezKHpHM+KQ+6EiAgAnah5Kt3hQSYzOTQX/63YNdT1oJXiLlB5LqTdcjUw==}
-    engines: {node: '>=12.0.0'}
+  /mongoose/6.10.1:
+    resolution: {integrity: sha512-QBXX27XXCEIi1zqimTBjlZsFFg2YzK9uQfuAIqG1AyIEeyKiiCaobD0Tst2ULwiX4PRB53VLRQvAqyu5TwvOZg==}
+    engines: {node: '>=14.0.0'}
     dependencies:
       bson: 4.7.2
       kareem: 2.5.1
