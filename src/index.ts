@@ -9,6 +9,7 @@ import handleMentionCommands from "./handlers/mentionCommands";
 import handleRestrictions from "./handlers/restrictions";
 import handleServerEnforcements from "./handlers/serverEnforcements";
 import handleWeb from "./handlers/web";
+import handleZeppelinCases from "./handlers/zeppelinCases";
 import discordLogger from "./utils/logger/discord";
 import mainLogger from "./utils/logger/main";
 
@@ -45,6 +46,7 @@ client.once("ready", trueClient => {
   handleRestrictions(trueClient);
   handleServerEnforcements(trueClient);
   handleWeb(trueClient);
+  handleZeppelinCases(trueClient);
 });
 
 // discord debug logging

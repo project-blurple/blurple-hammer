@@ -4,7 +4,7 @@ import { createFileTransports, globalFormat } from ".";
 const mainLogger = createLogger({
   format: globalFormat,
   transports: [
-    ...createFileTransports("main", ["info", "http"]),
+    ...createFileTransports("main", ["info", "http", "debug"]),
     new transports.Console({ level: "info" }),
   ],
 });

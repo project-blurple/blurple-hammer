@@ -20,6 +20,7 @@ export default {
     appeals: String(process.env["CHANNEL_APPEALS"]),
     publicChannels: String(process.env["CHANNELS_PUBLIC"]).split(","),
     blurplefierChannels: String(process.env["CHANNELS_BLURPLEFIER"]).split(","),
+    zeppelinCaseLog: String(process.env["CHANNEL_ZEPPELIN_CASES"]),
   },
 
   roles: {
@@ -58,6 +59,7 @@ export default {
 
   bots: {
     modmail: String(process.env["BOT_MODMAIL"]),
+    zeppelin: String(process.env["BOT_ZEPPELIN"]),
   },
 
   appeals: process.env["APPEALS_PORT"] ?
