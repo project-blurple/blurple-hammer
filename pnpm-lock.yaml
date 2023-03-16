@@ -9,7 +9,7 @@ specifiers:
   '@types/dedent': 0.7.0
   '@types/express': 4.17.17
   '@types/fs-extra': 11.0.1
-  '@types/jest': 29.4.4
+  '@types/jest': 29.5.0
   '@types/jsonwebtoken': 9.0.1
   '@types/morgan': 1.9.4
   '@types/node': 18.15.3
@@ -84,7 +84,7 @@ devDependencies:
   '@types/dedent': 0.7.0
   '@types/express': 4.17.17
   '@types/fs-extra': 11.0.1
-  '@types/jest': 29.4.4
+  '@types/jest': 29.5.0
   '@types/jsonwebtoken': 9.0.1
   '@types/morgan': 1.9.4
   '@types/node': 18.15.3
@@ -2704,8 +2704,8 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest/29.4.4:
-    resolution: {integrity: sha512-qezb65VIH7X1wobSnd6Lvdve7PXSyQRa3dljTkhTtDhi603RvHQCshSlJcuyMLHJpeHgY3NKwvDJWxMOOHxGDQ==}
+  /@types/jest/29.5.0:
+    resolution: {integrity: sha512-3Emr5VOl/aoBwnWcH/EFQvlSAmjV+XtV9GGu5mwdYew5vhQh0IUZx/60x0TzHDu09Bi7HMx10t/namdJw5QIcg==}
     dependencies:
       expect: 29.5.0
       pretty-format: 29.5.0
