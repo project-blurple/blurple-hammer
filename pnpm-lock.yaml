@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@sapphire/type': 2.3.0
   '@tsconfig/node18-strictest': 1.0.0
-  '@typegoose/typegoose': 10.3.2
+  '@typegoose/typegoose': 10.3.3
   '@types/cookie-parser': 1.4.3
   '@types/decompress': 4.2.4
   '@types/dedent': 0.7.0
@@ -50,7 +50,7 @@ specifiers:
 
 dependencies:
   '@sapphire/type': 2.3.0
-  '@typegoose/typegoose': 10.3.2_mongoose@6.10.3
+  '@typegoose/typegoose': 10.3.3_mongoose@6.10.3
   bufferutil: 4.0.7
   cookie-parser: 1.4.6
   decompress: 4.2.1
@@ -92,7 +92,7 @@ devDependencies:
   '@types/superagent': 4.1.16
   '@types/text-to-svg': 3.1.1
   eslint: 8.36.0
-  eslint-config-promise: github.com/promise/eslint-config/4e7f87cca137c4d839a2da42d2b18e2b8ca784a2_betrz3yazdy4fyxoqrvk4tf7wy
+  eslint-config-promise: github.com/promise/eslint-config/cee186e21b28d88af8cc9dca5e2a054a50d31109_betrz3yazdy4fyxoqrvk4tf7wy
   jest: 29.5.0_@types+node@18.15.3
   ms: 3.0.0-canary.1
   ts-jest: 29.0.5_rvjmdqhqjqm2mi2o3slrod4dxm
@@ -2582,8 +2582,8 @@ packages:
     resolution: {integrity: sha512-bOuNKwO4Fzbt+Su5wqI9zNHwx5C25gLnutwVQA1sBZk0cW8UjVPVcwzIUhJIIJDUx7zDEbAwdCD2HfvIsV8dYg==}
     dev: true
 
-  /@typegoose/typegoose/10.3.2_mongoose@6.10.3:
-    resolution: {integrity: sha512-9GMmUF9ljr/oJChbRmDPCkRyP7I1OImiL3dmW/waopVghIXZ0xc6T7i8RjWvhj40sa0ExDCykR8BBLhyDJN/nw==}
+  /@typegoose/typegoose/10.3.3_mongoose@6.10.3:
+    resolution: {integrity: sha512-pbgaPytydBqL3Pcl1ak7QScBXynnrcw1UAW74s0oSRQi7MPkBEU3Bc9b+W5ds3mgNGFw6M7Gcjl6NETDYoU1Pg==}
     engines: {node: '>=14.17.0'}
     peerDependencies:
       mongoose: ~6.10.0
@@ -8307,9 +8307,9 @@ packages:
     version: 1.2.6
     dev: false
 
-  github.com/promise/eslint-config/4e7f87cca137c4d839a2da42d2b18e2b8ca784a2_betrz3yazdy4fyxoqrvk4tf7wy:
-    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/4e7f87cca137c4d839a2da42d2b18e2b8ca784a2}
-    id: github.com/promise/eslint-config/4e7f87cca137c4d839a2da42d2b18e2b8ca784a2
+  github.com/promise/eslint-config/cee186e21b28d88af8cc9dca5e2a054a50d31109_betrz3yazdy4fyxoqrvk4tf7wy:
+    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/cee186e21b28d88af8cc9dca5e2a054a50d31109}
+    id: github.com/promise/eslint-config/cee186e21b28d88af8cc9dca5e2a054a50d31109
     name: eslint-config-promise
     version: 0.0.0
     peerDependencies:
