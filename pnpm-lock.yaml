@@ -28,7 +28,7 @@ specifiers:
   eslint-config-promise: github:promise/eslint-config
   express: 4.18.2
   express-rate-limit: 6.7.0
-  fs-extra: 11.1.0
+  fs-extra: 11.1.1
   helmet: 6.0.1
   jest: 29.5.0
   jsonwebtoken: 9.0.0
@@ -61,7 +61,7 @@ dependencies:
   erlpack: github.com/discord/erlpack/cbe76be04c2210fc9cb6ff95910f0937c1011d04
   express: 4.18.2
   express-rate-limit: 6.7.0_express@4.18.2
-  fs-extra: 11.1.0
+  fs-extra: 11.1.1
   helmet: 6.0.1
   jsonwebtoken: 9.0.0
   match-sorter: 6.3.1
@@ -92,7 +92,7 @@ devDependencies:
   '@types/superagent': 4.1.16
   '@types/text-to-svg': 3.1.1
   eslint: 8.36.0
-  eslint-config-promise: github.com/promise/eslint-config/cee186e21b28d88af8cc9dca5e2a054a50d31109_betrz3yazdy4fyxoqrvk4tf7wy
+  eslint-config-promise: github.com/promise/eslint-config/95abe6f6ade28ef0e99bed6f7e2b3314e7089a20_betrz3yazdy4fyxoqrvk4tf7wy
   jest: 29.5.0_@types+node@18.15.3
   ms: 3.0.0-canary.1
   ts-jest: 29.0.5_rvjmdqhqjqm2mi2o3slrod4dxm
@@ -4788,8 +4788,8 @@ packages:
     resolution: {integrity: sha512-y6OAwoSIf7FyjMIv94u+b5rdheZEjzR63GTyZJm5qh4Bi+2YgwLCcI/fPFZkL5PSixOt6ZNKm+w+Hfp/Bciwow==}
     dev: false
 
-  /fs-extra/11.1.0:
-    resolution: {integrity: sha512-0rcTq621PD5jM/e0a3EJoGC/1TC5ZBCERW82LQuwfGnCa1V8w7dpYH1yNu+SLb6E5dkeCBzKEyLGlFrnr+dUyw==}
+  /fs-extra/11.1.1:
+    resolution: {integrity: sha512-MGIE4HOvQCeUCzmlHs0vXpih4ysz4wg9qiSAu6cd42lVwPbTM1TjV7RusoyQqMmk/95gdQZX72u+YW+c3eEpFQ==}
     engines: {node: '>=14.14'}
     dependencies:
       graceful-fs: 4.2.10
@@ -8307,9 +8307,9 @@ packages:
     version: 1.2.6
     dev: false
 
-  github.com/promise/eslint-config/cee186e21b28d88af8cc9dca5e2a054a50d31109_betrz3yazdy4fyxoqrvk4tf7wy:
-    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/cee186e21b28d88af8cc9dca5e2a054a50d31109}
-    id: github.com/promise/eslint-config/cee186e21b28d88af8cc9dca5e2a054a50d31109
+  github.com/promise/eslint-config/95abe6f6ade28ef0e99bed6f7e2b3314e7089a20_betrz3yazdy4fyxoqrvk4tf7wy:
+    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/95abe6f6ade28ef0e99bed6f7e2b3314e7089a20}
+    id: github.com/promise/eslint-config/95abe6f6ade28ef0e99bed6f7e2b3314e7089a20
     name: eslint-config-promise
     version: 0.0.0
     peerDependencies:
