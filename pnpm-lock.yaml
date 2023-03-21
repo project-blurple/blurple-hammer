@@ -33,7 +33,7 @@ specifiers:
   jest: 29.5.0
   jsonwebtoken: 9.0.0
   match-sorter: 6.3.1
-  mongoose: 6.10.3
+  mongoose: 6.10.4
   morgan: 1.10.0
   ms: 3.0.0-canary.1
   nodemailer: 6.9.1
@@ -50,7 +50,7 @@ specifiers:
 
 dependencies:
   '@sapphire/type': 2.3.0
-  '@typegoose/typegoose': 10.3.3_mongoose@6.10.3
+  '@typegoose/typegoose': 10.3.3_mongoose@6.10.4
   bufferutil: 4.0.7
   cookie-parser: 1.4.6
   decompress: 4.2.1
@@ -65,7 +65,7 @@ dependencies:
   helmet: 6.0.1
   jsonwebtoken: 9.0.0
   match-sorter: 6.3.1
-  mongoose: 6.10.3
+  mongoose: 6.10.4
   morgan: 1.10.0
   nodemailer: 6.9.1
   superagent: 8.0.9
@@ -2582,7 +2582,7 @@ packages:
     resolution: {integrity: sha512-bOuNKwO4Fzbt+Su5wqI9zNHwx5C25gLnutwVQA1sBZk0cW8UjVPVcwzIUhJIIJDUx7zDEbAwdCD2HfvIsV8dYg==}
     dev: true
 
-  /@typegoose/typegoose/10.3.3_mongoose@6.10.3:
+  /@typegoose/typegoose/10.3.3_mongoose@6.10.4:
     resolution: {integrity: sha512-pbgaPytydBqL3Pcl1ak7QScBXynnrcw1UAW74s0oSRQi7MPkBEU3Bc9b+W5ds3mgNGFw6M7Gcjl6NETDYoU1Pg==}
     engines: {node: '>=14.17.0'}
     peerDependencies:
@@ -2590,7 +2590,7 @@ packages:
     dependencies:
       lodash: 4.17.21
       loglevel: 1.8.1
-      mongoose: 6.10.3
+      mongoose: 6.10.4
       reflect-metadata: 0.1.13
       semver: 7.3.8
       tslib: 2.5.0
@@ -6334,8 +6334,8 @@ packages:
       - aws-crt
     dev: false
 
-  /mongoose/6.10.3:
-    resolution: {integrity: sha512-fZ3pIlQn7lM632r1l4qiU58lKrJ+FufKVG8TNeRXSChAeu9alCl5KoQ9bLw4jnQNYevSq9o+sqZmFDHP+EVW3g==}
+  /mongoose/6.10.4:
+    resolution: {integrity: sha512-xCHVVEaOuhZxbthsKYxvHexWafJqWsl03sD7y7uyyt3euLd1sQoDI8DKueeJq9+hrbWkMkAGbGzgFPTIRqenPg==}
     engines: {node: '>=12.0.0'}
     dependencies:
       bson: 4.7.2
