@@ -41,8 +41,8 @@ dependencies:
     specifier: 11.1.1
     version: 11.1.1
   helmet:
-    specifier: 6.0.1
-    version: 6.0.1
+    specifier: 6.1.5
+    version: 6.1.5
   jsonwebtoken:
     specifier: 9.0.0
     version: 9.0.0
@@ -5102,8 +5102,8 @@ packages:
     dependencies:
       function-bind: 1.1.1
 
-  /helmet@6.0.1:
-    resolution: {integrity: sha512-8wo+VdQhTMVBMCITYZaGTbE4lvlthelPYSvoyNvk4RECTmrVjMerp9RfUOQXZWLvCcAn1pKj7ZRxK4lI9Alrcw==}
+  /helmet@6.1.5:
+    resolution: {integrity: sha512-UgAvdoG0BhF9vcCh/j0bWtElo2ZHHk6OzC98NLCM6zK03DEVSM0vUAtT7iR+oTo2Mi6sGelAH3tL6B/uUWxV4g==}
     engines: {node: '>=14.0.0'}
     dev: false
 
