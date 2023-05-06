@@ -3,7 +3,7 @@ import { inspect } from "util";
 import { isPromise } from "util/types";
 import Type from "@sapphire/type";
 import dedent from "dedent";
-import type{ MessageReplyOptions } from "discord.js";
+import type{ MessageEditOptions, MessageReplyOptions } from "discord.js";
 import { ButtonStyle, ComponentType, blockQuote, codeBlock, inlineCode } from "discord.js";
 import config from "../../config";
 import { buttonComponents } from "../../handlers/interactions/components";
@@ -42,7 +42,7 @@ export default {
   },
 } as MentionCommand;
 
-function generateFinalResponse(result: unknown, ms = -1, success = true, fileUpload = false): MessageReplyOptions {
+function generateFinalResponse(result: unknown, ms = -1, success = true, fileUpload = false): MessageEditOptions & MessageReplyOptions {
   const identifier = randomBytes(16).toString("hex");
   buttonComponents.set(`${identifier}:upload-to-file`, {
     allowedUsers: [config.ownerId],
@@ -86,7 +86,7 @@ function generateFinalResponse(result: unknown, ms = -1, success = true, fileUpl
   };
 }
 
-function generateResponse(result: unknown, ms = -1, success = true, includeResult = true, depth = 10, maxArrayLength = 100): MessageReplyOptions {
+function generateResponse(result: unknown, ms = -1, success = true, includeResult = true, depth = 10, maxArrayLength = 100): MessageEditOptions & MessageReplyOptions {
   if (depth <= 0) return { content: "⚠️ Output is too big to display" };
   const output = inspect(result, { colors: true, depth, maxArrayLength });
   const type = new Type(result).toString();

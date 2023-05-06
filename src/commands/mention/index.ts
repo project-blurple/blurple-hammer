@@ -1,11 +1,11 @@
 import { readdirSync } from "fs";
-import type{ Awaitable, Message, MessageReplyOptions } from "discord.js";
+import type{ Awaitable, Message, MessageEditOptions, MessageReplyOptions } from "discord.js";
 
 export interface MentionCommand {
   names: [string, ...string[]];
   ownerOnly?: true;
   testArgs(args: string[]): boolean;
-  execute(message: Message<true>, reply: (content: MessageReplyOptions | string) => Promise<Message>, args: string[]): Awaitable<void>;
+  execute(message: Message<true>, reply: (content: string | MessageEditOptions & MessageReplyOptions) => Promise<Message>, args: string[]): Awaitable<void>;
 }
 
 export const quickResponses: Array<[

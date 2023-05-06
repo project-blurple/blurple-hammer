@@ -1,4 +1,4 @@
-import type{ Client, Message, MessageReplyOptions, Snowflake } from "discord.js";
+import type{ Client, Message, MessageEditOptions, MessageReplyOptions, Snowflake } from "discord.js";
 import { MessageType, escapeInlineCode } from "discord.js";
 import { allMentionCommands, quickResponses } from "../commands/mention";
 import config from "../config";
@@ -40,8 +40,8 @@ function handleMessage(message: Message): void {
   return void command.execute(message, options => reply(options, message, existingReply), args);
 }
 
-async function reply(content: MessageReplyOptions | string, message: Message, existingReply?: Message): Promise<Message> {
-  const options: MessageReplyOptions = {
+async function reply(content: string | MessageEditOptions & MessageReplyOptions, message: Message, existingReply?: Message): Promise<Message> {
+  const options: MessageEditOptions & MessageReplyOptions = {
     allowedMentions: { repliedUser: true },
     components: [],
     embeds: [],
