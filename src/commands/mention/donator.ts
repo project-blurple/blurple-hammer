@@ -1,6 +1,5 @@
 import config from "../../config";
 import Emojis from "../../constants/emojis";
-import staffSubserver from "../../constants/subservers/staff";
 import type { MentionCommand } from ".";
 
 export default {
@@ -8,7 +7,7 @@ export default {
   testArgs(args) { return args.length === 1 || args.length === 2 && args[1] === "m"; },
   async execute(_, reply, [userId, mega]) {
     // only active in staff server
-    if (_.guildId !== staffSubserver.id) return;
+    if (_.guildId !== "573169434227900417") return;
 
     const member = await _.client.guilds.cache.get(config.mainGuildId)?.members.fetch(userId!);
     if (!member) return void reply(`${Emojis.TickNo} Member not found on main server`);
