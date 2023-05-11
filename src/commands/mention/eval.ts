@@ -6,6 +6,7 @@ import dedent from "dedent";
 import type{ MessageEditOptions, MessageReplyOptions } from "discord.js";
 import { ButtonStyle, ComponentType, blockQuote, codeBlock, inlineCode } from "discord.js";
 import config from "../../config";
+import Emojis from "../../constants/emojis";
 import { buttonComponents } from "../../handlers/interactions/components";
 import type{ MentionCommand } from ".";
 
@@ -23,7 +24,7 @@ export default {
         const now = new Date();
         const message = reply({
           ...generateResponse(evaluated),
-          content: "💨 Running...",
+          content: `${Emojis.Loading} Running...`,
         });
         return evaluated
           .then(async result => {
@@ -87,10 +88,10 @@ function generateFinalResponse(result: unknown, ms = -1, success = true, fileUpl
 }
 
 function generateResponse(result: unknown, ms = -1, success = true, includeResult = true, depth = 10, maxArrayLength = 100): MessageEditOptions & MessageReplyOptions {
-  if (depth <= 0) return { content: "⚠️ Output is too big to display" };
+  if (depth <= 0) return { content: `${Emojis.WeeWoo} Output is too big to display.` };
   const output = inspect(result, { colors: true, depth, maxArrayLength });
   const type = new Type(result).toString();
-  const content = `${success ? "✅ Evaluated successfully" : "❌ Javascript failed"}. ${ms === -1 ? "" : `(${inlineCode(`${ms}ms`)})`}\n${includeResult ? blockQuote(codeBlock("ts", ms === -1 ? type : `Promise<${type}>`) + codeBlock("ansi", success ? output : output.split("\n")[0]!)) : ""}`;
+  const content = `${success ? `${Emojis.TickYes} Evaluated successfully` : `${Emojis.TickNo} Javascript failed`}. ${ms === -1 ? "" : `(${inlineCode(`${ms}ms`)})`}\n${includeResult ? blockQuote(codeBlock("ts", ms === -1 ? type : `Promise<${type}>`) + codeBlock("ansi", success ? output : output.split("\n")[0]!)) : ""}`;
 
   // 1024 is not the actual limit but any bigger than 1k is really not ideal either way
   if (content.length > 1024) {

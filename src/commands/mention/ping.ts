@@ -1,3 +1,4 @@
+import Emojis from "../../constants/emojis";
 import { msToHumanShortTime } from "../../utils/time";
 import type{ MentionCommand } from ".";
 
@@ -7,6 +8,6 @@ export default {
   async execute(message, reply) {
     const now = Date.now();
     const botMessage = await reply("〽️ Pinging...");
-    return void botMessage.edit(`🏓 Server latency is \`${Date.now() - now}ms\`, shard latency is \`${Math.ceil(message.guild.shard.ping)}ms\` and my uptime is \`${msToHumanShortTime(message.client.uptime)}\`.`);
+    return void botMessage.edit(`${Emojis.Sparkle} Server latency is \`${Date.now() - now}ms\`, shard latency is \`${Math.ceil(message.guild.shard.ping)}ms\` and my uptime is \`${msToHumanShortTime(message.client.uptime)}\`.`);
   },
 } as MentionCommand;
