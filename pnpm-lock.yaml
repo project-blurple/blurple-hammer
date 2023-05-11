@@ -5,8 +5,8 @@ dependencies:
     specifier: 2.4.0
     version: 2.4.0
   '@typegoose/typegoose':
-    specifier: 10.3.4
-    version: 10.3.4(mongoose@6.10.5)
+    specifier: 10.4.0
+    version: 10.4.0(mongoose@6.11.1)
   bufferutil:
     specifier: 4.0.7
     version: 4.0.7
@@ -50,8 +50,8 @@ dependencies:
     specifier: 6.3.1
     version: 6.3.1
   mongoose:
-    specifier: 6.10.5
-    version: 6.10.5
+    specifier: 6.11.1
+    version: 6.11.1
   morgan:
     specifier: 1.10.0
     version: 1.10.0
@@ -2643,15 +2643,15 @@ packages:
     deprecated: TypeScript 5.0 supports combining TSConfigs using array syntax in extends
     dev: true
 
-  /@typegoose/typegoose@10.3.4(mongoose@6.10.5):
-    resolution: {integrity: sha512-C27lxLnfdYnVJM96EbE/ocRIWyuufqFMZQI4q4e1TD6rXSyeDxNGQpBdv0FxGE9emQ6Mk6h2mBFJq7uGRp14Cw==}
+  /@typegoose/typegoose@10.4.0(mongoose@6.11.1):
+    resolution: {integrity: sha512-VKnq+4MmfWQX7RVPaqC5OvvEZoF2b1yKHOhp7y4aWzPHc7Isjzgk+vrg83Aptwp0sV5cbgRNO32J1+EEN5e6xA==}
     engines: {node: '>=14.17.0'}
     peerDependencies:
-      mongoose: ~6.10.0
+      mongoose: ~6.11.0
     dependencies:
       lodash: 4.17.21
       loglevel: 1.8.1
-      mongoose: 6.10.5
+      mongoose: 6.11.1
       reflect-metadata: 0.1.13
       semver: 7.5.0
       tslib: 2.5.0
@@ -6476,8 +6476,8 @@ packages:
       whatwg-url: 11.0.0
     dev: false
 
-  /mongodb@4.14.0:
-    resolution: {integrity: sha512-coGKkWXIBczZPr284tYKFLg+KbGPPLlSbdgfKAb6QqCFt5bo5VFZ50O3FFzsw4rnkqjwT6D8Qcoo9nshYKM7Mg==}
+  /mongodb@4.16.0:
+    resolution: {integrity: sha512-0EB113Fsucaq1wsY0dOhi1fmZOwFtLOtteQkiqOXGklvWMnSH3g2QS53f0KTP+/6qOkuoXE2JksubSZNmxeI+g==}
     engines: {node: '>=12.9.0'}
     dependencies:
       bson: 4.7.2
@@ -6490,13 +6490,13 @@ packages:
       - aws-crt
     dev: false
 
-  /mongoose@6.10.5:
-    resolution: {integrity: sha512-y4HL4/9EySec7L0gJ+pCm9heLSF45uIIvRS4fSeAFWDfe4vXW1vRZJwTz7OGkra3ZoSfRnFTo9bNZkuggDVlVA==}
+  /mongoose@6.11.1:
+    resolution: {integrity: sha512-AvQ8C5ZGF6GcsQhoRg/i7pbNZpb96qLGU5ICBllckp7qMOxcfUF1nA6JstZw841BqRcE6myZ/mx9CluEESaw5Q==}
     engines: {node: '>=12.0.0'}
     dependencies:
       bson: 4.7.2
       kareem: 2.5.1
-      mongodb: 4.14.0
+      mongodb: 4.16.0
       mpath: 0.9.0
       mquery: 4.0.3
       ms: 2.1.3
