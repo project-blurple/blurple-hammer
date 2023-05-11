@@ -83,7 +83,7 @@ export default {
           });
       })
       .catch(() => {
-        void tokens.delete();
+        void tokens.deleteOne();
         return void interaction.reply({ content: `${Emojis.TickNo} Their authentication is not working, please have them re-authenticate themselves using ${commandMentions["auth"]!} or [copy this link](${new URL("/login", config.staffPortal!.url).href}) and give it to them if they're not staff.`, ephemeral: true });
       });
   },

@@ -25,7 +25,7 @@ export default {
         return void interaction.reply({ content: `${Emojis.TickYes} Your authentication works!`, ephemeral: true });
       })
       .catch(() => {
-        void tokens.delete();
+        void tokens.deleteOne();
         return void interaction.reply({ content: `${Emojis.TickNo} Your authentication is no longer working, please authenticate yourself [here](${new URL("/login", config.staffPortal!.url).href}).`, ephemeral: true });
       });
   },

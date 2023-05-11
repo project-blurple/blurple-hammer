@@ -62,7 +62,7 @@ export default {
           });
       })
       .catch(() => {
-        void tokens.delete();
+        void tokens.deleteOne();
         return void interaction.reply({ content: `${Emojis.TickNo} Your authentication is not working, please re-authenticate yourself using ${commandMentions["auth"]!}`, ephemeral: true });
       });
   },

@@ -11,7 +11,7 @@ export default {
     const strip = await UserStrip.findOne({ userId: interaction.user.id });
     if (strip) {
       await interaction.member.roles.add(strip.roleIds, "User unstripped");
-      await strip.delete();
+      await strip.deleteOne();
       return void interaction.reply({ content: `${Emojis.ThumbsUp} You have been unstripped.`, ephemeral: true });
     }
 
