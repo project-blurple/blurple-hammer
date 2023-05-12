@@ -50,4 +50,11 @@ export const restrictions: Array<{
     descriptionDisallowed: "Cannot change nickname",
     roleId: config.roles.restrictions.nick,
   },
+  {
+    name: "soundboard",
+    description: "Disallow soundboard",
+    descriptionAllowed: "Can use soundboard",
+    descriptionDisallowed: "Cannot use soundboard",
+    roleId: config.roles.restrictions.soundboard,
+  },
 ];

@@ -40,6 +40,7 @@ export default {
       bots: String(process.env["ROLE_RESTRICTION_BOTS"]),
       vad: String(process.env["ROLE_RESTRICTION_VAD"]),
       nick: String(process.env["ROLE_RESTRICTION_NICK"]),
+      soundboard: String(process.env["ROLE_RESTRICTION_SOUNDBOARD"]),
     },
     partners: String(process.env["ROLE_PARTNERS"]),
     megaDonators: String(process.env["ROLE_MEGA_DONATORS"]),
