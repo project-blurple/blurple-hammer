@@ -57,7 +57,7 @@
     "@types/jsonwebtoken": "9.0.2",
     "@types/morgan": "1.9.4",
     "@types/node": "18.16.13",
-    "@types/nodemailer": "6.4.7",
+    "@types/nodemailer": "6.4.8",
     "@types/superagent": "4.1.17",
     "@types/text-to-svg": "3.1.1",
     "eslint": "8.40.0",
