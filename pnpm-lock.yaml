@@ -1,4 +1,8 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
 
 dependencies:
   '@sapphire/type':
@@ -56,8 +60,8 @@ dependencies:
     specifier: 1.10.0
     version: 1.10.0
   nodemailer:
-    specifier: 6.9.2
-    version: 6.9.2
+    specifier: 6.9.3
+    version: 6.9.3
   superagent:
     specifier: 8.0.9
     version: 8.0.9
@@ -128,7 +132,7 @@ devDependencies:
     version: 8.41.0
   eslint-config-promise:
     specifier: github:promise/eslint-config
-    version: github.com/promise/eslint-config/a8119ce33be10b3bc952e383e873e0e93c514fa5(@typescript-eslint/eslint-plugin@5.59.7)(@typescript-eslint/parser@5.59.7)(eslint-import-resolver-typescript@3.5.5)(eslint-plugin-import@2.27.5)(eslint-plugin-jest@27.2.1)(eslint-plugin-react@7.32.2)(eslint@8.41.0)
+    version: github.com/promise/eslint-config/afdd52372194adefd3592b38c5a383969970f871(@typescript-eslint/eslint-plugin@5.59.7)(@typescript-eslint/parser@5.59.7)(eslint-import-resolver-typescript@3.5.5)(eslint-plugin-import@2.27.5)(eslint-plugin-jest@27.2.1)(eslint-plugin-react@7.32.2)(eslint@8.41.0)
   jest:
     specifier: 29.5.0
     version: 29.5.0(@types/node@18.16.16)
@@ -5776,8 +5780,8 @@ packages:
     resolution: {integrity: sha512-5GFldHPXVG/YZmFzJvKK2zDSzPKhEp0+ZR5SVaoSag9fsL5YgHbUHDfnG5494ISANDcK4KwPXAx2xqVEydmd7w==}
     dev: true
 
-  /nodemailer@6.9.2:
-    resolution: {integrity: sha512-4+TYaa/e1nIxQfyw/WzNPYTEZ5OvHIDEnmjs4LPmIfccPQN+2CYKmGHjWixn/chzD3bmUTu5FMfpltizMxqzdg==}
+  /nodemailer@6.9.3:
+    resolution: {integrity: sha512-fy9v3NgTzBngrMFkDsKEj0r02U7jm6XfC3b52eoNV+GCrGj+s8pt5OqhiJdWKuw51zCTdiNR/IUD1z33LIIGpg==}
     engines: {node: '>=6.0.0'}
     dev: false
 
@@ -7700,9 +7704,9 @@ packages:
     version: 1.2.6
     dev: false
 
-  github.com/promise/eslint-config/a8119ce33be10b3bc952e383e873e0e93c514fa5(@typescript-eslint/eslint-plugin@5.59.7)(@typescript-eslint/parser@5.59.7)(eslint-import-resolver-typescript@3.5.5)(eslint-plugin-import@2.27.5)(eslint-plugin-jest@27.2.1)(eslint-plugin-react@7.32.2)(eslint@8.41.0):
-    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/a8119ce33be10b3bc952e383e873e0e93c514fa5}
-    id: github.com/promise/eslint-config/a8119ce33be10b3bc952e383e873e0e93c514fa5
+  github.com/promise/eslint-config/afdd52372194adefd3592b38c5a383969970f871(@typescript-eslint/eslint-plugin@5.59.7)(@typescript-eslint/parser@5.59.7)(eslint-import-resolver-typescript@3.5.5)(eslint-plugin-import@2.27.5)(eslint-plugin-jest@27.2.1)(eslint-plugin-react@7.32.2)(eslint@8.41.0):
+    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/afdd52372194adefd3592b38c5a383969970f871}
+    id: github.com/promise/eslint-config/afdd52372194adefd3592b38c5a383969970f871
     name: eslint-config-promise
     version: 0.0.0
     peerDependencies:
