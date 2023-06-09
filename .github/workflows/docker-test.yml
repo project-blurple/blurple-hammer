@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3
+      uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3
 
     - name: Touch .env file
       run: echo -e "APPEALS_PORT=1234\nSTAFF_PORTAL_PORT=2345" > .env
