@@ -28,7 +28,7 @@ dependencies:
     version: 2.11.0
   discord.js:
     specifier: 14.11.0
-    version: 14.11.0(bufferutil@4.0.7)(utf-8-validate@5.0.10)
+    version: 14.11.0(bufferutil@4.0.7)(utf-8-validate@6.0.3)
   dotenv:
     specifier: 16.3.1
     version: 16.3.1
@@ -67,7 +67,7 @@ dependencies:
     version: 8.0.9
   svg-png-converter:
     specifier: 0.0.9
-    version: 0.0.9(bufferutil@4.0.7)(utf-8-validate@5.0.10)
+    version: 0.0.9(bufferutil@4.0.7)(utf-8-validate@6.0.3)
   svg2img:
     specifier: 1.0.0-beta.2
     version: 1.0.0-beta.2
@@ -75,8 +75,8 @@ dependencies:
     specifier: 3.1.5
     version: 3.1.5
   utf-8-validate:
-    specifier: 5.0.10
-    version: 5.0.10
+    specifier: 6.0.3
+    version: 6.0.3
   winston:
     specifier: 3.10.0
     version: 3.10.0
@@ -576,7 +576,7 @@ packages:
     engines: {node: '>=16.9.0'}
     dev: false
 
-  /@discordjs/ws@0.8.3(bufferutil@4.0.7)(utf-8-validate@5.0.10):
+  /@discordjs/ws@0.8.3(bufferutil@4.0.7)(utf-8-validate@6.0.3):
     resolution: {integrity: sha512-hcYtppanjHecbdNyCKQNH2I4RP9UrphDgmRgLYrATEQF1oo4sYSve7ZmGsBEXSzH72MO2tBPdWSThunbxUVk0g==}
     engines: {node: '>=16.9.0'}
     dependencies:
@@ -588,7 +588,7 @@ packages:
       '@vladfrangu/async_event_emitter': 2.2.2
       discord-api-types: 0.37.47
       tslib: 2.6.0
-      ws: 8.13.0(bufferutil@4.0.7)(utf-8-validate@5.0.10)
+      ws: 8.13.0(bufferutil@4.0.7)(utf-8-validate@6.0.3)
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -3248,7 +3248,7 @@ packages:
     resolution: {integrity: sha512-pIbgXm498f7vqNd8/7JwoLd36YMFOFASSJdqyCGdwQpaG7ULHu9nLyifpVXI1b88xvNLqQwqugS8jxkn8Ypd1Q==}
     dev: false
 
-  /discord.js@14.11.0(bufferutil@4.0.7)(utf-8-validate@5.0.10):
+  /discord.js@14.11.0(bufferutil@4.0.7)(utf-8-validate@6.0.3):
     resolution: {integrity: sha512-CkueWYFQ28U38YPR8HgsBR/QT35oPpMbEsTNM30Fs8loBIhnA4s70AwQEoy6JvLcpWWJO7GY0y2BUzZmuBMepQ==}
     engines: {node: '>=16.9.0'}
     dependencies:
@@ -3257,7 +3257,7 @@ packages:
       '@discordjs/formatters': 0.3.1
       '@discordjs/rest': 1.7.1
       '@discordjs/util': 0.3.1
-      '@discordjs/ws': 0.8.3(bufferutil@4.0.7)(utf-8-validate@5.0.10)
+      '@discordjs/ws': 0.8.3(bufferutil@4.0.7)(utf-8-validate@6.0.3)
       '@sapphire/snowflake': 3.5.1
       '@types/ws': 8.5.5
       discord-api-types: 0.37.47
@@ -3265,7 +3265,7 @@ packages:
       lodash.snakecase: 4.1.1
       tslib: 2.6.0
       undici: 5.22.1
-      ws: 8.13.0(bufferutil@4.0.7)(utf-8-validate@5.0.10)
+      ws: 8.13.0(bufferutil@4.0.7)(utf-8-validate@6.0.3)
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -3798,12 +3798,12 @@ packages:
     dev: false
     optional: true
 
-  /fabric@3.6.6(bufferutil@4.0.7)(utf-8-validate@5.0.10):
+  /fabric@3.6.6(bufferutil@4.0.7)(utf-8-validate@6.0.3):
     resolution: {integrity: sha512-+sEwsgLSLIHQ32INuvV4CvWtqYOLyDKify/FfDteZvYQSoWRILLqzpCRt6AkEySsLToohkcygkD/unEOzV38wQ==}
     engines: {node: '>=8.0.0'}
     optionalDependencies:
       canvas: 2.11.2
-      jsdom: 15.2.1(bufferutil@4.0.7)(canvas@2.11.2)(utf-8-validate@5.0.10)
+      jsdom: 15.2.1(bufferutil@4.0.7)(canvas@2.11.2)(utf-8-validate@6.0.3)
     transitivePeerDependencies:
       - bufferutil
       - encoding
@@ -5082,7 +5082,7 @@ packages:
     dev: false
     optional: true
 
-  /jsdom@15.2.1(bufferutil@4.0.7)(canvas@2.11.2)(utf-8-validate@5.0.10):
+  /jsdom@15.2.1(bufferutil@4.0.7)(canvas@2.11.2)(utf-8-validate@6.0.3):
     resolution: {integrity: sha512-fAl1W0/7T2G5vURSyxBzrJ1LSdQn6Tr5UX/xD4PXDx/PDgwygedfW6El/KIj3xJ7FU61TTYnc/l/B7P49Eqt6g==}
     engines: {node: '>=8'}
     requiresBuild: true
@@ -5117,7 +5117,7 @@ packages:
       whatwg-encoding: 1.0.5
       whatwg-mimetype: 2.3.0
       whatwg-url: 7.1.0
-      ws: 7.5.9(bufferutil@4.0.7)(utf-8-validate@5.0.10)
+      ws: 7.5.9(bufferutil@4.0.7)(utf-8-validate@6.0.3)
       xml-name-validator: 3.0.0
     transitivePeerDependencies:
       - bufferutil
@@ -6729,14 +6729,14 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /svg-png-converter@0.0.9(bufferutil@4.0.7)(utf-8-validate@5.0.10):
+  /svg-png-converter@0.0.9(bufferutil@4.0.7)(utf-8-validate@6.0.3):
     resolution: {integrity: sha512-aSAoG3WINetBYfBF20sgDbtxr5jW67YdhqQlSzPOGkH7oQrejPazFnlyextk3UqfW9sGDroJHFcK8vgEHQjeGA==}
     hasBin: true
     dependencies:
       bitmap2vector: 0.0.4
       blob-to-buffer: 1.2.9
       buffer: 5.7.1
-      fabric: 3.6.6(bufferutil@4.0.7)(utf-8-validate@5.0.10)
+      fabric: 3.6.6(bufferutil@4.0.7)(utf-8-validate@6.0.3)
       glob: 7.2.3
       js-base64: 2.6.4
       minimist: 1.2.8
@@ -7091,8 +7091,8 @@ packages:
     dependencies:
       punycode: 2.3.0
 
-  /utf-8-validate@5.0.10:
-    resolution: {integrity: sha512-Z6czzLq4u8fPOyx7TU6X3dvUZVvoJmxSQ+IcrlmagKhilxlhZgxPK6C5Jqbkw1IDUmFTM+cz9QDnnLTwDz/2gQ==}
+  /utf-8-validate@6.0.3:
+    resolution: {integrity: sha512-uIuGf9TWQ/y+0Lp+KGZCMuJWc3N9BHA+l/UmHd/oUHwJJDeysyTRxNQVkbzsIWfGFbRe3OcgML/i0mvVRPOyDA==}
     engines: {node: '>=6.14.2'}
     requiresBuild: true
     dependencies:
@@ -7326,7 +7326,7 @@ packages:
       signal-exit: 3.0.7
     dev: true
 
-  /ws@7.5.9(bufferutil@4.0.7)(utf-8-validate@5.0.10):
+  /ws@7.5.9(bufferutil@4.0.7)(utf-8-validate@6.0.3):
     resolution: {integrity: sha512-F+P9Jil7UiSKSkppIiD94dN07AwvFixvLIj1Og1Rl9GGMuNipJnV9JzjD6XuqmAeiswGvUmNLjr5cFuXwNS77Q==}
     engines: {node: '>=8.3.0'}
     peerDependencies:
@@ -7339,11 +7339,11 @@ packages:
         optional: true
     dependencies:
       bufferutil: 4.0.7
-      utf-8-validate: 5.0.10
+      utf-8-validate: 6.0.3
     dev: false
     optional: true
 
-  /ws@8.13.0(bufferutil@4.0.7)(utf-8-validate@5.0.10):
+  /ws@8.13.0(bufferutil@4.0.7)(utf-8-validate@6.0.3):
     resolution: {integrity: sha512-x9vcZYTrFPC7aSIbj7sRCYo7L/Xb8Iy+pW0ng0wt2vCJv7M9HOMy0UoN3rr+IFC7hb7vXoqS+P9ktyLLLhO+LA==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
@@ -7356,7 +7356,7 @@ packages:
         optional: true
     dependencies:
       bufferutil: 4.0.7
-      utf-8-validate: 5.0.10
+      utf-8-validate: 6.0.3
     dev: false
 
   /xhr@2.6.0:
