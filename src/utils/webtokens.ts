@@ -1,8 +1,7 @@
 import jwt from "jsonwebtoken";
-import type { StringValue } from "ms";
 import config from "../config";
 
-export function sign(payload: object, expiresIn: StringValue = "7 days"): Promise<string> {
+export function sign(payload: object, expiresIn = "7 days"): Promise<string> {
   return new Promise((resolve, reject) => {
     jwt.sign(payload, config.client.secret, { expiresIn: String(expiresIn) }, (err, token) => {
       if (err) return reject(err);
