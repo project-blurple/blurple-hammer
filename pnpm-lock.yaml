@@ -97,9 +97,6 @@ devDependencies:
   '@types/decompress':
     specifier: 4.2.4
     version: 4.2.4
-  '@types/dedent':
-    specifier: 0.7.0
-    version: 0.7.0
   '@types/express':
     specifier: 4.17.17
     version: 4.17.17
@@ -1911,10 +1908,6 @@ packages:
     resolution: {integrity: sha512-/C8kTMRTNiNuWGl5nEyKbPiMv6HA+0RbEXzFhFBEzASM6+oa4tJro9b8nj7eRlOFfuLdzUU+DS/GPDlvvzMOhA==}
     dependencies:
       '@types/node': 18.16.19
-    dev: true
-
-  /@types/dedent@0.7.0:
-    resolution: {integrity: sha512-EGlKlgMhnLt/cM4DbUSafFdrkeJoC9Mvnj0PUCU7tFmTjMjNRT957kXCx0wYm3JuEq4o4ZsS5vG+NlkM2DMd2A==}
     dev: true
 
   /@types/express-serve-static-core@4.17.35:
