@@ -21,8 +21,8 @@ dependencies:
     specifier: 4.2.1
     version: 4.2.1
   dedent:
-    specifier: 1.0.2
-    version: 1.0.2
+    specifier: 1.1.0
+    version: 1.1.0
   discord-oauth2:
     specifier: 2.11.0
     version: 2.11.0
@@ -3260,8 +3260,8 @@ packages:
     resolution: {integrity: sha512-Q6fKUPqnAHAyhiUgFU7BUzLiv0kd8saH9al7tnu5Q/okj6dnupxyTgFIBjVzJATdfIAm9NAsvXNzjaKa+bxVyA==}
     dev: true
 
-  /dedent@1.0.2:
-    resolution: {integrity: sha512-jjGxaNbvFRbKwJMrS7Vbtp5VIUet5nmrUUAymCbir4/xXX3xvsBtMqtohNeSQ5ztUTR7lKLO5Qq1vf5cCe+Hcg==}
+  /dedent@1.1.0:
+    resolution: {integrity: sha512-H2H1MEpxX7qLT/KxcLkqWhtFNNyMDIB6pIKf7dJHNFP70JOOX0/FUUODBw1T7/OG9qnTxxbUiXcQsFbiyd2FSg==}
     dependencies:
       babel-plugin-macros: 3.1.0
     dev: false
