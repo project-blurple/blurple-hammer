@@ -39,8 +39,8 @@ dependencies:
     specifier: 4.18.2
     version: 4.18.2
   express-rate-limit:
-    specifier: 6.7.1
-    version: 6.7.1(express@4.18.2)
+    specifier: 6.8.0
+    version: 6.8.0(express@4.18.2)
   fs-extra:
     specifier: 11.1.1
     version: 11.1.1
@@ -132,7 +132,7 @@ devDependencies:
     version: 8.45.0
   eslint-config-promise:
     specifier: github:promise/eslint-config
-    version: github.com/promise/eslint-config/9ae6fea77354fd19a0dfce37a0a5da7d25282f35(@typescript-eslint/eslint-plugin@6.1.0)(@typescript-eslint/parser@6.1.0)(eslint-plugin-i@2.27.5-4)(eslint-plugin-jest@27.2.3)(eslint-plugin-react@7.32.2)(eslint@8.45.0)
+    version: github.com/promise/eslint-config/bb395d784e1c983d9cdddd43e48e3b94412dc0e3(@typescript-eslint/eslint-plugin@6.1.0)(@typescript-eslint/parser@6.1.0)(eslint-plugin-i@2.27.5-4)(eslint-plugin-jest@27.2.3)(eslint-plugin-react@7.33.0)(eslint@8.45.0)
   jest:
     specifier: 29.6.1
     version: 29.6.1(@types/node@18.16.19)
@@ -3634,8 +3634,8 @@ packages:
       - typescript
     dev: true
 
-  /eslint-plugin-react@7.32.2(eslint@8.45.0):
-    resolution: {integrity: sha512-t2fBMa+XzonrrNkyVirzKlvn5RXzzPwRHtMvLAtVZrt8oxgnTQaYbU6SXTOO1mwQgp1y5+toMSKInnzGr0Knqg==}
+  /eslint-plugin-react@7.33.0(eslint@8.45.0):
+    resolution: {integrity: sha512-qewL/8P34WkY8jAqdQxsiL82pDUeT7nhs8IsuXgfgnsEloKCT4miAV9N9kGtx7/KM9NH/NCGUE7Edt9iGxLXFw==}
     engines: {node: '>=4'}
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
@@ -3654,7 +3654,7 @@ packages:
       object.values: 1.1.6
       prop-types: 15.8.1
       resolve: 2.0.0-next.4
-      semver: 6.3.0
+      semver: 6.3.1
       string.prototype.matchall: 4.0.8
     dev: true
 
@@ -3807,8 +3807,8 @@ packages:
       jest-util: 29.6.1
     dev: true
 
-  /express-rate-limit@6.7.1(express@4.18.2):
-    resolution: {integrity: sha512-eH4VgI64Nowd2vC5Xylx0lLYovWIp2gRFtTklWDbhSDydGAPQUjvr1B7aQ2/ZADrAi6bJ51qSizKIXWAZ1WCQw==}
+  /express-rate-limit@6.8.0(express@4.18.2):
+    resolution: {integrity: sha512-yVeDWczkh8qgo9INJB1tT4j7LFu+n6ei/oqSMsqpsUIGYjTM+gk+Q3wv19TMUdo8chvus8XohAuOhG7RYRM9ZQ==}
     engines: {node: '>= 14.0.0'}
     peerDependencies:
       express: ^4 || ^5
@@ -6456,6 +6456,11 @@ packages:
     resolution: {integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==}
     hasBin: true
 
+  /semver@6.3.1:
+    resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
+    hasBin: true
+    dev: true
+
   /semver@7.5.3:
     resolution: {integrity: sha512-QBlUtyVk/5EeHbi7X0fw6liDZc7BBmEaSYn01fMU1OUYbf6GPsbTtd8WmnqbI20SeycoHSeiybkE/q1Q+qlThQ==}
     engines: {node: '>=10'}
@@ -7583,9 +7588,9 @@ packages:
     version: 1.2.6
     dev: false
 
-  github.com/promise/eslint-config/9ae6fea77354fd19a0dfce37a0a5da7d25282f35(@typescript-eslint/eslint-plugin@6.1.0)(@typescript-eslint/parser@6.1.0)(eslint-plugin-i@2.27.5-4)(eslint-plugin-jest@27.2.3)(eslint-plugin-react@7.32.2)(eslint@8.45.0):
-    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/9ae6fea77354fd19a0dfce37a0a5da7d25282f35}
-    id: github.com/promise/eslint-config/9ae6fea77354fd19a0dfce37a0a5da7d25282f35
+  github.com/promise/eslint-config/bb395d784e1c983d9cdddd43e48e3b94412dc0e3(@typescript-eslint/eslint-plugin@6.1.0)(@typescript-eslint/parser@6.1.0)(eslint-plugin-i@2.27.5-4)(eslint-plugin-jest@27.2.3)(eslint-plugin-react@7.33.0)(eslint@8.45.0):
+    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/bb395d784e1c983d9cdddd43e48e3b94412dc0e3}
+    id: github.com/promise/eslint-config/bb395d784e1c983d9cdddd43e48e3b94412dc0e3
     name: eslint-config-promise
     version: 0.0.0
     peerDependencies:
@@ -7594,12 +7599,12 @@ packages:
       eslint: ^8.45.0
       eslint-plugin-i: 2.27.5-4
       eslint-plugin-jest: ^27.2.3
-      eslint-plugin-react: ^7.32.2
+      eslint-plugin-react: ^7.33.0
     dependencies:
       '@typescript-eslint/eslint-plugin': 6.1.0(@typescript-eslint/parser@6.1.0)(eslint@8.45.0)(typescript@5.1.6)
       '@typescript-eslint/parser': 6.1.0(eslint@8.45.0)(typescript@5.1.6)
       eslint: 8.45.0
       eslint-plugin-i: 2.27.5-4(@typescript-eslint/parser@6.1.0)(eslint@8.45.0)
       eslint-plugin-jest: 27.2.3(@typescript-eslint/eslint-plugin@6.1.0)(eslint@8.45.0)(jest@29.6.1)(typescript@5.1.6)
-      eslint-plugin-react: 7.32.2(eslint@8.45.0)
+      eslint-plugin-react: 7.33.0(eslint@8.45.0)
     dev: true
