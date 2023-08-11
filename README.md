@@ -1,4 +1,4 @@
-[![Docker test](https://img.shields.io/github/actions/workflow/status/project-blurple/blurple-hammer/docker-test.yml)](https://github.com/project-blurple/blurple-hammer/actions/workflows/docker-test.yml)
+[![Docker test](https://img.shields.io/github/actions/workflow/status/project-blurple/blurple-hammer/docker-compose-test.yml)](https://github.com/project-blurple/blurple-hammer/actions/workflows/docker-compose-test.yml)
 [![Linting](https://img.shields.io/github/actions/workflow/status/project-blurple/blurple-hammer/linting.yml?label=quality)](https://github.com/project-blurple/blurple-hammer/actions/workflows/linting.yml)
 [![Testing](https://img.shields.io/github/actions/workflow/status/project-blurple/blurple-hammer/testing.yml?label=test)](https://github.com/project-blurple/blurple-hammer/actions/workflows/testing.yml)
 [![DeepScan grade](https://deepscan.io/api/teams/16173/projects/22743/branches/674974/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=16173&pid=22743&bid=674974)
