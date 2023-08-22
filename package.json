@@ -47,7 +47,7 @@
     "zlib-sync": "0.1.8"
   },
   "devDependencies": {
-    "@tsconfig/node18": "18.2.0",
+    "@tsconfig/node18": "18.2.1",
     "@tsconfig/strictest": "2.0.1",
     "@types/cookie-parser": "1.4.3",
     "@types/decompress": "4.2.4",
