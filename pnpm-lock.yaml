@@ -125,8 +125,8 @@ devDependencies:
     specifier: 4.1.18
     version: 4.1.18
   '@types/text-to-svg':
-    specifier: 3.1.1
-    version: 3.1.1
+    specifier: 3.1.2
+    version: 3.1.2
   eslint:
     specifier: 8.49.0
     version: 8.49.0
@@ -2070,8 +2070,8 @@ packages:
       '@types/node': 18.17.15
     dev: true
 
-  /@types/text-to-svg@3.1.1:
-    resolution: {integrity: sha512-7jvQ8p6amiXkuA7VXjgurnlyFGbABHOezWoDjCZu0QWMNugiI4JhJ78vZUYrfhakfHF6GwpZP5UVu7Kd9oXctg==}
+  /@types/text-to-svg@3.1.2:
+    resolution: {integrity: sha512-L00RijPGJt2xN3jMqP6GDDA6iJICJeCWoDQkSDUiFyQHVl9DJOCyv3fE0oP01g702VJZdWqfzD8q7d+UAMcDSw==}
     dependencies:
       '@types/opentype.js': 1.3.4
     dev: true
