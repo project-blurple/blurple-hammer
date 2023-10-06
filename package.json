@@ -60,7 +60,7 @@
     "@types/nodemailer": "6.4.11",
     "@types/superagent": "4.1.19",
     "@types/text-to-svg": "3.1.2",
-    "eslint": "8.50.0",
+    "eslint": "8.51.0",
     "eslint-config-promise": "github:promise/eslint-config",
     "jest": "29.7.0",
     "ts-jest": "29.1.1",
