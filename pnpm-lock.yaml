@@ -12,8 +12,8 @@ dependencies:
     specifier: 11.5.0
     version: 11.5.0(mongoose@7.5.4)
   bufferutil:
-    specifier: 4.0.7
-    version: 4.0.7
+    specifier: 4.0.8
+    version: 4.0.8
   cookie-parser:
     specifier: 1.4.6
     version: 1.4.6
@@ -28,7 +28,7 @@ dependencies:
     version: 2.11.0
   discord.js:
     specifier: 14.11.0
-    version: 14.11.0(bufferutil@4.0.7)(utf-8-validate@6.0.3)
+    version: 14.11.0(bufferutil@4.0.8)(utf-8-validate@6.0.3)
   dotenv:
     specifier: 16.3.1
     version: 16.3.1
@@ -67,7 +67,7 @@ dependencies:
     version: 8.1.2
   svg-png-converter:
     specifier: 0.0.9
-    version: 0.0.9(bufferutil@4.0.7)(utf-8-validate@6.0.3)
+    version: 0.0.9(bufferutil@4.0.8)(utf-8-validate@6.0.3)
   svg2img:
     specifier: 1.0.0-beta.2
     version: 1.0.0-beta.2
@@ -579,7 +579,7 @@ packages:
     engines: {node: '>=16.11.0'}
     dev: false
 
-  /@discordjs/ws@0.8.3(bufferutil@4.0.7)(utf-8-validate@6.0.3):
+  /@discordjs/ws@0.8.3(bufferutil@4.0.8)(utf-8-validate@6.0.3):
     resolution: {integrity: sha512-hcYtppanjHecbdNyCKQNH2I4RP9UrphDgmRgLYrATEQF1oo4sYSve7ZmGsBEXSzH72MO2tBPdWSThunbxUVk0g==}
     engines: {node: '>=16.9.0'}
     dependencies:
@@ -591,7 +591,7 @@ packages:
       '@vladfrangu/async_event_emitter': 2.2.2
       discord-api-types: 0.37.56
       tslib: 2.6.2
-      ws: 8.13.0(bufferutil@4.0.7)(utf-8-validate@6.0.3)
+      ws: 8.13.0(bufferutil@4.0.8)(utf-8-validate@6.0.3)
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -2835,8 +2835,8 @@ packages:
       ieee754: 1.2.1
     dev: false
 
-  /bufferutil@4.0.7:
-    resolution: {integrity: sha512-kukuqc39WOHtdxtw4UScxF/WVnMFVSQVKhtx3AjZJzhd0RGZZldcrfSEbVsWWe6KNH253574cq5F+wpv0G9pJw==}
+  /bufferutil@4.0.8:
+    resolution: {integrity: sha512-4T53u4PdgsXqKaIctwF8ifXlRTTmEPJ8iEPWFdGZvcf7sbwYo6FKFEX9eNNAnzFZ7EzJAQ3CJeOtCRA4rDp7Pw==}
     engines: {node: '>=6.14.2'}
     requiresBuild: true
     dependencies:
@@ -3416,7 +3416,7 @@ packages:
     resolution: {integrity: sha512-pIbgXm498f7vqNd8/7JwoLd36YMFOFASSJdqyCGdwQpaG7ULHu9nLyifpVXI1b88xvNLqQwqugS8jxkn8Ypd1Q==}
     dev: false
 
-  /discord.js@14.11.0(bufferutil@4.0.7)(utf-8-validate@6.0.3):
+  /discord.js@14.11.0(bufferutil@4.0.8)(utf-8-validate@6.0.3):
     resolution: {integrity: sha512-CkueWYFQ28U38YPR8HgsBR/QT35oPpMbEsTNM30Fs8loBIhnA4s70AwQEoy6JvLcpWWJO7GY0y2BUzZmuBMepQ==}
     engines: {node: '>=16.9.0'}
     dependencies:
@@ -3425,7 +3425,7 @@ packages:
       '@discordjs/formatters': 0.3.2
       '@discordjs/rest': 1.7.1
       '@discordjs/util': 0.3.1
-      '@discordjs/ws': 0.8.3(bufferutil@4.0.7)(utf-8-validate@6.0.3)
+      '@discordjs/ws': 0.8.3(bufferutil@4.0.8)(utf-8-validate@6.0.3)
       '@sapphire/snowflake': 3.5.1
       '@types/ws': 8.5.5
       discord-api-types: 0.37.56
@@ -3433,7 +3433,7 @@ packages:
       lodash.snakecase: 4.1.1
       tslib: 2.6.2
       undici: 5.23.0
-      ws: 8.13.0(bufferutil@4.0.7)(utf-8-validate@6.0.3)
+      ws: 8.13.0(bufferutil@4.0.8)(utf-8-validate@6.0.3)
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -4008,12 +4008,12 @@ packages:
     dev: false
     optional: true
 
-  /fabric@3.6.6(bufferutil@4.0.7)(utf-8-validate@6.0.3):
+  /fabric@3.6.6(bufferutil@4.0.8)(utf-8-validate@6.0.3):
     resolution: {integrity: sha512-+sEwsgLSLIHQ32INuvV4CvWtqYOLyDKify/FfDteZvYQSoWRILLqzpCRt6AkEySsLToohkcygkD/unEOzV38wQ==}
     engines: {node: '>=8.0.0'}
     optionalDependencies:
       canvas: 2.11.2
-      jsdom: 15.2.1(bufferutil@4.0.7)(canvas@2.11.2)(utf-8-validate@6.0.3)
+      jsdom: 15.2.1(bufferutil@4.0.8)(canvas@2.11.2)(utf-8-validate@6.0.3)
     transitivePeerDependencies:
       - bufferutil
       - encoding
@@ -5385,7 +5385,7 @@ packages:
     dev: false
     optional: true
 
-  /jsdom@15.2.1(bufferutil@4.0.7)(canvas@2.11.2)(utf-8-validate@6.0.3):
+  /jsdom@15.2.1(bufferutil@4.0.8)(canvas@2.11.2)(utf-8-validate@6.0.3):
     resolution: {integrity: sha512-fAl1W0/7T2G5vURSyxBzrJ1LSdQn6Tr5UX/xD4PXDx/PDgwygedfW6El/KIj3xJ7FU61TTYnc/l/B7P49Eqt6g==}
     engines: {node: '>=8'}
     requiresBuild: true
@@ -5420,7 +5420,7 @@ packages:
       whatwg-encoding: 1.0.5
       whatwg-mimetype: 2.3.0
       whatwg-url: 7.1.0
-      ws: 7.5.9(bufferutil@4.0.7)(utf-8-validate@6.0.3)
+      ws: 7.5.9(bufferutil@4.0.8)(utf-8-validate@6.0.3)
       xml-name-validator: 3.0.0
     transitivePeerDependencies:
       - bufferutil
@@ -7230,14 +7230,14 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /svg-png-converter@0.0.9(bufferutil@4.0.7)(utf-8-validate@6.0.3):
+  /svg-png-converter@0.0.9(bufferutil@4.0.8)(utf-8-validate@6.0.3):
     resolution: {integrity: sha512-aSAoG3WINetBYfBF20sgDbtxr5jW67YdhqQlSzPOGkH7oQrejPazFnlyextk3UqfW9sGDroJHFcK8vgEHQjeGA==}
     hasBin: true
     dependencies:
       bitmap2vector: 0.0.4
       blob-to-buffer: 1.2.9
       buffer: 5.7.1
-      fabric: 3.6.6(bufferutil@4.0.7)(utf-8-validate@6.0.3)
+      fabric: 3.6.6(bufferutil@4.0.8)(utf-8-validate@6.0.3)
       glob: 7.2.3
       js-base64: 2.6.4
       minimist: 1.2.8
@@ -7953,7 +7953,7 @@ packages:
       signal-exit: 3.0.7
     dev: true
 
-  /ws@7.5.9(bufferutil@4.0.7)(utf-8-validate@6.0.3):
+  /ws@7.5.9(bufferutil@4.0.8)(utf-8-validate@6.0.3):
     resolution: {integrity: sha512-F+P9Jil7UiSKSkppIiD94dN07AwvFixvLIj1Og1Rl9GGMuNipJnV9JzjD6XuqmAeiswGvUmNLjr5cFuXwNS77Q==}
     engines: {node: '>=8.3.0'}
     requiresBuild: true
@@ -7966,12 +7966,12 @@ packages:
       utf-8-validate:
         optional: true
     dependencies:
-      bufferutil: 4.0.7
+      bufferutil: 4.0.8
       utf-8-validate: 6.0.3
     dev: false
     optional: true
 
-  /ws@8.13.0(bufferutil@4.0.7)(utf-8-validate@6.0.3):
+  /ws@8.13.0(bufferutil@4.0.8)(utf-8-validate@6.0.3):
     resolution: {integrity: sha512-x9vcZYTrFPC7aSIbj7sRCYo7L/Xb8Iy+pW0ng0wt2vCJv7M9HOMy0UoN3rr+IFC7hb7vXoqS+P9ktyLLLhO+LA==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
@@ -7983,7 +7983,7 @@ packages:
       utf-8-validate:
         optional: true
     dependencies:
-      bufferutil: 4.0.7
+      bufferutil: 4.0.8
       utf-8-validate: 6.0.3
     dev: false
 
