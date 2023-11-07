@@ -122,8 +122,8 @@ devDependencies:
     specifier: 6.4.13
     version: 6.4.13
   '@types/superagent':
-    specifier: 4.1.20
-    version: 4.1.20
+    specifier: 4.1.21
+    version: 4.1.21
   '@types/text-to-svg':
     specifier: 3.1.3
     version: 3.1.3
@@ -2068,8 +2068,8 @@ packages:
     resolution: {integrity: sha512-g7CK9nHdwjK2n0ymT2CW698FuWJRIx+RP6embAzZ2Qi8/ilIrA1Imt2LVSeHUzKvpoi7BhmmQcXz95eS0f2JXw==}
     dev: true
 
-  /@types/superagent@4.1.20:
-    resolution: {integrity: sha512-GfpwJgYSr3yO+nArFkmyqv3i0vZavyEG5xPd/o95RwpKYpsOKJYI5XLdxLpdRbZI3YiGKKdIOFIf/jlP7A0Jxg==}
+  /@types/superagent@4.1.21:
+    resolution: {integrity: sha512-yrbAccEEY9+BSa1wji3ry8R3/BdW9kyWnjkRKctrtw5ebn/k2a2CsMeaQ7dD4iLfomgHkomBVIVgOFRMV4XYHA==}
     dependencies:
       '@types/cookiejar': 2.1.3
       '@types/node': 18.18.8
