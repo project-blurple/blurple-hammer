@@ -98,8 +98,8 @@ devDependencies:
     specifier: 1.4.6
     version: 1.4.6
   '@types/decompress':
-    specifier: 4.2.6
-    version: 4.2.6
+    specifier: 4.2.7
+    version: 4.2.7
   '@types/express':
     specifier: 4.17.20
     version: 4.17.20
@@ -1920,8 +1920,8 @@ packages:
     resolution: {integrity: sha512-LZ8SD3LpNmLMDLkG2oCBjZg+ETnx6XdCjydUE0HwojDmnDfDUnhMKKbtth1TZh+hzcqb03azrYWoXLS8sMXdqg==}
     dev: true
 
-  /@types/decompress@4.2.6:
-    resolution: {integrity: sha512-ULmsMkKxU7aIGbnxP4Rz28hLdRZ4q0cdy6kcb8dx+UgDGOn+id5fibvoeTnjuolhrRM7f7TOtGADeKEk60SSsQ==}
+  /@types/decompress@4.2.7:
+    resolution: {integrity: sha512-9z+8yjKr5Wn73Pt17/ldnmQToaFHZxK0N1GHysuk/JIPT8RIdQeoInM01wWPgypRcvb6VH1drjuFpQ4zmY437g==}
     dependencies:
       '@types/node': 18.18.8
     dev: true
