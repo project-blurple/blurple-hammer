@@ -119,8 +119,8 @@ devDependencies:
     specifier: 18.18.9
     version: 18.18.9
   '@types/nodemailer':
-    specifier: 6.4.13
-    version: 6.4.13
+    specifier: 6.4.14
+    version: 6.4.14
   '@types/superagent':
     specifier: 4.1.21
     version: 4.1.21
@@ -2023,8 +2023,8 @@ packages:
     dependencies:
       undici-types: 5.26.5
 
-  /@types/nodemailer@6.4.13:
-    resolution: {integrity: sha512-889Vq/77eEpidCwh52sVWpbnqQmIwL8yVBekNbrztVEaWKOCRH3Eq6hjIJh1jwsGDEAJEH0RR+YhpH9mfELLKA==}
+  /@types/nodemailer@6.4.14:
+    resolution: {integrity: sha512-fUWthHO9k9DSdPCSPRqcu6TWhYyxTBg382vlNIttSe9M7XfsT06y0f24KHXtbnijPGGRIcVvdKHTNikOI6qiHA==}
     dependencies:
       '@types/node': 18.18.9
     dev: true
