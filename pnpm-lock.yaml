@@ -122,8 +122,8 @@ devDependencies:
     specifier: 6.4.14
     version: 6.4.14
   '@types/superagent':
-    specifier: 4.1.21
-    version: 4.1.21
+    specifier: 4.1.22
+    version: 4.1.22
   '@types/text-to-svg':
     specifier: 3.1.4
     version: 3.1.4
@@ -2068,8 +2068,8 @@ packages:
     resolution: {integrity: sha512-g7CK9nHdwjK2n0ymT2CW698FuWJRIx+RP6embAzZ2Qi8/ilIrA1Imt2LVSeHUzKvpoi7BhmmQcXz95eS0f2JXw==}
     dev: true
 
-  /@types/superagent@4.1.21:
-    resolution: {integrity: sha512-yrbAccEEY9+BSa1wji3ry8R3/BdW9kyWnjkRKctrtw5ebn/k2a2CsMeaQ7dD4iLfomgHkomBVIVgOFRMV4XYHA==}
+  /@types/superagent@4.1.22:
+    resolution: {integrity: sha512-GMaOrnnUsjChvH8zlzdDPARRXky8bU3E8xsU/fOclgqsINekbwDu1+wzJzJaGzZP91SGpOutf5Te5pm5M/qCWg==}
     dependencies:
       '@types/cookiejar': 2.1.3
       '@types/node': 18.18.9
@@ -2713,7 +2713,7 @@ packages:
   /bitmap2vector@0.0.4:
     resolution: {integrity: sha512-H15PSMUns4sde8qRNtQZX7G7iGmDTA6a0aOYpqp2AMDr2e4lyqOrsKeXfVMqI6FUYjZfqNjR6hO3zpZU/6l4hw==}
     dependencies:
-      imagetracerjs: github.com/jankovicsandras/imagetracerjs/0c3fe738f593725fbe3df35d2aea596178326235
+      imagetracerjs: github.com/jankovicsandras/imagetracerjs/cb0c84a309df5e75614d3b5166cdc77a56f12a98
       jimp: 0.6.8
       node-fetch: 2.7.0
     transitivePeerDependencies:
@@ -8152,8 +8152,8 @@ packages:
       nan: 2.18.0
     dev: false
 
-  github.com/jankovicsandras/imagetracerjs/0c3fe738f593725fbe3df35d2aea596178326235:
-    resolution: {tarball: https://codeload.github.com/jankovicsandras/imagetracerjs/tar.gz/0c3fe738f593725fbe3df35d2aea596178326235}
+  github.com/jankovicsandras/imagetracerjs/cb0c84a309df5e75614d3b5166cdc77a56f12a98:
+    resolution: {tarball: https://codeload.github.com/jankovicsandras/imagetracerjs/tar.gz/cb0c84a309df5e75614d3b5166cdc77a56f12a98}
     name: imagetracerjs
     version: 1.2.6
     dev: false
