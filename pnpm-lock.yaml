@@ -9,8 +9,8 @@ dependencies:
     specifier: 2.4.1
     version: 2.4.1
   '@typegoose/typegoose':
-    specifier: 11.5.0
-    version: 11.5.0(mongoose@7.5.4)
+    specifier: 11.7.1
+    version: 11.7.1(mongoose@7.6.5)
   bufferutil:
     specifier: 4.0.8
     version: 4.0.8
@@ -54,8 +54,8 @@ dependencies:
     specifier: 6.3.1
     version: 6.3.1
   mongoose:
-    specifier: 7.5.4
-    version: 7.5.4
+    specifier: 7.6.5
+    version: 7.6.5
   morgan:
     specifier: 1.10.0
     version: 1.10.0
@@ -1849,15 +1849,15 @@ packages:
     resolution: {integrity: sha512-jt4jIsWKvUvuY6adJnQJlb/UR7DdjC8CjHI/OaSQruj2yX9/K6+KOvDt/vD6udqos/FUk5Op66CvYT7TBLYO5Q==}
     dev: true
 
-  /@typegoose/typegoose@11.5.0(mongoose@7.5.4):
-    resolution: {integrity: sha512-+ca//+8hUzOdK7mJTxHwqMiQjarVGCkF5x073ZScXfWOw35kPOzvvQwBEqFiVMhKW5txkiswsALwriJxhYcO2A==}
+  /@typegoose/typegoose@11.7.1(mongoose@7.6.5):
+    resolution: {integrity: sha512-+tFasAsrn7mSEpHJvRcmEpCaupntiaCFImd2w/swEj8Sx5v3YTrwdKV2hjesZhIoLIMSQ+CrsNo+Y9RqTnmRig==}
     engines: {node: '>=14.17.0'}
     peerDependencies:
-      mongoose: ~7.5.0
+      mongoose: ~7.6.3
     dependencies:
       lodash: 4.17.21
       loglevel: 1.8.1
-      mongoose: 7.5.4
+      mongoose: 7.6.5
       reflect-metadata: 0.1.13
       semver: 7.5.4
       tslib: 2.6.2
@@ -5884,8 +5884,8 @@ packages:
       whatwg-url: 11.0.0
     dev: false
 
-  /mongodb@5.8.1:
-    resolution: {integrity: sha512-wKyh4kZvm6NrCPH8AxyzXm3JBoEf4Xulo0aUWh3hCgwgYJxyQ1KLST86ZZaSWdj6/kxYUA3+YZuyADCE61CMSg==}
+  /mongodb@5.9.0:
+    resolution: {integrity: sha512-g+GCMHN1CoRUA+wb1Agv0TI4YTSiWr42B5ulkiAfLLHitGK1R+PkSAf3Lr5rPZwi/3F04LiaZEW0Kxro9Fi2TA==}
     engines: {node: '>=14.20.1'}
     peerDependencies:
       '@aws-sdk/credential-providers': ^3.188.0
@@ -5912,13 +5912,13 @@ packages:
       '@mongodb-js/saslprep': 1.1.1
     dev: false
 
-  /mongoose@7.5.4:
-    resolution: {integrity: sha512-u97BOfBOoCxysnH5X0WeF/O39DO1di75dYU75xaSs9mL3Si0qmP0qLWvWpBRdVkiiRVw+eaqJyKwaq6RvKPVZw==}
+  /mongoose@7.6.5:
+    resolution: {integrity: sha512-ElHgGWVKQUawKBn0DXuHmSd3W5w5Kb8JUbDNQH30odhYCDKq9GCh+E1/SuN8jZGxrHgFyLrvYxLSpC36BpqS+w==}
     engines: {node: '>=14.20.1'}
     dependencies:
       bson: 5.5.1
       kareem: 2.5.1
-      mongodb: 5.8.1
+      mongodb: 5.9.0
       mpath: 0.9.0
       mquery: 5.0.0
       ms: 2.1.3
