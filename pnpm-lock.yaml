@@ -39,8 +39,8 @@ dependencies:
     specifier: 4.18.2
     version: 4.18.2
   express-rate-limit:
-    specifier: 7.0.2
-    version: 7.0.2(express@4.18.2)
+    specifier: 7.1.4
+    version: 7.1.4(express@4.18.2)
   fs-extra:
     specifier: 11.1.1
     version: 11.1.1
@@ -3964,11 +3964,11 @@ packages:
       jest-util: 29.7.0
     dev: true
 
-  /express-rate-limit@7.0.2(express@4.18.2):
-    resolution: {integrity: sha512-EZoojG9civtJ6GRR7vE0JErow5q/ltbIl0RGbYhrNJKwBC9/kp2HckpdAvQkkE0sRAAtFDBvILvwZSR2kQroDw==}
+  /express-rate-limit@7.1.4(express@4.18.2):
+    resolution: {integrity: sha512-mv/6z+EwnWpr+MjGVavMGvM4Tl8S/tHmpl9ZsDfrQeHpYy4Hfr0UYdKEf9OOTe280oIr70yPxLRmQ6MfINfJDw==}
     engines: {node: '>= 16'}
     peerDependencies:
-      express: ^4 || ^5
+      express: 4 || 5 || ^5.0.0-beta.1
     dependencies:
       express: 4.18.2
     dev: false
