@@ -22,7 +22,7 @@ export default function handleAppeals(client: Client<true>): void {
 }
 
 export function createNewAppeal(user: { id: Snowflake; tag: string; email: string; avatarUrl: string }, userAppeal: { type: AppealType; caseId: string | null; userStatement: string; userReason: string }, client: Client<true>): void {
-  void Appeal.count().then(async count => {
+  void Appeal.countDocuments().then(async count => {
     const appeal = new Appeal({ appealId: count + 1, user, ...userAppeal });
 
     void sendMail([user.tag, user.email], `Appeal #${appeal.appealId} has been received`, appealEmailConfirmationOnReceive(appeal));
