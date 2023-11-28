@@ -1,4 +1,4 @@
-import type { ActionRowData, Awaitable, ModalSubmitInteraction, TextInputComponentData, TextInputModalData } from "discord.js";
+import type { ActionRowData, Awaitable, ModalSubmitInteraction, TextInputComponentData } from "discord.js";
 import { ComponentType } from "discord.js";
 
 export type Modal = (interaction: ModalSubmitInteraction<"cached">) => Awaitable<void>;
@@ -12,13 +12,13 @@ export default function modalHandler(interaction: ModalSubmitInteraction<"cached
 }
 
 export function getModalTextInput(actionRows: ModalSubmitInteraction["components"], customId: string): string | null {
-  const actionRow = actionRows.find(row => row.components.some(component => component.type === ComponentType.TextInput && component.customId === customId));
+  const actionRow = actionRows.find(row => row.components.some(component => component.customId === customId));
   if (!actionRow) return null;
 
-  const textInput = actionRow.components.find(component => component.type === ComponentType.TextInput && component.customId === customId);
+  const textInput = actionRow.components.find(component => component.customId === customId);
   if (!textInput) return null;
 
-  return (textInput as TextInputModalData).value;
+  return textInput.value;
 }
 
 export function createModalTextInput(options: Omit<TextInputComponentData, "type">): ActionRowData<TextInputComponentData> {

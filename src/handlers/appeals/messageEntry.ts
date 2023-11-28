@@ -1,4 +1,4 @@
-import type { Client, InteractionUpdateOptions, MessageCreateOptions } from "discord.js";
+import type { ButtonComponentData, Client, InteractionUpdateOptions, MessageCreateOptions } from "discord.js";
 import { Colors, ComponentType, time, ButtonStyle } from "discord.js";
 import type { AppealDocument } from "../../database/models/Appeal";
 import { fitText } from "../../utils/text";
@@ -37,7 +37,7 @@ export default function generateAppealMessage(appeal: AppealDocument, client: Cl
       {
         type: ComponentType.ActionRow,
         components: [
-          ...appeal.finalResolution ?
+          ...(appeal.finalResolution ?
             [
               {
                 type: ComponentType.Button,
@@ -66,7 +66,8 @@ export default function generateAppealMessage(appeal: AppealDocument, client: Cl
                 style: ButtonStyle.Success as never,
                 label: "Create a final resolution",
               },
-            ],
+            ]
+          ) satisfies ButtonComponentData[],
           {
             type: ComponentType.Button,
             customId: `appeal-${appeal.appealId}:refresh`,
@@ -81,7 +82,7 @@ export default function generateAppealMessage(appeal: AppealDocument, client: Cl
           {
             type: ComponentType.ActionRow,
             components: [
-              ...appeal.userStatement.length > 1024 ?
+              ...(appeal.userStatement.length > 1024 ?
                 [
                   {
                     type: ComponentType.Button,
@@ -90,8 +91,8 @@ export default function generateAppealMessage(appeal: AppealDocument, client: Cl
                     label: "View full statement",
                   },
                 ] :
-                [],
-              ...appeal.userReason.length > 1024 ?
+                []) satisfies ButtonComponentData[],
+              ...(appeal.userReason.length > 1024 ?
                 [
                   {
                     type: ComponentType.Button,
@@ -100,7 +101,7 @@ export default function generateAppealMessage(appeal: AppealDocument, client: Cl
                     label: "View full reason",
                   },
                 ] :
-                [],
+                []) satisfies ButtonComponentData[],
             ],
           },
         ] :
