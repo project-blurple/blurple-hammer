@@ -15,7 +15,7 @@ export default {
   names: ["eval", "evaluate", "run"],
   ownerOnly: true,
   testArgs(args) { return args.length > 0; },
-  // eslint-disable-next-line id-length, @typescript-eslint/no-unused-expressions, @typescript-eslint/brace-style -- the dollar sign is the message, we need this for context in the eval function, @typescript-eslint/brace-style
+  // eslint-disable-next-line id-length, @typescript-eslint/no-unused-expressions, @stylistic/ts/brace-style -- the dollar sign is the message, we need this for context in the eval function
   execute($, reply, args) { $;
     try {
       // eslint-disable-next-line no-eval, @typescript-eslint/no-unsafe-assignment
