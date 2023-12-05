@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@sapphire/type':
-    specifier: 2.4.2
-    version: 2.4.2
+    specifier: 2.4.3
+    version: 2.4.3
   '@typegoose/typegoose':
     specifier: 12.0.0
     version: 12.0.0(mongoose@8.0.2)
@@ -1807,8 +1807,8 @@ packages:
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
     dev: false
 
-  /@sapphire/type@2.4.2:
-    resolution: {integrity: sha512-ZdZgPtV17P7bfyS/RP2QOQSYnJUiOtC/Sp8SadntvzkUe+fvnwYEVc9Gz/Of/i+tYOQJor+J+VoJWmQRPpptbw==}
+  /@sapphire/type@2.4.3:
+    resolution: {integrity: sha512-G3rbxqAwfKrx1MUXSQ1X1A+0D+n2nqn/OqtY9v5TaZdd7KHEz6nQRZfNA7mbUYbg3fIAn9q+7CkrdpMS570h7w==}
     engines: {node: '>=v12', npm: '>=7'}
     requiresBuild: true
     dependencies:
