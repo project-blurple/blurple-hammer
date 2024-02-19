@@ -26,7 +26,7 @@ function checkMessage(partialMessage: Message | PartialMessage): void {
         const [matchedPpModerator] = possibleCaseEmbed.fields[1]?.value?.match(/p\.p\. (.+)\n<@!(\d+)>/um)?.slice(2) ?? [];
         const matchedNotes = possibleCaseEmbed.fields.slice(2).filter(field => field.name.includes(" at "));
 
-        const caseType = Number(Object.entries(zeppelinCaseTypes).find(([, { name }]) => name.toLowerCase() === matchedCaseType!.toLowerCase())![0]!) as ZeppelinCaseType;
+        const caseType = Number(Object.entries(zeppelinCaseTypes).find(([, { name }]) => name.toLowerCase() === matchedCaseType!.toLowerCase())![0]) as ZeppelinCaseType;
         const caseNumber = Number(matchedCaseNumber);
         const caseHidden = Boolean(matchedCaseHidden);
         const dateFormatted = new Date(matchedDateFormatted!.replace(" at ", ", "));
