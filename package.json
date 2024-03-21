@@ -58,7 +58,7 @@
     "@types/morgan": "1.9.9",
     "@types/node": "18.19.26",
     "@types/nodemailer": "6.4.14",
-    "@types/superagent": "8.1.4",
+    "@types/superagent": "8.1.5",
     "@types/text-to-svg": "3.1.4",
     "eslint": "8.57.0",
     "eslint-config-promise": "github:promise/eslint-config",
