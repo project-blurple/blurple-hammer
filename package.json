@@ -23,7 +23,7 @@
     "bufferutil": "4.0.8",
     "cookie-parser": "1.4.6",
     "decompress": "4.2.1",
-    "dedent": "1.5.2",
+    "dedent": "1.5.3",
     "discord-oauth2": "2.12.1",
     "discord.js": "14.14.1",
     "dotenv": "16.4.5",
