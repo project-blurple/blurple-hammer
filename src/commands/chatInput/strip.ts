@@ -1,5 +1,5 @@
+import config from "../../config";
 import Emojis from "../../constants/emojis";
-import { allStaffRoles } from "../../constants/staff";
 import { UserStrip } from "../../database/models/UserStrip";
 import type { FirstLevelChatInputCommand } from ".";
 
@@ -15,7 +15,7 @@ export default {
       return void interaction.reply({ content: `${Emojis.ThumbsUp} You have been unstripped.`, ephemeral: true });
     }
 
-    const isStaff = interaction.member.roles.cache.some(role => allStaffRoles.includes(role.id));
+    const isStaff = interaction.member.roles.cache.find(role => role.id === config.roles.staff.all);
     if (!isStaff) return void interaction.reply({ content: `${Emojis.ThumbsDown} You cannot strip yourself.`, ephemeral: true });
 
     const me = await interaction.guild.members.fetchMe({ force: false, cache: true });
