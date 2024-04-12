@@ -15,27 +15,15 @@ const minecraftSubserver: Subserver = {
   name: "Blurple Assistive Minecraft Facility",
   acronym: "BAMF",
   staffAccess: {
-    [config.roles.administrators]: {
+    [config.roles.staff.administrators]: {
       access: SubserverAccess.Allowed,
-      roles: [Roles.Administrators, Roles.BlurpleStaff],
+      roles: [Roles.Administrators],
     },
-    [config.roles.teamLeaders]: {
-      access: SubserverAccess.Allowed,
-      roles: [Roles.BlurpleStaff],
-    },
-    [config.roles.leadershipStaff]: {
+    [config.roles.staff.all]: {
       access: SubserverAccess.Allowed,
       roles: [Roles.BlurpleStaff],
     },
-    [config.roles.moderationStaff]: {
-      access: SubserverAccess.Allowed,
-      roles: [Roles.BlurpleStaff],
-    },
-    [config.roles.supportStaff]: {
-      access: SubserverAccess.Allowed,
-      roles: [Roles.BlurpleStaff],
-    },
-    [config.roles.minecraftTeam]: {
+    [config.roles.staff.teams.minecraft]: {
       access: SubserverAccess.Forced,
       roles: [Roles.MinecraftStaff],
     },

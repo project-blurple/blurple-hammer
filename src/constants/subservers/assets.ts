@@ -3,9 +3,9 @@ import type { Subserver } from ".";
 import { SubserverAccess } from ".";
 
 export enum Roles {
-  FullAccess = "708630517528002581",
-  TeamLeaders = "559336076456755200",
-  CreativeTeam = "799262919111344128",
+  Administrator = "708630517528002581",
+  Leadership = "559336076456755200",
+  Designer = "799262919111344128",
   OverrideRole = "1072130561184911481",
 }
 
@@ -15,17 +15,17 @@ const assetsSubserver: Subserver = {
   acronym: "BARF",
 
   staffAccess: {
-    [config.roles.administrators]: {
+    [config.roles.staff.administrators]: {
       access: SubserverAccess.Allowed,
-      roles: [Roles.FullAccess, Roles.TeamLeaders],
+      roles: [Roles.Administrator],
     },
-    [config.roles.teamLeaders]: {
+    [config.roles.staff.leadership]: {
       access: SubserverAccess.Allowed,
-      roles: [Roles.TeamLeaders],
+      roles: [Roles.Leadership],
     },
-    [config.roles.medias]: {
+    [config.roles.staff.teams.designer]: {
       access: SubserverAccess.Allowed,
-      roles: [Roles.CreativeTeam],
+      roles: [Roles.Designer],
     },
   },
   userOverrideNoticeRoleId: Roles.OverrideRole,

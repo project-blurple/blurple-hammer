@@ -3,7 +3,6 @@ import type { Client, Snowflake } from "discord.js";
 import express from "express";
 import { createExpressApp, webFolderPath } from "..";
 import config from "../../../config";
-import { allStaffRoles } from "../../../constants/staff";
 import { OAuthTokens } from "../../../database/models/OAuthTokens";
 import oauth from "../../../utils/oauth";
 import { decode, sign, verify } from "../../../utils/webtokens";
@@ -79,7 +78,7 @@ export default function handleWebStaffPortal(client: Client<true>, webConfig: Ex
     const { id } = decode<{ id: Snowflake }>(token);
     void client.guilds.cache.get(config.mainGuildId)!.members.fetch({ user: id, force: false }).catch(() => null)
       .then(member => {
-        if (member?.roles.cache.some(role => allStaffRoles.includes(role.id))) return next();
+        if (member?.roles.cache.find(role => role.id === config.roles.staff.all)) return next();
         return res.status(403).sendFile(join(webFolderPath, "forbidden.html"));
       });
   });
