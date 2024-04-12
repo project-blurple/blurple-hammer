@@ -4,10 +4,8 @@ import { SubserverAccess } from ".";
 
 export enum Roles {
   Administrators = "803646089696903209",
-  TeamLeaders = "803646289014423562",
   Leadership = "803646635225645076",
-  Moderation = "803646383600959489",
-  Support = "803646824938340443",
+  BlurpleStaff = "803646824938340443",
   OverrideRole = "1072136613330702378",
 }
 
@@ -16,25 +14,17 @@ const dev2Subserver: Subserver = {
   name: "Blurple Innovative Development Environmental",
   acronym: "BIDE",
   staffAccess: {
-    [config.roles.administrators]: {
+    [config.roles.staff.administrators]: {
       access: SubserverAccess.Allowed,
-      roles: [Roles.Administrators, Roles.TeamLeaders],
+      roles: [Roles.Administrators],
     },
-    [config.roles.teamLeaders]: {
-      access: SubserverAccess.Allowed,
-      roles: [Roles.TeamLeaders],
-    },
-    [config.roles.leadershipStaff]: {
+    [config.roles.staff.leadership]: {
       access: SubserverAccess.Allowed,
       roles: [Roles.Leadership],
     },
-    [config.roles.moderationStaff]: {
+    [config.roles.staff.all]: {
       access: SubserverAccess.Allowed,
-      roles: [Roles.Moderation],
-    },
-    [config.roles.supportStaff]: {
-      access: SubserverAccess.Allowed,
-      roles: [Roles.Support],
+      roles: [Roles.BlurpleStaff],
     },
   },
   userOverrideNoticeRoleId: Roles.OverrideRole,

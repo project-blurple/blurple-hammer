@@ -9,15 +9,14 @@ export default {
   title: "Role Descriptions",
   embed: {
     fields: [
-      {
-        name: "Staff Roles",
-        value: formatRoleList({
-          [config.roles.teamLeaders]: "Responsible for the management of the community behind the scenes.",
-          [config.roles.leadershipStaff]: "Responsible for assisting in managing the community and the staff team.",
-          [config.roles.moderationStaff]: "Responsible for the moderation of all channels and enforce our server rules. They are also responsible for handling all server submissions.",
-          [config.roles.supportStaff]: "Responsible for either the development of our internal bots or the creation of various designs used in Project Blurple.",
-        }),
-      },
+      // todo {
+      //   name: "Staff Roles",
+      //   value: formatRoleList({
+      //     [config.roles.staff.leadership]: "Responsible for the management of the community behind the scenes.",
+      //     [config.roles.moderationStaff]: "Responsible for the moderation of all channels and enforce our server rules. They are also responsible for handling all server submissions.",
+      //     [config.roles.supportStaff]: "Responsible for either the development of our internal bots or the creation of various designs used in Project Blurple.",
+      //   }),
+      // },
       {
         name: "Colored Roles",
         value: formatRoleList({

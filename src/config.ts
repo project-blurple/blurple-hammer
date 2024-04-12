@@ -1,6 +1,4 @@
-import { config } from "dotenv";
-
-config();
+import "dotenv/config";
 
 export default {
   client: {
@@ -24,16 +22,19 @@ export default {
   },
 
   roles: {
-    administrators: String(process.env["ROLE_ADMINISTRATORS"]),
-    teamLeaders: String(process.env["ROLE_TEAM_LEADERS"]),
-    leadershipStaff: String(process.env["ROLE_LEADERSHIP_STAFF"]),
-    moderationStaff: String(process.env["ROLE_MODERATION_STAFF"]),
-    developers: String(process.env["ROLE_DEVELOPERS"]),
-    medias: String(process.env["ROLE_MEDIAS"]),
-    supportStaff: String(process.env["ROLE_SUPPORT_STAFF"]),
-    eventsTeam: String(process.env["ROLE_EVENTS_TEAM"]),
-    minecraftTeam: String(process.env["ROLE_MINECRAFT_TEAM"]),
-    staffOnDuty: String(process.env["ROLE_STAFF_ON_DUTY"]),
+    staff: {
+      administrators: String(process.env["ROLE_ADMINISTRATORS"]),
+      leadership: String(process.env["ROLE_LEADERSHIP"]),
+      all: String(process.env["ROLE_STAFF"]),
+      teams: {
+        moderation: String(process.env["ROLE_TEAM_MODERATION"]),
+        developer: String(process.env["ROLE_TEAM_DEVELOPER"]),
+        designer: String(process.env["ROLE_TEAM_DESIGNER"]),
+        events: String(process.env["ROLE_TEAM_EVENTS"]),
+        minecraft: String(process.env["ROLE_TEAM_MINECRAFT"]),
+      },
+      duty: String(process.env["ROLE_STAFF_ON_DUTY"]),
+    },
     restrictions: {
       embed: String(process.env["ROLE_RESTRICTION_EMBED"]),
       reactions: String(process.env["ROLE_RESTRICTION_REACTIONS"]),

@@ -5,13 +5,13 @@ import { SubserverAccess } from ".";
 
 export enum Roles {
   Administrator = "573193684296925204",
-  TeamLeader = "573176976454713344",
   Leadership = "573176977045979147",
+  BlurpleStaff = "1228258710233546793",
   Moderator = "573176977683644450",
   Developer = "573223306627514386",
-  CreativeTeam = "573355860584038400",
-  EventsTeam = "972864361293029406",
-  MinecraftTeam = "701872110754070590",
+  Designer = "573355860584038400",
+  Events = "972864361293029406",
+  Minecraft = "701872110754070590",
   MinecraftManagement = "573177129693609984",
 }
 
@@ -20,43 +20,26 @@ const staffSubserver: Subserver = {
   name: "Blurple Analogous Staff Environment",
   acronym: "BASE",
   staffAccess: {
-    [config.roles.administrators]: {
+    [config.roles.staff.administrators]: {
       access: SubserverAccess.Forced,
       roles: [Roles.Administrator],
     },
-    [config.roles.teamLeaders]: {
-      access: SubserverAccess.Forced,
-      roles: [Roles.TeamLeader],
-    },
-    [config.roles.leadershipStaff]: {
+    [config.roles.staff.leadership]: {
       access: SubserverAccess.Forced,
       roles: [Roles.Leadership],
     },
-    [config.roles.moderationStaff]: {
-      access: SubserverAccess.Forced,
+    [config.roles.staff.teams.moderation]: {
       roles: [Roles.Moderator],
     },
-    [config.roles.developers]: {
+    [config.roles.staff.all]: {
       access: SubserverAccess.Allowed,
-      roles: [Roles.Developer],
+      roles: [Roles.BlurpleStaff],
     },
-    [config.roles.medias]: {
-      access: SubserverAccess.Allowed,
-      roles: [Roles.CreativeTeam],
-    },
-    [config.roles.supportStaff]: {
-      access: SubserverAccess.Allowed,
-      // no roles as they are either a developer or a media team member
-    },
-    [config.roles.eventsTeam]: {
-      roles: [Roles.EventsTeam],
-    },
-    [config.roles.minecraftTeam]: {
-      roles: [Roles.MinecraftTeam],
-    },
-    [MinecraftRoles.MinecraftManagement]: {
-      roles: [Roles.MinecraftManagement],
-    },
+    [config.roles.staff.teams.developer]: { roles: [Roles.Developer] },
+    [config.roles.staff.teams.designer]: { roles: [Roles.Designer] },
+    [config.roles.staff.teams.events]: { roles: [Roles.Events] },
+    [config.roles.staff.teams.minecraft]: { roles: [Roles.Minecraft] },
+    [MinecraftRoles.MinecraftManagement]: { roles: [Roles.MinecraftManagement] },
   },
 };
 
