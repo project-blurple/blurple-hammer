@@ -122,8 +122,8 @@ devDependencies:
     specifier: 6.4.15
     version: 6.4.15
   '@types/superagent':
-    specifier: 8.1.6
-    version: 8.1.6
+    specifier: 8.1.7
+    version: 8.1.7
   '@types/text-to-svg':
     specifier: 3.1.4
     version: 3.1.4
@@ -2138,8 +2138,8 @@ packages:
     resolution: {integrity: sha512-9aEbYZ3TbYMznPdcdr3SmIrLXwC/AKZXQeCf9Pgao5CKb8CyHuEX5jzWPTkvregvhRJHcpRO6BFoGW9ycaOkYw==}
     dev: true
 
-  /@types/superagent@8.1.6:
-    resolution: {integrity: sha512-yzBOv+6meEHSzV2NThYYOA6RtqvPr3Hbob9ZLp3i07SH27CrYVfm8CrF7ydTmidtelsFiKx2I4gZAiAOamGgvQ==}
+  /@types/superagent@8.1.7:
+    resolution: {integrity: sha512-NmIsd0Yj4DDhftfWvvAku482PZum4DBW7U51OvS8gvOkDDY0WT1jsVyDV3hK+vplrsYw8oDwi9QxOM7U68iwww==}
     dependencies:
       '@types/cookiejar': 2.1.5
       '@types/methods': 1.1.4
