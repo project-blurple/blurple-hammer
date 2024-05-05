@@ -11,7 +11,10 @@ export enum Roles {
   Developer = "573223306627514386",
   Designer = "573355860584038400",
   Events = "972864361293029406",
+  GiveawayManagement = "972803140296511488",
   Minecraft = "701872110754070590",
+  Modmails = "1236769849426968689",
+  PartnershipManagement = "840532265167486978",
   MinecraftManagement = "573177129693609984",
 }
 
@@ -28,17 +31,18 @@ const staffSubserver: Subserver = {
       access: SubserverAccess.Forced,
       roles: [Roles.Leadership],
     },
-    [config.roles.staff.teams.moderation]: {
-      roles: [Roles.Moderator],
-    },
     [config.roles.staff.all]: {
       access: SubserverAccess.Allowed,
       roles: [Roles.BlurpleStaff],
     },
+    [config.roles.staff.teams.moderation]: { access: SubserverAccess.Forced, roles: [Roles.Moderator] },
     [config.roles.staff.teams.developer]: { roles: [Roles.Developer] },
     [config.roles.staff.teams.designer]: { roles: [Roles.Designer] },
     [config.roles.staff.teams.events]: { roles: [Roles.Events] },
-    [config.roles.staff.teams.minecraft]: { roles: [Roles.Minecraft] },
+    [config.roles.staff.teams.giveaways]: { access: SubserverAccess.Forced, roles: [Roles.GiveawayManagement] },
+    [config.roles.staff.teams.minecraft]: { access: SubserverAccess.Forced, roles: [Roles.Minecraft] },
+    [config.roles.staff.teams.modmails]: { access: SubserverAccess.Forced, roles: [Roles.Modmails] },
+    [config.roles.staff.teams.partnerships]: { access: SubserverAccess.Forced, roles: [Roles.PartnershipManagement] },
     [MinecraftRoles.MinecraftManagement]: { roles: [Roles.MinecraftManagement] },
   },
 };
