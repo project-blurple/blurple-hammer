@@ -9,14 +9,20 @@ export default {
   title: "Role Descriptions",
   embed: {
     fields: [
-      // todo {
-      //   name: "Staff Roles",
-      //   value: formatRoleList({
-      //     [config.roles.staff.leadership]: "Responsible for the management of the community behind the scenes.",
-      //     [config.roles.moderationStaff]: "Responsible for the moderation of all channels and enforce our server rules. They are also responsible for handling all server submissions.",
-      //     [config.roles.supportStaff]: "Responsible for either the development of our internal bots or the creation of various designs used in Project Blurple.",
-      //   }),
-      // },
+      {
+        name: "Staff Roles",
+        value: formatRoleList({
+          [config.roles.staff.leadership]: "Responsible for the management of the community behind the scenes.",
+          [config.roles.staff.teams.moderation]: "Responsible for the moderation of all channels and enforce our server rules. They are also responsible for handling all server submissions.",
+          [config.roles.staff.teams.developer]: "Responsible for the development of our bots and websites.",
+          [config.roles.staff.teams.designer]: "Responsible for the creation of various designs used in Project Blurple.",
+          [config.roles.staff.teams.events]: "Responsible for the community events.",
+          [config.roles.staff.teams.giveaways]: "Responsible for the giveaway handling and creation.",
+          [config.roles.staff.teams.minecraft]: "Responsible for the Minecraft server.",
+          [config.roles.staff.teams.modmails]: "Responsible for the Modmails (1st line of support).",
+          [config.roles.staff.teams.partnerships]: "Responsible for the partnerships.",
+        }),
+      },
       {
         name: "Colored Roles",
         value: formatRoleList({
@@ -50,8 +56,8 @@ export default {
 
 function formatRoleList(roleDescriptions: Record<Snowflake, string>) {
   return Object.entries(roleDescriptions)
-    .map(([roleId, description]) => `<@&${roleId}> » ${description}`)
-    .join("\n\n");
+    .map(([roleId, description]) => `- <@&${roleId}>: ${description}`)
+    .join("\n");
 }
 
 function selfObtainableRoleButtons(roles: Record<Snowflake, string>): MessageCreateOptions["components"] {

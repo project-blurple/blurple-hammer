@@ -8,11 +8,9 @@ export default {
     description: dedent`
       There's a lot of ways to make a Blurple image. Here are some of them:
 
-      • We have a "Blurplefier" bot that can automatically transform your user profile picture to Blurple colors. Type out the command, download the image, and change your avatar in User Settings. (this is unfortunately not available outside of the event)
-
-      • For web-based image transformations, head to our official website: [projectblurple.com/paint](https://projectblurple.com/paint)
-
-      • If you prefer to design your own logo, the color codes you need to know are as follows:
+      1. We have a "Blurplefier" bot that can automatically transform your user profile picture to Blurple colors. Type out the command, download the image, and change your avatar in User Settings. (this is unfortunately not available outside of the event)
+      2. For web-based image transformations, head to our official website: [projectblurple.com/paint](https://projectblurple.com/paint)
+      3. If you prefer to design your own logo, the color codes you need to know are as follows:
     `,
     fields: [
       {
