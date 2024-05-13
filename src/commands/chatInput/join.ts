@@ -56,7 +56,7 @@ export default {
           roles,
         })
           .then(() => void interaction.reply({ content: `${Emojis.TickYes} Added you to the subserver **${subserver.name}**.` }))
-          .catch(err => {
+          .catch((err: unknown) => {
             mainLogger.error(`Failed to add user ${interaction.user.id} to subserver ${subserver.name}: ${inspect(err)}`);
             return void interaction.reply({ content: `${Emojis.TickNo} An unknown error occurred when trying to add you to the subserver.`, ephemeral: true });
           });

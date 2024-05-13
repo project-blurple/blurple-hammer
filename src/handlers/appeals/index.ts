@@ -16,7 +16,7 @@ export default function handleAppeals(client: Client<true>): void {
   }));
 
   // the appeals handler doesn't really need the client, but it's here for consistency between the handlers
-  void client.channels.fetch(config.channels.appeals).catch(err => {
+  void client.channels.fetch(config.channels.appeals).catch((err: unknown) => {
     mainLogger.warn(`Appeals channel not found, error: ${inspect(err)}`);
   });
 }

@@ -88,5 +88,5 @@ function lockChannel(channel: ForumChannel | StageChannel | TextChannel | VoiceC
       if ("send" in channel) await channel.send(`${Emojis.WeeWoo} ***This channel is now locked.*** ${reason ? `\n>>> *${reason}*` : ""}`);
       return true as const;
     })
-    .catch(err => inspect(err).split("\n")[0]!.trim());
+    .catch((err: unknown) => inspect(err).split("\n")[0]!.trim());
 }
