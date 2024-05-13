@@ -7,8 +7,8 @@ export default function handleServerPolicies(client: Client<true>): void {
 
   client.on("guildMemberAdd", member => void refreshSubserverAccess(member.id, client));
   client.on("guildMemberUpdate", member => void refreshSubserverAccess(member.id, client));
-  client.on("guildMemberRemove", async member => {
+  client.on("guildMemberRemove", member => void (async () => {
     await SubserverAccessOverride.deleteMany({ userId: member.id, guildId: member.guild.id });
     void refreshSubserverAccess(member.id, client);
-  });
+  })());
 }

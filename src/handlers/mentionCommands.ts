@@ -10,9 +10,9 @@ const replies = new Map<Snowflake, Message>();
 export default function handleMentionCommands(client: Client<true>): void {
   client
     .on("messageCreate", message => handleMessage(message))
-    .on("messageUpdate", async (_, potentialPartialMessage) => {
+    .on("messageUpdate", (_, potentialPartialMessage) => void (async () => {
       if (replies.has(potentialPartialMessage.id)) handleMessage(potentialPartialMessage.partial ? await potentialPartialMessage.fetch() : potentialPartialMessage);
-    });
+    })());
 
   mainLogger.info("Mention command listener registered.");
 }
