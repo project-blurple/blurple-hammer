@@ -77,7 +77,7 @@ export default {
           botToken: interaction.client.token,
         })
           .then(() => void interaction.reply({ content: `${Emojis.TickYes} Force-joined user ${user.toString()} to the subserver **${subserver.name}**.` }))
-          .catch(err => {
+          .catch((err: unknown) => {
             mainLogger.error(`Failed to force-add user ${interaction.user.id} to subserver ${subserver.name}: ${inspect(err)}`);
             return void interaction.reply({ content: `${Emojis.TickNo} An unknown error occurred when trying to force-join them to the subserver.`, ephemeral: true });
           });

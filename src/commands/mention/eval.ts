@@ -31,7 +31,7 @@ export default {
             const ms = new Date().getTime() - now.getTime();
             void (await message).edit(generateFinalResponse(result, ms));
           })
-          .catch(async err => {
+          .catch(async (err: unknown) => {
             const ms = new Date().getTime() - now.getTime();
             void (await message).edit(generateFinalResponse(err, ms, false));
           });

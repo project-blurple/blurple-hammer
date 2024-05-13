@@ -22,7 +22,7 @@ export async function refreshSubserverAccess(userId: Snowflake, client: Client):
         else {
           await member.kick("User has no access to subserver")
             .then(() => staffLogger.info(`Kicked user ${userId} from subserver ${subserver.name} due to no access`))
-            .catch(err => staffLogger.error(`Failed to kick user ${userId} from subserver ${subserver.name}: ${inspect(err)}`));
+            .catch((err: unknown) => staffLogger.error(`Failed to kick user ${userId} from subserver ${subserver.name}: ${inspect(err)}`));
         }
       // force-add user
       } else if (access === SubserverAccess.Forced && !member) {
@@ -40,7 +40,7 @@ export async function refreshSubserverAccess(userId: Snowflake, client: Client):
                 await tokenDoc.save();
                 return tokenDoc;
               })
-              .catch(err => {
+              .catch((err: unknown) => {
                 staffLogger.error(`Failed to refresh access token for user ${userId}: ${inspect(err)}`);
                 return null;
               });
@@ -58,7 +58,7 @@ export async function refreshSubserverAccess(userId: Snowflake, client: Client):
               roles: applicableRoles,
             })
               .then(() => staffLogger.info(`Added user ${userId} to subserver ${subserver.name} due to forced access`))
-              .catch(err => staffLogger.error(`Failed to add user ${userId} to subserver ${subserver.name}: ${inspect(err)}`));
+              .catch((err: unknown) => staffLogger.error(`Failed to add user ${userId} to subserver ${subserver.name}: ${inspect(err)}`));
           }
         } else {
           staffLogger.error(`Failed to add user ${userId} to subserver ${subserver.name} because access token could not be refreshed`);
