@@ -27,8 +27,8 @@ dependencies:
     specifier: 2.12.1
     version: 2.12.1
   discord.js:
-    specifier: 14.15.2
-    version: 14.15.2(bufferutil@4.0.8)(utf-8-validate@6.0.4)
+    specifier: 14.15.3
+    version: 14.15.3(bufferutil@4.0.8)(utf-8-validate@6.0.4)
   dotenv:
     specifier: 16.4.5
     version: 16.4.5
@@ -505,8 +505,8 @@ packages:
       kuler: 2.0.0
     dev: false
 
-  /@discordjs/builders@1.8.1:
-    resolution: {integrity: sha512-GkF+HM01FHy+NSoTaUPR8z44otfQgJ1AIsRxclYGUZDyUbdZEFyD/5QVv2Y1Flx6M+B0bQLzg2M9CJv5lGTqpA==}
+  /@discordjs/builders@1.8.2:
+    resolution: {integrity: sha512-6wvG3QaCjtMu0xnle4SoOIeFB4y6fKMN6WZfy3BMKJdQQtPLik8KGzDwBVL/+wTtcE/ZlFjgEk74GublyEVZ7g==}
     engines: {node: '>=16.11.0'}
     dependencies:
       '@discordjs/formatters': 0.4.0
@@ -573,8 +573,8 @@ packages:
     engines: {node: '>=16.11.0'}
     dev: false
 
-  /@discordjs/ws@1.1.0(bufferutil@4.0.8)(utf-8-validate@6.0.4):
-    resolution: {integrity: sha512-O97DIeSvfNTn5wz5vaER6ciyUsr7nOqSEtsLoMhhIgeFkhnxLRqSr00/Fpq2/ppLgjDGLbQCDzIK7ilGoB/M7A==}
+  /@discordjs/ws@1.1.1(bufferutil@4.0.8)(utf-8-validate@6.0.4):
+    resolution: {integrity: sha512-PZ+vLpxGCRtmr2RMkqh8Zp+BenUaJqlS6xhgWKEZcgC/vfHLEzpHtKkB0sl3nZWpwtcKk6YWy+pU3okL2I97FA==}
     engines: {node: '>=16.11.0'}
     dependencies:
       '@discordjs/collection': 2.1.0
@@ -3607,16 +3607,16 @@ packages:
     resolution: {integrity: sha512-/Um39bRxVjcGHUu1YaTLangZvZveXjsX4BNsa1Iyd6OQG0jL972IBQGKD0mYqQswxC3bT+hqWSouabfI2RdaZA==}
     dev: false
 
-  /discord.js@14.15.2(bufferutil@4.0.8)(utf-8-validate@6.0.4):
-    resolution: {integrity: sha512-wGD37YCaTUNprtpqMIRuNiswwsvSWXrHykBSm2SAosoTYut0VUDj9yo9t4iLtMKvuhI49zYkvKc2TNdzdvpJhg==}
+  /discord.js@14.15.3(bufferutil@4.0.8)(utf-8-validate@6.0.4):
+    resolution: {integrity: sha512-/UJDQO10VuU6wQPglA4kz2bw2ngeeSbogiIPx/TsnctfzV/tNf+q+i1HlgtX1OGpeOBpJH9erZQNO5oRM2uAtQ==}
     engines: {node: '>=16.11.0'}
     dependencies:
-      '@discordjs/builders': 1.8.1
+      '@discordjs/builders': 1.8.2
       '@discordjs/collection': 1.5.3
       '@discordjs/formatters': 0.4.0
       '@discordjs/rest': 2.3.0
       '@discordjs/util': 1.1.0
-      '@discordjs/ws': 1.1.0(bufferutil@4.0.8)(utf-8-validate@6.0.4)
+      '@discordjs/ws': 1.1.1(bufferutil@4.0.8)(utf-8-validate@6.0.4)
       '@sapphire/snowflake': 3.5.3
       discord-api-types: 0.37.83
       fast-deep-equal: 3.1.3
