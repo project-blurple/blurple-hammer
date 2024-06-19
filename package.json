@@ -36,7 +36,7 @@
     "match-sorter": "6.3.4",
     "mongoose": "8.3.5",
     "morgan": "1.10.0",
-    "nodemailer": "6.9.13",
+    "nodemailer": "6.9.14",
     "superagent": "9.0.2",
     "svg-png-converter": "0.0.9",
     "svg2img": "1.0.0-beta.2",
