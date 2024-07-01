@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@sapphire/type':
-    specifier: 2.4.4
-    version: 2.4.4
+    specifier: 2.5.0
+    version: 2.5.0
   '@typegoose/typegoose':
     specifier: 12.4.0
     version: 12.4.0(mongoose@8.3.5)
@@ -525,7 +525,7 @@ packages:
       discord-api-types: 0.37.83
       fast-deep-equal: 3.1.3
       ts-mixer: 6.0.4
-      tslib: 2.6.2
+      tslib: 2.6.3
     dev: false
 
   /@discordjs/collection@1.5.3:
@@ -574,7 +574,7 @@ packages:
       '@vladfrangu/async_event_emitter': 2.4.0
       discord-api-types: 0.37.83
       magic-bytes.js: 1.10.0
-      tslib: 2.6.2
+      tslib: 2.6.3
       undici: 6.13.0
     dev: false
 
@@ -594,7 +594,7 @@ packages:
       '@types/ws': 8.5.10
       '@vladfrangu/async_event_emitter': 2.4.0
       discord-api-types: 0.37.83
-      tslib: 2.6.2
+      tslib: 2.6.3
       ws: 8.17.1(bufferutil@4.0.8)(utf-8-validate@6.0.4)
     transitivePeerDependencies:
       - bufferutil
@@ -1826,8 +1826,8 @@ packages:
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
     dev: false
 
-  /@sapphire/type@2.4.4:
-    resolution: {integrity: sha512-SJvXA+xK5bXQsqrm29e8QZcS+9IjQVGpd7wmXi6x4/hZWo0B+spE5iYk2lkFUNjJwKoHVl2zfe88VadCdmJ6Lw==}
+  /@sapphire/type@2.5.0:
+    resolution: {integrity: sha512-iOngs2lmkHCN42/yCvtXGEJ6gkm32IyJArqqjiCiKORCFEkbPCxL9G0ii53DmIEExQAPbhbtX+ykGJfeMiVviA==}
     engines: {node: '>=v12', npm: '>=7'}
     requiresBuild: true
     dependencies:
