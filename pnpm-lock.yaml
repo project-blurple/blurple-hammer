@@ -27,8 +27,8 @@ dependencies:
     specifier: 2.12.1
     version: 2.12.1
   discord.js:
-    specifier: 14.16.1
-    version: 14.16.1(bufferutil@4.0.8)(utf-8-validate@6.0.4)
+    specifier: 14.16.2
+    version: 14.16.2(bufferutil@4.0.8)(utf-8-validate@6.0.4)
   dotenv:
     specifier: 16.4.5
     version: 16.4.5
@@ -530,11 +530,6 @@ packages:
     engines: {node: '>=16.11.0'}
     dev: false
 
-  /@discordjs/collection@2.1.0:
-    resolution: {integrity: sha512-mLcTACtXUuVgutoznkh6hS3UFqYirDYAg5Dc1m8xn6OvPjetnUlf/xjtqnnc47OwWdaoCQnHmHh9KofhD6uRqw==}
-    engines: {node: '>=18'}
-    dev: false
-
   /@discordjs/collection@2.1.1:
     resolution: {integrity: sha512-LiSusze9Tc7qF03sLCujF5iZp7K+vRNEDBZ86FT9aQAv3vxMLihUvKvpsCWiQ2DJq1tVckopKm1rxomgNUc9hg==}
     engines: {node: '>=18'}
@@ -589,7 +584,7 @@ packages:
     resolution: {integrity: sha512-PZ+vLpxGCRtmr2RMkqh8Zp+BenUaJqlS6xhgWKEZcgC/vfHLEzpHtKkB0sl3nZWpwtcKk6YWy+pU3okL2I97FA==}
     engines: {node: '>=16.11.0'}
     dependencies:
-      '@discordjs/collection': 2.1.0
+      '@discordjs/collection': 2.1.1
       '@discordjs/rest': 2.4.0
       '@discordjs/util': 1.1.1
       '@sapphire/async-queue': 1.5.3
@@ -3642,8 +3637,8 @@ packages:
     resolution: {integrity: sha512-/Um39bRxVjcGHUu1YaTLangZvZveXjsX4BNsa1Iyd6OQG0jL972IBQGKD0mYqQswxC3bT+hqWSouabfI2RdaZA==}
     dev: false
 
-  /discord.js@14.16.1(bufferutil@4.0.8)(utf-8-validate@6.0.4):
-    resolution: {integrity: sha512-/diX4shp3q1F3EySGQbQl10el+KIpffLSOJdtM35gGV7zw2ED7rKbASKJT7UIR9L/lTd0KtNenZ/h739TN7diA==}
+  /discord.js@14.16.2(bufferutil@4.0.8)(utf-8-validate@6.0.4):
+    resolution: {integrity: sha512-VGNi9WE2dZIxYM8/r/iatQQ+3LT8STW4hhczJOwm+DBeHq66vsKDCk8trChNCB01sMO9crslYuEMeZl2d7r3xw==}
     engines: {node: '>=18'}
     dependencies:
       '@discordjs/builders': 1.9.0
