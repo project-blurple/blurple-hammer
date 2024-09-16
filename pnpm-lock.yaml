@@ -110,8 +110,8 @@ devDependencies:
     specifier: 29.5.13
     version: 29.5.13
   '@types/jsonwebtoken':
-    specifier: 9.0.6
-    version: 9.0.6
+    specifier: 9.0.7
+    version: 9.0.7
   '@types/morgan':
     specifier: 1.9.9
     version: 1.9.9
@@ -2073,8 +2073,8 @@ packages:
       '@types/node': 18.19.50
     dev: true
 
-  /@types/jsonwebtoken@9.0.6:
-    resolution: {integrity: sha512-/5hndP5dCjloafCXns6SZyESp3Ldq7YjH3zwzwczYnjxIT0Fqzk5ROSYVGfFyczIue7IUEj8hkvLbPoLQ18vQw==}
+  /@types/jsonwebtoken@9.0.7:
+    resolution: {integrity: sha512-ugo316mmTYBl2g81zDFnZ7cfxlut3o+/EQdaP7J8QN2kY6lJ22hmQYCK5EHcJHbrW+dkCGSCPgbG8JtYj6qSrg==}
     dependencies:
       '@types/node': 18.19.50
     dev: true
