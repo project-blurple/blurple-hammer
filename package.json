@@ -21,7 +21,7 @@
     "@sapphire/type": "2.5.1",
     "@typegoose/typegoose": "12.8.0",
     "bufferutil": "4.0.8",
-    "cookie-parser": "1.4.6",
+    "cookie-parser": "1.4.7",
     "decompress": "4.2.1",
     "dedent": "1.5.3",
     "discord-oauth2": "2.12.1",
