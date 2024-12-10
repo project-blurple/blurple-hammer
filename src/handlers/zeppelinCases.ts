@@ -1,9 +1,9 @@
-import { inspect } from "util";
 import type { Client, Message, PartialMessage } from "discord.js";
-import config from "../config";
+import { inspect } from "util";
 import type { ZeppelinCaseType } from "../constants/zeppelinCases";
-import { zeppelinCaseTypes } from "../constants/zeppelinCases";
 import type { ZeppelinCaseNotesSchema } from "../database/models/ZeppelinCase";
+import config from "../config";
+import { zeppelinCaseTypes } from "../constants/zeppelinCases";
 import { ZeppelinCase } from "../database/models/ZeppelinCase";
 import mainLogger from "../utils/logger/main";
 
@@ -13,6 +13,7 @@ export default function handleZeppelinCases(client: Client<true>): void {
 }
 
 function checkMessage(partialMessage: Message | PartialMessage): void {
+  // eslint-disable-next-line complexity
   return void (async () => {
     if (partialMessage.channelId !== config.channels.zeppelinCaseLog) return;
     const message = partialMessage.partial ? await partialMessage.fetch() : partialMessage;

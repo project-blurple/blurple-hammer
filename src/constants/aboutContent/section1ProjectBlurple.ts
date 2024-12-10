@@ -1,6 +1,6 @@
 import dedent from "dedent";
-import { zeroWidthSpace } from "../../utils/text";
 import type { AboutSection } from ".";
+import { zeroWidthSpace } from "../../utils/text";
 
 export default {
   title: "Project Blurple",

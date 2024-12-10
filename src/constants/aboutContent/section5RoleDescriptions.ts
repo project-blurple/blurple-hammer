@@ -1,9 +1,9 @@
 import type { ButtonComponentData, MessageCreateOptions, Snowflake } from "discord.js";
 import { ButtonStyle, ComponentType } from "discord.js";
+import type { AboutSection } from ".";
 import config from "../../config";
 import { buttonComponents } from "../../handlers/interactions/components";
 import Emojis from "../emojis";
-import type { AboutSection } from ".";
 
 export default {
   title: "Role Descriptions",

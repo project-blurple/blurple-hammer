@@ -1,9 +1,9 @@
+import decompress from "decompress";
 import { createWriteStream } from "fs";
+import { move } from "fs-extra";
 import { mkdir, readdir, rm } from "fs/promises";
 import { tmpdir } from "os";
 import { join } from "path";
-import decompress from "decompress";
-import { move } from "fs-extra";
 import superfetch from "superagent";
 import config from "../../../config";
 import mainLogger from "../../../utils/logger/main";

@@ -1,8 +1,8 @@
-import { inspect } from "util";
 import type { Client, Snowflake, TextChannel } from "discord.js";
 import { ThreadAutoArchiveDuration } from "discord.js";
-import config from "../../config";
+import { inspect } from "util";
 import type { AppealType } from "../../database/models/Appeal";
+import config from "../../config";
 import { Appeal } from "../../database/models/Appeal";
 import mainLogger from "../../utils/logger/main";
 import { sendMail } from "../../utils/mail";
@@ -21,7 +21,7 @@ export default function handleAppeals(client: Client<true>): void {
   });
 }
 
-export function createNewAppeal(user: { id: Snowflake; tag: string; email: string; avatarUrl: string }, userAppeal: { type: AppealType; caseId: string | null; userStatement: string; userReason: string }, client: Client<true>): void {
+export function createNewAppeal(user: { avatarUrl: string; email: string; id: Snowflake; tag: string }, userAppeal: { caseId: null | string; type: AppealType; userReason: string; userStatement: string }, client: Client<true>): void {
   void Appeal.countDocuments().then(async count => {
     const appeal = new Appeal({ appealId: count + 1, user, ...userAppeal });
 

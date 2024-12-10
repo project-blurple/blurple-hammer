@@ -1,6 +1,6 @@
 import type { Client, TextChannel } from "discord.js";
-import config from "../../config";
 import type { AppealDocument } from "../../database/models/Appeal";
+import config from "../../config";
 import generateAppealMessage from "./messageEntry";
 
 export default function addLogToAppeal(appeal: AppealDocument, message: string, client: Client<true>, updateMessage = true): void {

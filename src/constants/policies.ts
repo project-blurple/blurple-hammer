@@ -12,9 +12,9 @@ export enum PolicyStatus { Compliant, NonCompliant, NonApplicable }
 export enum ServerType { Main, Subserver, Other, Unknown }
 
 export const policies: Record<Policy, {
-  description: string;
   appliesTo: ServerType[];
   check(details: { guild: Guild; me: GuildMember }): Awaitable<[status: PolicyStatus, message?: string]>;
+  description: string;
 }> = {
   [Policy.BotRoleIsAdministrator]: {
     description: "Bot role is Administrator",

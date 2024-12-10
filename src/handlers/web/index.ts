@@ -1,11 +1,11 @@
-import { join } from "path";
-import cookieParser from "cookie-parser";
 import type { Client } from "discord.js";
 import type { Express } from "express";
+import cookieParser from "cookie-parser";
 import express from "express";
-import rateLimit from "express-rate-limit";
+import expressRateLimit from "express-rate-limit";
 import helmet, { contentSecurityPolicy } from "helmet";
 import morgan from "morgan";
+import { join } from "path";
 import { createLogger } from "winston";
 import config from "../../config";
 import { createFileTransports, globalFormat } from "../../utils/logger";
@@ -40,7 +40,7 @@ export function createExpressApp(name: string, numberOfProxies = 0): [app: Expre
     crossOriginEmbedderPolicy: false,
   }));
   app.use(
-    rateLimit({
+    expressRateLimit({
       windowMs: 5 * 60 * 1000,
       max: 5000,
       legacyHeaders: true,
@@ -49,7 +49,7 @@ export function createExpressApp(name: string, numberOfProxies = 0): [app: Expre
       skipSuccessfulRequests: false,
       skipFailedRequests: true,
     }),
-    rateLimit({
+    expressRateLimit({
       windowMs: 15 * 60 * 1000,
       max: 500,
       legacyHeaders: true,

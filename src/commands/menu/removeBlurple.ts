@@ -1,6 +1,6 @@
+import type { MenuCommand } from ".";
 import config from "../../config";
 import Emojis from "../../constants/emojis";
-import type { MenuCommand } from ".";
 
 export default {
   name: "Remove Blurple User",

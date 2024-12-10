@@ -1,14 +1,14 @@
+import type{ MessageEditOptions, MessageReplyOptions } from "discord.js";
+import SapphireType from "@sapphire/type";
 import { randomBytes } from "crypto";
+import dedent from "dedent";
+import { blockQuote, ButtonStyle, codeBlock, ComponentType, inlineCode } from "discord.js";
 import { inspect } from "util";
 import { isPromise } from "util/types";
-import Type from "@sapphire/type";
-import dedent from "dedent";
-import type{ MessageEditOptions, MessageReplyOptions } from "discord.js";
-import { ButtonStyle, ComponentType, blockQuote, codeBlock, inlineCode } from "discord.js";
+import type{ MentionCommand } from ".";
 import config from "../../config";
 import Emojis from "../../constants/emojis";
 import { buttonComponents } from "../../handlers/interactions/components";
-import type{ MentionCommand } from ".";
 
 
 export default {
@@ -62,7 +62,7 @@ function generateFinalResponse(result: unknown, ms = -1, success = true, fileUpl
           {
             name: "output.ts",
             attachment: Buffer.from(dedent`
-              // type: ${new Type(result).toString()}
+              // type: ${new SapphireType(result).toString()}
               // time: ${ms === -1 ? "n/a" : `${ms}ms`}
               // success: ${success ? "yes" : "no"}\n
             ` + inspect(result, { depth: Infinity, maxArrayLength: Infinity, maxStringLength: Infinity })),
@@ -90,7 +90,7 @@ function generateFinalResponse(result: unknown, ms = -1, success = true, fileUpl
 function generateResponse(result: unknown, ms = -1, success = true, includeResult = true, depth = 10, maxArrayLength = 100): MessageEditOptions & MessageReplyOptions {
   if (depth <= 0) return { content: `${Emojis.WeeWoo} Output is too big to display.` };
   const output = inspect(result, { colors: true, depth, maxArrayLength });
-  const type = new Type(result).toString();
+  const type = new SapphireType(result).toString();
   const content = `${success ? `${Emojis.TickYes} Evaluated successfully` : `${Emojis.TickNo} Javascript failed`}. ${ms === -1 ? "" : `(${inlineCode(`${ms}ms`)})`}\n${includeResult ? blockQuote(codeBlock("ts", ms === -1 ? type : `Promise<${type}>`) + codeBlock("ansi", success ? output : output.split("\n")[0]!)) : ""}`;
 
   // 1024 is not the actual limit but any bigger than 1k is really not ideal either way

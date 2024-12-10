@@ -1,15 +1,15 @@
-import { inspect } from "util";
 import type { Client, Snowflake } from "discord.js";
+import { inspect } from "util";
+import type { OAuthTokensDocument } from "../../../database/models/OAuthTokens";
 import config from "../../../config";
 import subservers, { SubserverAccess } from "../../../constants/subservers";
-import type { OAuthTokensDocument } from "../../../database/models/OAuthTokens";
 import { OAuthTokens } from "../../../database/models/OAuthTokens";
 import staffLogger from "../../../utils/logger/staff";
 import oauth from "../../../utils/oauth";
 import calculateAccess from "./calculator";
 
 export async function refreshSubserverAccess(userId: Snowflake, client: Client): Promise<void> {
-  let tokens: OAuthTokensDocument | false | null = false;
+  let tokens: false | null | OAuthTokensDocument = false;
   for (const subserver of subservers) {
     const server = client.guilds.cache.get(subserver.id);
     if (server) {

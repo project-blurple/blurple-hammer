@@ -1,6 +1,6 @@
+import type{ MentionCommand } from ".";
 import Emojis from "../../constants/emojis";
 import { msToHumanShortTime } from "../../utils/time";
-import type{ MentionCommand } from ".";
 
 export default {
   names: ["ping", "pong", ""],

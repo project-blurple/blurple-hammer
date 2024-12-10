@@ -1,8 +1,8 @@
-import { join } from "path";
-import { promisify } from "util";
 import { Colors } from "discord.js";
+import { join } from "path";
 import svg2img from "svg2img";
 import TextToSVG from "text-to-svg";
+import { promisify } from "util";
 
 const fontPromise = promisify(TextToSVG.load)(join(__dirname, "../../web/fonts/Ginto-Nord-700.woff"));
 

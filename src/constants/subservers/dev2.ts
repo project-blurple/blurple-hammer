@@ -1,11 +1,11 @@
-import config from "../../config";
 import type { Subserver } from ".";
 import { SubserverAccess } from ".";
+import config from "../../config";
 
 export enum Roles {
   Administrators = "803646089696903209",
-  Leadership = "803646635225645076",
   BlurpleStaff = "803646824938340443",
+  Leadership = "803646635225645076",
   OverrideRole = "1072136613330702378",
 }
 

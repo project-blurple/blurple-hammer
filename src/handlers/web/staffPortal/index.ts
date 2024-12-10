@@ -1,6 +1,6 @@
-import { join } from "path";
 import type { Client, Snowflake } from "discord.js";
 import express from "express";
+import { join } from "path";
 import { createExpressApp, webFolderPath } from "..";
 import config from "../../../config";
 import { OAuthTokens } from "../../../database/models/OAuthTokens";
@@ -22,8 +22,8 @@ export default function handleWebStaffPortal(client: Client<true>, webConfig: Ex
 
   // create token
   app.get("/oauth-callback", (req, res) => {
-    const code = String(req.query["code"]);
-    const state = String(req.query["state"]) || "/";
+    const code = typeof req.query["code"] === "string" ? req.query["code"] : null;
+    const state = typeof req.query["code"] === "string" && req.query["code"] || "/";
     if (!code) return res.redirect(authorizationLink(state));
 
     void oauth.tokenRequest({

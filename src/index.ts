@@ -1,5 +1,5 @@
-import { inspect } from "util";
 import { Client, IntentsBitField, Options, Partials } from "discord.js";
+import { inspect } from "util";
 import config from "./config";
 import connection from "./database";
 import handleAppeals from "./handlers/appeals";

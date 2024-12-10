@@ -16,6 +16,7 @@ export function verify(token: string): Promise<boolean> {
   });
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters
 export function decode<T extends object>(token: string): T {
   return jwt.decode(token, {}) as T;
 }

@@ -8,9 +8,9 @@ import section5RoleDescriptions from "./section5RoleDescriptions";
 import section6FrequentlyAskedQuestions from "./section6FrequentlyAskedQuestions";
 
 export interface AboutSection {
-  title: string;
-  embed: APIEmbed;
   components?: MessageCreateOptions["components"] | undefined;
+  embed: APIEmbed;
+  title: string;
 }
 
 export const modmailMention = `<@${config.bots.modmail}>`;

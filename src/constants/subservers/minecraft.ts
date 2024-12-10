@@ -1,12 +1,12 @@
-import config from "../../config";
 import type { Subserver } from ".";
 import { SubserverAccess } from ".";
+import config from "../../config";
 
 export enum Roles {
   Administrators = "804843371037982720",
+  BlurpleStaff = "1072258066575265812",
   MinecraftManagement = "804874122520952852",
   MinecraftStaff = "804874182198165515",
-  BlurpleStaff = "1072258066575265812",
   OverrideRole = "1072257810693373984",
 }
 

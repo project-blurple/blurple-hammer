@@ -1,10 +1,10 @@
 import type { EmbedField } from "discord.js";
 import { Colors } from "discord.js";
-import Emojis from "../../constants/emojis";
-import type { Policy } from "../../constants/policies";
-import { PolicyStatus, ServerType, policies } from "../../constants/policies";
-import getPolicyStatus, { getServerType } from "../../handlers/serverEnforcements/policyStatus";
 import type { MentionCommand } from ".";
+import type { Policy } from "../../constants/policies";
+import Emojis from "../../constants/emojis";
+import { policies, PolicyStatus, ServerType } from "../../constants/policies";
+import getPolicyStatus, { getServerType } from "../../handlers/serverEnforcements/policyStatus";
 
 export default {
   names: ["policycheck", "checkpolicy", "policystatys", "serverstatus"],

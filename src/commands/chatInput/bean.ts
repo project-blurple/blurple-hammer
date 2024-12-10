@@ -1,6 +1,6 @@
 import { ApplicationCommandOptionType } from "discord.js";
-import Emojis from "../../constants/emojis";
 import type { FirstLevelChatInputCommand } from ".";
+import Emojis from "../../constants/emojis";
 
 export default {
   name: "bean",
