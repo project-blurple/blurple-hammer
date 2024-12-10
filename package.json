@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@sapphire/type": "2.5.1",
-    "@typegoose/typegoose": "12.8.0",
+    "@typegoose/typegoose": "12.9.1",
     "bufferutil": "4.0.8",
     "cookie-parser": "1.4.7",
     "decompress": "4.2.1",
@@ -33,7 +33,7 @@
     "helmet": "8.0.0",
     "jsonwebtoken": "9.0.2",
     "match-sorter": "8.0.0",
-    "mongoose": "8.8.3",
+    "mongoose": "8.8.4",
     "morgan": "1.10.0",
     "nodemailer": "6.9.16",
     "superagent": "10.1.1",
