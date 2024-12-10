@@ -1,6 +1,6 @@
-import { inspect } from "util";
-import nodemailer from "nodemailer";
 import type SMTPTransport from "nodemailer/lib/smtp-transport";
+import nodemailer from "nodemailer";
+import { inspect } from "util";
 import { createLogger } from "winston";
 import config from "../config";
 import { createFileTransports, globalFormat } from "./logger";

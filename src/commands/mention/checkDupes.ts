@@ -1,5 +1,5 @@
-import Emojis from "../../constants/emojis";
 import type { MentionCommand } from ".";
+import Emojis from "../../constants/emojis";
 
 export default {
   names: ["filterdupes", "dupes"],

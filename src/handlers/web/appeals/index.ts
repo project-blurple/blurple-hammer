@@ -1,11 +1,11 @@
-import { readFileSync } from "fs";
-import { join } from "path";
 import type { Client } from "discord.js";
 import express from "express";
+import { readFileSync } from "fs";
+import { join } from "path";
 import superagent from "superagent";
+import type { AppealType } from "../../../database/models/Appeal";
 import { createExpressApp, webFolderPath } from "..";
 import config from "../../../config";
-import type { AppealType } from "../../../database/models/Appeal";
 import { Appeal } from "../../../database/models/Appeal";
 import oauth from "../../../utils/oauth";
 import { decode, sign, verify } from "../../../utils/webtokens";
@@ -26,8 +26,8 @@ export default function handleWebAppeals(client: Client<true>, webConfig: Exclud
 
   // create token
   app.get("/oauth-callback", (req, res) => {
-    const code = String(req.query["code"]);
-    const state = String(req.query["state"]) || "/";
+    const code = typeof req.query["code"] === "string" ? req.query["code"] : null;
+    const state = typeof req.query["code"] === "string" && req.query["code"] || "/";
     if (!code) return res.redirect(authorizationLink(state));
 
     void oauth.tokenRequest({
@@ -111,10 +111,10 @@ export default function handleWebAppeals(client: Client<true>, webConfig: Exclud
   app.post("/", express.urlencoded({ extended: true }), (req, res) => {
     const { body } = req as {
       body?: {
-        "case-type": AppealType;
         "case-id": string;
-        "user-statement": string;
+        "case-type": AppealType;
         "reason": string;
+        "user-statement": string;
       };
     };
 
@@ -138,7 +138,7 @@ export default function handleWebAppeals(client: Client<true>, webConfig: Exclud
 
     // send appeal to staff
     const { token } = req.cookies as { token: string };
-    const { id, tag, email, avatarUrl } = decode<{ id: string; tag: string; email: string; avatarUrl: string }>(token);
+    const { id, tag, email, avatarUrl } = decode<{ avatarUrl: string; email: string; id: string; tag: string }>(token);
     createNewAppeal({ id, tag, email, avatarUrl }, {
       type: body["case-type"],
       caseId: body["case-id"] || null,

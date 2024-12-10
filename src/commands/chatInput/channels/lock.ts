@@ -1,6 +1,6 @@
-import { inspect } from "util";
 import type { ForumChannel, Snowflake, StageChannel, TextChannel, VoiceChannel } from "discord.js";
 import { ApplicationCommandOptionType, ChannelType } from "discord.js";
+import { inspect } from "util";
 import type { SecondLevelChatInputCommand } from "..";
 import config from "../../../config";
 import Emojis from "../../../constants/emojis";
@@ -81,7 +81,7 @@ export default {
   },
 } as SecondLevelChatInputCommand;
 
-function lockChannel(channel: ForumChannel | StageChannel | TextChannel | VoiceChannel, reason: string | null): Promise<string | true> {
+function lockChannel(channel: ForumChannel | StageChannel | TextChannel | VoiceChannel, reason: null | string): Promise<string | true> {
   if (channel.permissionOverwrites.cache.find(overwrite => overwrite.id === channel.guild.roles.everyone.id)?.deny.has("SendMessages")) return Promise.resolve("Channel is already locked.");
   return channel.permissionOverwrites.edit(channel.guild.roles.everyone, { SendMessages: false, SendMessagesInThreads: false, CreatePublicThreads: false, CreatePrivateThreads: false, AddReactions: false })
     .then(async () => {

@@ -1,11 +1,11 @@
 import type { AnySelectMenuInteraction, ButtonInteraction, ChatInputCommandInteraction, InteractionReplyOptions, InteractionUpdateOptions } from "discord.js";
-import { ButtonStyle, ComponentType, Colors } from "discord.js";
+import { ButtonStyle, Colors, ComponentType } from "discord.js";
+import type { FirstLevelChatInputCommand } from ".";
 import config from "../../config";
 import Emojis from "../../constants/emojis";
 import { zeppelinCaseTypes } from "../../constants/zeppelinCases";
 import { ZeppelinCase } from "../../database/models/ZeppelinCase";
 import { buttonComponents, selectMenuComponents } from "../../handlers/interactions/components";
-import type { FirstLevelChatInputCommand } from ".";
 
 export default {
   name: "cases",
@@ -27,6 +27,7 @@ async function generateMessage(interaction: AnySelectMenuInteraction<"cached"> |
     switch (filter) {
       case Filter.IssuedByAutomod: return zeppCase.moderatorId === config.bots.zeppelin;
       case Filter.IssuedByHuman: return zeppCase.moderatorId !== config.bots.zeppelin;
+      case Filter.None:
       default: return true;
     }
   })

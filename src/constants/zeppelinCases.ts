@@ -3,10 +3,10 @@ import { Colors } from "discord.js";
 export const enum ZeppelinCaseType { Ban = 1, Unban, Note, Warn, Kick, Mute, Unmute, Deleted, Softban }
 
 export const zeppelinCaseTypes: Record<ZeppelinCaseType, {
-  name: string;
+  appealable: boolean;
   color: number;
   hideForUser: boolean;
-  appealable: boolean;
+  name: string;
 }> = {
   [ZeppelinCaseType.Ban]: {
     name: "Ban",

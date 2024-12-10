@@ -1,5 +1,5 @@
 import type { ButtonComponentData, Client, InteractionUpdateOptions, MessageCreateOptions } from "discord.js";
-import { Colors, ComponentType, time, ButtonStyle } from "discord.js";
+import { ButtonStyle, Colors, ComponentType, time } from "discord.js";
 import type { AppealDocument } from "../../database/models/Appeal";
 import { fitText } from "../../utils/text";
 import registerAppealButtons from "./buttons";

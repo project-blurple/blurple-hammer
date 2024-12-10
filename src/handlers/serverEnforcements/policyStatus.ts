@@ -1,10 +1,10 @@
 import type { Guild } from "discord.js";
-import config from "../../config";
 import type { Policy } from "../../constants/policies";
-import { PolicyStatus, ServerType, policies } from "../../constants/policies";
+import config from "../../config";
+import { policies, PolicyStatus, ServerType } from "../../constants/policies";
 import subservers from "../../constants/subservers";
 
-export default async function getPolicyStatus(guild: Guild): Promise<Record<Policy, { status: PolicyStatus; message?: string }>> {
+export default async function getPolicyStatus(guild: Guild): Promise<Record<Policy, { message?: string; status: PolicyStatus }>> {
   const me = await guild.members.fetchMe();
   const serverType = getServerType(guild);
 
@@ -16,7 +16,7 @@ export default async function getPolicyStatus(guild: Guild): Promise<Record<Poli
         return [Number(policy) as Policy, { status, message }];
       }),
     ),
-  ) as Record<Policy, { status: PolicyStatus; message?: string }>;
+  ) as Record<Policy, { message?: string; status: PolicyStatus }>;
 }
 
 export function getServerType(guild: Guild): ServerType {

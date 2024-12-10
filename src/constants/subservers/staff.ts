@@ -1,21 +1,21 @@
-import config from "../../config";
-import { Roles as MinecraftRoles } from "./minecraft";
 import type { Subserver } from ".";
 import { SubserverAccess } from ".";
+import config from "../../config";
+import { Roles as MinecraftRoles } from "./minecraft";
 
 export enum Roles {
   Administrator = "573193684296925204",
-  Leadership = "573176977045979147",
   BlurpleStaff = "1228258710233546793",
-  Moderator = "573176977683644450",
-  Developer = "573223306627514386",
   Designer = "573355860584038400",
+  Developer = "573223306627514386",
   Events = "972864361293029406",
   GiveawayManagement = "972803140296511488",
+  Leadership = "573176977045979147",
   Minecraft = "701872110754070590",
+  MinecraftManagement = "573177129693609984",
+  Moderator = "573176977683644450",
   Modmails = "1236769849426968689",
   PartnershipManagement = "840532265167486978",
-  MinecraftManagement = "573177129693609984",
 }
 
 const staffSubserver: Subserver = {

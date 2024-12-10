@@ -1,6 +1,6 @@
 import dedent from "dedent";
-import Emojis from "../emojis";
 import type { AboutSection } from ".";
+import Emojis from "../emojis";
 
 export default {
   title: "How to make a Blurple image",

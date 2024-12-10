@@ -9,10 +9,10 @@ export default function handleRestrictions(client: Client<true>): void {
 }
 
 export const restrictions: Array<{
-  name: string;
   description: string;
   descriptionAllowed: string;
   descriptionDisallowed: string;
+  name: string;
   roleId: Snowflake;
 }> = [
   {

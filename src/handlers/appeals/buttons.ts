@@ -1,8 +1,8 @@
 import type { Client, TextChannel } from "discord.js";
 import { ComponentType, TextInputStyle, time } from "discord.js";
+import type { AppealAction, AppealDocument } from "../../database/models/Appeal";
 import config from "../../config";
 import Emojis from "../../constants/emojis";
-import type { AppealAction, AppealDocument } from "../../database/models/Appeal";
 import { Appeal } from "../../database/models/Appeal";
 import { sendMail } from "../../utils/mail";
 import { fitText } from "../../utils/text";

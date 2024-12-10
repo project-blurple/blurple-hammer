@@ -1,9 +1,9 @@
 import type { ButtonComponentData, GuildMember, InteractionReplyOptions, InteractionUpdateOptions } from "discord.js";
 import { ButtonStyle, ComponentType } from "discord.js";
+import type { MenuCommand } from ".";
 import Emojis from "../../constants/emojis";
 import { buttonComponents } from "../../handlers/interactions/components";
 import { restrictions } from "../../handlers/restrictions";
-import type { MenuCommand } from ".";
 
 export default {
   name: "Manage user restrictions",

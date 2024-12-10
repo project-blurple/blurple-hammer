@@ -11,7 +11,7 @@ export default function modalHandler(interaction: ModalSubmitInteraction<"cached
   modals.delete(interaction.customId);
 }
 
-export function getModalTextInput(actionRows: ModalSubmitInteraction["components"], customId: string): string | null {
+export function getModalTextInput(actionRows: ModalSubmitInteraction["components"], customId: string): null | string {
   const actionRow = actionRows.find(row => row.components.some(component => component.customId === customId));
   if (!actionRow) return null;
 

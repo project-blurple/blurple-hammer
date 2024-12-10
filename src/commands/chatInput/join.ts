@@ -1,5 +1,6 @@
-import { inspect } from "util";
 import { ApplicationCommandOptionType } from "discord.js";
+import { inspect } from "util";
+import type { FirstLevelChatInputCommand } from ".";
 import Emojis from "../../constants/emojis";
 import subservers, { SubserverAccess } from "../../constants/subservers";
 import { OAuthTokens } from "../../database/models/OAuthTokens";
@@ -7,7 +8,6 @@ import { commandMentions } from "../../handlers/interactions";
 import calculateAccess from "../../handlers/serverEnforcements/subserverAccess/calculator";
 import mainLogger from "../../utils/logger/main";
 import oauth from "../../utils/oauth";
-import type { FirstLevelChatInputCommand } from ".";
 
 export default {
   name: "join",

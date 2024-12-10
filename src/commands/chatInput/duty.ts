@@ -1,6 +1,6 @@
+import type { FirstLevelChatInputCommand } from ".";
 import config from "../../config";
 import Emojis from "../../constants/emojis";
-import type { FirstLevelChatInputCommand } from ".";
 
 export default {
   name: "duty",
