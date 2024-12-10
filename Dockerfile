@@ -8,11 +8,11 @@ ENV IS_DOCKER=true
 # install prod dependencies
 
 FROM base AS deps
-
-COPY package.json ./
 RUN corepack enable pnpm
 
+COPY package.json ./
 COPY pnpm-lock.yaml ./
+
 RUN pnpm install --frozen-lockfile --prod
 
 
