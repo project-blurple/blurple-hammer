@@ -53,7 +53,7 @@ export default function handleWebStaffPortal(client: Client<true>, webConfig: Ex
   // refresh staff document
   app.post("/refresh-staff-document", (req, res) => {
     const { authorization } = req.headers;
-    if (authorization !== config.staffDocumentCloningToken) return res.status(401).send("Unauthorized");
+    if (authorization !== config.staffDocumentCloningToken) return void res.status(401).send("Unauthorized");
 
     return void cloneStaffDocument()
       .then(() => res.status(200).send("OK"))
