@@ -20,7 +20,7 @@
   "dependencies": {
     "@sapphire/type": "2.6.0",
     "@typegoose/typegoose": "12.10.1",
-    "bufferutil": "4.0.8",
+    "bufferutil": "4.0.9",
     "cookie-parser": "1.4.7",
     "decompress": "4.2.1",
     "dedent": "1.5.3",
