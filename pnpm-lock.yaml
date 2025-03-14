@@ -42,8 +42,8 @@ importers:
         specifier: 7.5.0
         version: 7.5.0(express@4.21.2)
       fs-extra:
-        specifier: 11.2.0
-        version: 11.2.0
+        specifier: 11.3.0
+        version: 11.3.0
       helmet:
         specifier: 8.0.0
         version: 8.0.0
@@ -128,7 +128,7 @@ importers:
         version: 9.22.0(jiti@1.21.7)
       eslint-config-promise:
         specifier: github:promise/eslint-config
-        version: https://codeload.github.com/promise/eslint-config/tar.gz/745fa094ded1e4fbbe795bf717646c5885279120(ad44d24285825878ccbe9b6657885dd8)
+        version: https://codeload.github.com/promise/eslint-config/tar.gz/39abfc5bd4997a0683260385c2a37cea0cab6485(ad44d24285825878ccbe9b6657885dd8)
       jest:
         specifier: 29.7.0
         version: 29.7.0(@types/node@22.13.10)
@@ -2029,8 +2029,8 @@ packages:
     engines: {node: '>=4.0'}
     hasBin: true
 
-  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/745fa094ded1e4fbbe795bf717646c5885279120:
-    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/745fa094ded1e4fbbe795bf717646c5885279120}
+  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/39abfc5bd4997a0683260385c2a37cea0cab6485:
+    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/39abfc5bd4997a0683260385c2a37cea0cab6485}
     version: 0.0.0
     peerDependencies:
       '@stylistic/eslint-plugin-js': 3.0.0
@@ -2336,8 +2336,8 @@ packages:
   fs-constants@1.0.0:
     resolution: {integrity: sha512-y6OAwoSIf7FyjMIv94u+b5rdheZEjzR63GTyZJm5qh4Bi+2YgwLCcI/fPFZkL5PSixOt6ZNKm+w+Hfp/Bciwow==}
 
-  fs-extra@11.2.0:
-    resolution: {integrity: sha512-PmDi3uwK5nFuXh7XDTlVnS17xJS7vW36is2+w3xcv8SVxiB4NyATf4ctkVY5bkSjX0Y4nbvZCq1/EjtEyr9ktw==}
+  fs-extra@11.3.0:
+    resolution: {integrity: sha512-Z4XaCL6dUDHfP/jT25jJKMmtxvuwbkrD1vNSMFlo9lNLY2c5FHYSQgHPRZUjAB26TpDEoW9HCOgplrdbaPV/ew==}
     engines: {node: '>=14.14'}
 
   fs-minipass@2.1.0:
@@ -6895,7 +6895,7 @@ snapshots:
       source-map: 0.6.1
     optional: true
 
-  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/745fa094ded1e4fbbe795bf717646c5885279120(ad44d24285825878ccbe9b6657885dd8):
+  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/39abfc5bd4997a0683260385c2a37cea0cab6485(ad44d24285825878ccbe9b6657885dd8):
     dependencies:
       '@stylistic/eslint-plugin-js': 3.0.0(eslint@9.22.0(jiti@1.21.7))
       '@stylistic/eslint-plugin-jsx': 3.0.0(eslint@9.22.0(jiti@1.21.7))
@@ -7297,7 +7297,7 @@ snapshots:
 
   fs-constants@1.0.0: {}
 
-  fs-extra@11.2.0:
+  fs-extra@11.3.0:
     dependencies:
       graceful-fs: 4.2.11
       jsonfile: 6.1.0
