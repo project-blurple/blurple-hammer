@@ -106,8 +106,8 @@ importers:
         specifier: 29.5.14
         version: 29.5.14
       '@types/jsonwebtoken':
-        specifier: 9.0.7
-        version: 9.0.7
+        specifier: 9.0.9
+        version: 9.0.9
       '@types/morgan':
         specifier: 1.9.9
         version: 1.9.9
@@ -128,7 +128,7 @@ importers:
         version: 9.22.0(jiti@1.21.7)
       eslint-config-promise:
         specifier: github:promise/eslint-config
-        version: https://codeload.github.com/promise/eslint-config/tar.gz/745fa094ded1e4fbbe795bf717646c5885279120(ad44d24285825878ccbe9b6657885dd8)
+        version: https://codeload.github.com/promise/eslint-config/tar.gz/39abfc5bd4997a0683260385c2a37cea0cab6485(ad44d24285825878ccbe9b6657885dd8)
       jest:
         specifier: 29.7.0
         version: 29.7.0(@types/node@22.13.10)
@@ -1045,8 +1045,8 @@ packages:
   '@types/jsonfile@6.1.4':
     resolution: {integrity: sha512-D5qGUYwjvnNNextdU59/+fI+spnwtTFmyQP0h+PfIOSkNfpU6AOICUOkm4i0OnSk+NyjdPJrxCDro0sJsWlRpQ==}
 
-  '@types/jsonwebtoken@9.0.7':
-    resolution: {integrity: sha512-ugo316mmTYBl2g81zDFnZ7cfxlut3o+/EQdaP7J8QN2kY6lJ22hmQYCK5EHcJHbrW+dkCGSCPgbG8JtYj6qSrg==}
+  '@types/jsonwebtoken@9.0.9':
+    resolution: {integrity: sha512-uoe+GxEuHbvy12OUQct2X9JenKM3qAscquYymuQN4fMWG9DBQtykrQEFcAbVACF7qaLw9BePSodUL0kquqBJpQ==}
 
   '@types/methods@1.1.4':
     resolution: {integrity: sha512-ymXWVrDiCxTBE3+RIrrP533E70eA+9qu7zdWoHuOmGujkYtzf4HQF96b8nwHLqhuf4ykX61IGRIB38CC6/sImQ==}
@@ -1056,6 +1056,9 @@ packages:
 
   '@types/morgan@1.9.9':
     resolution: {integrity: sha512-iRYSDKVaC6FkGSpEVVIvrRGw0DfJMiQzIn3qr2G5B3C//AWkulhXgaBd7tS9/J79GWSYMTHGs7PfI5b3Y8m+RQ==}
+
+  '@types/ms@2.1.0':
+    resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
 
   '@types/node@16.9.1':
     resolution: {integrity: sha512-QpLcX9ZSsq3YYUUnD3nFDY8H7wctAhQj/TFKL8Ya8v5fMm3CFXxo8zStsLAl780ltoYoo1WvKUVGBQK+1ifr7g==}
@@ -2029,8 +2032,8 @@ packages:
     engines: {node: '>=4.0'}
     hasBin: true
 
-  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/745fa094ded1e4fbbe795bf717646c5885279120:
-    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/745fa094ded1e4fbbe795bf717646c5885279120}
+  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/39abfc5bd4997a0683260385c2a37cea0cab6485:
+    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/39abfc5bd4997a0683260385c2a37cea0cab6485}
     version: 0.0.0
     peerDependencies:
       '@stylistic/eslint-plugin-js': 3.0.0
@@ -5721,8 +5724,9 @@ snapshots:
     dependencies:
       '@types/node': 22.13.10
 
-  '@types/jsonwebtoken@9.0.7':
+  '@types/jsonwebtoken@9.0.9':
     dependencies:
+      '@types/ms': 2.1.0
       '@types/node': 22.13.10
 
   '@types/methods@1.1.4': {}
@@ -5732,6 +5736,8 @@ snapshots:
   '@types/morgan@1.9.9':
     dependencies:
       '@types/node': 22.13.10
+
+  '@types/ms@2.1.0': {}
 
   '@types/node@16.9.1': {}
 
@@ -6895,7 +6901,7 @@ snapshots:
       source-map: 0.6.1
     optional: true
 
-  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/745fa094ded1e4fbbe795bf717646c5885279120(ad44d24285825878ccbe9b6657885dd8):
+  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/39abfc5bd4997a0683260385c2a37cea0cab6485(ad44d24285825878ccbe9b6657885dd8):
     dependencies:
       '@stylistic/eslint-plugin-js': 3.0.0(eslint@9.22.0(jiti@1.21.7))
       '@stylistic/eslint-plugin-jsx': 3.0.0(eslint@9.22.0(jiti@1.21.7))
