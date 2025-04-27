@@ -30,7 +30,7 @@
     "express": "4.21.2",
     "express-rate-limit": "7.5.0",
     "fs-extra": "11.2.0",
-    "helmet": "8.0.0",
+    "helmet": "8.1.0",
     "jsonwebtoken": "9.0.2",
     "match-sorter": "8.0.0",
     "mongoose": "8.14.0",
