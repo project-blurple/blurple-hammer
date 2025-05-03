@@ -22,9 +22,9 @@ function checkMessage(partialMessage: Message | PartialMessage): void {
       try {
         const [matchedCaseType, matchedCaseNumber, matchedCaseHidden] = possibleCaseEmbed.title?.match(/(\w+) - Case #(\d+)( \(hidden\))?/u)?.slice(1) ?? [];
         const [matchedDateFormatted] = possibleCaseEmbed.footer?.text.match(/Case created on (.+)/u)?.slice(1) ?? [];
-        const [matchedUser] = possibleCaseEmbed.fields[0]?.value?.match(/<@!(\d+)>/um)?.slice(1) ?? [];
-        const [matchedModerator] = possibleCaseEmbed.fields[1]?.value?.match(/<@!(\d+)>/um)?.slice(1) ?? [];
-        const [matchedPpModerator] = possibleCaseEmbed.fields[1]?.value?.match(/p\.p\. (.+)\n<@!(\d+)>/um)?.slice(2) ?? [];
+        const [matchedUser] = possibleCaseEmbed.fields[0]?.value.match(/<@!(\d+)>/um)?.slice(1) ?? [];
+        const [matchedModerator] = possibleCaseEmbed.fields[1]?.value.match(/<@!(\d+)>/um)?.slice(1) ?? [];
+        const [matchedPpModerator] = possibleCaseEmbed.fields[1]?.value.match(/p\.p\. (.+)\n<@!(\d+)>/um)?.slice(2) ?? [];
         const matchedNotes = possibleCaseEmbed.fields.slice(2).filter(field => field.name.includes(" at "));
 
         const caseType = Number(Object.entries(zeppelinCaseTypes).find(([, { name }]) => name.toLowerCase() === matchedCaseType!.toLowerCase())![0]) as ZeppelinCaseType;
