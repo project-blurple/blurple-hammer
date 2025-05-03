@@ -69,7 +69,7 @@ export function createExpressApp(name: string, numberOfProxies = 0): [app: Expre
   return [
     app,
     port => {
-      app.all("*", (_, res) => res.status(404).sendFile(join(webFolderPath, "not_found.html")));
+      app.all("*splat", (_, res) => res.status(404).sendFile(join(webFolderPath, "not_found.html")));
       app.listen(port, () => logger.info(`Listening on port ${port}`));
     },
   ];

@@ -95,7 +95,7 @@ export default function handleWebStaffPortal(client: Client<true>, webConfig: Ex
       .catch(() => res.status(404).send({ error: "user not found" }));
   });
   app.use(express.static(staffDocumentFolder));
-  app.get("*", (_, res) => res.status(404).sendFile(join(webFolderPath, "staff-document", "404.html")));
+  app.get("*splat", (_, res) => res.status(404).sendFile(join(webFolderPath, "staff-document", "404.html")));
 
   // start app
   listen(webConfig.port);
