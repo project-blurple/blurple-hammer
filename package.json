@@ -42,7 +42,7 @@
     "text-to-svg": "3.1.5",
     "winston": "3.17.0",
     "winston-daily-rotate-file": "5.0.0",
-    "zlib-sync": "0.1.9"
+    "zlib-sync": "0.1.10"
   },
   "devDependencies": {
     "@tsconfig/node22": "22.0.1",
