@@ -92,13 +92,13 @@ importers:
         version: 2.0.5
       '@types/cookie-parser':
         specifier: 1.4.9
-        version: 1.4.9(@types/express@5.0.2)
+        version: 1.4.9(@types/express@5.0.3)
       '@types/decompress':
         specifier: 4.2.7
         version: 4.2.7
       '@types/express':
-        specifier: 5.0.2
-        version: 5.0.2
+        specifier: 5.0.3
+        version: 5.0.3
       '@types/fs-extra':
         specifier: 11.0.4
         version: 11.0.4
@@ -1019,8 +1019,8 @@ packages:
   '@types/express-serve-static-core@5.0.6':
     resolution: {integrity: sha512-3xhRnjJPkULekpSzgtoNYYcTWgEZkp4myc+Saevii5JPnHNvHMRlBSHDbs7Bh1iPPoVTERHEZXyhyLbMEsExsA==}
 
-  '@types/express@5.0.2':
-    resolution: {integrity: sha512-BtjL3ZwbCQriyb0DGw+Rt12qAXPiBTPs815lsUvtt1Grk0vLRMZNMUZ741d5rjk+UQOxfDiBZ3dxpX00vSkK3g==}
+  '@types/express@5.0.3':
+    resolution: {integrity: sha512-wGA0NX93b19/dZC1J18tKWVIYWyyF2ZjT9vin/NRu0qzzvfVzWjs04iq2rQ3H65vCTQYlRqs3YHfY7zjdV+9Kw==}
 
   '@types/fs-extra@11.0.4':
     resolution: {integrity: sha512-yTbItCNreRooED33qjunPthRcSjERP1r4MqCZc7wv0u2sUkzTFp45tgUfS5+r7FrZPdmCCNflLhVSP/o+SemsQ==}
@@ -5657,9 +5657,9 @@ snapshots:
     dependencies:
       '@types/node': 22.15.30
 
-  '@types/cookie-parser@1.4.9(@types/express@5.0.2)':
+  '@types/cookie-parser@1.4.9(@types/express@5.0.3)':
     dependencies:
-      '@types/express': 5.0.2
+      '@types/express': 5.0.3
 
   '@types/cookiejar@2.1.5': {}
 
@@ -5676,7 +5676,7 @@ snapshots:
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
 
-  '@types/express@5.0.2':
+  '@types/express@5.0.3':
     dependencies:
       '@types/body-parser': 1.19.5
       '@types/express-serve-static-core': 5.0.6
