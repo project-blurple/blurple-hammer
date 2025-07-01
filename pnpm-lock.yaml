@@ -128,7 +128,7 @@ importers:
         version: 9.30.0(jiti@1.21.7)
       eslint-config-promise:
         specifier: github:promise/eslint-config
-        version: https://codeload.github.com/promise/eslint-config/tar.gz/641f575e0e5d9c14e136cb2dfba8240c1916ff3f(c183b8eca4e9341e9e48c39cde8086ae)
+        version: https://codeload.github.com/promise/eslint-config/tar.gz/f86f93a852739062adbc2ad019d6734ce62b4ccf(c183b8eca4e9341e9e48c39cde8086ae)
       jest:
         specifier: 30.0.3
         version: 30.0.3(@types/node@22.15.34)
@@ -2138,8 +2138,8 @@ packages:
     engines: {node: '>=4.0'}
     hasBin: true
 
-  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/641f575e0e5d9c14e136cb2dfba8240c1916ff3f:
-    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/641f575e0e5d9c14e136cb2dfba8240c1916ff3f}
+  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/f86f93a852739062adbc2ad019d6734ce62b4ccf:
+    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/f86f93a852739062adbc2ad019d6734ce62b4ccf}
     version: 0.0.0
     peerDependencies:
       '@stylistic/eslint-plugin-js': 4.2.0
@@ -7084,7 +7084,7 @@ snapshots:
       source-map: 0.6.1
     optional: true
 
-  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/641f575e0e5d9c14e136cb2dfba8240c1916ff3f(c183b8eca4e9341e9e48c39cde8086ae):
+  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/f86f93a852739062adbc2ad019d6734ce62b4ccf(c183b8eca4e9341e9e48c39cde8086ae):
     dependencies:
       '@stylistic/eslint-plugin-js': 4.2.0(eslint@9.30.0(jiti@1.21.7))
       '@stylistic/eslint-plugin-jsx': 4.2.0(eslint@9.30.0(jiti@1.21.7))
