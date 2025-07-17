@@ -34,7 +34,7 @@
     "jsonwebtoken": "9.0.2",
     "match-sorter": "8.0.3",
     "mongoose": "8.14.0",
-    "morgan": "1.10.0",
+    "morgan": "1.10.1",
     "nodemailer": "6.10.1",
     "superagent": "10.2.2",
     "svg-png-converter": "0.0.9",
