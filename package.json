@@ -58,7 +58,7 @@
     "@types/nodemailer": "6.4.20",
     "@types/superagent": "8.1.9",
     "@types/text-to-svg": "3.1.4",
-    "eslint": "9.36.0",
+    "eslint": "9.37.0",
     "eslint-config-promise": "github:promise/eslint-config",
     "jest": "30.2.0",
     "ts-jest": "29.4.4",
