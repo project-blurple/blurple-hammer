@@ -91,8 +91,8 @@ importers:
         specifier: 2.0.6
         version: 2.0.6
       '@types/cookie-parser':
-        specifier: 1.4.9
-        version: 1.4.9(@types/express@5.0.3)
+        specifier: 1.4.10
+        version: 1.4.10(@types/express@5.0.3)
       '@types/decompress':
         specifier: 4.2.7
         version: 4.2.7
@@ -128,7 +128,7 @@ importers:
         version: 9.38.0(jiti@1.21.7)
       eslint-config-promise:
         specifier: github:promise/eslint-config
-        version: https://codeload.github.com/promise/eslint-config/tar.gz/a5d49a0c86ec43c607f6021a2dd2d3a2bacbcbd8(91e5c6de5649ad603d2437169c245c7a)
+        version: https://codeload.github.com/promise/eslint-config/tar.gz/892296e29f511766c8223209eb7557e982c34829(91e5c6de5649ad603d2437169c245c7a)
       jest:
         specifier: 30.2.0
         version: 30.2.0(@types/node@22.18.12)
@@ -1323,8 +1323,8 @@ packages:
   '@types/connect@3.4.38':
     resolution: {integrity: sha512-K6uROf1LD88uDQqJCktA4yzL1YYAK6NgfsI0v/mTgyPKWsX1CnJ0XPSDhViejru1GcRkLWb8RlzFYJRqGUbaug==}
 
-  '@types/cookie-parser@1.4.9':
-    resolution: {integrity: sha512-tGZiZ2Gtc4m3wIdLkZ8mkj1T6CEHb35+VApbL2T14Dew8HA7c+04dmKqsKRNC+8RJPm16JEK0tFSwdZqubfc4g==}
+  '@types/cookie-parser@1.4.10':
+    resolution: {integrity: sha512-B4xqkqfZ8Wek+rCOeRxsjMS9OgvzebEzzLYw7NHYuvzb7IdxOkI0ZHGgeEBX4PUM7QGVvNSK60T3OvWj3YfBRg==}
     peerDependencies:
       '@types/express': '*'
 
@@ -2295,6 +2295,7 @@ packages:
 
   discord-oauth2@2.12.1:
     resolution: {integrity: sha512-/Um39bRxVjcGHUu1YaTLangZvZveXjsX4BNsa1Iyd6OQG0jL972IBQGKD0mYqQswxC3bT+hqWSouabfI2RdaZA==}
+    deprecated: This package is deprecated and no longer maintained due to better, more secure solutions being available. Users must migrate to a proper web server framework (e.g., Express). See https://github.com/reboxer/discord-oauth2#readme for details.
 
   discord.js@14.16.3:
     resolution: {integrity: sha512-EPCWE9OkA9DnFFNrO7Kl1WHHDYFXu3CNVFJg63bfU7hVtjZGyhShwZtSBImINQRWxWP2tgo2XI+QhdXx28r0aA==}
@@ -2434,8 +2435,8 @@ packages:
     engines: {node: '>=4.0'}
     hasBin: true
 
-  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/a5d49a0c86ec43c607f6021a2dd2d3a2bacbcbd8:
-    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/a5d49a0c86ec43c607f6021a2dd2d3a2bacbcbd8}
+  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/892296e29f511766c8223209eb7557e982c34829:
+    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/892296e29f511766c8223209eb7557e982c34829}
     version: 0.0.0
     peerDependencies:
       '@stylistic/eslint-plugin-js': 4.2.0
@@ -6784,7 +6785,7 @@ snapshots:
     dependencies:
       '@types/node': 22.18.12
 
-  '@types/cookie-parser@1.4.9(@types/express@5.0.3)':
+  '@types/cookie-parser@1.4.10(@types/express@5.0.3)':
     dependencies:
       '@types/express': 5.0.3
 
@@ -8035,7 +8036,7 @@ snapshots:
       source-map: 0.6.1
     optional: true
 
-  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/a5d49a0c86ec43c607f6021a2dd2d3a2bacbcbd8(91e5c6de5649ad603d2437169c245c7a):
+  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/892296e29f511766c8223209eb7557e982c34829(91e5c6de5649ad603d2437169c245c7a):
     dependencies:
       '@stylistic/eslint-plugin-js': 4.2.0(eslint@9.38.0(jiti@1.21.7))
       '@stylistic/eslint-plugin-jsx': 4.2.0(eslint@9.38.0(jiti@1.21.7))
