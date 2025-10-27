@@ -92,13 +92,13 @@ importers:
         version: 2.0.6
       '@types/cookie-parser':
         specifier: 1.4.10
-        version: 1.4.10(@types/express@5.0.4)
+        version: 1.4.10(@types/express@5.0.5)
       '@types/decompress':
         specifier: 4.2.7
         version: 4.2.7
       '@types/express':
-        specifier: 5.0.4
-        version: 5.0.4
+        specifier: 5.0.5
+        version: 5.0.5
       '@types/fs-extra':
         specifier: 11.0.4
         version: 11.0.4
@@ -1340,8 +1340,8 @@ packages:
   '@types/express-serve-static-core@5.0.7':
     resolution: {integrity: sha512-R+33OsgWw7rOhD1emjU7dzCDHucJrgJXMA5PYCzJxVil0dsyx5iBEPHqpPfiKNJQb7lZ1vxwoLR4Z87bBUpeGQ==}
 
-  '@types/express@5.0.4':
-    resolution: {integrity: sha512-g64dbryHk7loCIrsa0R3shBnEu5p6LPJ09bu9NG58+jz+cRUjFrc3Bz0kNQ7j9bXeCsrRDvNET1G54P/GJkAyA==}
+  '@types/express@5.0.5':
+    resolution: {integrity: sha512-LuIQOcb6UmnF7C1PCFmEU1u2hmiHL43fgFQX67sN3H4Z+0Yk0Neo++mFsBjhOAuLzvlQeqAAkeDOZrJs9rzumQ==}
 
   '@types/fs-extra@11.0.4':
     resolution: {integrity: sha512-yTbItCNreRooED33qjunPthRcSjERP1r4MqCZc7wv0u2sUkzTFp45tgUfS5+r7FrZPdmCCNflLhVSP/o+SemsQ==}
@@ -2295,7 +2295,7 @@ packages:
 
   discord-oauth2@2.12.1:
     resolution: {integrity: sha512-/Um39bRxVjcGHUu1YaTLangZvZveXjsX4BNsa1Iyd6OQG0jL972IBQGKD0mYqQswxC3bT+hqWSouabfI2RdaZA==}
-    deprecated: This package is deprecated and no longer maintained due to better, more secure solutions being available. Users must migrate to a proper web server framework (e.g., Express). See https://github.com/reboxer/discord-oauth2#readme for details.
+    deprecated: This package is deprecated and no longer maintained due to better, more secure solutions being available. Users should migrate to a proper, full-featured Node.js web framework (such as Express.js, Fastify, or NestJS) to handle OAuth2 authorizations.
 
   discord.js@14.16.3:
     resolution: {integrity: sha512-EPCWE9OkA9DnFFNrO7Kl1WHHDYFXu3CNVFJg63bfU7hVtjZGyhShwZtSBImINQRWxWP2tgo2XI+QhdXx28r0aA==}
@@ -6785,9 +6785,9 @@ snapshots:
     dependencies:
       '@types/node': 22.18.12
 
-  '@types/cookie-parser@1.4.10(@types/express@5.0.4)':
+  '@types/cookie-parser@1.4.10(@types/express@5.0.5)':
     dependencies:
-      '@types/express': 5.0.4
+      '@types/express': 5.0.5
 
   '@types/cookiejar@2.1.5': {}
 
@@ -6804,7 +6804,7 @@ snapshots:
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.5
 
-  '@types/express@5.0.4':
+  '@types/express@5.0.5':
     dependencies:
       '@types/body-parser': 1.19.6
       '@types/express-serve-static-core': 5.0.7
