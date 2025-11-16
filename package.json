@@ -45,7 +45,7 @@
     "zlib-sync": "0.1.10"
   },
   "devDependencies": {
-    "@tsconfig/node22": "22.0.3",
+    "@tsconfig/node22": "22.0.4",
     "@tsconfig/strictest": "2.0.8",
     "@types/cookie-parser": "1.4.10",
     "@types/decompress": "4.2.7",
