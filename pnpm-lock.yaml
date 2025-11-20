@@ -24,8 +24,8 @@ importers:
         specifier: 4.2.1
         version: 4.2.1
       dedent:
-        specifier: 1.5.3
-        version: 1.5.3
+        specifier: 1.7.0
+        version: 1.7.0
       discord-oauth2:
         specifier: 2.12.1
         version: 2.12.1
@@ -128,7 +128,7 @@ importers:
         version: 9.39.1(jiti@1.21.7)
       eslint-config-promise:
         specifier: github:promise/eslint-config
-        version: https://codeload.github.com/promise/eslint-config/tar.gz/85f361e8f712d3f9264564fa305ff6a29fcc7200(fe9f74a38845fd4a69ac740a2e8ce400)
+        version: https://codeload.github.com/promise/eslint-config/tar.gz/cf1ddf970e6a29cc433af079c1a4017ddb9fd479(fe9f74a38845fd4a69ac740a2e8ce400)
       jest:
         specifier: 30.2.0
         version: 30.2.0(@types/node@22.19.1)
@@ -2228,14 +2228,6 @@ packages:
     resolution: {integrity: sha512-e48kc2IjU+2Zw8cTb6VZcJQ3lgVbS4uuB1TfCHbiZIP/haNXm+SVyhu+87jts5/3ROpd82GSVCoNs/z8l4ZOaQ==}
     engines: {node: '>=4'}
 
-  dedent@1.5.3:
-    resolution: {integrity: sha512-NHQtfOOW68WD8lgypbLA5oT+Bt0xXJhiYvoR6SmmNXZfpzOGXwdKWmcwG8N7PwVVWV3eF/68nmD9BaJSsTBhyQ==}
-    peerDependencies:
-      babel-plugin-macros: ^3.1.0
-    peerDependenciesMeta:
-      babel-plugin-macros:
-        optional: true
-
   dedent@1.7.0:
     resolution: {integrity: sha512-HGFtf8yhuhGhqO07SV79tRp+br4MnbdjeVxotpn1QBl30pcLLCQjX5b2295ll0fv8RKDKsmWYrl05usHM9CewQ==}
     peerDependencies:
@@ -2438,8 +2430,8 @@ packages:
     engines: {node: '>=4.0'}
     hasBin: true
 
-  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/85f361e8f712d3f9264564fa305ff6a29fcc7200:
-    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/85f361e8f712d3f9264564fa305ff6a29fcc7200}
+  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/cf1ddf970e6a29cc433af079c1a4017ddb9fd479:
+    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/cf1ddf970e6a29cc433af079c1a4017ddb9fd479}
     version: 0.0.0
     peerDependencies:
       '@stylistic/eslint-plugin-js': 4.2.0
@@ -7778,8 +7770,6 @@ snapshots:
       pify: 2.3.0
       strip-dirs: 2.1.0
 
-  dedent@1.5.3: {}
-
   dedent@1.7.0: {}
 
   deep-is@0.1.4: {}
@@ -8037,7 +8027,7 @@ snapshots:
       source-map: 0.6.1
     optional: true
 
-  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/85f361e8f712d3f9264564fa305ff6a29fcc7200(fe9f74a38845fd4a69ac740a2e8ce400):
+  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/cf1ddf970e6a29cc433af079c1a4017ddb9fd479(fe9f74a38845fd4a69ac740a2e8ce400):
     dependencies:
       '@stylistic/eslint-plugin-js': 4.2.0(eslint@9.39.1(jiti@1.21.7))
       '@stylistic/eslint-plugin-jsx': 4.2.0(eslint@9.39.1(jiti@1.21.7))
