@@ -32,7 +32,7 @@
     "fs-extra": "11.3.2",
     "helmet": "8.1.0",
     "jsonwebtoken": "9.0.2",
-    "match-sorter": "8.1.0",
+    "match-sorter": "8.2.0",
     "mongoose": "8.14.0",
     "morgan": "1.10.1",
     "nodemailer": "6.10.1",
