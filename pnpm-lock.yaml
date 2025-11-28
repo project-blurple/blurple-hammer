@@ -60,8 +60,8 @@ importers:
         specifier: 1.10.1
         version: 1.10.1
       nodemailer:
-        specifier: 6.10.1
-        version: 6.10.1
+        specifier: 7.0.7
+        version: 7.0.7
       superagent:
         specifier: 10.2.3
         version: 10.2.3
@@ -3728,8 +3728,8 @@ packages:
   node-releases@2.0.27:
     resolution: {integrity: sha512-nmh3lCkYZ3grZvqcCH+fjmQ7X+H0OeZgP40OierEaAptX4XofMh5kwNbWh7lBduUzCcV/8kZ+NDLCwm2iorIlA==}
 
-  nodemailer@6.10.1:
-    resolution: {integrity: sha512-Z+iLaBGVaSjbIzQ4pX6XV41HrooLsQ10ZWPUehGmuantvzWoDVBnmsdUcOIDM1t+yPor5pDhVlDESgOMEGxhHA==}
+  nodemailer@7.0.7:
+    resolution: {integrity: sha512-jGOaRznodf62TVzdyhKt/f1Q/c3kYynk8629sgJHpRzGZj01ezbgMMWJSAjHADcwTKxco3B68/R+KHJY2T5BaA==}
     engines: {node: '>=6.0.0'}
 
   nopt@5.0.0:
@@ -9629,7 +9629,7 @@ snapshots:
 
   node-releases@2.0.27: {}
 
-  nodemailer@6.10.1: {}
+  nodemailer@7.0.7: {}
 
   nopt@5.0.0:
     dependencies:
