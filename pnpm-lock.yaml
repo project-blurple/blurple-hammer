@@ -63,8 +63,8 @@ importers:
         specifier: 7.0.13
         version: 7.0.13
       superagent:
-        specifier: 10.2.3
-        version: 10.2.3
+        specifier: 10.3.0
+        version: 10.3.0
       svg-png-converter:
         specifier: 0.0.9
         version: 0.0.9(bufferutil@4.0.9)
@@ -128,7 +128,7 @@ importers:
         version: 9.39.2(jiti@1.21.7)
       eslint-config-promise:
         specifier: github:promise/eslint-config
-        version: https://codeload.github.com/promise/eslint-config/tar.gz/d5e5c1b45adec325ee933c8050c2822d045d651c(8113139b699da7b46040d710b81f9a76)
+        version: https://codeload.github.com/promise/eslint-config/tar.gz/265fbccccd3f94182cf36ac5ff0facd7ef6eb183(8113139b699da7b46040d710b81f9a76)
       jest:
         specifier: 30.2.0
         version: 30.2.0(@types/node@22.19.11)
@@ -2144,8 +2144,8 @@ packages:
     engines: {node: '>=4.0'}
     hasBin: true
 
-  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/d5e5c1b45adec325ee933c8050c2822d045d651c:
-    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/d5e5c1b45adec325ee933c8050c2822d045d651c}
+  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/265fbccccd3f94182cf36ac5ff0facd7ef6eb183:
+    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/265fbccccd3f94182cf36ac5ff0facd7ef6eb183}
     version: 0.0.0
     peerDependencies:
       '@stylistic/eslint-plugin-js': 4.2.0
@@ -4153,8 +4153,8 @@ packages:
     engines: {node: '>=16 || 14 >=14.17'}
     hasBin: true
 
-  superagent@10.2.3:
-    resolution: {integrity: sha512-y/hkYGeXAj7wUMjxRbB21g/l6aAEituGXM9Rwl4o20+SX3e8YOSV6BxFXl+dL3Uk0mjSL3kCbNkwURm8/gEDig==}
+  superagent@10.3.0:
+    resolution: {integrity: sha512-B+4Ik7ROgVKrQsXTV0Jwp2u+PXYLSlqtDAhYnkkD+zn3yg8s/zjA2MeGayPoY/KICrbitwneDHrjSotxKL+0XQ==}
     engines: {node: '>=14.18.0'}
 
   supports-color@5.5.0:
@@ -7099,7 +7099,7 @@ snapshots:
       source-map: 0.6.1
     optional: true
 
-  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/d5e5c1b45adec325ee933c8050c2822d045d651c(8113139b699da7b46040d710b81f9a76):
+  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/265fbccccd3f94182cf36ac5ff0facd7ef6eb183(8113139b699da7b46040d710b81f9a76):
     dependencies:
       '@stylistic/eslint-plugin-js': 4.2.0(eslint@9.39.2(jiti@1.21.7))
       '@stylistic/eslint-plugin-jsx': 4.2.0(eslint@9.39.2(jiti@1.21.7))
@@ -9477,7 +9477,7 @@ snapshots:
       tinyglobby: 0.2.15
       ts-interface-checker: 0.1.13
 
-  superagent@10.2.3:
+  superagent@10.3.0:
     dependencies:
       component-emitter: 1.3.1
       cookiejar: 2.1.4
