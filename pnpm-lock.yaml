@@ -36,11 +36,11 @@ importers:
         specifier: 17.2.4
         version: 17.2.4
       express:
-        specifier: 5.1.0
-        version: 5.1.0
+        specifier: 5.2.1
+        version: 5.2.1
       express-rate-limit:
         specifier: 8.2.2
-        version: 8.2.2(express@5.1.0)
+        version: 8.2.2(express@5.2.1)
       fs-extra:
         specifier: 11.3.4
         version: 11.3.4
@@ -128,7 +128,7 @@ importers:
         version: 9.39.4(jiti@1.21.7)
       eslint-config-promise:
         specifier: github:promise/eslint-config
-        version: https://codeload.github.com/promise/eslint-config/tar.gz/a0fcce24ddfc75c59a0de72dc42997080a907f59(8c7ede005e5fbd15f8d5e8a1121c9a66)
+        version: https://codeload.github.com/promise/eslint-config/tar.gz/ae3f977e8628756c339ace705dc8495283ddfe17(8c7ede005e5fbd15f8d5e8a1121c9a66)
       jest:
         specifier: 30.3.0
         version: 30.3.0(@types/node@22.19.15)
@@ -2165,8 +2165,8 @@ packages:
     engines: {node: '>=4.0'}
     hasBin: true
 
-  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/a0fcce24ddfc75c59a0de72dc42997080a907f59:
-    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/a0fcce24ddfc75c59a0de72dc42997080a907f59}
+  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/ae3f977e8628756c339ace705dc8495283ddfe17:
+    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/ae3f977e8628756c339ace705dc8495283ddfe17}
     version: 0.0.0
     peerDependencies:
       '@stylistic/eslint-plugin-js': 4.2.0
@@ -2339,8 +2339,8 @@ packages:
     peerDependencies:
       express: '>= 4.11'
 
-  express@5.1.0:
-    resolution: {integrity: sha512-DT9ck5YIRU+8GYzzU5kT3eHGA5iL+1Zd0EutOmTE9Dtk+Tvuzd23VBU+ec7HPNSTxXYO55gPV/hq4pSBJDjFpA==}
+  express@5.2.1:
+    resolution: {integrity: sha512-hIS4idWWai69NezIdRt2xFVofaF4j+6INOpJlVOLDO8zXGpUVEVzIYk12UUi2JzjEzWL3IOAxcTubgz9Po0yXw==}
     engines: {node: '>= 18'}
 
   extend@3.0.2:
@@ -7185,7 +7185,7 @@ snapshots:
       source-map: 0.6.1
     optional: true
 
-  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/a0fcce24ddfc75c59a0de72dc42997080a907f59(8c7ede005e5fbd15f8d5e8a1121c9a66):
+  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/ae3f977e8628756c339ace705dc8495283ddfe17(8c7ede005e5fbd15f8d5e8a1121c9a66):
     dependencies:
       '@stylistic/eslint-plugin-js': 4.2.0(eslint@9.39.4(jiti@1.21.7))
       '@stylistic/eslint-plugin-jsx': 4.2.0(eslint@9.39.4(jiti@1.21.7))
@@ -7411,12 +7411,12 @@ snapshots:
       jest-mock: 30.3.0
       jest-util: 30.3.0
 
-  express-rate-limit@8.2.2(express@5.1.0):
+  express-rate-limit@8.2.2(express@5.2.1):
     dependencies:
-      express: 5.1.0
+      express: 5.2.1
       ip-address: 10.1.0
 
-  express@5.1.0:
+  express@5.2.1:
     dependencies:
       accepts: 2.0.0
       body-parser: 2.2.2
@@ -7425,6 +7425,7 @@ snapshots:
       cookie: 0.7.2
       cookie-signature: 1.2.2
       debug: 4.4.3
+      depd: 2.0.0
       encodeurl: 2.0.0
       escape-html: 1.0.3
       etag: 1.8.1
