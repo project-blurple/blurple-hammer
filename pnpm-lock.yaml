@@ -60,8 +60,8 @@ importers:
         specifier: 1.10.1
         version: 1.10.1
       nodemailer:
-        specifier: 7.0.13
-        version: 7.0.13
+        specifier: 8.0.5
+        version: 8.0.5
       superagent:
         specifier: 10.2.3
         version: 10.2.3
@@ -128,7 +128,7 @@ importers:
         version: 9.39.4(jiti@1.21.7)
       eslint-config-promise:
         specifier: github:promise/eslint-config
-        version: https://codeload.github.com/promise/eslint-config/tar.gz/9340d059930968939cf9a3ff343b79642a830be1(5da8c194a57c328e4aeefbe41aafb9ec)
+        version: https://codeload.github.com/promise/eslint-config/tar.gz/757fa4bf8c42ab39e7df4744413020abbc481f80(5da8c194a57c328e4aeefbe41aafb9ec)
       jest:
         specifier: 30.3.0
         version: 30.3.0(@types/node@22.19.17)
@@ -2158,8 +2158,8 @@ packages:
     engines: {node: '>=4.0'}
     hasBin: true
 
-  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/9340d059930968939cf9a3ff343b79642a830be1:
-    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/9340d059930968939cf9a3ff343b79642a830be1}
+  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/757fa4bf8c42ab39e7df4744413020abbc481f80:
+    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/757fa4bf8c42ab39e7df4744413020abbc481f80}
     version: 0.0.0
     peerDependencies:
       '@stylistic/eslint-plugin-js': 4.2.0
@@ -3466,8 +3466,8 @@ packages:
   node-releases@2.0.36:
     resolution: {integrity: sha512-TdC8FSgHz8Mwtw9g5L4gR/Sh9XhSP/0DEkQxfEFXOpiul5IiHgHan2VhYYb6agDSfp4KuvltmGApc8HMgUrIkA==}
 
-  nodemailer@7.0.13:
-    resolution: {integrity: sha512-PNDFSJdP+KFgdsG3ZzMXCgquO7I6McjY2vlqILjtJd0hy8wEvtugS9xKRF2NWlPNGxvLCXlTNIae4serI7dinw==}
+  nodemailer@8.0.5:
+    resolution: {integrity: sha512-0PF8Yb1yZuQfQbq+5/pZJrtF6WQcjTd5/S4JOHs9PGFxuTqoB/icwuB44pOdURHJbRKX1PPoJZtY7R4VUoCC8w==}
     engines: {node: '>=6.0.0'}
 
   nopt@5.0.0:
@@ -7137,7 +7137,7 @@ snapshots:
       source-map: 0.6.1
     optional: true
 
-  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/9340d059930968939cf9a3ff343b79642a830be1(5da8c194a57c328e4aeefbe41aafb9ec):
+  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/757fa4bf8c42ab39e7df4744413020abbc481f80(5da8c194a57c328e4aeefbe41aafb9ec):
     dependencies:
       '@stylistic/eslint-plugin-js': 4.2.0(eslint@9.39.4(jiti@1.21.7))
       '@stylistic/eslint-plugin-jsx': 4.2.0(eslint@9.39.4(jiti@1.21.7))
@@ -8735,7 +8735,7 @@ snapshots:
 
   node-releases@2.0.36: {}
 
-  nodemailer@7.0.13: {}
+  nodemailer@8.0.5: {}
 
   nopt@5.0.0:
     dependencies:
