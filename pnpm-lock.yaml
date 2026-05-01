@@ -128,7 +128,7 @@ importers:
         version: 9.39.4(jiti@1.21.7)
       eslint-config-promise:
         specifier: github:promise/eslint-config
-        version: https://codeload.github.com/promise/eslint-config/tar.gz/f534458efab81d9a0f0e0b47e2712e2473f02b24(5da8c194a57c328e4aeefbe41aafb9ec)
+        version: https://codeload.github.com/promise/eslint-config/tar.gz/45921d0e5d9bee222160e3358373e5d380f99153(5da8c194a57c328e4aeefbe41aafb9ec)
       jest:
         specifier: 30.3.0
         version: 30.3.0(@types/node@22.19.17)
@@ -844,8 +844,8 @@ packages:
     resolution: {integrity: sha512-Yhlar6v9WQgUp/He7BdgzOz8lqMQ8sU+jkCq7Wx8Myc5YFJLbEe7lgui/V7G1qB1DJykHSGwreceSaD60Y0PUQ==}
     hasBin: true
 
-  '@mongodb-js/saslprep@1.4.9':
-    resolution: {integrity: sha512-RXSxsokhAF/4nWys8An8npsqOI33Ex1Hlzqjw2pZOO+GKtMAR2noGnUdsFiGwsaO/xXI+56mtjTmDA3JXJsvmA==}
+  '@mongodb-js/saslprep@1.4.10':
+    resolution: {integrity: sha512-DDb3OAw8ezai9p2i1F7R5wMVmyrMIuT8ixjV56R4Hl4cazCo2tOMTDyPR5rrCUcHiMbWHzCXOdife5OD6H1C8w==}
 
   '@napi-rs/wasm-runtime@0.2.12':
     resolution: {integrity: sha512-ZVWUcfwY4E/yPitQJl481FjFo3K22D6qF0DuFH6Y/nbnE11GY5uguDxZMGXPQ8WQ0128MXQD7TnfHyK4oWoIJQ==}
@@ -2162,8 +2162,8 @@ packages:
     engines: {node: '>=4.0'}
     hasBin: true
 
-  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/f534458efab81d9a0f0e0b47e2712e2473f02b24:
-    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/f534458efab81d9a0f0e0b47e2712e2473f02b24}
+  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/45921d0e5d9bee222160e3358373e5d380f99153:
+    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/45921d0e5d9bee222160e3358373e5d380f99153}
     version: 0.0.0
     peerDependencies:
       '@stylistic/eslint-plugin-js': 4.2.0
@@ -5706,7 +5706,7 @@ snapshots:
       - supports-color
     optional: true
 
-  '@mongodb-js/saslprep@1.4.9':
+  '@mongodb-js/saslprep@1.4.10':
     dependencies:
       sparse-bitfield: 3.0.3
 
@@ -7145,7 +7145,7 @@ snapshots:
       source-map: 0.6.1
     optional: true
 
-  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/f534458efab81d9a0f0e0b47e2712e2473f02b24(5da8c194a57c328e4aeefbe41aafb9ec):
+  eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/45921d0e5d9bee222160e3358373e5d380f99153(5da8c194a57c328e4aeefbe41aafb9ec):
     dependencies:
       '@stylistic/eslint-plugin-js': 4.2.0(eslint@9.39.4(jiti@1.21.7))
       '@stylistic/eslint-plugin-jsx': 4.2.0(eslint@9.39.4(jiti@1.21.7))
@@ -8661,7 +8661,7 @@ snapshots:
 
   mongodb@6.20.0:
     dependencies:
-      '@mongodb-js/saslprep': 1.4.9
+      '@mongodb-js/saslprep': 1.4.10
       bson: 6.10.4
       mongodb-connection-string-url: 3.0.2
 
