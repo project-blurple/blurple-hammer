@@ -2163,7 +2163,7 @@ packages:
     hasBin: true
 
   eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/45921d0e5d9bee222160e3358373e5d380f99153:
-    resolution: {tarball: https://codeload.github.com/promise/eslint-config/tar.gz/45921d0e5d9bee222160e3358373e5d380f99153}
+    resolution: {gitHosted: true, tarball: https://codeload.github.com/promise/eslint-config/tar.gz/45921d0e5d9bee222160e3358373e5d380f99153}
     version: 0.0.0
     peerDependencies:
       '@stylistic/eslint-plugin-js': 4.2.0
@@ -2688,7 +2688,7 @@ packages:
     resolution: {integrity: sha512-PfJGVgIfKQJuq3s0tTDOKtztksibuUEbJQIYT3by6wctQo+Rdlh7ef4evJ5NCdxY4CfMbvFkocEwbl4BF8RlJw==}
 
   imagetracerjs@https://codeload.github.com/jankovicsandras/imagetracerjs/tar.gz/cb0c84a309df5e75614d3b5166cdc77a56f12a98:
-    resolution: {tarball: https://codeload.github.com/jankovicsandras/imagetracerjs/tar.gz/cb0c84a309df5e75614d3b5166cdc77a56f12a98}
+    resolution: {gitHosted: true, tarball: https://codeload.github.com/jankovicsandras/imagetracerjs/tar.gz/cb0c84a309df5e75614d3b5166cdc77a56f12a98}
     version: 1.2.6
 
   import-fresh@3.3.1:
@@ -3773,7 +3773,7 @@ packages:
     engines: {node: ^10 || ^12 || >=14}
 
   potrace@https://codeload.github.com/cancerberoSgx/node-potrace/tar.gz/043879baa521223ee96d31369eabd482a6eb214a:
-    resolution: {tarball: https://codeload.github.com/cancerberoSgx/node-potrace/tar.gz/043879baa521223ee96d31369eabd482a6eb214a}
+    resolution: {gitHosted: true, tarball: https://codeload.github.com/cancerberoSgx/node-potrace/tar.gz/043879baa521223ee96d31369eabd482a6eb214a}
     version: 2.1.1
 
   prelude-ls@1.1.2:
@@ -4217,7 +4217,7 @@ packages:
     engines: {node: '>= 10'}
 
   svgo@https://codeload.github.com/cancerberoSgx/svgo/tar.gz/8d30aa47bc4035973b3fb8403d52314c57d16c3e:
-    resolution: {tarball: https://codeload.github.com/cancerberoSgx/svgo/tar.gz/8d30aa47bc4035973b3fb8403d52314c57d16c3e}
+    resolution: {gitHosted: true, tarball: https://codeload.github.com/cancerberoSgx/svgo/tar.gz/8d30aa47bc4035973b3fb8403d52314c57d16c3e}
     version: 1.2.2
     engines: {node: '>=4.0.0'}
     hasBin: true
