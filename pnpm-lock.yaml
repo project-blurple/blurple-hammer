@@ -36,11 +36,11 @@ importers:
         specifier: 17.2.4
         version: 17.2.4
       express:
-        specifier: 5.1.0
-        version: 5.1.0
+        specifier: 5.2.1
+        version: 5.2.1
       express-rate-limit:
         specifier: 8.2.2
-        version: 8.2.2(express@5.1.0)
+        version: 8.2.2(express@5.2.1)
       fs-extra:
         specifier: 11.3.5
         version: 11.3.5
@@ -2184,7 +2184,7 @@ packages:
     hasBin: true
 
   eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/f35740d3efbeabb7f40ef7294fcefafc9d4b0148:
-    resolution: {gitHosted: true, integrity: sha512-qDWXd38Nxf4Yh2K/9KFnAu+3XCHZp0Ya8AsBuLDdlY8SIjHV1Fww28J95CLP7CCN+RazG24hvC7UzWvGMDVD1w==, tarball: https://codeload.github.com/promise/eslint-config/tar.gz/f35740d3efbeabb7f40ef7294fcefafc9d4b0148}
+    resolution: {gitHosted: true, tarball: https://codeload.github.com/promise/eslint-config/tar.gz/f35740d3efbeabb7f40ef7294fcefafc9d4b0148}
     version: 0.0.0
     peerDependencies:
       '@stylistic/eslint-plugin-js': 4.2.0
@@ -2357,8 +2357,8 @@ packages:
     peerDependencies:
       express: '>= 4.11'
 
-  express@5.1.0:
-    resolution: {integrity: sha512-DT9ck5YIRU+8GYzzU5kT3eHGA5iL+1Zd0EutOmTE9Dtk+Tvuzd23VBU+ec7HPNSTxXYO55gPV/hq4pSBJDjFpA==}
+  express@5.2.1:
+    resolution: {integrity: sha512-hIS4idWWai69NezIdRt2xFVofaF4j+6INOpJlVOLDO8zXGpUVEVzIYk12UUi2JzjEzWL3IOAxcTubgz9Po0yXw==}
     engines: {node: '>= 18'}
 
   extend@3.0.2:
@@ -2713,7 +2713,7 @@ packages:
     resolution: {integrity: sha512-PfJGVgIfKQJuq3s0tTDOKtztksibuUEbJQIYT3by6wctQo+Rdlh7ef4evJ5NCdxY4CfMbvFkocEwbl4BF8RlJw==}
 
   imagetracerjs@https://codeload.github.com/jankovicsandras/imagetracerjs/tar.gz/cb0c84a309df5e75614d3b5166cdc77a56f12a98:
-    resolution: {gitHosted: true, integrity: sha512-4nw841HoCGP5kPtE2mXf2WAzvBmjWObuKCtCEa+8zF3GIAZ5ZGtXCni1UyqPiFzyOjkPysGaxNcYbJkvPbZtvQ==, tarball: https://codeload.github.com/jankovicsandras/imagetracerjs/tar.gz/cb0c84a309df5e75614d3b5166cdc77a56f12a98}
+    resolution: {gitHosted: true, tarball: https://codeload.github.com/jankovicsandras/imagetracerjs/tar.gz/cb0c84a309df5e75614d3b5166cdc77a56f12a98}
     version: 1.2.6
 
   import-fresh@3.3.1:
@@ -3822,7 +3822,7 @@ packages:
     engines: {node: ^10 || ^12 || >=14}
 
   potrace@https://codeload.github.com/cancerberoSgx/node-potrace/tar.gz/043879baa521223ee96d31369eabd482a6eb214a:
-    resolution: {gitHosted: true, integrity: sha512-r7Q2XD/rs0Xk+8MCMMZLgkqQ42/5NUgdI1uqx0iZW1Yx1fAkCQ6HYGNbbdGY5DotTdfFYC+2h2yRmHnsUlMe8g==, tarball: https://codeload.github.com/cancerberoSgx/node-potrace/tar.gz/043879baa521223ee96d31369eabd482a6eb214a}
+    resolution: {gitHosted: true, tarball: https://codeload.github.com/cancerberoSgx/node-potrace/tar.gz/043879baa521223ee96d31369eabd482a6eb214a}
     version: 2.1.1
 
   prelude-ls@1.1.2:
@@ -4278,7 +4278,7 @@ packages:
     engines: {node: '>= 10'}
 
   svgo@https://codeload.github.com/cancerberoSgx/svgo/tar.gz/8d30aa47bc4035973b3fb8403d52314c57d16c3e:
-    resolution: {gitHosted: true, integrity: sha512-kpQRCcqlCyTCCBhp+LUKNlqe+BCdK0XGwALBw6zTmDdaMX9RimXfa9/UiFDXHAd7s8fDb8DEUaEgZklu/ZnYjQ==, tarball: https://codeload.github.com/cancerberoSgx/svgo/tar.gz/8d30aa47bc4035973b3fb8403d52314c57d16c3e}
+    resolution: {gitHosted: true, tarball: https://codeload.github.com/cancerberoSgx/svgo/tar.gz/8d30aa47bc4035973b3fb8403d52314c57d16c3e}
     version: 1.2.2
     engines: {node: '>=4.0.0'}
     hasBin: true
@@ -7458,12 +7458,12 @@ snapshots:
       jest-mock: 30.4.1
       jest-util: 30.4.1
 
-  express-rate-limit@8.2.2(express@5.1.0):
+  express-rate-limit@8.2.2(express@5.2.1):
     dependencies:
-      express: 5.1.0
+      express: 5.2.1
       ip-address: 10.1.0
 
-  express@5.1.0:
+  express@5.2.1:
     dependencies:
       accepts: 2.0.0
       body-parser: 2.2.2
@@ -7472,6 +7472,7 @@ snapshots:
       cookie: 0.7.2
       cookie-signature: 1.2.2
       debug: 4.4.3
+      depd: 2.0.0
       encodeurl: 2.0.0
       escape-html: 1.0.3
       etag: 1.8.1
