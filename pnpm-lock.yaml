@@ -115,8 +115,8 @@ importers:
         specifier: 22.19.20
         version: 22.19.20
       '@types/nodemailer':
-        specifier: 7.0.11
-        version: 7.0.11
+        specifier: 7.0.12
+        version: 7.0.12
       '@types/superagent':
         specifier: 8.1.10
         version: 8.1.10
@@ -1128,8 +1128,8 @@ packages:
   '@types/node@22.19.20':
     resolution: {integrity: sha512-6tELRwSDYWW9EdZhbeZmYGZ1/7Djkt+Ah3/ScEYT9cDord7UJzasR/4D3VONg9tQI5CDp+/CZC1AXj2pCFOvpw==}
 
-  '@types/nodemailer@7.0.11':
-    resolution: {integrity: sha512-E+U4RzR2dKrx+u3N4DlsmLaDC6mMZOM/TPROxA0UAPiTgI0y4CEFBmZE+coGWTjakDriRsXG368lNk1u9Q0a2g==}
+  '@types/nodemailer@7.0.12':
+    resolution: {integrity: sha512-80vKwiIsVSyFA1rRovH59jNPLBOuc6dRZIHEu40gXTkBkZnQv8vog1xSGEb9j5q/tdMAs5ivvDR2pLTU0hGHXA==}
 
   '@types/opentype.js@1.3.9':
     resolution: {integrity: sha512-KOGywvDPncA4/tTWV5xKNhjpsoSSAHIx3mHOhL5l3XX+c6Xu2dQnHvGs7mRNQsQRte1EqmQ0cPQQ8Z14lkv+yw==}
@@ -2184,7 +2184,7 @@ packages:
     hasBin: true
 
   eslint-config-promise@https://codeload.github.com/promise/eslint-config/tar.gz/f35740d3efbeabb7f40ef7294fcefafc9d4b0148:
-    resolution: {gitHosted: true, integrity: sha512-qDWXd38Nxf4Yh2K/9KFnAu+3XCHZp0Ya8AsBuLDdlY8SIjHV1Fww28J95CLP7CCN+RazG24hvC7UzWvGMDVD1w==, tarball: https://codeload.github.com/promise/eslint-config/tar.gz/f35740d3efbeabb7f40ef7294fcefafc9d4b0148}
+    resolution: {gitHosted: true, tarball: https://codeload.github.com/promise/eslint-config/tar.gz/f35740d3efbeabb7f40ef7294fcefafc9d4b0148}
     version: 0.0.0
     peerDependencies:
       '@stylistic/eslint-plugin-js': 4.2.0
@@ -2713,7 +2713,7 @@ packages:
     resolution: {integrity: sha512-PfJGVgIfKQJuq3s0tTDOKtztksibuUEbJQIYT3by6wctQo+Rdlh7ef4evJ5NCdxY4CfMbvFkocEwbl4BF8RlJw==}
 
   imagetracerjs@https://codeload.github.com/jankovicsandras/imagetracerjs/tar.gz/cb0c84a309df5e75614d3b5166cdc77a56f12a98:
-    resolution: {gitHosted: true, integrity: sha512-4nw841HoCGP5kPtE2mXf2WAzvBmjWObuKCtCEa+8zF3GIAZ5ZGtXCni1UyqPiFzyOjkPysGaxNcYbJkvPbZtvQ==, tarball: https://codeload.github.com/jankovicsandras/imagetracerjs/tar.gz/cb0c84a309df5e75614d3b5166cdc77a56f12a98}
+    resolution: {gitHosted: true, tarball: https://codeload.github.com/jankovicsandras/imagetracerjs/tar.gz/cb0c84a309df5e75614d3b5166cdc77a56f12a98}
     version: 1.2.6
 
   import-fresh@3.3.1:
@@ -3822,7 +3822,7 @@ packages:
     engines: {node: ^10 || ^12 || >=14}
 
   potrace@https://codeload.github.com/cancerberoSgx/node-potrace/tar.gz/043879baa521223ee96d31369eabd482a6eb214a:
-    resolution: {gitHosted: true, integrity: sha512-r7Q2XD/rs0Xk+8MCMMZLgkqQ42/5NUgdI1uqx0iZW1Yx1fAkCQ6HYGNbbdGY5DotTdfFYC+2h2yRmHnsUlMe8g==, tarball: https://codeload.github.com/cancerberoSgx/node-potrace/tar.gz/043879baa521223ee96d31369eabd482a6eb214a}
+    resolution: {gitHosted: true, tarball: https://codeload.github.com/cancerberoSgx/node-potrace/tar.gz/043879baa521223ee96d31369eabd482a6eb214a}
     version: 2.1.1
 
   prelude-ls@1.1.2:
@@ -4278,7 +4278,7 @@ packages:
     engines: {node: '>= 10'}
 
   svgo@https://codeload.github.com/cancerberoSgx/svgo/tar.gz/8d30aa47bc4035973b3fb8403d52314c57d16c3e:
-    resolution: {gitHosted: true, integrity: sha512-kpQRCcqlCyTCCBhp+LUKNlqe+BCdK0XGwALBw6zTmDdaMX9RimXfa9/UiFDXHAd7s8fDb8DEUaEgZklu/ZnYjQ==, tarball: https://codeload.github.com/cancerberoSgx/svgo/tar.gz/8d30aa47bc4035973b3fb8403d52314c57d16c3e}
+    resolution: {gitHosted: true, tarball: https://codeload.github.com/cancerberoSgx/svgo/tar.gz/8d30aa47bc4035973b3fb8403d52314c57d16c3e}
     version: 1.2.2
     engines: {node: '>=4.0.0'}
     hasBin: true
@@ -6060,7 +6060,7 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
-  '@types/nodemailer@7.0.11':
+  '@types/nodemailer@7.0.12':
     dependencies:
       '@types/node': 22.19.20
 
