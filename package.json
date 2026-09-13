@@ -60,8 +60,8 @@
     "@types/text-to-svg": "3.1.4",
     "eslint": "9.39.4",
     "eslint-config-promise": "github:promise/eslint-config",
-    "jest": "30.4.2",
-    "ts-jest": "29.4.11",
+    "jest": "30.5.1",
+    "ts-jest": "29.4.12",
     "typescript": "5.9.3"
   },
   "eslintConfig": {
