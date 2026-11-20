@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@tsconfig/node22": "22.0.5",
-    "@tsconfig/strictest": "2.0.8",
+    "@tsconfig/strictest": "2.0.9",
     "@types/cookie-parser": "1.4.10",
     "@types/decompress": "4.2.7",
     "@types/express": "5.0.6",
